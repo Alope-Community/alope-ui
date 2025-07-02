@@ -8,6 +8,7 @@ function App() {
       <h1 className="text-3xl font-bold">Welcome to ALOPE UI Library</h1>
       
       <Button to="/button" variant="solid" suffixIcon={<span>→</span>}>Go to Button Docs</Button>
+      <Button to="/badge" variant="solid" suffixIcon={<span>→</span>}>Go to Badge Docs</Button>
       
     </div>
   )
