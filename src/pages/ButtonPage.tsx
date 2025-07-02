@@ -1,6 +1,6 @@
 import { Button } from '../components'
 
-const variants = ['solid', 'error', 'success', 'surface', 'outline', 'ghost', 'plain'] as const
+const variants = ['solid', 'error', 'info', 'warning', 'success', 'surface', 'outline', 'ghost', 'plain'] as const
 const sizes = ['sm', 'md', 'lg'] as const
 
 function ButtonPage() {
