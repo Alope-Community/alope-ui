@@ -18,7 +18,7 @@ const ButtonVariants = {
 }
 
 export type ButtonProps = {
-  children?: string
+  children?: React.ReactNode | string
   onClick?: () => void
   size?: keyof typeof ButtonSizes
   to?: string
