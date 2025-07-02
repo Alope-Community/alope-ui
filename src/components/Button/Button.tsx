@@ -8,12 +8,12 @@ const ButtonSizes = {
 }
 
 const ButtonVariants = {
-  solid: 'bg-indigo-500 text-white hover:bg-indigo-500/90',
-  error: 'bg-red-400 text-white hover:bg-red-400/90',
-  warning: 'bg-[#FFAC1C] text-white hover:bg-[#FFAC1C]/80',
-  success: 'bg-[#50C878] text-white hover:bg-[#50C878]/80',
-  info: 'bg-[#0096FF] text-white hover:bg-[#0096FF]/80',
-  surface: 'bg-gray-200 hover:bg-gray-300 outline outline-black/50',
+  solid: 'bg-primary text-white hover:bg-primary/90',
+  error: 'bg-error text-white hover:bg-error/90',
+  warning: 'bg-warning text-white hover:bg-warning/80',
+  success: 'bg-success text-white hover:bg-success/80',
+  info: 'bg-info text-white hover:bg-info/80',
+  surface: 'bg-gray-200 hover:bg-secondary outline outline-black/50',
   outline: 'bg-transparent hover:bg-gray-200 outline',
   ghost: 'bg-transparent hover:bg-gray-200',
   plain: '',
