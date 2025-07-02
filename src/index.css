@@ -2,6 +2,17 @@
 
 @import "tailwindcss";
 
+@theme {
+    --color-success: #50C878;
+    --color-info: #0096FF;
+    --color-warning: #FFAC1C;
+    --color-error: #F87171;
+    --color-primary: #6366F1;
+    --color-secondary: #D1D5DB;
+
+    --color-primary-700: #4338CA;
+}
+
 * {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
