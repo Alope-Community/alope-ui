@@ -1,4 +1,3 @@
-// src/App.tsx
 import { Button } from "./components"
 
 function App() {
@@ -9,6 +8,7 @@ function App() {
       
       <Button to="/button" variant="solid" suffixIcon={<span>→</span>}>Go to Button Docs</Button>
       <Button to="/badge" variant="solid" suffixIcon={<span>→</span>}>Go to Badge Docs</Button>
+      <Button to="/accordion" variant="solid" suffixIcon={<span>→</span>}>Go to Accordion Docs</Button>
       
     </div>
   )
