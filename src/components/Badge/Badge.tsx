@@ -1,4 +1,5 @@
 import React from 'react'
+import { cn } from 'clsx-for-tailwind'
 
 const BadgeVariants = {
     default: 'bg-primary/60 text-primary-700',
@@ -23,7 +24,7 @@ export const Badge: React.FC<BadgeProps> = ({
 
     return (
         <span
-            className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${variantClass} ${className}`}
+            className={cn(`inline-block px-3 py-1 rounded-full text-sm font-semibold`, variantClass, className)}
         >
             {children}
         </span>

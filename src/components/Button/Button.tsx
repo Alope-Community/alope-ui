@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { cn } from 'clsx-for-tailwind';
 
 const ButtonSizes = {
   sm: 'px-2 py-1 text-sm rounded-sm',
@@ -55,7 +56,7 @@ export const Button: React.FC<ButtonProps> = ({
   return to ? (
     <Link
       to={to}
-      className={`flex items-center justify-center transition-all duration-[170ms] ${variantClass} ${sizeClass} ${disabledClass} ${fullWidthClass} ${className}`}
+      className={cn(`flex items-center justify-center transition-all duration-[170ms]`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
     >
       {prefixIcon && <span className="mr-2">{prefixIcon}</span>}
       {children}
@@ -66,7 +67,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       onClick={onClick}
-      className={`flex items-center justify-center transition-all duration-[170ms] ${variantClass} ${sizeClass} ${disabledClass} ${fullWidthClass} ${className}`}
+      className={cn(`flex items-center justify-center transition-all duration-[170ms]`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
     >
       {prefixIcon && <span className="mr-2">{prefixIcon}</span>}
       {children}
