@@ -1,3 +1,4 @@
 export { default as ButtonPage } from './ButtonPage'
 export { default as BadgePage } from './BadgePage'
 export { default as AccordionPage } from './AccordionPage'
+export { default as AlertPage } from './AlertPage'
