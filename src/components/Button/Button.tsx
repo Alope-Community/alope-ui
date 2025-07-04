@@ -14,7 +14,7 @@ const ButtonVariants = {
   warning: 'bg-warning text-white hover:bg-warning/80',
   success: 'bg-success text-white hover:bg-success/80',
   info: 'bg-info text-white hover:bg-info/80',
-  surface: 'bg-gray-200 hover:bg-secondary outline outline-black/50',
+  surface: 'bg-gray-200 hover:bg-secondary',
   outline: 'bg-transparent hover:bg-gray-200 outline',
   ghost: 'bg-transparent hover:bg-gray-200',
   plain: '',
