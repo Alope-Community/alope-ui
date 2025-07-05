@@ -3,6 +3,7 @@ import { cn } from 'clsx-for-tailwind'
 
 const BadgeVariants = {
     default: 'bg-primary/60 text-primary-700',
+    secondary: 'bg-secondary/60 text-black',
     success: 'bg-success/60 text-green-700',
     error: 'bg-error/60 text-red-700',
     info: 'bg-info/60 text-blue-700',

@@ -1,6 +1,6 @@
 import { Badge } from '../components';
 
-const variants = ['default', 'success', 'info', 'warning', 'error'] as const;
+const variants = ['default', 'secondary', 'success', 'info', 'warning', 'error'] as const;
 
 function BadgePage() {
     return (
