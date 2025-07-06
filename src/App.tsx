@@ -13,6 +13,7 @@ function App() {
       <Button to="/breadcrumb" variant="solid" suffixIcon={<span>→</span>}>Go to Breadcrumb Docs</Button>
       <Button to="/card" variant="solid" suffixIcon={<span>→</span>}>Go to Card Docs</Button>
       <Button to="/modal" variant="solid" suffixIcon={<span>→</span>}>Go to Modal Docs</Button>
+      <Button to="/offcanvas" variant="solid" suffixIcon={<span>→</span>}>Go to Offcanvas Docs</Button>
       
     </div>
   )
