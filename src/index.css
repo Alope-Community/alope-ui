@@ -16,6 +16,12 @@
     --color-warning-700: #CC8700;
     --color-error-700: #DC2626;
     --color-secondary-700: #9CA3AF;
+
+    --color-success-30: #C2E6D3;
+    --color-info-30: #B8DFFF;
+    --color-warning-30: #FFE2B2;
+    --color-error-30: #FECACA;
+    --color-primary-30: #E0E7FF;
 }
 
 * {
