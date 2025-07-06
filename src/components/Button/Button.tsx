@@ -9,7 +9,7 @@ const ButtonSizes = {
 }
 
 const ButtonVariants = {
-  solid: 'bg-primary text-white hover:bg-primary/90',
+  primary: 'bg-primary text-white hover:bg-primary/90',
   error: 'bg-error text-white hover:bg-error/90',
   warning: 'bg-warning text-white hover:bg-warning/80',
   success: 'bg-success text-white hover:bg-success/80',
@@ -41,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
   to,
   type = 'button',
   disabled = false,
-  variant = 'solid',
+  variant = 'primary',
   fullWidth = false,
   prefixIcon,
   suffixIcon,

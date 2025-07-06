@@ -82,7 +82,7 @@ const AlertPage = () => {
                         description="Alert is used to give some feedback or infos to user."
                         iconColor="primary"
                         action={
-                            <Button variant="solid">Yes! I Know it!</Button>
+                            <Button>Yes! I Know it!</Button>
                         }
                     />
                 </div>

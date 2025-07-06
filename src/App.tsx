@@ -6,15 +6,15 @@ function App() {
 
       <h1 className="text-3xl font-bold">Welcome to ALOPE UI Library</h1>
       
-      <Button to="/button" variant="solid" suffixIcon={<span>→</span>}>Go to Button Docs</Button>
-      <Button to="/badge" variant="solid" suffixIcon={<span>→</span>}>Go to Badge Docs</Button>
-      <Button to="/accordion" variant="solid" suffixIcon={<span>→</span>}>Go to Accordion Docs</Button>
-      <Button to="/alert" variant="solid" suffixIcon={<span>→</span>}>Go to Alert Docs</Button>
-      <Button to="/breadcrumb" variant="solid" suffixIcon={<span>→</span>}>Go to Breadcrumb Docs</Button>
-      <Button to="/card" variant="solid" suffixIcon={<span>→</span>}>Go to Card Docs</Button>
-      <Button to="/modal" variant="solid" suffixIcon={<span>→</span>}>Go to Modal Docs</Button>
-      <Button to="/offcanvas" variant="solid" suffixIcon={<span>→</span>}>Go to Offcanvas Docs</Button>
-      <Button to="/toast" variant="solid" suffixIcon={<span>→</span>}>Go to Toast Docs</Button>
+      <Button to="/button" suffixIcon={<span>→</span>}>Go to Button Docs</Button>
+      <Button to="/badge" suffixIcon={<span>→</span>}>Go to Badge Docs</Button>
+      <Button to="/accordion" suffixIcon={<span>→</span>}>Go to Accordion Docs</Button>
+      <Button to="/alert" suffixIcon={<span>→</span>}>Go to Alert Docs</Button>
+      <Button to="/breadcrumb" suffixIcon={<span>→</span>}>Go to Breadcrumb Docs</Button>
+      <Button to="/card" suffixIcon={<span>→</span>}>Go to Card Docs</Button>
+      <Button to="/modal" suffixIcon={<span>→</span>}>Go to Modal Docs</Button>
+      <Button to="/offcanvas" suffixIcon={<span>→</span>}>Go to Offcanvas Docs</Button>
+      <Button to="/toast" suffixIcon={<span>→</span>}>Go to Toast Docs</Button>
       
     </div>
   )

@@ -1,6 +1,6 @@
 import { Button } from '../components'
 
-const variants = ['solid', 'error', 'info', 'warning', 'success', 'surface', 'outline', 'ghost', 'plain'] as const
+const variants = ['primary', 'error', 'info', 'warning', 'success', 'surface', 'outline', 'ghost', 'plain'] as const
 const sizes = ['sm', 'md', 'lg'] as const
 
 function ButtonPage() {
@@ -28,7 +28,7 @@ function ButtonPage() {
                 <h2 className="text-2xl font-semibold mb-4">Sizes</h2>
                 <div className="flex gap-4 flex-wrap items-end">
                     {sizes.map((size) => (
-                        <Button key={size} size={size} variant="solid" onClick={onClick}>
+                        <Button key={size} size={size} onClick={onClick}>
                             {size}
                         </Button>
                     ))}
@@ -38,7 +38,7 @@ function ButtonPage() {
             {/* Full Width */}
             <section>
                 <h2 className="text-2xl font-semibold mb-4">Full Width</h2>
-                <Button fullWidth variant="solid" onClick={onClick}>
+                <Button fullWidth onClick={onClick}>
                     Full Width Button
                 </Button>
             </section>
@@ -47,7 +47,7 @@ function ButtonPage() {
             <section>
                 <h2 className="text-2xl font-semibold mb-4">Disabled</h2>
                 <div className="flex gap-4">
-                    <Button disabled variant="solid">Disabled</Button>
+                    <Button disabled>Disabled</Button>
                     <Button disabled variant="outline">Disabled</Button>
                 </div>
             </section>
@@ -62,7 +62,7 @@ function ButtonPage() {
             <section>
                 <h2 className="text-2xl font-semibold mb-4">With Icons</h2>
                 <div className="flex gap-4 items-center">
-                    <Button onClick={onClick} prefixIcon={<span>🔍</span>} variant="solid">Search</Button>
+                    <Button onClick={onClick} prefixIcon={<span>🔍</span>}>Search</Button>
                     <Button onClick={onClick} suffixIcon={<span>➡️</span>} variant="outline">Next</Button>
                 </div>
             </section>
