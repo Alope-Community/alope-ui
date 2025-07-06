@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AccordionPage, AlertPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage } from './pages'
+import { AccordionPage, AlertPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, ModalPage } from './pages'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/alert" element={<AlertPage />} />
         <Route path="/Breadcrumb" element={<BreadcrumbPage />} />
         <Route path="/card" element={<CardPage />} />
+        <Route path="/modal" element={<ModalPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
