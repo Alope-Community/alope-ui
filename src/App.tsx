@@ -15,6 +15,10 @@ function App() {
       <Button to="/modal" suffixIcon={<span>→</span>}>Go to Modal Docs</Button>
       <Button to="/offcanvas" suffixIcon={<span>→</span>}>Go to Offcanvas Docs</Button>
       <Button to="/toast" suffixIcon={<span>→</span>}>Go to Toast Docs</Button>
+      <Button to="/text-input" suffixIcon={<span>→</span>}>Go to Text Input Docs</Button>
+      <Button to="/select-input" suffixIcon={<span>→</span>}>Go to Select Input Docs</Button>
+      <Button to="/radio-input" suffixIcon={<span>→</span>}>Go to Radio Input Docs</Button>
+      <Button to="/checkbox-input" suffixIcon={<span>→</span>}>Go to Checkbox Input Docs</Button>
       
     </div>
   )
