@@ -13,29 +13,37 @@ const OffcanvasPage: React.FC = () => {
 
     return (
         <>
-            <div className="p-10 space-y-10">
-                <h1 className="text-3xl font-bold">Offcanvas Component Documentation</h1>
+            <div className="p-10 space-y-12 min-h-screen">
+                <header className="text-center">
+                    <h1 className="text-4xl font-bold text-gray-800">Offcanvas Component</h1>
+                    <p className="text-lg text-gray-600 mt-2">
+                        Used to display hidden content like menus or sidebars that slide in from the side.
+                    </p>
+                </header>
 
-                {/* Basic */}
-                <div className="space-y-2">
-                    <h2 className="text-xl font-semibold">Basic Example Offcanvas</h2>
-                    <div className="flex flex-wrap gap-4">
-                        <div className="flex space-x-4">
-                            <Button onClick={handleLeftOpen}>Open Offcanvas</Button>
+                <div className="max-w-4xl mx-auto space-y-10">
+
+                    {/* Basic */}
+                    <div className="space-y-2">
+                        <h2 className="text-xl font-semibold">Basic Example Offcanvas</h2>
+                        <div className="flex flex-wrap gap-4">
+                            <div className="flex space-x-4">
+                                <Button onClick={handleLeftOpen}>Open Offcanvas</Button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Custom Class */}
-                <div className="space-y-2">
-                    <h2 className="text-xl font-semibold">With Custom Class</h2>
-                    <div className="flex flex-wrap gap-4">
-                        <div className="flex space-x-4">
-                            <Button onClick={handleRightOpen}>Open OffCanvas</Button>
+                    {/* Custom Class */}
+                    <div className="space-y-2">
+                        <h2 className="text-xl font-semibold">With Custom Class</h2>
+                        <div className="flex flex-wrap gap-4">
+                            <div className="flex space-x-4">
+                                <Button onClick={handleRightOpen}>Open OffCanvas</Button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
             <Offcanvas
                 isOpen={isRightOpen}
