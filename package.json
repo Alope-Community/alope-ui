@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "@types/react-select": "^5.0.0",
     "clsx-for-tailwind": "^1.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
+    "react-select": "^5.10.1",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
