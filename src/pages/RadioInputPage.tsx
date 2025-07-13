@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { RadioInput } from '../components';
+import { Button, RadioInput } from '../components';
 import type { RadioOptionType } from '../components/RadioInput/RadioInput';
+import { useNavigate } from 'react-router-dom';
 
 const options: RadioOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -9,10 +10,30 @@ const options: RadioOptionType[] = [
 ];
 
 const RadioInputPage = () => {
+  const navigate = useNavigate()
   const [selectedValue, setSelectedValue] = useState<RadioOptionType | undefined>(options[0]);
 
   return (
-    <div className="p-10 space-y-12 min-h-screen">
+    <div className="relative p-10 space-y-12 min-h-screen">
+
+      <Button
+        onClick={() => navigate(-1)}
+        className="absolute top-10 left-10 flex items-center gap-2"
+        prefixIcon={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        }>
+        Back
+      </Button>
+
       <header className="text-center">
         <h1 className="text-4xl font-bold text-gray-800">Radio Component</h1>
         <p className="text-lg mt-2">
@@ -116,15 +137,15 @@ const RadioInputPage = () => {
             selectedValue={selectedValue}
             onValueChange={setSelectedValue}
             containerClassName="gap-6 bg-blue-300 p-4 rounded-lg"
-            inputGroupClassName={(option, isChecked) =>
+            inputGroupClassName={(isChecked) =>
               isChecked
                 ? 'bg-blue-100 border-blue-500 shadow-md'
                 : 'bg-white border-gray-300 hover:bg-gray-100'
             }
-            inputLabelClassName={(option, isChecked) =>
+            inputLabelClassName={(isChecked) =>
               isChecked ? 'text-blue-800 font-bold' : 'text-gray-600'
             }
-            inputRadioClassName={(option, isChecked) =>
+            inputRadioClassName={(isChecked) =>
               isChecked ? 'bg-blue-600 border-blue-600' : 'bg-white border-gray-400'
             }
           />

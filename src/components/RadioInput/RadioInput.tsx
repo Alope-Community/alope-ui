@@ -50,9 +50,9 @@ export type RadioInputProps = {
     selectedValue?: RadioOptionType;
     onValueChange: (value: RadioOptionType) => void;
     containerClassName?: string;
-    inputLabelClassName?: (option: RadioOptionType, isChecked: boolean) => string;
-    inputGroupClassName?: (option: RadioOptionType, isChecked: boolean) => string;
-    inputRadioClassName?: (option: RadioOptionType, isChecked: boolean) => string;
+    inputLabelClassName?: (isChecked: boolean, option: RadioOptionType) => string;
+    inputGroupClassName?: (isChecked: boolean, option: RadioOptionType) => string;
+    inputRadioClassName?: (isChecked: boolean, option: RadioOptionType) => string;
     variant?: keyof typeof RadioVariants;
     radioSize?: keyof typeof RadioSizes;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
@@ -89,7 +89,7 @@ export const RadioInput: React.FC<RadioInputProps> = ({
                                 [variantClasses.checked]: isChecked,
                                 'opacity-50 cursor-not-allowed': disabled,
                             },
-                            inputGroupClassName?.(option, isChecked)
+                            inputGroupClassName?.(isChecked, option)
                         )}
                     >
                         <input
@@ -110,7 +110,7 @@ export const RadioInput: React.FC<RadioInputProps> = ({
                                 {
                                     [variantClasses.checkedRadio]: isChecked,
                                 },
-                                inputRadioClassName?.(option, isChecked)
+                                inputRadioClassName?.(isChecked, option)
                             )}
                         >
                             {isChecked && (
@@ -121,7 +121,7 @@ export const RadioInput: React.FC<RadioInputProps> = ({
                                 />
                             )}
                         </span>
-                        <span className={cn('ml-2', sizeClasses.label, inputLabelClassName?.(option, isChecked))}>{option.label}</span>
+                        <span className={cn('ml-2', sizeClasses.label, inputLabelClassName?.(isChecked, option))}>{option.label}</span>
                     </label>
                 );
             })}

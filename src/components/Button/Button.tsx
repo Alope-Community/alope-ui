@@ -56,7 +56,7 @@ export const Button: React.FC<ButtonProps> = ({
   return to ? (
     <Link
       to={to}
-      className={cn(`flex items-center justify-center transition-all duration-[170ms]`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
+      className={cn(`flex items-center justify-center transition-all duration-[170ms] h-10`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
     >
       {prefixIcon && <span className="mr-2">{prefixIcon}</span>}
       {children}
@@ -67,7 +67,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       onClick={onClick}
-      className={cn(`flex items-center justify-center transition-all duration-[170ms]`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
+      className={cn(`flex items-center justify-center transition-all duration-[170ms] h-10`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
     >
       {prefixIcon && <span className="mr-2">{prefixIcon}</span>}
       {children}

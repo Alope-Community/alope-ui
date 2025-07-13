@@ -1,8 +1,30 @@
-import { TextInput } from "../components"
+import { useNavigate } from "react-router-dom"
+import { Button, TextInput } from "../components"
 
 const TextInputPage = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="p-10 space-y-12 min-h-screen">
+
+      <Button
+        onClick={() => navigate(-1)}
+        className="absolute top-10 left-10 flex items-center gap-2"
+        prefixIcon={
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={2}
+            stroke="currentColor"
+            className="w-5 h-5"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        }>
+        Back
+      </Button>
+
       <header className="text-center">
         <h1 className="text-4xl font-bold text-gray-800">Text Input Component</h1>
         <p className="text-lg text-gray-600 mt-2">
