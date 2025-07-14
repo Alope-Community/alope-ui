@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../components'
 
-const variants = ['primary', 'error', 'info', 'warning', 'success', 'surface', 'outline', 'ghost', 'plain'] as const
+const variantTypes = ['primary', 'error', 'info', 'warning', 'success', 'secondary'] as const
+const variants = ['solid', 'outline', 'ghost', 'plain'] as const
 const sizes = ['sm', 'md', 'lg'] as const
 
 function ButtonPage() {
@@ -51,6 +52,18 @@ function ButtonPage() {
                         ))}
                     </div>
                 </section>
+                
+                {/* Variant Types */}
+                <section>
+                    <h2 className="text-2xl font-semibold mb-4">Variant Types</h2>
+                    <div className="flex gap-4 flex-wrap">
+                        {variantTypes.map((variant) => (
+                            <Button key={variant} variantType={variant} onClick={onClick}>
+                                {variant}
+                            </Button>
+                        ))}
+                    </div>
+                </section>
 
                 {/* Sizes */}
                 <section>
@@ -84,7 +97,7 @@ function ButtonPage() {
                 {/* Link (to) */}
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">As Link</h2>
-                    <Button to="/" variant="surface">Go Home</Button>
+                    <Button to="/">Go Home</Button>
                 </section>
 
                 {/* Prefix and Suffix Icons */}
