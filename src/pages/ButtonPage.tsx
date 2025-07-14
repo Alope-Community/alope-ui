@@ -3,6 +3,7 @@ import { Button } from '../components'
 
 const variantTypes = ['primary', 'error', 'info', 'warning', 'success', 'secondary'] as const
 const variants = ['solid', 'outline', 'ghost', 'plain'] as const
+const radius = ['regular', 'stadium'] as const
 const sizes = ['sm', 'md', 'lg'] as const
 
 function ButtonPage() {
@@ -52,7 +53,7 @@ function ButtonPage() {
                         ))}
                     </div>
                 </section>
-                
+
                 {/* Variant Types */}
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Variant Types</h2>
@@ -72,6 +73,18 @@ function ButtonPage() {
                         {sizes.map((size) => (
                             <Button key={size} size={size} onClick={onClick}>
                                 {size}
+                            </Button>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Border Radius */}
+                <section>
+                    <h2 className="text-2xl font-semibold mb-4">Border Radius</h2>
+                    <div className="flex gap-4 flex-wrap items-end">
+                        {radius.map((radius) => (
+                            <Button key={radius} borderType={radius} onClick={onClick}>
+                                {radius}
                             </Button>
                         ))}
                     </div>

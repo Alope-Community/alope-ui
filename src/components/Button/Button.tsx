@@ -8,6 +8,11 @@ const ButtonSizes = {
   lg: 'px-6 py-3 text-lg font-semibold rounded-lg',
 }
 
+const ButtonRadius = {
+  regular: 'rounded rounded-md',
+  stadium: 'rounded rounded-full',
+}
+
 export const ButtonVariantsMap = {
   primary: {
     solid: 'bg-primary text-white hover:bg-primary/90',
@@ -45,7 +50,7 @@ export const ButtonVariantsMap = {
     ghost: 'text-black hover:bg-gray-100',
     plain: 'text-black',
   },
-} as const
+}
 
 export type VariantType = keyof typeof ButtonVariantsMap
 export type Variant = keyof typeof ButtonVariantsMap[VariantType]
@@ -64,6 +69,7 @@ export type ButtonProps = {
   to?: string
   variant?: Variant
   variantType?: VariantType
+  borderType?: keyof typeof ButtonRadius
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
   fullWidth?: boolean
@@ -81,12 +87,14 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   variant = 'solid',
   variantType = 'primary',
+  borderType = 'regular',
   fullWidth = false,
   prefixIcon,
   suffixIcon,
   className
 }) => {
   
+  const buttonBorderClass = ButtonRadius[borderType]
   const variantClass = getVariantClasses(variant, variantType)
   const sizeClass = ButtonSizes[size] || ''
   const disabledClass = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
@@ -95,7 +103,7 @@ export const Button: React.FC<ButtonProps> = ({
   return to ? (
     <Link
       to={to}
-      className={cn(`inline-flex items-center justify-center transition-all duration-[170ms] hover:scale-[98%]`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
+      className={cn(`inline-flex items-center justify-center transition-all duration-[170ms] hover:scale-[98%]`, variantClass, sizeClass, disabledClass, fullWidthClass, buttonBorderClass, className)}
     >
       {prefixIcon && <span className="mr-2">{prefixIcon}</span>}
       {children}
@@ -106,7 +114,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       type={type}
       onClick={onClick}
-      className={cn(`inline-flex items-center justify-center transition-all duration-[170ms] hover:scale-[98%]`, variantClass, sizeClass, disabledClass, fullWidthClass, className)}
+      className={cn(`inline-flex items-center justify-center transition-all duration-[170ms] hover:scale-[98%]`, variantClass, sizeClass, disabledClass, fullWidthClass, buttonBorderClass, className)}
     >
       {prefixIcon && <span className="mr-2">{prefixIcon}</span>}
       {children}
