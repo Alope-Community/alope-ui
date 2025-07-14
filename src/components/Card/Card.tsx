@@ -6,7 +6,7 @@ type CardSize = 'sm' | 'md' | 'lg' | 'full';
 type CardProps = {
   title: string
   description?: string
-  image?: string
+  image?: string | React.ReactNode
   onClick?: () => void
   horizontal?: boolean
   footer?: React.ReactNode
@@ -37,6 +37,39 @@ export const Card: React.FC<CardProps> = ({
     full: 'w-full'
   }
 
+  const renderImage = () => {
+    if (!image) return null;
+
+    if (typeof image === 'string') {
+      return (
+        <img
+          src={image}
+          alt={title}
+          className={cn(
+            'object-cover',
+            horizontal
+              ? 'w-full h-48 sm:w-[44.4444%] sm:h-full flex-shrink-0'
+              : 'w-full h-48',
+            imageClassName
+          )}
+        />
+      );
+    }
+
+    return (
+      <div
+        className={cn(
+          horizontal
+            ? 'w-full h-48 sm:w-[44.4444%] sm:h-full flex-shrink-0'
+            : 'w-full h-48',
+          imageClassName
+        )}
+      >
+        {image}
+      </div>
+    )
+  }
+
   return (
     <div
       onClick={onClick}
@@ -49,19 +82,7 @@ export const Card: React.FC<CardProps> = ({
         containerClassName
       )}
     >
-      {image && (
-        <img
-          src={image}
-          alt={title}
-          className={cn(
-            "object-cover",
-            horizontal
-              ? 'w-full h-48 sm:w-[44.4444%] sm:h-full flex-shrink-0'
-              : 'w-full h-48',
-            imageClassName
-          )}
-        />
-      )}
+      {renderImage()}
       <div className="p-4 flex flex-col justify-between">
         <div>
           <h3 className={cn("text-lg font-semibold text-gray-800 line-clamp-1", titleClassName)}>

@@ -10,7 +10,7 @@ function ButtonPage() {
     const onClick = () => alert('I\'m pressed the button!')
 
     return (
-        <div className="p-10 space-y-12 bg-gray-50 min-h-screen">
+        <div className="p-10 space-y-12 bg-gray-50 min-h-screen bg-gradient-to-br from-primary/25 via-white to-blue-100">
 
             <Button
                 onClick={() => navigate(-1)}

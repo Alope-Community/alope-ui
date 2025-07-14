@@ -1,27 +1,51 @@
-import { Button } from "./components"
+import { Button, Card } from "./components";
 
 function App() {
-  return (
-    <div className="flex flex-col items-start p-10 gap-5">
+  const docs = [
+    { label: "Button", to: "/button", description: "Interactive button components." },
+    { label: "Badge", to: "/badge", description: "Small count or status indicators." },
+    { label: "Accordion", to: "/accordion", description: "Expandable and collapsible sections." },
+    { label: "Alert", to: "/alert", description: "Display important messages to users." },
+    { label: "Breadcrumb", to: "/breadcrumb", description: "Navigation for multi-level pages." },
+    { label: "Card", to: "/card", description: "Container for displaying content." },
+    { label: "Modal", to: "/modal", description: "Overlays for dialogs and interactions." },
+    { label: "Offcanvas", to: "/offcanvas", description: "Sliding panels for navigation or content." },
+    { label: "Toast", to: "/toast", description: "Temporary notifications." },
+    { label: "Text Input", to: "/text-input", description: "Single-line text input fields." },
+    { label: "Select Input", to: "/select-input", description: "Dropdown selection component." },
+    { label: "Radio Input", to: "/radio-input", description: "Choose one from a group of options." },
+    { label: "Checkbox Input", to: "/checkbox-input", description: "Toggle multiple selections." },
+  ];
 
-      <h1 className="text-3xl font-bold">Welcome to ALOPE UI Library</h1>
-      
-      <Button to="/button" suffixIcon={<span>→</span>}>Go to Button Docs</Button>
-      <Button to="/badge" suffixIcon={<span>→</span>}>Go to Badge Docs</Button>
-      <Button to="/accordion" suffixIcon={<span>→</span>}>Go to Accordion Docs</Button>
-      <Button to="/alert" suffixIcon={<span>→</span>}>Go to Alert Docs</Button>
-      <Button to="/breadcrumb" suffixIcon={<span>→</span>}>Go to Breadcrumb Docs</Button>
-      <Button to="/card" suffixIcon={<span>→</span>}>Go to Card Docs</Button>
-      <Button to="/modal" suffixIcon={<span>→</span>}>Go to Modal Docs</Button>
-      <Button to="/offcanvas" suffixIcon={<span>→</span>}>Go to Offcanvas Docs</Button>
-      <Button to="/toast" suffixIcon={<span>→</span>}>Go to Toast Docs</Button>
-      <Button to="/text-input" suffixIcon={<span>→</span>}>Go to Text Input Docs</Button>
-      <Button to="/select-input" suffixIcon={<span>→</span>}>Go to Select Input Docs</Button>
-      <Button to="/radio-input" suffixIcon={<span>→</span>}>Go to Radio Input Docs</Button>
-      <Button to="/checkbox-input" suffixIcon={<span>→</span>}>Go to Checkbox Input Docs</Button>
-      
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-primary/25 via-white to-blue-100 p-10">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-4xl font-extrabold text-gray-800 mb-6">
+          Welcome to <span className="text-primary">ALOPE UI Library</span>
+        </h1>
+        <p className="text-gray-600 mb-10 text-lg">
+          Explore our beautifully designed components below:
+        </p>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {docs.map(({ label, to, description }) => (
+            <Card
+              key={to}
+              title={label}
+              description={description}
+              size="full"
+              footer={
+                <Button to={to} suffixIcon={<span>→</span>}>
+                  Go to Docs
+                </Button>
+              }
+              containerClassName="hover:shadow-md transition-shadow"
+            />
+          ))}
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
