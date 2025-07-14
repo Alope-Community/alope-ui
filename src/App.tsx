@@ -35,7 +35,7 @@ function App() {
               description={description}
               size="full"
               footer={
-                <Button to={to} suffixIcon={<span>→</span>}>
+                <Button to={to} suffixIcon={<span>→</span>} fullWidth>
                   Go to Docs
                 </Button>
               }
