@@ -54,7 +54,7 @@ const ModalPage = () => {
                             <div className="flex flex-col">
                                 <p>This is a reusable modal component.</p>
                                 <div className="mt-4 self-end">
-                                    <Button onClick={() => setIsBasicOpen(false)} variant="surface">
+                                    <Button onClick={() => setIsBasicOpen(false)} variantType="secondary">
                                         Close
                                     </Button>
                                 </div>
@@ -67,7 +67,7 @@ const ModalPage = () => {
                 <section className="space-y-4">
                     <h2 className="text-xl font-semibold">Confirmation Modal</h2>
                     <div className="flex flex-wrap gap-4">
-                        <Button onClick={() => setIsConfirmOpen(true)} variant="error">
+                        <Button onClick={() => setIsConfirmOpen(true)} variantType="error">
                             Delete Item
                         </Button>
 
@@ -82,10 +82,10 @@ const ModalPage = () => {
                                 This action cannot be undone. Are you sure you want to delete this item? It will be permanently removed from your system.
                             </p>
                             <div className="mt-6 flex justify-end gap-3">
-                                <Button onClick={() => setIsConfirmOpen(false)} variant="surface">
+                                <Button onClick={() => setIsConfirmOpen(false)} variantType="secondary">
                                     Cancel
                                 </Button>
-                                <Button onClick={() => setIsConfirmOpen(false)} variant="error">
+                                <Button onClick={() => setIsConfirmOpen(false)} variantType="error">
                                     Yes, Delete
                                 </Button>
                             </div>
