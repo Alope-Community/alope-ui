@@ -15,6 +15,7 @@ type CardProps = {
   imageClassName?: string
   titleClassName?: string
   descriptionClassName?: string
+  ribbon?: string
   children?: React.ReactNode
 };
 
@@ -30,6 +31,7 @@ export const Card: React.FC<CardProps> = ({
   descriptionClassName,
   imageClassName,
   titleClassName,
+  ribbon,
   children,
 }) => {
   const sizeClasses = {
@@ -68,6 +70,7 @@ export const Card: React.FC<CardProps> = ({
         )}
       >
         {image}
+
       </div>
     )
   }
@@ -76,7 +79,7 @@ export const Card: React.FC<CardProps> = ({
     <div
       onClick={onClick}
       className={cn(
-        'bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer',
+        'relative bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer',
         horizontal ? 'flex sm:flex-row sm:h-48' : 'flex flex-col',
         sizeClasses[size] || size,
         containerClassName
@@ -86,6 +89,19 @@ export const Card: React.FC<CardProps> = ({
         <>
           {renderImage()}
           <div className="p-4 flex flex-col justify-between">
+
+            {ribbon && (
+              !horizontal ?
+                <span className="bg-red-500 text-white py-2 absolute top-3 -right-[70px] rotate-45 md:text-xs text-[10px] w-[200px] text-center">
+                  {ribbon}
+                </span>
+                :
+                <span className="bg-red-500 text-white py-2 absolute top-3 -left-[70px] -rotate-45 md:text-xs text-[10px] w-[200px] text-center">
+                  {ribbon}
+                </span>
+            )
+            }
+
             <div>
               <h3 className={cn('text-lg font-semibold text-gray-800 line-clamp-1', titleClassName)}>
                 {title}

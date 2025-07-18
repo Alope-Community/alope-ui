@@ -59,6 +59,35 @@ const CardPage = () => {
                     </div>
                 </div>
 
+                {/* With Ribbon */}
+                <div className="space-y-2">
+                    <h2 className="text-xl font-semibold">With Ribbon</h2>
+                    <div className="flex flex-wrap gap-4">
+                        <Card
+                            image="https://placehold.co/600x400"
+                            title="This is Card"
+                            ribbon="35% Off"
+                            description="A card is used to display a collection of related items."
+                            footer={<button className="text-sm text-info hover:underline">Read More</button>}
+                        />
+                    </div>
+                </div>
+
+                {/* With Ribbon on Horizontal Card*/}
+                <div className="space-y-2">
+                    <h2 className="text-xl font-semibold">With Ribbon on Horizontal Card</h2>
+                    <div className="flex flex-wrap gap-4">
+                        <Card
+                            horizontal
+                            image="https://placehold.co/600x400"
+                            title="This is Card"
+                            ribbon="35% Off"
+                            description="A card is used to display a collection of related items."
+                            footer={<button className="text-sm text-info hover:underline">Read More</button>}
+                        />
+                    </div>
+                </div>
+
                 {/* Horizontal Card */}
                 <div className="space-y-2">
                     <h2 className="text-xl font-semibold">Horizontal Card</h2>
