@@ -72,7 +72,7 @@ const OffcanvasPage: React.FC = () => {
                 onClose={handleRightClose}
                 title="Right Offcanvas"
                 position="right"
-                className='bg-primary/50'
+                className='bg-primary-700'
                 titleClassName='text-2xl font-bold text-white'
                 closeButtonClassName='text-white hover:text-white/20'
             >
