@@ -10,6 +10,23 @@ const BreadcrumbPage = () => {
     { label: 'Laptops' },
   ];
 
+  const breadcrumbItemsWithIcons = [
+    {
+      label: 'Home',
+      path: '/',
+      icon: (<p>🏠</p>),
+    },
+    {
+      label: 'Products',
+      path: '/products',
+      icon: (<p>🛍️</p>),
+    },
+    {
+      label: 'Laptops',
+      icon: (<p>💻</p>),
+    },
+  ];
+
   return (
     <div className="p-10 space-y-12 min-h-screen bg-gradient-to-br from-primary/25 via-white to-blue-100">
 
@@ -67,6 +84,18 @@ const BreadcrumbPage = () => {
           <div className="flex flex-wrap gap-4">
             <Breadcrumb
               data={breadcrumbItems}
+              linkClassName="text-info"
+              separator={<div>/</div>}
+            />
+          </div>
+        </div>
+
+        {/* With Custom Prefix Icon */}
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold">With Prefix Icon</h2>
+          <div className="flex flex-wrap gap-4">
+            <Breadcrumb
+              data={breadcrumbItemsWithIcons}
               linkClassName="text-info"
               separator={<div>/</div>}
             />
