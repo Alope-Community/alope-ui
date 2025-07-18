@@ -48,6 +48,18 @@ const AlertPage = () => {
                     </div>
                 </div>
 
+                {/* Basic No Description */}
+                <div className="space-y-2">
+                    <h2 className="text-xl font-semibold">Alert Without Description</h2>
+                    <div className="flex flex-wrap gap-4">
+                        <Alert
+                            title="This is Alert without Description"
+                            type="success"
+                            iconColor="success"
+                        />
+                    </div>
+                </div>
+
                 {/* List Type */}
                 <div className="space-y-2">
                     <h2 className="text-xl font-semibold">List Type of Alert</h2>
