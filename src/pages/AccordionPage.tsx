@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const AccordionPage = () => {
   const navigate = useNavigate()
 
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number[] | number | null>([1]);
 
   const data = [
     {
@@ -62,6 +62,27 @@ const AccordionPage = () => {
           </div>
         </div>
 
+        {/* Single State */}
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold">Single State Accordion</h2>
+          <div className="flex flex-wrap gap-4">
+            <Accordion
+              data={data}
+            />
+          </div>
+        </div>
+
+        {/* Multiple State */}
+        <div className="space-y-2">
+          <h2 className="text-xl font-semibold">Multiple State Accordion</h2>
+          <div className="flex flex-wrap gap-4">
+            <Accordion
+              single={false}
+              data={data}
+            />
+          </div>
+        </div>
+
         {/* Custom Class */}
         <div className="space-y-2">
           <h2 className="text-xl font-semibold">With Custom Class</h2>
@@ -84,8 +105,9 @@ const AccordionPage = () => {
               labelClassName="font-bold"
               labelContainerClassName="bg-info/35 border-info"
               descriptionClassName="bg-info/50 font-semibold"
+              single={false}
               openIndex={openIndex}
-              onToggleItem={(index) => setOpenIndex(index)}
+              onToggleItem={setOpenIndex}
               icon={isActive => <svg
                 className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-180' : 'rotate-0'}`}
                 fill="none"
