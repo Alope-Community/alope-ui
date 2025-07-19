@@ -266,6 +266,220 @@ You can render a badge with a custom `icon` and `position` it in one of the four
 
 ---
 
+### Breadcrumb
+
+#### ➕ Import
+
+```jsx
+import { Breadcrumb } from "alope-ui/Breadcrumb";
+```
+
+#### 🔹 Basic Usage
+
+```jsx
+<Breadcrumb data={breadcrumbItems} />
+```
+
+#### 🔹 Custom Separator
+
+```jsx
+<Breadcrumb 
+  data={breadcrumbItems} 
+  separator={<div>/</div>}
+/>
+```
+
+#### 🔹 Custom ClassName
+
+```jsx
+<Breadcrumb
+  data={breadcrumbItems}
+  linkClassName="text-info"
+  separator={<div>/</div>}
+/>
+```
+
+#### 🔹 Custom Prefix Icon
+
+<b>Defining icon per item:</b>
+
+```jsx
+const breadcrumbItemsWithIcons = [
+  {
+    label: 'Home',
+    path: '/',
+    icon: (<p>🏠</p>),
+  },
+  {
+    label: 'Products',
+    path: '/products',
+    icon: (<p>🛍️</p>),
+  },
+  {
+    label: 'Laptops',
+    icon: (<p>💻</p>),
+  },
+];
+```
+<b>Using it:</b>
+
+```jsx
+<Breadcrumb
+  data={breadcrumbItemsWithIcons}
+  linkClassName="text-info"
+  separator={<div>/</div>}
+/>
+```
+
+### Button
+
+#### ➕ Import
+
+```jsx
+import { Button } from "alope-ui/Button";
+```
+
+#### 🔹 Variants
+
+```jsx
+<Button variant={'solid'}> This is Button </Button>
+<Button variant={'outline'}> This is Button </Button>
+<Button variant={'ghost'}> This is Button </Button>
+<Button variant={'plain'}> This is Button </Button>
+```
+
+#### 🔹 Variant Types
+
+```jsx
+<Button variantType={'primary'}> This is Button </Button>
+<Button variantType={'error'}> This is Button </Button>
+<Button variantType={'info'}> This is Button </Button>
+<Button variantType={'warning'}> This is Button </Button>
+<Button variantType={'success'}> This is Button </Button>
+<Button variantType={'secondary'}> This is Button </Button>
+```
+
+#### 🔹 Sizes
+
+```jsx
+<Button size={'sm'}> This is Button </Button>
+<Button size={'md'}> This is Button </Button>
+<Button size={'lg'}> This is Button </Button>
+```
+
+#### 🔹 Radius Sizes
+
+```jsx
+<Button radius={'regular'}> This is Button </Button>
+<Button radius={'stadium'}> This is Button </Button>
+```
+
+#### 🔹 Full Width
+
+```jsx
+<Button fullWidth> This is Button </Button>
+```
+
+#### 🔹 Disabled
+
+```jsx
+<Button disabled> This is Button </Button>
+```
+
+#### 🔹 Link (to)
+
+```jsx
+<Button to='/'> This is Button </Button>
+```
+
+#### 🔹 Prefix & Suffix Icon
+
+```jsx
+<Button prefixIcon={<span>🔍</span>}> This is Button </Button>
+<Button suffixIcon={<span>➡️</span>}> This is Button </Button>
+```
+
+### 🔹 Card
+
+#### ➕ Import
+
+```jsx
+import { Card } from "alope-ui/Card";
+```
+
+```jsx
+<Card
+  image="https://placehold.co/600x400"
+  title="This is Card"
+  description="A card is used to display a collection of related items."
+/>
+```
+
+#### With Footer
+
+```jsx
+<Card
+  image="https://placehold.co/600x400"
+  title="This is Card"
+  description="A card is used to display a collection of related items."
+  footer={<button className="text-sm text-info hover:underline">Read More</button>}
+/>
+```
+
+#### With Ribbon
+
+```jsx
+<Card
+  image="https://placehold.co/600x400"
+  title="This is Card"
+  ribbon="35% Off"
+  description="A card is used to display a collection of related items."
+  footer={<button className="text-sm text-info hover:underline">Read More</button>}
+/>
+```
+
+#### Horizontal Card
+
+```jsx
+<Card
+  horizontal
+  image="https://placehold.co/600x400"
+  title="This is Card"
+  description="A card is used to display a collection of related items."
+  footer={<button className="text-sm text-info hover:underline">Read More</button>}
+/>
+```
+
+#### Ribbon on Horizontal Card
+
+```jsx
+<Card
+  horizontal
+  image="https://placehold.co/600x400"
+  title="This is Card"
+  ribbon="35% Off"
+  description="A card is used to display a collection of related items."
+  footer={<button className="text-sm text-info hover:underline">Read More</button>}
+/>
+```
+
+#### Custom Class
+
+```jsx
+<Card
+  image="https://placehold.co/600x400"
+  title="This is Card"
+  titleClassName="text-2xl font-bold text-primary"
+  descriptionClassName="text-info"
+  description="A card is used to display a collection of related items."
+  footer={
+      <Button>
+          Got It!
+      </Button>
+  }
+/>
+```
+
 ## 💡 Contributing
 
 We welcome contributions! If you want to add features, fix bugs, or improve documentation, feel free to fork this project and submit a pull request.
