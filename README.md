@@ -1,69 +1,283 @@
-# React + TypeScript + Vite
+# ALOPE UI Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📚 Available Translations:
 
-Currently, two official plugins are available:
+- 🇮🇩 [Bahasa Indonesia](README_ID.md)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**ALOPE UI Library** is a powerful and modern React-based user interface (UI) component library. It offers a collection of flexible and accessible UI components designed to accelerate your web development workflow and deliver consistent user experiences.
 
-## Expanding the ESLint configuration
+This documentation provides detailed usage instructions and examples for each component available in the library.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- ✨ **Modular** and reusable component system
+- 🎨 **Modern design** with clean and consistent style
+- 🔧 Fully **customizable via props and classNames**
+- 📘 **Well-documented** and easy-to-use examples
+- 📦 Lightweight and **tree-shakable** for optimized builds
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🧩 Components
+
+- [Accordion](#accordion)
+- [Alert](#alert)
+- [Badge](#badge)
+- [Breadcrumb](#breadcrumb)
+- [Button](#button)
+- [Card](#card)
+- [Checkbox Input](#checkbox-input)
+- [Modal](#modal)
+- [Offcanvas](#offcanvas)
+- [Radio Input](#radio-input)
+- [Select Input](#select-input)
+- [Text Input](#text-input)
+- [Toast](#toast)
+
+---
+
+## 🚀 Getting Started
+
+> ⚠️ Make sure you're inside a React project before running this.
+
+### Installation via npm
+
+```bash
+npm i alope-ui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Installation via yarn
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn add alope-ui
 ```
+
+---
+
+## 🧪 Examples
+
+### Accordion
+
+#### ➕ Import
+
+```jsx
+import { Accordion } from "alope-ui/Accordion";
+```
+
+#### 🔹 Basic Usage
+
+```jsx
+const data = [
+  { label: "What is Accordion?", description: "This is description of an Accordion." },
+  { label: "What is Accordion?", description: "This is description of an Accordion." },
+  { label: "What is Accordion?", description: "This is description of an Accordion." },
+];
+
+<Accordion data={data} />
+```
+
+#### 🔸 Single Panel Open
+
+```jsx
+<Accordion single data={data} />
+```
+
+#### 🔸 Multiple Panels Open
+
+```jsx
+<Accordion single={false} data={data} />
+```
+
+#### 🎨 With Custom Classes
+
+```jsx
+<Accordion
+  data={data}
+  labelClassName="font-bold"
+  labelContainerClassName="bg-info/35 border-info"
+  descriptionClassName="bg-info/50 font-semibold"
+/>
+```
+
+#### 🔧 With Custom Icon and Controlled State
+
+```jsx
+<Accordion
+  data={data}
+  openIndex={openIndex}
+  onToggleItem={(index) => setOpenIndex(index)}
+  icon={isActive => (
+    <svg
+      className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'rotate-180' : 'rotate-0'}`}
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v14M5 12h14" />
+    </svg>
+  )}
+/>
+```
+
+---
+
+### Alert
+
+#### ➕ Import
+
+```jsx
+import { Alert } from "alope-ui/Alert";
+```
+
+#### 🔹 Basic Usage
+
+```jsx
+<Alert
+  title="Alert"
+  description="Alert is used to give some feedback or infos to the user."
+/>
+```
+
+#### 🔸 Types
+
+```jsx
+<Alert type="success" title="Success" description="Everything worked!" />
+<Alert type="info" title="Info" description="Here's some information." />
+<Alert type="warning" title="Warning" description="Be careful!" />
+<Alert type="error" title="Error" description="Something went wrong." />
+```
+
+#### 🎨 With Custom Icon
+
+```jsx
+<Alert
+  type="warning"
+  title="Alert"
+  description="Custom alert with icon."
+  icon={
+    <svg viewBox="0 0 24 24" className="w-6 h-6 text-warning-700" fill="none" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+    </svg>
+  }
+/>
+```
+
+#### ✅ With Action
+
+```jsx
+<Alert
+  type="info"
+  title="Info Alert"
+  description="This alert has a button."
+  action={<Button variantType="info">Confirm</Button>}
+/>
+```
+
+#### ❌ With Close Button
+
+```jsx
+<Alert
+  withClose
+  type="primary"
+  title="Closable Alert"
+  description="This alert can be closed."
+  action={<Button>Got it</Button>}
+/>
+```
+
+---
+
+### Badge
+
+#### ➕ Import
+
+```jsx
+import { Badge } from "alope-ui/Badge";
+```
+
+#### 🔹 Variants
+
+```jsx
+<Badge variant="default">Default</Badge>
+<Badge variant="success">Success</Badge>
+<Badge variant="info">Info</Badge>
+<Badge variant="warning">Warning</Badge>
+<Badge variant="error">Error</Badge>
+```
+
+#### 🎯 With Icon
+
+```jsx
+<Badge
+  isAbsolute
+  variant="success"
+  position="top-right"
+  icon={<MyCustomIcon />}
+>
+  100
+</Badge>
+```
+
+#### 📍 Absolute Positioning
+
+🔧 Available Positions:
+
+<b>top-right</b>
+
+<b>top-left</b>
+
+<b>bottom-right</b>
+
+<b>bottom-left</b>
+
+```jsx
+<Card containerClassName="relative">
+  <Badge variant="success" position={'top-right'} isAbsolute>
+    100
+  </Badge>
+  <div className="p-5">Top Right Badge Position</div>
+</Card>
+```
+
+#### 🎯 With Icon & Absolute Position
+
+You can render a badge with a custom `icon` and `position` it in one of the four corners relative to its container. This is useful for status indicators, counters, or alerts.
+
+```jsx
+<Card containerClassName="relative">
+  <Badge
+    isAbsolute
+    variant="success"
+    position={'top-right'}
+    icon={
+      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
+        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z" />
+      </svg>
+    }
+  >
+    100
+  </Badge>
+  <div className="p-5 text-center text-sm text-gray-700">
+    Top Right Badge Position & Custom Icon
+  </div>
+</Card>
+```
+
+---
+
+## 💡 Contributing
+
+We welcome contributions! If you want to add features, fix bugs, or improve documentation, feel free to fork this project and submit a pull request.
+
+---
+
+## 📄 License
+
+MIT License – Free to use, modify, and distribute.
+
+---
+
+## 🙌 Thank You
+
+Thank you for using **ALOPE UI Library**. We hope this helps you build beautiful and functional user interfaces with ease.
