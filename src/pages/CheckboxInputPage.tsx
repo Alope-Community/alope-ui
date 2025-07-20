@@ -49,10 +49,10 @@ export const CheckboxInputPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-2">Basic Example Checkbox</h2>
           <CheckboxInput
-            label="Saya menyetujui syarat dan ketentuan"
+            label="I agree to the terms and conditions"
             checked={singleCheck}
             onChange={(e) => setSingleCheck(e.target.checked)}
-            description="Klik checkbox ini untuk melanjutkan."
+            description="Click this checkbox to proceed."
           />
           <p className="mt-2 text-sm text-gray-500">Status: {singleCheck ? 'Checked' : 'Unchecked'}</p>
         </section>
@@ -61,11 +61,11 @@ export const CheckboxInputPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-2">Indeterminate State</h2>
           <CheckboxInput
-            label="Pilih Semua"
+            label="Select All"
             indeterminate={true}
             checked={false}
             readOnly
-            description="Contoh tampilan indeterminate."
+            description="Indeterminate Example."
           />
         </section>
 
