@@ -59,14 +59,34 @@ export const CheckboxInputPage = () => {
 
         {/* Indeterminate Example */}
         <section>
-          <h2 className="text-xl font-semibold mb-2">Indeterminate State</h2>
+          <h2 className="text-xl font-semibold mb-2">Select All (with Indeterminate State)</h2>
+
           <CheckboxInput
             label="Select All"
-            indeterminate={true}
-            checked={false}
-            readOnly
-            description="Indeterminate Example."
+            checked={selectedOptions.length === options.length}
+            indeterminate={
+              selectedOptions.length > 0 &&
+              selectedOptions.length < options.length
+            }
+            onChange={(e) => {
+              const isChecked = e.target.checked;
+              setSelectedOptions(isChecked ? options : []);
+            }}
+            description="Check to select all options or uncheck to deselect all."
           />
+
+          <ListCheckboxInput
+            options={options}
+            selectedValues={selectedOptions}
+            onValueChange={setSelectedOptions}
+            containerClassName='mt-2'
+            variant="subtle"
+            checkboxSize="md"
+          />
+
+          <div className="mt-2 text-sm">
+            Selected: {selectedOptions.map(o => o.label).join(', ') || 'None'}
+          </div>
         </section>
 
         {/* === List Checkbox Input === */}
