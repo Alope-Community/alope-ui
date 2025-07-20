@@ -79,7 +79,8 @@ export const Card: React.FC<CardProps> = ({
     <div
       onClick={onClick}
       className={cn(
-        'relative bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer',
+        'relative bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer',
+        ribbon && 'overflow-hidden',
         horizontal ? 'flex sm:flex-row sm:h-48' : 'flex flex-col',
         sizeClasses[size] || size,
         containerClassName
