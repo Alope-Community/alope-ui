@@ -18,11 +18,19 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'lib/main.ts'),
+      entry: [resolve(__dirname, 'lib/main.ts'), resolve(__dirname, 'lib/index.css')],
       formats: ['es']
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react-router-dom', 'react/jsx-runtime'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react-router-dom': 'ReactRouterDOM',
+          'react/jsx-runtime': 'react/jsx-runtime',
+        }
+      },
     },
     copyPublicDir: false,
   }
