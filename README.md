@@ -4,10 +4,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 
-## 📚 Available Translations
-
-- 🇮🇩 [Bahasa Indonesia](README_ID.md)
-
 **ALOPE UI Library** is a modern React-based User Interface (UI) component library designed to accelerate your web development workflow. It provides a comprehensive collection of flexible, accessible, and beautifully designed components that ensure consistent user experiences across your applications.
 
 ---
@@ -31,16 +27,20 @@
 
 ### Installation
 
-Choose your preferred package manager:
-
 **Using npm:**
 ```bash
 npm install alope-ui
 ```
 
-**Using yarn:**
-```bash
-yarn add alope-ui
+**Add ``@import`` directive(s) on your main css file:**
+```css
+/* index.css */
+
+/* Make sure to import TailwindCSS first */
+@import "tailwindcss";
+
+/* Then import the styles from Alope UI */
+@import "../node_modules/alope-ui/dist/index.css";
 ```
 
 ### Basic Setup
@@ -49,13 +49,36 @@ Import and use any component in your React application:
 
 ```jsx
 import React from 'react';
-import { Button } from 'alope-ui/Button';
+import { Button } from 'alope-ui';
 
 function App() {
   return (
     <div className="App">
       <Button variant="solid" variantType="primary">
         Hello ALOPE UI!
+      </Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### ⚠️ IMPORTANT NOTES:
+
+If you're using the ``to`` prop on a ``Button`` (or any other component that uses SPA-style navigation), make sure you have a ``react-router-dom`` properly configured.
+Refer to the [official documentation](https://reactrouter.com/start/declarative/installation) for setup instructions if needed.
+
+
+```jsx
+import React from 'react';
+import { Button } from 'alope-ui';
+
+function App() {
+  return (
+    <div className="App">
+      <Button to='/button' variant="solid" variantType="primary">
+        Hello I'm going to Button Page!
       </Button>
     </div>
   );
@@ -102,7 +125,7 @@ The Accordion component allows users to show and hide sections of related conten
 ### Import
 
 ```jsx
-import { Accordion } from "alope-ui/Accordion";
+import { Accordion } from "alope-ui";
 ```
 
 ### Props
@@ -204,7 +227,7 @@ The Alert component displays important messages to users with different severity
 ### Import
 
 ```jsx
-import { Alert } from "alope-ui/Alert";
+import { Alert } from "alope-ui";
 ```
 
 ### Props
@@ -316,7 +339,7 @@ The Badge component is used to display small pieces of information like status, 
 ### Import
 
 ```jsx
-import { Badge } from "alope-ui/Badge";
+import { Badge } from "alope-ui";
 ```
 
 ### Props
@@ -403,7 +426,7 @@ The Breadcrumb component provides navigation context showing the user's location
 ### Import
 
 ```jsx
-import { Breadcrumb } from "alope-ui/Breadcrumb";
+import { Breadcrumb } from "alope-ui";
 ```
 
 ### Props
@@ -486,7 +509,7 @@ The Button component provides clickable elements for user interactions with vari
 ### Import
 
 ```jsx
-import { Button } from "alope-ui/Button";
+import { Button } from "alope-ui";
 ```
 
 ### Props
@@ -627,7 +650,7 @@ The Card component provides a flexible container for displaying content in a str
 ### Import
 
 ```jsx
-import { Card } from "alope-ui/Card";
+import { Card } from "alope-ui";
 ```
 
 ### Props
@@ -747,7 +770,7 @@ The Modal component provides overlay dialogs for important user interactions and
 ### Import
 
 ```jsx
-import { Modal } from "alope-ui/Modal";
+import { Modal } from "alope-ui";
 ```
 
 ### Props
@@ -919,7 +942,7 @@ The Offcanvas component provides a sliding panel for displaying hidden content l
 ### Import
 
 ```jsx
-import { Offcanvas } from "alope-ui/Offcanvas";
+import { Offcanvas } from "alope-ui";
 ```
 
 ### Props
@@ -990,10 +1013,42 @@ const [isOpen, setIsOpen] = useState(false);
 
 The Toast component provides brief, auto-dismissable messages to inform users about actions or status updates.
 
-### Import
+### Adding Provider
+
+First, import the ToastProvider
 
 ```jsx
-import { useToast } from "alope-ui/Toast/ToastProvider";
+import { ToastProvider } from 'alope-ui'
+```
+
+Then, wrap your main application component with the provider (e.g. in App.tsx or your entry file):
+
+```jsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import { ToastProvider } from 'alope-ui';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ToastProvider>
+      <App />
+    </ToastProvider>
+  </StrictMode>
+);
+
+```
+
+### Use Toast
+
+Finally, you can use the ``useToast()`` hook like this:
+
+```jsx
+import { useToast } from 'alope-ui'
+```
+
+```jsx
+const { addToast } = useToast();
 ```
 
 ### Props
@@ -1009,7 +1064,7 @@ import { useToast } from "alope-ui/Toast/ToastProvider";
 ### Basic Toast
 
 ```jsx
-import { useToast } from "alope-ui/Toast/ToastProvider";
+import { useToast } from "alope-ui";
 
 const BasicExample = () => {
   const { addToast } = useToast();
@@ -1107,8 +1162,8 @@ The CheckboxInput component provides checkbox functionality for selecting single
 ### Import
 
 ```jsx
-import { CheckboxInput, ListCheckboxInput } from "alope-ui/CheckboxInput";
-import type { CheckboxOptionType } from "alope-ui/CheckboxInput";
+import { CheckboxInput, ListCheckboxInput } from "alope-ui";
+import type { CheckboxOptionType } from "alope-ui";
 ```
 
 ### CheckboxInput Props
@@ -1136,7 +1191,7 @@ import type { CheckboxOptionType } from "alope-ui/CheckboxInput";
 
 ```jsx
 import { useState } from 'react';
-import { CheckboxInput } from "alope-ui/CheckboxInput";
+import { CheckboxInput } from "alope-ui";
 
 const BasicExample = () => {
   const [checked, setChecked] = useState(false);
@@ -1156,8 +1211,8 @@ const BasicExample = () => {
 
 ```jsx
 import { useState } from 'react';
-import { ListCheckboxInput } from "alope-ui/CheckboxInput";
-import type { CheckboxOptionType } from "alope-ui/CheckboxInput";
+import { ListCheckboxInput } from "alope-ui";
+import type { CheckboxOptionType } from "alope-ui";
 
 const options: CheckboxOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -1262,8 +1317,8 @@ The RadioInput component allows users to choose one option from a list of mutual
 ### Import
 
 ```jsx
-import { RadioInput } from "alope-ui/RadioInput";
-import type { RadioOptionType } from "alope-ui/RadioInput";
+import { RadioInput } from "alope-ui";
+import type { RadioOptionType } from "alope-ui";
 ```
 
 ### Props
@@ -1286,8 +1341,8 @@ import type { RadioOptionType } from "alope-ui/RadioInput";
 
 ```jsx
 import { useState } from 'react';
-import { RadioInput } from "alope-ui/RadioInput";
-import type { RadioOptionType } from "alope-ui/RadioInput";
+import { RadioInput } from "alope-ui";
+import type { RadioOptionType } from "alope-ui";
 
 const options: RadioOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -1406,8 +1461,8 @@ The SelectInput component provides a dropdown interface for selecting one or mul
 ### Import
 
 ```jsx
-import { SelectInput } from "alope-ui/SelectInput";
-import type { SelectOptionType } from "alope-ui/SelectInput";
+import { SelectInput } from "alope-ui";
+import type { SelectOptionType } from "alope-ui";
 ```
 
 ### Props
@@ -1431,8 +1486,8 @@ import type { SelectOptionType } from "alope-ui/SelectInput";
 
 ```jsx
 import { useState } from 'react';
-import { SelectInput } from "alope-ui/SelectInput";
-import type { SelectOptionType } from "alope-ui/SelectInput";
+import { SelectInput } from "alope-ui";
+import type { SelectOptionType } from "alope-ui";
 
 const options: SelectOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -1524,7 +1579,7 @@ The TextInput component provides a text input field for users to enter text info
 ### Import
 
 ```jsx
-import { TextInput } from "alope-ui/TextInput";
+import { TextInput } from "alope-ui";
 ```
 
 ### Props
@@ -1541,7 +1596,7 @@ import { TextInput } from "alope-ui/TextInput";
 ### Basic TextInput
 
 ```jsx
-import { TextInput } from "alope-ui/TextInput";
+import { TextInput } from "alope-ui";
 
 const BasicExample = () => {
   return (
