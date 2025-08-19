@@ -5,6 +5,8 @@ import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 import { libInjectCss } from 'vite-plugin-lib-inject-css'
 
+const dev = process.env.NODE_ENV !== "production";
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -17,9 +19,26 @@ export default defineConfig({
     })
   ],
   build: {
+    minify: 'terser',
+    terserOptions: {
+      ecma: 2015,
+      compress: {
+        toplevel: true,
+        passes: 2,
+        drop_console: !dev,
+        drop_debugger: !dev,
+      },
+      mangle: { toplevel: true },
+      format: {
+        beautify: false,
+        comments: false,
+        braces: false,
+        semicolons: false,
+      },
+    },
     lib: {
       entry: [resolve(__dirname, 'lib/main.ts'), resolve(__dirname, 'lib/index.css')],
-      formats: ['es']
+      formats: ['cjs']
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react-router-dom', 'react/jsx-runtime'],
