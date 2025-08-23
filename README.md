@@ -1,6 +1,6 @@
 # ALOPE UI Library
 
-[![npm version](https://img.shields.io/npm/v/alope-ui.svg)](https://www.npmjs.com/package/alope-ui)
+[![npm version](https://img.shields.io/npm/v/alope-ui-v3.svg)](https://www.npmjs.com/package/alope-ui-v3)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
 
@@ -29,7 +29,7 @@
 
 **Using npm:**
 ```bash
-npm install alope-ui
+npm install alope-ui-v3
 ```
 
 **Add ``@import`` directive(s) on your main css file:**
@@ -40,7 +40,7 @@ npm install alope-ui
 @import "tailwindcss";
 
 /* Then import the styles from Alope UI */
-@import "../node_modules/alope-ui/dist/index.css";
+@import "../node_modules/alope-ui-v3/dist/index.css";
 ```
 
 ### Basic Setup
@@ -49,7 +49,7 @@ Import and use any component in your React application:
 
 ```jsx
 import React from 'react';
-import { Button } from 'alope-ui';
+import { Button } from 'alope-ui-v3';
 
 function App() {
   return (
@@ -72,7 +72,7 @@ Refer to the [official documentation](https://reactrouter.com/start/declarative/
 
 ```jsx
 import React from 'react';
-import { Button } from 'alope-ui';
+import { Button } from 'alope-ui-v3';
 
 function App() {
   return (
@@ -125,7 +125,7 @@ The Accordion component allows users to show and hide sections of related conten
 ### Import
 
 ```jsx
-import { Accordion } from "alope-ui";
+import { Accordion } from "alope-ui-v3";
 ```
 
 ### Props
@@ -227,7 +227,7 @@ The Alert component displays important messages to users with different severity
 ### Import
 
 ```jsx
-import { Alert } from "alope-ui";
+import { Alert } from "alope-ui-v3";
 ```
 
 ### Props
@@ -339,7 +339,7 @@ The Badge component is used to display small pieces of information like status, 
 ### Import
 
 ```jsx
-import { Badge } from "alope-ui";
+import { Badge } from "alope-ui-v3";
 ```
 
 ### Props
@@ -426,7 +426,7 @@ The Breadcrumb component provides navigation context showing the user's location
 ### Import
 
 ```jsx
-import { Breadcrumb } from "alope-ui";
+import { Breadcrumb } from "alope-ui-v3";
 ```
 
 ### Props
@@ -509,7 +509,7 @@ The Button component provides clickable elements for user interactions with vari
 ### Import
 
 ```jsx
-import { Button } from "alope-ui";
+import { Button } from "alope-ui-v3";
 ```
 
 ### Props
@@ -650,7 +650,7 @@ The Card component provides a flexible container for displaying content in a str
 ### Import
 
 ```jsx
-import { Card } from "alope-ui";
+import { Card } from "alope-ui-v3";
 ```
 
 ### Props
@@ -770,7 +770,7 @@ The Modal component provides overlay dialogs for important user interactions and
 ### Import
 
 ```jsx
-import { Modal } from "alope-ui";
+import { Modal } from "alope-ui-v3";
 ```
 
 ### Props
@@ -942,7 +942,7 @@ The Offcanvas component provides a sliding panel for displaying hidden content l
 ### Import
 
 ```jsx
-import { Offcanvas } from "alope-ui";
+import { Offcanvas } from "alope-ui-v3";
 ```
 
 ### Props
@@ -1018,7 +1018,7 @@ The Toast component provides brief, auto-dismissable messages to inform users ab
 First, import the ToastProvider
 
 ```jsx
-import { ToastProvider } from 'alope-ui'
+import { ToastProvider } from 'alope-ui-v3'
 ```
 
 Then, wrap your main application component with the provider (e.g. in App.tsx or your entry file):
@@ -1027,7 +1027,7 @@ Then, wrap your main application component with the provider (e.g. in App.tsx or
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import { ToastProvider } from 'alope-ui';
+import { ToastProvider } from 'alope-ui-v3';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -1044,7 +1044,7 @@ createRoot(document.getElementById('root')!).render(
 Finally, you can use the ``useToast()`` hook like this:
 
 ```jsx
-import { useToast } from 'alope-ui'
+import { useToast } from 'alope-ui-v3'
 ```
 
 ```jsx
@@ -1064,7 +1064,7 @@ const { addToast } = useToast();
 ### Basic Toast
 
 ```jsx
-import { useToast } from "alope-ui";
+import { useToast } from "alope-ui-v3";
 
 const BasicExample = () => {
   const { addToast } = useToast();
@@ -1162,8 +1162,8 @@ The CheckboxInput component provides checkbox functionality for selecting single
 ### Import
 
 ```jsx
-import { CheckboxInput, ListCheckboxInput } from "alope-ui";
-import type { CheckboxOptionType } from "alope-ui";
+import { CheckboxInput, ListCheckboxInput } from "alope-ui-v3";
+import type { CheckboxOptionType } from "alope-ui-v3";
 ```
 
 ### CheckboxInput Props
@@ -1191,7 +1191,7 @@ import type { CheckboxOptionType } from "alope-ui";
 
 ```jsx
 import { useState } from 'react';
-import { CheckboxInput } from "alope-ui";
+import { CheckboxInput } from "alope-ui-v3";
 
 const BasicExample = () => {
   const [checked, setChecked] = useState(false);
@@ -1211,8 +1211,8 @@ const BasicExample = () => {
 
 ```jsx
 import { useState } from 'react';
-import { ListCheckboxInput } from "alope-ui";
-import type { CheckboxOptionType } from "alope-ui";
+import { ListCheckboxInput } from "alope-ui-v3";
+import type { CheckboxOptionType } from "alope-ui-v3";
 
 const options: CheckboxOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -1317,8 +1317,8 @@ The RadioInput component allows users to choose one option from a list of mutual
 ### Import
 
 ```jsx
-import { RadioInput } from "alope-ui";
-import type { RadioOptionType } from "alope-ui";
+import { RadioInput } from "alope-ui-v3";
+import type { RadioOptionType } from "alope-ui-v3";
 ```
 
 ### Props
@@ -1341,8 +1341,8 @@ import type { RadioOptionType } from "alope-ui";
 
 ```jsx
 import { useState } from 'react';
-import { RadioInput } from "alope-ui";
-import type { RadioOptionType } from "alope-ui";
+import { RadioInput } from "alope-ui-v3";
+import type { RadioOptionType } from "alope-ui-v3";
 
 const options: RadioOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -1461,8 +1461,8 @@ The SelectInput component provides a dropdown interface for selecting one or mul
 ### Import
 
 ```jsx
-import { SelectInput } from "alope-ui";
-import type { SelectOptionType } from "alope-ui";
+import { SelectInput } from "alope-ui-v3";
+import type { SelectOptionType } from "alope-ui-v3";
 ```
 
 ### Props
@@ -1486,8 +1486,8 @@ import type { SelectOptionType } from "alope-ui";
 
 ```jsx
 import { useState } from 'react';
-import { SelectInput } from "alope-ui";
-import type { SelectOptionType } from "alope-ui";
+import { SelectInput } from "alope-ui-v3";
+import type { SelectOptionType } from "alope-ui-v3";
 
 const options: SelectOptionType[] = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -1579,7 +1579,7 @@ The TextInput component provides a text input field for users to enter text info
 ### Import
 
 ```jsx
-import { TextInput } from "alope-ui";
+import { TextInput } from "alope-ui-v3";
 ```
 
 ### Props
@@ -1596,7 +1596,7 @@ import { TextInput } from "alope-ui";
 ### Basic TextInput
 
 ```jsx
-import { TextInput } from "alope-ui";
+import { TextInput } from "alope-ui-v3";
 
 const BasicExample = () => {
   return (
