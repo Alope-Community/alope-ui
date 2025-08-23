@@ -1,6 +1,11 @@
 {
-  "name": "alope-ui-test",
-  "version": "1.0.0",
+  "name": "alope-ui-v3",
+  "description": "Alope UI Library Kit V3",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alope-Community/alope-ui.git"
+  },
+  "version": "1.0.1",
   "type": "module",
   "files": [
     "dist"
@@ -42,5 +47,18 @@
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lib-inject-css": "^2.2.2"
-  }
+  },
+  "keywords": [
+    "alope-ui",
+    "react-ui",
+    "ui",
+    "tailwind",
+    "react"
+  ],
+  "author": "ALOPE Community",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Alope-Community/alope-ui/issues"
+  },
+  "homepage": "https://github.com/Alope-Community/alope-ui#readme"
 }
