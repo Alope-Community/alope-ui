@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '../dist/main.css'
+import './index.css'
 import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AccordionPage, AlertPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, ModalPage, OffcanvasPage, RadioInputPage, SelectInputPage, TextInputPage, ToastPage } from './pages'
