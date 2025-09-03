@@ -15,6 +15,7 @@ function App() {
     { label: "Select Input", to: "/select-input", description: "Dropdown selection component." },
     { label: "Radio Input", to: "/radio-input", description: "Choose one from a group of options." },
     { label: "Checkbox Input", to: "/checkbox-input", description: "Toggle multiple selections." },
+    { label: "Pagination", to: "/pagination", description: "Navigate between multiple pages of content." },
   ];
 
   return (
