@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AccordionPage, AlertPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, ModalPage, OffcanvasPage, PaginationPage, RadioInputPage, SelectInputPage, TextInputPage, ToastPage } from './pages'
+import { AccordionPage, AlertPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, ModalPage, OffcanvasPage, PaginationPage, RadioInputPage, SelectInputPage, TablePage, TextInputPage, ToastPage } from './pages'
 import { ToastProvider } from './components/Toast/ToastProvider'
 
 createRoot(document.getElementById('root')!).render(
@@ -26,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/radio-input" element={<RadioInputPage />} />
           <Route path="/checkbox-input" element={<CheckboxInputPage />} />
           <Route path="/pagination" element={<PaginationPage />} />
+          <Route path="/table" element={<TablePage />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>
