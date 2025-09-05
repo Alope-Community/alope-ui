@@ -1,6 +1,6 @@
 import { cn } from "clsx-for-tailwind";
 
-type PaginationType = {
+type PaginationProps = {
     currentPage: number;
     format?: 'none' | 'long';
     count?: number;
@@ -15,7 +15,7 @@ type PaginationType = {
     prevIcon?: React.ReactNode;
     nextIcon?: React.ReactNode;
     size?: keyof typeof PaginationSizes;
-};
+}
 
 const PaginationSizes = {
     sm: 'px-3 py-2 text-sm font-medium rounded-lg',
@@ -23,7 +23,7 @@ const PaginationSizes = {
     lg: 'px-6 py-3 text-lg font-medium rounded-lg',
 };
 
-export const Pagination = ({
+export const Pagination: React.FC<PaginationProps>  = ({
     currentPage,
     simplified = false,
     format = 'none',
@@ -37,7 +37,7 @@ export const Pagination = ({
     prevIcon,
     nextIcon,
     size = 'sm',
-}: PaginationType) => {
+}) => {
 
     if (
         process.env.NODE_ENV !== 'production' &&

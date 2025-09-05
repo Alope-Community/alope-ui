@@ -101,7 +101,7 @@ export function Table<T extends { id: any }>({
                                 />
                             </th>
                         )}
-                        {columns.map((col: any, idx: any) => (
+                        {columns.map((col, idx) => (
                             <th
                                 key={idx}
                                 className={cn(
@@ -118,7 +118,7 @@ export function Table<T extends { id: any }>({
                 </thead>
                 <tbody>
                     {data.length > 0 ? (
-                        data.map((row: any, rIdx: any) => (
+                        data.map((row, rIdx) => (
                             <tr
                                 key={rIdx}
                                 className={cn("hover:bg-gray-700 hover:text-white transition-colors", striped && rIdx % 2 !== 0 && (stripeColor ?? 'bg-gray-300'), dataRowClassName)}
@@ -131,12 +131,12 @@ export function Table<T extends { id: any }>({
                                         />
                                     </td>
                                 )}
-                                {columns.map((col: any, cIdx: any) => (
+                                {columns.map((col, cIdx) => (
                                     <td
                                         key={cIdx}
                                         className={cn("px-4 py-2 border-b border-white", dataColumnClassName, tableSizeClass)}
                                     >
-                                        {col.render ? col.render(row[col.accessor], row) : row[col.accessor]}
+                                        {col.render ? col.render(row[col.accessor], row) : String(row[col.accessor])}
                                     </td>
                                 ))}
                             </tr>
