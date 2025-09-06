@@ -17,6 +17,7 @@ function App() {
     { label: "Checkbox Input", to: "/checkbox-input", description: "Toggle multiple selections." },
     { label: "Pagination", to: "/pagination", description: "Navigate between multiple pages of content." },
     { label: "Table", to: "/table", description: "Used to display data in a tabular format." },
+    { label: "Tooltip", to: "/tooltip", description: "Used to display hint of a component." },
   ];
 
   return (
