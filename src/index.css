@@ -1,36 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+SC:wght@100..900&display=swap');
+/* index.css */
 
-@theme {
-    --color-success: #50C878;
-    --color-info: #0096FF;
-    --color-warning: #FFAC1C;
-    --color-error: #F87171;
-    --color-primary: #6366F1;
-    --color-secondary: #D1D5DB;
+/* Make sure to import TailwindCSS first */
+@import "tailwindcss";
 
-    --color-primary-700: #4338CA;
-    --color-success-700: #3C9C5A;
-    --color-info-700: #0070C0;
-    --color-warning-700: #CC8700;
-    --color-error-700: #DC2626;
-    --color-secondary-700: #9CA3AF;
-
-    --color-success-30: #C2E6D3;
-    --color-info-30: #B8DFFF;
-    --color-warning-30: #FFE2B2;
-    --color-error-30: #FECACA;
-    --color-primary-30: #A6B8FF;
-    --color-secondary-30: #E4E7EC;
-}
-
-* {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-}
-
-body {
-    /* @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+/* Then import the styles from Alope UI */
+@import "../node_modules/alope-ui/dist/index.css";

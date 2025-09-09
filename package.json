@@ -29,6 +29,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "alope-ui": "^1.0.8",
+    "react-icons": "^5.5.0",
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
