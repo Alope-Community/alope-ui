@@ -1,7 +1,12 @@
 /* index.css */
+@import 'tailwindcss';
 
-/* Make sure to import TailwindCSS first */
-@import "tailwindcss";
+@import '../node_modules/alope-ui/dist/index.css';
 
-/* Then import the styles from Alope UI */
-@import "../node_modules/alope-ui/dist/index.css";
+@theme {
+    --color-success: #50C878;
+    --color-info: #0096FF;
+    --color-warning: #FFAC1C;
+    --color-error: #F87171;
+    --color-primary: #6366F1;
+    --color-secondary: #D1D5DB;
