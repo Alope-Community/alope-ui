@@ -5,13 +5,15 @@ import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AccordionPage, AlertPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, ModalPage, OffcanvasPage, RadioInputPage, SelectInputPage, TextInputPage, ToastPage } from './pages'
 import { ToastProvider } from './components/Toast/ToastProvider'
+import HomePage from './pages/HomePage.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ToastProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/app" element={<App />} />
           <Route path="/button" element={<ButtonPage />} />
           <Route path="/badge" element={<BadgePage />} />
           <Route path="/accordion" element={<AccordionPage />} />
