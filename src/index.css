@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+SC:wght@100..900&display=swap');
 
+@import 'tailwindcss';
+
+@import '../node_modules/alope-ui/dist/index.css';
+
 @theme {
     --color-success: #50C878;
     --color-info: #0096FF;
