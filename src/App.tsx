@@ -19,7 +19,8 @@ function App() {
     { label: "Table", to: "/table", description: "Used to display data in a tabular format." },
     { label: "Tooltip", to: "/tooltip", description: "Used to display hint of a component." },
     { label: "Spinner", to: "/spinner", description: "Loading or processing state component." },
-    { label: "Skeleton", to: "/skeleton", description: "Loading or processing state component." }
+    { label: "Skeleton", to: "/skeleton", description: "Displays a placeholder preview while loading." },
+    { label: "Toggle", to: "/toggle", description: "A switch component used to toggle on/off." },
   ];
 
   return (
