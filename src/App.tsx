@@ -21,6 +21,7 @@ function App() {
     { label: "Spinner", to: "/spinner", description: "Loading or processing state component." },
     { label: "Skeleton", to: "/skeleton", description: "Displays a placeholder preview while loading." },
     { label: "Toggle", to: "/toggle", description: "A switch component used to toggle on/off." },
+    { label: "Textarea", to: "/textarea", description: "Multi-line text input fields." }
   ];
 
   return (
