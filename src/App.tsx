@@ -22,7 +22,8 @@ function App() {
     { label: "Skeleton", to: "/skeleton", description: "Displays a placeholder preview while loading." },
     { label: "Toggle", to: "/toggle", description: "A switch component used to toggle on/off." },
     { label: "Textarea", to: "/textarea", description: "Multi-line text input fields." },
-    { label: "Avatar", to: "/avatar", description: "Displays user profile images or initials." }
+    { label: "Avatar", to: "/avatar", description: "Displays user profile images or initials." },
+    { label: "File Upload", to: "/file-upload", description: "Allow users to upload files." }
   ];
 
   return (
