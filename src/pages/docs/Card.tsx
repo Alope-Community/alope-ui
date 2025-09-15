@@ -2,25 +2,60 @@
 
 import { Button, Card } from "alope-ui";
 import CodeBlock from "../../components/CodeBlock";
+import { useTheme } from "../../context/ThemeContext";
+
+function Preview({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme();
+  return (
+    <div
+      className={`p-4 mb-6 border rounded-lg shadow-sm transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function CardDocs() {
+  const { theme } = useTheme();
+
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Card</h2>
-      <p className="text-gray-600 mb-8">
+    <div
+      className={`prose max-w-none transition-colors ${
+        theme === "dark" ? "prose-invert" : "prose-slate"
+      }`}
+    >
+      {/* Heading */}
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Card
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-8">
         The Card component provides a flexible container for displaying content
         in a structured format.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Import
+      </h3>
       <CodeBlock code={`import { Card } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
+      <div
+        className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
+        <table className="w-full">
+          <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
             <tr>
               <th className="p-3 border">Prop</th>
               <th className="p-3 border">Type</th>
@@ -29,79 +64,43 @@ export default function CardDocs() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">image</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Image URL</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">title</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Card title</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">description</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Card description</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">footer</td>
-              <td className="p-3 border">ReactNode</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Card footer content</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">ribbon</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Ribbon text</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">horizontal</td>
-              <td className="p-3 border">boolean</td>
-              <td className="p-3 border">false</td>
-              <td className="p-3 border">Horizontal layout</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">children</td>
-              <td className="p-3 border">ReactNode</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Card content</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">containerClassName</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">""</td>
-              <td className="p-3 border">Container CSS class</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">titleClassName</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">""</td>
-              <td className="p-3 border">Title CSS class</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">descriptionClassName</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">""</td>
-              <td className="p-3 border">Description CSS class</td>
-            </tr>
+            {[
+              ["image", "string", "undefined", "Image URL"],
+              ["title", "string", "undefined", "Card title"],
+              ["description", "string", "undefined", "Card description"],
+              ["footer", "ReactNode", "undefined", "Card footer content"],
+              ["ribbon", "string", "undefined", "Ribbon text"],
+              ["horizontal", "boolean", "false", "Horizontal layout"],
+              ["children", "ReactNode", "undefined", "Card content"],
+              ["containerClassName", "string", '""', "Container CSS class"],
+              ["titleClassName", "string", '""', "Title CSS class"],
+              ["descriptionClassName", "string", '""', "Description CSS class"],
+            ].map(([prop, type, def, desc]) => (
+              <tr
+                key={prop}
+                className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+              >
+                <td className="p-3 border font-mono">{prop}</td>
+                <td className="p-3 border">{type}</td>
+                <td className="p-3 border">{def}</td>
+                <td className="p-3 border">{desc}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Card</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Basic Card
+      </h3>
+      <Preview>
         <Card
           image="https://placehold.co/600x400"
           title="Web Development"
           description="Build modern web applications with the latest technologies and best practices."
         />
-      </div>
+      </Preview>
       <CodeBlock
         code={`<Card
   image="https://placehold.co/600x400"
@@ -110,8 +109,10 @@ export default function CardDocs() {
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Card with Footer</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Card with Footer
+      </h3>
+      <Preview>
         <Card
           image="https://placehold.co/600x400"
           title="Advanced React Course"
@@ -122,7 +123,7 @@ export default function CardDocs() {
             </Button>
           }
         />
-      </div>
+      </Preview>
       <CodeBlock
         code={`<Card
   image="https://placehold.co/600x400"
@@ -132,8 +133,10 @@ export default function CardDocs() {
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Card with Ribbon</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Card with Ribbon
+      </h3>
+      <Preview>
         <Card
           image="https://placehold.co/600x400"
           title="Premium Course"
@@ -145,7 +148,7 @@ export default function CardDocs() {
             </Button>
           }
         />
-      </div>
+      </Preview>
       <CodeBlock
         code={`<Card
   image="https://placehold.co/600x400"
@@ -156,8 +159,10 @@ export default function CardDocs() {
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Horizontal Card</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Horizontal Card
+      </h3>
+      <Preview>
         <Card
           horizontal
           image="https://placehold.co/600x400"
@@ -169,7 +174,7 @@ export default function CardDocs() {
             </Button>
           }
         />
-      </div>
+      </Preview>
       <CodeBlock
         code={`<Card
   horizontal
@@ -180,40 +185,46 @@ export default function CardDocs() {
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Styling</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Custom Styling
+      </h3>
+      <Preview>
         <Card
           image="https://placehold.co/600x400"
           title="Custom Styled Card"
           description="Demonstrates custom styling."
-          titleClassName="text-3xl font-bold text-purple-700"
-          descriptionClassName="text-gray-600 italic"
-          containerClassName="border-2 border-purple-200 shadow-lg"
+          titleClassName="text-3xl font-bold text-purple-700 dark:text-purple-300"
+          descriptionClassName="text-gray-600 dark:text-gray-400 italic"
+          containerClassName="border-2 border-purple-200 dark:border-purple-800 shadow-lg"
         />
-      </div>
+      </Preview>
       <CodeBlock
         code={`<Card
   image="https://placehold.co/600x400"
   title="Custom Styled Card"
   description="Demonstrates custom styling."
-  titleClassName="text-3xl font-bold text-purple-700"
-  descriptionClassName="text-gray-600 italic"
-  containerClassName="border-2 border-purple-200 shadow-lg"
+  titleClassName="text-3xl font-bold text-purple-700 dark:text-purple-300"
+  descriptionClassName="text-gray-600 dark:text-gray-400 italic"
+  containerClassName="border-2 border-purple-200 dark:border-purple-800 shadow-lg"
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Content-Only Card</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Content-Only Card
+      </h3>
+      <Preview>
         <Card>
           <div className="p-6">
-            <h3 className="text-xl font-semibold mb-4">Custom Content</h3>
-            <p className="text-gray-600 mb-4">
+            <h3 className="text-xl font-semibold mb-4 dark:text-gray-100">
+              Custom Content
+            </h3>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Use Card as a container for custom content.
             </p>
             <Button size="sm">Action</Button>
           </div>
         </Card>
-      </div>
+      </Preview>
       <CodeBlock
         code={`<Card>
   <div className="p-6">

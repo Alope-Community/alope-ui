@@ -2,33 +2,60 @@
 
 import CodeBlock from "../../components/CodeBlock";
 import { Button } from "alope-ui";
+import { useTheme } from "../../context/ThemeContext";
 
 function Preview({ children }: { children: React.ReactNode }) {
+  const { theme } = useTheme();
   return (
-    <div className="p-4 mb-6 border border-gray-200 rounded-lg bg-white shadow-sm">
+    <div
+      className={`p-4 mb-6 border rounded-lg shadow-sm transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}
+    >
       {children}
     </div>
   );
 }
 
 export default function ButtonDocs() {
+  const { theme } = useTheme();
+
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Button</h2>
-      <p className="text-gray-600 mb-8">
+    <div
+      className={`prose max-w-none transition-colors ${
+        theme === "dark" ? "prose-invert" : "prose-slate"
+      }`}
+    >
+      {/* Heading */}
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Button
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-8">
         The Button component provides clickable elements for user interactions
         with various styles and states.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Import
+      </h3>
       <CodeBlock code={`import { Button } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
+      <div
+        className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
+        <table className="w-full">
+          <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
             <tr>
               <th className="p-3 border">Prop</th>
               <th className="p-3 border">Type</th>
@@ -37,7 +64,7 @@ export default function ButtonDocs() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">variant</td>
               <td className="p-3 border">
                 'solid' | 'outline' | 'ghost' | 'plain'
@@ -45,7 +72,7 @@ export default function ButtonDocs() {
               <td className="p-3 border">'solid'</td>
               <td className="p-3 border">Button style variant</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">variantType</td>
               <td className="p-3 border">
                 'primary' | 'secondary' | 'success' | 'info' | 'warning' |
@@ -54,55 +81,55 @@ export default function ButtonDocs() {
               <td className="p-3 border">'primary'</td>
               <td className="p-3 border">Button color theme</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">size</td>
               <td className="p-3 border">'sm' | 'md' | 'lg'</td>
               <td className="p-3 border">'md'</td>
               <td className="p-3 border">Button size</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">radius</td>
               <td className="p-3 border">'regular' | 'stadium'</td>
               <td className="p-3 border">'regular'</td>
               <td className="p-3 border">Border radius style</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">fullWidth</td>
               <td className="p-3 border">boolean</td>
               <td className="p-3 border">false</td>
               <td className="p-3 border">Full width button</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">disabled</td>
               <td className="p-3 border">boolean</td>
               <td className="p-3 border">false</td>
               <td className="p-3 border">Disabled state</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">to</td>
               <td className="p-3 border">string</td>
               <td className="p-3 border">undefined</td>
               <td className="p-3 border">Link destination</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">prefixIcon</td>
               <td className="p-3 border">ReactNode</td>
               <td className="p-3 border">undefined</td>
               <td className="p-3 border">Icon before text</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">suffixIcon</td>
               <td className="p-3 border">ReactNode</td>
               <td className="p-3 border">undefined</td>
               <td className="p-3 border">Icon after text</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">onClick</td>
               <td className="p-3 border">function</td>
               <td className="p-3 border">undefined</td>
               <td className="p-3 border">Click handler</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">children</td>
               <td className="p-3 border">ReactNode</td>
               <td className="p-3 border">undefined</td>
@@ -113,7 +140,9 @@ export default function ButtonDocs() {
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Button Variants</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Button Variants
+      </h3>
       <Preview>
         <div className="flex flex-wrap gap-2">
           <Button variant="solid">Solid Button</Button>
@@ -131,7 +160,7 @@ export default function ButtonDocs() {
 </div>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
         Button Types (Colors)
       </h3>
       <Preview>
@@ -155,7 +184,9 @@ export default function ButtonDocs() {
 </div>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Button Sizes</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Button Sizes
+      </h3>
       <Preview>
         <div className="flex flex-wrap gap-2 items-center">
           <Button size="sm">Small</Button>
@@ -171,7 +202,9 @@ export default function ButtonDocs() {
 </div>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Button Radius</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Button Radius
+      </h3>
       <Preview>
         <div className="flex flex-wrap gap-2">
           <Button borderType="regular">Regular Radius</Button>
@@ -185,7 +218,9 @@ export default function ButtonDocs() {
 </div>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Button States</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Button States
+      </h3>
       <Preview>
         <div className="flex flex-wrap gap-2">
           <Button>Normal Button</Button>
@@ -201,7 +236,9 @@ export default function ButtonDocs() {
 </div>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Buttons with Icons</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Buttons with Icons
+      </h3>
       <Preview>
         <div className="flex flex-wrap gap-2">
           <Button
@@ -289,7 +326,9 @@ export default function ButtonDocs() {
 </div>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Link Button</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Link Button
+      </h3>
       <Preview>
         <Button to="#" variantType="info">
           Go to Dashboard
@@ -301,7 +340,9 @@ export default function ButtonDocs() {
 </Button>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Complete Example</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Complete Example
+      </h3>
       <Preview>
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">

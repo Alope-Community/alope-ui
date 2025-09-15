@@ -2,19 +2,19 @@
 
 import CodeBlock from "../../components/CodeBlock";
 
-export default function installation() {
+export default function Installation() {
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Quick Start</h2>
+    <div className="prose max-w-none">
+      <h2>Quick Start</h2>
 
       {/* Installation */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Installation</h3>
-      <p className="text-gray-600">Using npm:</p>
+      <h3>Installation</h3>
+      <p>Using npm:</p>
       <CodeBlock code={`npm install alope-ui`} />
 
       {/* CSS Import */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Add Styles</h3>
-      <p className="text-gray-600">
+      <h3>Add Styles</h3>
+      <p>
         Add <code>@import</code> directive(s) in your main CSS file:
       </p>
       <CodeBlock
@@ -28,10 +28,8 @@ export default function installation() {
       />
 
       {/* Basic Setup */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Setup</h3>
-      <p className="text-gray-600">
-        Import and use any component in your React application:
-      </p>
+      <h3>Basic Setup</h3>
+      <p>Import and use any component in your React application:</p>
       <CodeBlock
         code={`import React from "react";
 import { Button } from "alope-ui";
@@ -50,8 +48,8 @@ export default App;`}
       />
 
       {/* Important Notes */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Important Notes</h3>
-      <p className="text-gray-600">
+      <h3>Important Notes</h3>
+      <p>
         If you're using the <code>to</code> prop on a <code>Button</code> (or
         any other component that uses SPA-style navigation), make sure{" "}
         <code>react-router-dom</code> is properly configured.

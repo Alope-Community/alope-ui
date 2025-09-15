@@ -2,27 +2,60 @@
 
 import CodeBlock from "../../components/CodeBlock";
 import { TextInput } from "alope-ui";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function TextInputDocs() {
+  const { theme } = useTheme();
+
   return (
-    <div className="prose prose-slate max-w-none">
+    <div
+      className={`prose max-w-none ${
+        theme === "dark" ? "prose-invert text-gray-100" : "prose-slate text-gray-900"
+      }`}
+    >
       {/* Title */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Text Input</h2>
-      <p className="text-gray-600 mb-8">
+      <h2
+        className={`text-4xl font-bold mb-6 ${
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        }`}
+      >
+        Text Input
+      </h2>
+      <p
+        className={`mb-8 ${
+          theme === "dark" ? "text-gray-300" : "text-gray-600"
+        }`}
+      >
         The <code className="font-mono text-sm">TextInput</code> component
         provides a text input field for users to enter textual information such
         as names, emails, or any short form data.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3
+        className={`text-2xl font-semibold mt-10 mb-3 ${
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        }`}
+      >
+        Import
+      </h3>
       <CodeBlock code={`import { TextInput } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
+      <h3
+        className={`text-2xl font-semibold mt-10 mb-3 ${
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        }`}
+      >
+        Props
+      </h3>
       <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+        <table
+          className={`w-full border rounded-lg shadow-sm text-sm ${
+            theme === "dark" ? "border-gray-700" : "border-gray-200"
+          }`}
+        >
+          <thead className={theme === "dark" ? "bg-gray-800" : "bg-gray-100"}>
             <tr>
               <th className="p-3 border">Prop</th>
               <th className="p-3 border">Type</th>
@@ -59,7 +92,10 @@ export default function TextInputDocs() {
               ],
               ["disabled", "boolean", "false", "Disable the input field"],
             ].map(([prop, type, def, desc]) => (
-              <tr key={prop} className="bg-white">
+              <tr
+                key={prop}
+                className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+              >
                 <td className="p-3 border font-mono">{prop}</td>
                 <td className="p-3 border">{type}</td>
                 <td className="p-3 border">{def}</td>
@@ -71,11 +107,27 @@ export default function TextInputDocs() {
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Examples</h3>
+      <h3
+        className={`text-2xl font-semibold mt-10 mb-3 ${
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        }`}
+      >
+        Examples
+      </h3>
 
       {/* Basic */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">Basic TextInput</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={`text-xl font-semibold mt-8 mb-3 ${
+          theme === "dark" ? "text-gray-200" : "text-gray-900"
+        }`}
+      >
+        Basic TextInput
+      </h4>
+      <div
+        className={`border rounded-lg p-4 mb-6 ${
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        }`}
+      >
         <TextInput id="basic" name="basic" placeholder="Enter text here" />
       </div>
       <CodeBlock
@@ -87,8 +139,18 @@ const BasicExample = () => {
       />
 
       {/* With Label */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">With Label</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={`text-xl font-semibold mt-8 mb-3 ${
+          theme === "dark" ? "text-gray-200" : "text-gray-900"
+        }`}
+      >
+        With Label
+      </h4>
+      <div
+        className={`border rounded-lg p-4 mb-6 ${
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        }`}
+      >
         <TextInput
           id="with-label"
           name="with-label"
@@ -106,8 +168,18 @@ const BasicExample = () => {
       />
 
       {/* With Error */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">With Error</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={`text-xl font-semibold mt-8 mb-3 ${
+          theme === "dark" ? "text-red-400" : "text-red-600"
+        }`}
+      >
+        With Error
+      </h4>
+      <div
+        className={`border rounded-lg p-4 mb-6 ${
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        }`}
+      >
         <TextInput
           id="with-error"
           name="with-error"
@@ -127,8 +199,18 @@ const BasicExample = () => {
       />
 
       {/* Disabled */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">Disabled State</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={`text-xl font-semibold mt-8 mb-3 ${
+          theme === "dark" ? "text-gray-400" : "text-gray-700"
+        }`}
+      >
+        Disabled State
+      </h4>
+      <div
+        className={`border rounded-lg p-4 mb-6 ${
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        }`}
+      >
         <TextInput
           id="disabled"
           name="disabled"

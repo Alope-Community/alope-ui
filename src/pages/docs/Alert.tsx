@@ -2,25 +2,44 @@
 
 import CodeBlock from "../../components/CodeBlock";
 import { Alert, Button } from "alope-ui";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function AlertDocs() {
+  const { theme } = useTheme();
+
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Alert</h2>
-      <p className="text-gray-600 mb-8">
+    <div
+      className={`prose max-w-none transition-colors ${
+        theme === "dark" ? "prose-invert" : "prose-slate"
+      }`}
+    >
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Alert
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-8">
         The Alert component displays important messages to users with different
         severity levels.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Import
+      </h3>
       <CodeBlock code={`import { Alert } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
+      <div
+        className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
+        <table className="w-full">
+          <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
             <tr>
               <th className="p-3 border">Prop</th>
               <th className="p-3 border">Type</th>
@@ -29,7 +48,7 @@ export default function AlertDocs() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">type</td>
               <td className="p-3 border">
                 'success' | 'info' | 'warning' | 'error'
@@ -37,37 +56,37 @@ export default function AlertDocs() {
               <td className="p-3 border">'info'</td>
               <td className="p-3 border">Alert severity type</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">title</td>
               <td className="p-3 border">string</td>
               <td className="p-3 border">""</td>
               <td className="p-3 border">Alert title</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">description</td>
               <td className="p-3 border">string</td>
               <td className="p-3 border">""</td>
               <td className="p-3 border">Alert description</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">icon</td>
               <td className="p-3 border">ReactNode</td>
               <td className="p-3 border">undefined</td>
               <td className="p-3 border">Custom icon</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">action</td>
               <td className="p-3 border">ReactNode</td>
               <td className="p-3 border">undefined</td>
               <td className="p-3 border">Action button or element</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">withClose</td>
               <td className="p-3 border">boolean</td>
               <td className="p-3 border">false</td>
               <td className="p-3 border">Show close button</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">onClose</td>
               <td className="p-3 border">function</td>
               <td className="p-3 border">undefined</td>
@@ -78,8 +97,16 @@ export default function AlertDocs() {
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Usage</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Basic Usage
+      </h3>
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
         <Alert
           title="Welcome!"
           description="Thanks for choosing ALOPE UI for your project."
@@ -92,8 +119,16 @@ export default function AlertDocs() {
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Alert Types</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6 space-y-4">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Alert Types
+      </h3>
+      <div
+        className={`border rounded-lg p-4 mb-6 space-y-4 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
         <Alert
           type="success"
           title="Success!"
@@ -141,10 +176,16 @@ export default function AlertDocs() {
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
         Alert with Custom Icon
       </h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
         <Alert
           type="warning"
           title="Important Notice"
@@ -171,18 +212,20 @@ export default function AlertDocs() {
   type="warning"
   title="Important Notice"
   description="This action cannot be undone."
-  icon={
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
-    </svg>
-  }
+  icon={/* ... */}
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
         Alert with Action Button
       </h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
         <Alert
           type="info"
           title="Update Available"
@@ -199,16 +242,20 @@ export default function AlertDocs() {
   type="info"
   title="Update Available"
   description="A new version of the application is available."
-  action={
-    <Button size="sm" variantType="info">
-      Update Now
-    </Button>
-  }
+  action={/* ... */}
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Dismissible Alert</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Dismissible Alert
+      </h3>
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-white border-gray-200"
+        }`}
+      >
         <Alert
           withClose
           type="success"
@@ -222,7 +269,6 @@ export default function AlertDocs() {
   type="success"
   title="Success!"
   description="Your profile has been updated successfully."
-  onClose={() => console.log("Alert closed")}
 />`}
       />
     </div>

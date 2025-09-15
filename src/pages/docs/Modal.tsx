@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button, Modal, TextInput, SelectInput } from "alope-ui";
 import CodeBlock from "../../components/CodeBlock";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function ModalDocs() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,79 +14,99 @@ export default function ModalDocs() {
   const [largeOpen, setLargeOpen] = useState(false);
   const [xLargeOpen, setXLargeOpen] = useState(false);
 
+  const { theme } = useTheme();
+
   const handleDelete = () => {
     console.log("Item deleted");
     setIsDeleteOpen(false);
   };
 
+  // wrapper preview box
+  const Preview = ({ children }: { children: React.ReactNode }) => (
+    <div
+      className={`border rounded-lg p-4 mb-6 transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}
+    >
+      {children}
+    </div>
+  );
+
+  // table wrapper
+  const TableWrapper = ({ children }: { children: React.ReactNode }) => (
+    <div
+      className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-gray-50 border-gray-200"
+      }`}
+    >
+      <table className="w-full">{children}</table>
+    </div>
+  );
+
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Modal</h2>
-      <p className="text-gray-600 mb-8">
+    <div
+      className={`prose max-w-none transition-colors ${
+        theme === "dark" ? "prose-invert" : "prose-slate"
+      }`}
+    >
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Modal
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-8">
         The Modal component provides overlay dialogs for important user
         interactions and information.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Import
+      </h3>
       <CodeBlock code={`import { Modal } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-3 border">Prop</th>
-              <th className="p-3 border">Type</th>
-              <th className="p-3 border">Default</th>
-              <th className="p-3 border">Description</th>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
+      <TableWrapper>
+        <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+          <tr>
+            <th className="p-3 border">Prop</th>
+            <th className="p-3 border">Type</th>
+            <th className="p-3 border">Default</th>
+            <th className="p-3 border">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ["isOpen", "boolean", "false", "Modal visibility state"],
+            ["onClose", "function", "required", "Close handler"],
+            ["title", "string", "undefined", "Modal title"],
+            ["size", "'sm' | 'md' | 'lg' | 'xl'", "'md'", "Modal size"],
+            ["overlayClose", "boolean", "true", "Close on overlay click"],
+            ["children", "ReactNode", "undefined", "Modal content"],
+          ].map(([prop, type, def, desc]) => (
+            <tr
+              key={prop}
+              className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+            >
+              <td className="p-3 border font-mono">{prop}</td>
+              <td className="p-3 border">{type}</td>
+              <td className="p-3 border">{def}</td>
+              <td className="p-3 border">{desc}</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">isOpen</td>
-              <td className="p-3 border">boolean</td>
-              <td className="p-3 border">false</td>
-              <td className="p-3 border">Modal visibility state</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">onClose</td>
-              <td className="p-3 border">function</td>
-              <td className="p-3 border">required</td>
-              <td className="p-3 border">Close handler</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">title</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Modal title</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">size</td>
-              <td className="p-3 border">'sm' | 'md' | 'lg' | 'xl'</td>
-              <td className="p-3 border">'md'</td>
-              <td className="p-3 border">Modal size</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">overlayClose</td>
-              <td className="p-3 border">boolean</td>
-              <td className="p-3 border">true</td>
-              <td className="p-3 border">Close on overlay click</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">children</td>
-              <td className="p-3 border">ReactNode</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Modal content</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </TableWrapper>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Modal</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Basic Modal
+      </h3>
+      <Preview>
         <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
         <Modal
           isOpen={isOpen}
@@ -94,7 +115,7 @@ export default function ModalDocs() {
           size="md"
         >
           <div className="p-4">
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               This is a basic modal example. You can put any content here.
             </p>
             <div className="flex justify-end gap-2">
@@ -105,7 +126,7 @@ export default function ModalDocs() {
             </div>
           </div>
         </Modal>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [isOpen, setIsOpen] = useState(false);
 
@@ -131,8 +152,10 @@ export default function ModalDocs() {
 </>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Confirmation Modal</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Confirmation Modal
+      </h3>
+      <Preview>
         <Button variantType="error" onClick={() => setIsDeleteOpen(true)}>
           Delete Item
         </Button>
@@ -144,7 +167,7 @@ export default function ModalDocs() {
           overlayClose={false}
         >
           <div className="p-4">
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               Are you sure you want to delete this item? This action cannot be
               undone.
             </p>
@@ -158,7 +181,7 @@ export default function ModalDocs() {
             </div>
           </div>
         </Modal>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
@@ -190,8 +213,10 @@ const handleDelete = () => {
 </>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Form Modal</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Form Modal
+      </h3>
+      <Preview>
         <Button onClick={() => setIsFormOpen(true)}>Add User</Button>
         <Modal
           isOpen={isFormOpen}
@@ -236,7 +261,7 @@ const handleDelete = () => {
             </form>
           </div>
         </Modal>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -272,8 +297,10 @@ const handleDelete = () => {
 </>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Modal Sizes</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Modal Sizes
+      </h3>
+      <Preview>
         <div className="flex flex-wrap gap-2">
           <Button onClick={() => setSmallOpen(true)}>Small Modal</Button>
           <Button onClick={() => setMediumOpen(true)}>Medium Modal</Button>
@@ -316,7 +343,7 @@ const handleDelete = () => {
         >
           <div className="p-4">This is an extra large modal.</div>
         </Modal>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [smallOpen, setSmallOpen] = useState(false);
 const [mediumOpen, setMediumOpen] = useState(false);

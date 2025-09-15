@@ -5,6 +5,7 @@ import CodeBlock from "../../components/CodeBlock";
 import { SelectInput } from "alope-ui";
 import type { SelectOptionType } from "alope-ui";
 import { cn } from "clsx-for-tailwind";
+import { useTheme } from "../../context/ThemeContext";
 
 const options: SelectOptionType[] = [
   { value: "chocolate", label: "Chocolate" },
@@ -20,29 +21,63 @@ export default function SelectDocs() {
   const [multipleValues, setMultipleValues] = useState<
     readonly SelectOptionType[]
   >([]);
+  const { theme } = useTheme();
 
   return (
     <div className="prose prose-slate max-w-none">
       {/* Title */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Select Input</h2>
-      <p className="text-gray-600 mb-8">
+      <h2
+        className={cn(
+          "text-4xl font-bold mb-6",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Select Input
+      </h2>
+      <p
+        className={cn(
+          "mb-8",
+          theme === "dark" ? "text-gray-400" : "text-gray-600"
+        )}
+      >
         The <code className="font-mono text-sm">SelectInput</code> component
         provides a dropdown interface for selecting one or multiple options from
         a list.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3
+        className={cn(
+          "text-2xl font-semibold mt-10 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Import
+      </h3>
       <CodeBlock
         code={`import { SelectInput } from "alope-ui";
 import type { SelectOptionType } from "alope-ui";`}
       />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
+      <h3
+        className={cn(
+          "text-2xl font-semibold mt-10 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Props
+      </h3>
       <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+        <table
+          className={cn(
+            "w-full border rounded-lg shadow-sm text-sm",
+            theme === "dark"
+              ? "border-gray-700"
+              : "border-gray-200"
+          )}
+        >
+          <thead className={theme === "dark" ? "bg-gray-800" : "bg-gray-100"}>
             <tr>
               <th className="p-3 border">Prop</th>
               <th className="p-3 border">Type</th>
@@ -95,7 +130,10 @@ import type { SelectOptionType } from "alope-ui";`}
                 "Custom class names for react-select components",
               ],
             ].map(([prop, type, def, desc]) => (
-              <tr key={prop} className="bg-white">
+              <tr
+                key={prop}
+                className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+              >
                 <td className="p-3 border font-mono">{prop}</td>
                 <td className="p-3 border">{type}</td>
                 <td className="p-3 border">{def}</td>
@@ -107,11 +145,30 @@ import type { SelectOptionType } from "alope-ui";`}
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Examples</h3>
+      <h3
+        className={cn(
+          "text-2xl font-semibold mt-10 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Examples
+      </h3>
 
       {/* Single Select */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">Single Select</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={cn(
+          "text-xl font-semibold mt-8 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Single Select
+      </h4>
+      <div
+        className={cn(
+          "border rounded-lg p-4 mb-6",
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        )}
+      >
         <SelectInput
           instanceId="single-select"
           label="Choose your flavor"
@@ -153,8 +210,20 @@ const SingleExample = () => {
       />
 
       {/* Multiple Select */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">Multiple Select</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={cn(
+          "text-xl font-semibold mt-8 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Multiple Select
+      </h4>
+      <div
+        className={cn(
+          "border rounded-lg p-4 mb-6",
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        )}
+      >
         <SelectInput
           instanceId="multi-select"
           label="Select your favorite toppings"
@@ -184,8 +253,20 @@ const SingleExample = () => {
       />
 
       {/* Select with Error */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">Select with Error</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={cn(
+          "text-xl font-semibold mt-8 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Select with Error
+      </h4>
+      <div
+        className={cn(
+          "border rounded-lg p-4 mb-6",
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        )}
+      >
         <SelectInput
           instanceId="error-select"
           label="Your selection"
@@ -205,8 +286,20 @@ const SingleExample = () => {
       />
 
       {/* Custom Styling */}
-      <h4 className="text-xl font-semibold mt-8 mb-3">Custom Styling</h4>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h4
+        className={cn(
+          "text-xl font-semibold mt-8 mb-3",
+          theme === "dark" ? "text-gray-100" : "text-gray-900"
+        )}
+      >
+        Custom Styling
+      </h4>
+      <div
+        className={cn(
+          "border rounded-lg p-4 mb-6",
+          theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+        )}
+      >
         <SelectInput
           instanceId="custom-select"
           label="Your selection"
