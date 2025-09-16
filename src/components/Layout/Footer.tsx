@@ -9,13 +9,14 @@ import { TextInput } from '../TextInput/TextInput';
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t mt-12 text-sm text-gray-600 dark:text-gray-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-20 py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-12 gap-x-8">
+    <footer className="bg-white dark:bg-gray-900 transition-colors duration-500 border-t mt-12 text-sm text-gray-600 dark:text-gray-300">
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8">
 
-        {/* Newsletter / Logo */}
+     
         <div className="lg:col-span-2">
           <div className="flex items-center mb-4">
-            <img src="/img/Alope.png" alt="Alope Logo" className="w-6 h-6 mr-2" />
+            <img src="/img/Alope.png" alt="Alope Logo" className="w-8 h-8 mr-2" />
             <span className="text-lg font-bold text-gray-900 dark:text-white">AlopeUI</span>
           </div>
           <p className="font-semibold text-gray-900 dark:text-white mb-1">
@@ -26,7 +27,7 @@ export default function Footer() {
           </p>
 
           <form className="flex flex-col sm:flex-row gap-3">
-            <TextInput  />
+            <TextInput />
             <button
               type="submit"
               className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
@@ -36,7 +37,7 @@ export default function Footer() {
           </form>
         </div>
 
-        {/* Link Section */}
+      
         <div>
           <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Products</h4>
           <ul className="space-y-1">
@@ -75,17 +76,17 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="border-t mt-10 pt-6 pb-8 px-6 lg:px-20 flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto">
-        <p className="text-xs text-gray-500 mb-4 md:mb-0">
+  
+      <div className="border-t mt-10 pt-6 pb-8 px-4 sm:px-6 lg:px-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-y-4 text-center md:text-left">
+        <p className="text-xs text-gray-500">
           © 2025 AlopeUI. All rights reserved.
         </p>
         <div className="flex space-x-4 text-gray-600 dark:text-gray-400">
-          <a href="#"><FaGithub className="w-5 h-5 hover:text-black dark:hover:text-white" /></a>
-          <a href="#"><FaRss className="w-5 h-5 hover:text-orange-500" /></a>
-          <a href="#"><FaLinkedin className="w-5 h-5 hover:text-blue-700" /></a>
-          <a href="#"><FaYoutube className="w-5 h-5 hover:text-red-600" /></a>
-          <a href="#"><FaDiscord className="w-5 h-5 hover:text-indigo-500" /></a>
+          <a href="#" aria-label="GitHub"><FaGithub className="w-5 h-5 hover:text-black dark:hover:text-white" /></a>
+          <a href="#" aria-label="RSS"><FaRss className="w-5 h-5 hover:text-orange-500" /></a>
+          <a href="#" aria-label="LinkedIn"><FaLinkedin className="w-5 h-5 hover:text-blue-700" /></a>
+          <a href="#" aria-label="YouTube"><FaYoutube className="w-5 h-5 hover:text-red-600" /></a>
+          <a href="#" aria-label="Discord"><FaDiscord className="w-5 h-5 hover:text-indigo-500" /></a>
         </div>
       </div>
     </footer>

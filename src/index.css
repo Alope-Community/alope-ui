@@ -5,3 +5,5 @@
 
 /* Then import the styles from Alope UI */
 @import "../node_modules/alope-ui/dist/index.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
