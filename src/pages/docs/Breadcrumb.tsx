@@ -2,8 +2,12 @@
 
 import CodeBlock from "../../components/CodeBlock";
 import { Breadcrumb } from "alope-ui";
+import { useTheme } from "../../context/ThemeContext";
+import "../../index.css"; // ⬅️ import supaya style custom breadcrumb ikut masuk
 
 export default function BreadcrumbDocs() {
+  const { theme } = useTheme();
+
   const breadcrumbData = [
     { label: "Home", path: "#" },
     { label: "Products", path: "#" },
@@ -33,22 +37,39 @@ export default function BreadcrumbDocs() {
   ];
 
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Breadcrumb</h2>
-      <p className="text-gray-600 mb-8">
+    <div
+      className={`prose max-w-none transition-colors ${
+        theme === "dark" ? "prose-invert" : "prose-slate"
+      }`}
+    >
+      {/* Heading */}
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Breadcrumb
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-8">
         The Breadcrumb component provides navigation context showing the user's
         location within the application hierarchy.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Import
+      </h3>
       <CodeBlock code={`import { Breadcrumb } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
+      <div
+        className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
+        <table className="w-full">
+          <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
             <tr>
               <th className="p-3 border">Prop</th>
               <th className="p-3 border">Type</th>
@@ -57,19 +78,19 @@ export default function BreadcrumbDocs() {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">data</td>
               <td className="p-3 border">BreadcrumbItem[]</td>
               <td className="p-3 border">[]</td>
               <td className="p-3 border">Array of breadcrumb items</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">separator</td>
               <td className="p-3 border">ReactNode</td>
               <td className="p-3 border">"/"</td>
               <td className="p-3 border">Custom separator between items</td>
             </tr>
-            <tr className="bg-white">
+            <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
               <td className="p-3 border font-mono">linkClassName</td>
               <td className="p-3 border">string</td>
               <td className="p-3 border">""</td>
@@ -80,8 +101,16 @@ export default function BreadcrumbDocs() {
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Usage</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Basic Usage
+      </h3>
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
         <Breadcrumb data={breadcrumbData} />
       </div>
       <CodeBlock
@@ -95,13 +124,22 @@ export default function BreadcrumbDocs() {
 <Breadcrumb data={breadcrumbData} />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Separator</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      {/* Custom Separator */}
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Custom Separator
+      </h3>
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
         <Breadcrumb
           data={breadcrumbData}
           separator={
             <svg
-              className="w-4 h-4 mx-2"
+              className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -114,33 +152,47 @@ export default function BreadcrumbDocs() {
         code={`<Breadcrumb
   data={breadcrumbData}
   separator={
-    <svg className="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+    <svg className="w-4 h-4 mx-2 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20">
       <path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
     </svg>
   }
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Styling</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      {/* Custom Styling */}
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Custom Styling
+      </h3>
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
         <Breadcrumb
           data={breadcrumbData}
-          linkClassName="text-blue-600 hover:text-blue-800 font-medium"
-          separator={<span className="mx-2 text-gray-400">→</span>}
+          separator={<span className="mx-2 text-gray-400 dark:text-gray-500">→</span>}
         />
       </div>
       <CodeBlock
         code={`<Breadcrumb
   data={breadcrumbData}
-  linkClassName="text-blue-600 hover:text-blue-800 font-medium"
-  separator={<span className="mx-2 text-gray-400">→</span>}
+  separator={<span className="mx-2 text-gray-400 dark:text-gray-500">→</span>}
 />`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">
+      {/* With Icons */}
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
         Breadcrumb with Icons
       </h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <div
+        className={`border rounded-lg p-4 mb-6 transition-colors ${
+          theme === "dark"
+            ? "bg-gray-800 border-gray-700"
+            : "bg-gray-50 border-gray-200"
+        }`}
+      >
         <Breadcrumb data={breadcrumbWithIcons} />
       </div>
       <CodeBlock
@@ -165,7 +217,7 @@ export default function BreadcrumbDocs() {
   },
 ];
 
-<Breadcrumb data={breadcrumbWithIcons} />;`}
+<Breadcrumb data={breadcrumbWithIcons} />`}
       />
     </div>
   );

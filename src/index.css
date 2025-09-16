@@ -4,10 +4,10 @@
 @import "../node_modules/alope-ui/dist/index.css";
 
 @theme {
-  --color-success: #50c878;
-  --color-info: #0096ff;
-  --color-warning: #ffac1c;
-  --color-error: #f87171;
-  --color-primary: #6366f1;
-  --color-secondary: #d1d5db;
+    --color-success: #50C878;
+    --color-info: #0096FF;
+    --color-warning: #FFAC1C;
+    --color-error: #F87171;
+    --color-primary: #6366F1;
+    --color-secondary: #D1D5DB;
 }

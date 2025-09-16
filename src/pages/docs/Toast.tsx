@@ -8,15 +8,19 @@ export default function ToastDocs() {
 
   return (
     <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Toast</h2>
-      <p className="text-gray-600 mb-8">
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Toast
+      </h2>
+      <p className="text-gray-600 dark:text-gray-400 mb-8">
         The Toast component provides brief, auto-dismissable messages to inform
         users about actions or status updates.
       </p>
 
       {/* Adding Provider */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Adding Provider</h3>
-      <p className="text-gray-600 mb-4">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Adding Provider
+      </h3>
+      <p className="text-gray-600 dark:text-gray-400 mb-4">
         First, import the <code>ToastProvider</code> and wrap your main
         application component (e.g. in <code>App.tsx</code>).
       </p>
@@ -36,8 +40,10 @@ createRoot(document.getElementById("root")!).render(
       />
 
       {/* Usage Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Use Toast</h3>
-      <p className="text-gray-600 mb-4">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Use Toast
+      </h3>
+      <p className="text-gray-600 dark:text-gray-400 mb-4">
         Use the <code>useToast()</code> hook to trigger toasts in your app.
       </p>
       <CodeBlock
@@ -46,59 +52,63 @@ const { addToast } = useToast();`}
       />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
       <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
+        <table className="w-full border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm text-sm">
+          <thead className="bg-gray-100 dark:bg-gray-800">
             <tr>
-              <th className="p-3 border">Prop</th>
-              <th className="p-3 border">Type</th>
-              <th className="p-3 border">Default</th>
-              <th className="p-3 border">Description</th>
+              <th className="p-3 border dark:border-gray-700">Prop</th>
+              <th className="p-3 border dark:border-gray-700">Type</th>
+              <th className="p-3 border dark:border-gray-700">Default</th>
+              <th className="p-3 border dark:border-gray-700">Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">title</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">required</td>
-              <td className="p-3 border">Toast title</td>
+            <tr className="bg-white dark:bg-gray-900">
+              <td className="p-3 border dark:border-gray-700 font-mono">title</td>
+              <td className="p-3 border dark:border-gray-700">string</td>
+              <td className="p-3 border dark:border-gray-700">required</td>
+              <td className="p-3 border dark:border-gray-700">Toast title</td>
             </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">message</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">required</td>
-              <td className="p-3 border">Toast message content</td>
+            <tr className="bg-white dark:bg-gray-900">
+              <td className="p-3 border dark:border-gray-700 font-mono">message</td>
+              <td className="p-3 border dark:border-gray-700">string</td>
+              <td className="p-3 border dark:border-gray-700">required</td>
+              <td className="p-3 border dark:border-gray-700">Toast message content</td>
             </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">type</td>
-              <td className="p-3 border">
+            <tr className="bg-white dark:bg-gray-900">
+              <td className="p-3 border dark:border-gray-700 font-mono">type</td>
+              <td className="p-3 border dark:border-gray-700">
                 'success' | 'error' | 'info' | 'warning'
               </td>
-              <td className="p-3 border">'info'</td>
-              <td className="p-3 border">Toast type/variant</td>
+              <td className="p-3 border dark:border-gray-700">'info'</td>
+              <td className="p-3 border dark:border-gray-700">Toast type/variant</td>
             </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">variant</td>
-              <td className="p-3 border">'filled' | 'outline'</td>
-              <td className="p-3 border">'filled'</td>
-              <td className="p-3 border">Toast visual style</td>
+            <tr className="bg-white dark:bg-gray-900">
+              <td className="p-3 border dark:border-gray-700 font-mono">variant</td>
+              <td className="p-3 border dark:border-gray-700">'filled' | 'outline'</td>
+              <td className="p-3 border dark:border-gray-700">'filled'</td>
+              <td className="p-3 border dark:border-gray-700">Toast visual style</td>
             </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">position</td>
-              <td className="p-3 border">
+            <tr className="bg-white dark:bg-gray-900">
+              <td className="p-3 border dark:border-gray-700 font-mono">position</td>
+              <td className="p-3 border dark:border-gray-700">
                 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight'
               </td>
-              <td className="p-3 border">'topRight'</td>
-              <td className="p-3 border">Toast position on screen</td>
+              <td className="p-3 border dark:border-gray-700">'topRight'</td>
+              <td className="p-3 border dark:border-gray-700">Toast position on screen</td>
             </tr>
           </tbody>
         </table>
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Toast</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Basic Toast
+      </h3>
+      <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 mb-6">
         <div className="flex flex-wrap gap-4">
           <Button
             onClick={() =>
@@ -162,8 +172,10 @@ const { addToast } = useToast();`}
 </Button>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Outline Variant</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Outline Variant
+      </h3>
+      <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 mb-6">
         <div className="flex flex-wrap gap-4">
           <Button
             onClick={() =>
@@ -230,8 +242,10 @@ const { addToast } = useToast();`}
 </Button>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Position</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Custom Position
+      </h3>
+      <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800 mb-6">
         <div className="flex flex-wrap gap-4">
           <Button
             onClick={() =>

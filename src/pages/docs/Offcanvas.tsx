@@ -3,94 +3,103 @@
 import { useState } from "react";
 import { Button, Offcanvas } from "alope-ui";
 import CodeBlock from "../../components/CodeBlock";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function OffcanvasDocs() {
   const [isLeftOpen, setIsLeftOpen] = useState(false);
   const [isRightOpen, setIsRightOpen] = useState(false);
   const [isCustomOpen, setIsCustomOpen] = useState(false);
 
+  const { theme } = useTheme();
+
+  // wrapper preview
+  const Preview = ({ children }: { children: React.ReactNode }) => (
+    <div
+      className={`border rounded-lg p-4 mb-6 transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}
+    >
+      {children}
+    </div>
+  );
+
+  // wrapper table
+  const TableWrapper = ({ children }: { children: React.ReactNode }) => (
+    <div
+      className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-gray-50 border-gray-200"
+      }`}
+    >
+      <table className="w-full">{children}</table>
+    </div>
+  );
+
   return (
-    <div className="prose prose-slate max-w-none">
-      <h2 className="text-4xl font-bold mb-6 text-gray-900">Offcanvas</h2>
-      <p className="text-gray-600 mb-8">
+    <div
+      className={`prose max-w-none transition-colors ${
+        theme === "dark" ? "prose-invert" : "prose-slate"
+      }`}
+    >
+      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+        Offcanvas
+      </h2>
+      <p className="text-gray-600 dark:text-gray-300 mb-8">
         The Offcanvas component provides a sliding panel for displaying hidden
         content like menus or sidebars that slide in from the side.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Import
+      </h3>
       <CodeBlock code={`import { Offcanvas } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table className="w-full border border-gray-200 rounded-lg shadow-sm text-sm">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-3 border">Prop</th>
-              <th className="p-3 border">Type</th>
-              <th className="p-3 border">Default</th>
-              <th className="p-3 border">Description</th>
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Props
+      </h3>
+      <TableWrapper>
+        <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+          <tr>
+            <th className="p-3 border">Prop</th>
+            <th className="p-3 border">Type</th>
+            <th className="p-3 border">Default</th>
+            <th className="p-3 border">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            ["isOpen", "boolean", "false", "Controls visibility of the offcanvas"],
+            ["onClose", "() => void", "required", "Callback when offcanvas closes"],
+            ["title", "string", "undefined", "Offcanvas header title"],
+            ["position", "'left' | 'right'", "'left'", "Slide position"],
+            ["children", "ReactNode", "undefined", "Offcanvas content"],
+            ["className", "string", '""', "Custom container class"],
+            ["titleClassName", "string", '""', "Custom title class"],
+            ["closeButtonClassName", "string", '""', "Custom close button class"],
+          ].map(([prop, type, def, desc], i) => (
+            <tr
+              key={i}
+              className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+            >
+              <td className="p-3 border font-mono">{prop}</td>
+              <td className="p-3 border">{type}</td>
+              <td className="p-3 border">{def}</td>
+              <td className="p-3 border">{desc}</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">isOpen</td>
-              <td className="p-3 border">boolean</td>
-              <td className="p-3 border">false</td>
-              <td className="p-3 border">
-                Controls visibility of the offcanvas
-              </td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">onClose</td>
-              <td className="p-3 border">() =&gt; void</td>
-              <td className="p-3 border">required</td>
-              <td className="p-3 border">Callback when offcanvas closes</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">title</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Offcanvas header title</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">position</td>
-              <td className="p-3 border">'left' | 'right'</td>
-              <td className="p-3 border">'left'</td>
-              <td className="p-3 border">Slide position</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">children</td>
-              <td className="p-3 border">ReactNode</td>
-              <td className="p-3 border">undefined</td>
-              <td className="p-3 border">Offcanvas content</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">className</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">""</td>
-              <td className="p-3 border">Custom container class</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">titleClassName</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">""</td>
-              <td className="p-3 border">Custom title class</td>
-            </tr>
-            <tr className="bg-white">
-              <td className="p-3 border font-mono">closeButtonClassName</td>
-              <td className="p-3 border">string</td>
-              <td className="p-3 border">""</td>
-              <td className="p-3 border">Custom close button class</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </TableWrapper>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Offcanvas</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Basic Offcanvas
+      </h3>
+      <Preview>
         <Button onClick={() => setIsLeftOpen(true)}>Open Offcanvas</Button>
         <Offcanvas
           isOpen={isLeftOpen}
@@ -102,7 +111,7 @@ export default function OffcanvasDocs() {
             This is the content of the offcanvas that slides in from the left.
           </p>
         </Offcanvas>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [isOpen, setIsOpen] = useState(false);
 
@@ -118,10 +127,10 @@ export default function OffcanvasDocs() {
 </Offcanvas>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
         Right Position Offcanvas
       </h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <Preview>
         <Button onClick={() => setIsRightOpen(true)}>
           Open Right Offcanvas
         </Button>
@@ -135,7 +144,7 @@ export default function OffcanvasDocs() {
             This is the content of the offcanvas that slides in from the right.
           </p>
         </Offcanvas>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [isRightOpen, setIsRightOpen] = useState(false);
 
@@ -151,8 +160,10 @@ export default function OffcanvasDocs() {
 </Offcanvas>`}
       />
 
-      <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Styling</h3>
-      <div className="border border-gray-200 rounded-lg p-4 bg-white mb-6">
+      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+        Custom Styling
+      </h3>
+      <Preview>
         <Button onClick={() => setIsCustomOpen(true)}>
           Open Custom Offcanvas
         </Button>
@@ -161,9 +172,11 @@ export default function OffcanvasDocs() {
           onClose={() => setIsCustomOpen(false)}
           title="Right Offcanvas"
           position="right"
-          className="bg-primary-700"
+          className={`${
+            theme === "dark" ? "bg-gray-900" : "bg-primary-700"
+          }`}
           titleClassName="text-2xl font-bold text-white"
-          closeButtonClassName="text-white hover:text-white/20"
+          closeButtonClassName="text-white hover:text-white/80"
         >
           <div className="text-white">
             <p>This is the content of the offcanvas with custom styling.</p>
@@ -173,7 +186,7 @@ export default function OffcanvasDocs() {
             </p>
           </div>
         </Offcanvas>
-      </div>
+      </Preview>
       <CodeBlock
         code={`const [isCustomOpen, setIsCustomOpen] = useState(false);
 
@@ -186,7 +199,7 @@ export default function OffcanvasDocs() {
   position="right"
   className="bg-primary-700"
   titleClassName="text-2xl font-bold text-white"
-  closeButtonClassName="text-white hover:text-white/20"
+  closeButtonClassName="text-white hover:text-white/80"
 >
   <div className="text-white">
     <p>This is the content of the offcanvas with custom styling.</p>
