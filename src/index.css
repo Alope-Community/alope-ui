@@ -1,7 +1,7 @@
 /* index.css */
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@import '../node_modules/alope-ui/dist/index.css';
+@import "../node_modules/alope-ui/dist/index.css";
 
 @theme {
     --color-success: #50C878;
