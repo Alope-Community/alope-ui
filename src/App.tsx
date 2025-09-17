@@ -23,7 +23,8 @@ function App() {
     { label: "Toggle", to: "/toggle", description: "A switch component used to toggle on/off." },
     { label: "Textarea", to: "/textarea", description: "Multi-line text input fields." },
     { label: "Avatar", to: "/avatar", description: "Displays user profile images or initials." },
-    { label: "File Upload", to: "/file-upload", description: "Allow users to upload files." }
+    { label: "File Upload", to: "/file-upload", description: "Allow users to upload files." },
+    { label: "Tabs", to: "/tabs", description: "Used to navigate between different sections." }
   ];
 
   return (

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AccordionPage, AlertPage, AvatarPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, FileUploadPage, ModalPage, OffcanvasPage, PaginationPage, RadioInputPage, SelectInputPage, SkeletonPage, SpinnerPage, TablePage, TextareaPage, TextInputPage, ToastPage, TogglePage, TooltipPage } from './pages'
+import { AccordionPage, AlertPage, AvatarPage, BadgePage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, FileUploadPage, ModalPage, OffcanvasPage, PaginationPage, RadioInputPage, SelectInputPage, SkeletonPage, SpinnerPage, TablePage, TabsPage, TextareaPage, TextInputPage, ToastPage, TogglePage, TooltipPage } from './pages'
 import { ToastProvider } from './components/Toast/ToastProvider'
 
 createRoot(document.getElementById('root')!).render(
@@ -35,6 +35,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/textarea" element={<TextareaPage />} />
           <Route path="/avatar" element={<AvatarPage />} />
           <Route path="/file-upload" element={<FileUploadPage />} />
+          <Route path="/tabs" element={<TabsPage />} />
         </Routes>
       </BrowserRouter>
     </ToastProvider>
