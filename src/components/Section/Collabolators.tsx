@@ -2,14 +2,14 @@ const teamMembers = [
   {
     name: 'Ilham Hafidz',
     handle: '@ilhamhafidz',
-    url: '',
-    avatar: './img/Alope.png',
+    url: 'https://api.github.com/users/ilhamhafidz404',
+    avatar: 'https://avatars.githubusercontent.com/u/74355067?v=4',
   },
   {
     name: 'Ramadham Fatra',
     handle: '@fetra',
     url: '',
-    avatar: './img/Alope.png',
+    avatar: 'https://avatars.githubusercontent.com/u/80379524?v=4',
   },
   {
     name: 'Ajka',
@@ -21,19 +21,19 @@ const teamMembers = [
     name: 'Firdan Fauzan',
     handle: '@danzzz',
     url: '',
-    avatar: './img/Alope.png',
+    avatar: 'https://avatars.githubusercontent.com/u/159457668?s=96&v=4',
   },
 ]
 
 const ProjectTeamSection = () => {
   return (
-    <section className="py-16 px-4 bg-white dark:bg-gray-900 transition-colors duration-500">
-      <div className="max-w-5xl text-center">
+    <section className="container mx-auto py-16 px-20 bg-white dark:bg-gray-900 transition-colors duration-500">
+      <div className="text-center">
         <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-12">
           A Collaborators
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center">
           {teamMembers.map((member, index) => (
             <div key={index} className="flex flex-col items-center text-center">
               <img
