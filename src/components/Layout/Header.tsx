@@ -22,7 +22,7 @@ export default function Hero() {
     <div className="relative px-6 md:px-20 bg-white dark:bg-gray-900 transition-colors duration-500 pt-10">
   
       <div
-        className="absolute inset-0 blur-xl h-[400px] md:h-[580px] pointer-events-none"
+        className="absolute z-10 inset-0 blur-xl h-[400px] md:h-[650px] pointer-events-none"
         style={{
           background:
             "linear-gradient(143.6deg, rgba(132, 252, 178, 0.1) 20.79%, rgba(121, 249, 142, 0.26) 40.92%, rgba(171, 238, 204, 0) 70.35%)",
