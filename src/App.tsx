@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LayoutDocs from "./components/LayoutDocs";
 
 // Docs pages
@@ -16,10 +16,9 @@ import Breadcrumb from "./pages/docs/Breadcrumb";
 import TextInput from "./pages/docs/TextInput";
 import Offcanvas from "./pages/docs/Offcanvas";
 import QuickStart from "./pages/docs/installation";
-import { Button, Card } from "./components";
 import HomePage from "./pages/HomePage";
 
-export default const docs = [
+const docs = [
   {
     label: "Button",
     to: "/button",
@@ -83,6 +82,7 @@ export default const docs = [
   },
 ];
 
+export default function App() {
   return (
     <Routes>
       {/* Docs routes */}
