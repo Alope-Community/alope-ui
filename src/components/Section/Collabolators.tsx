@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
 interface TeamMember {
-  name: string
+  name?: string
   handle: string
   username: string
   avatar?: string
@@ -9,10 +9,10 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { name: "Ilham Hafidz", handle: "ilhamhafidz404", username: "ilhamhafidz404" },
-  { name: "Ramadham Fatra", handle: "MrFatra", username: "MrFatra" },
-  { name: "Ajka", handle: "AkaSengko24", username: "AkaSengko24" },
-  { name: "Firdan Fauzan", handle: "firdanaja", username: "firdanaja" },
+  { handle: "ilhamhafidz404", username: "ilhamhafidz404" },
+  { handle: "MrFatra", username: "MrFatra" },
+  { handle: "AkaSengko24", username: "AkaSengko24" },
+  { handle: "firdanaja", username: "firdanaja" },
 ]
 
 const ProjectTeamSection = () => {
@@ -28,6 +28,7 @@ const ProjectTeamSection = () => {
             const data = await res.json()
             return {
               ...member,
+              name: data.name || member.username, // pakai nama asli GitHub, fallback ke username
               avatar: data.avatar_url,
               url: data.html_url,
             } as TeamMember
@@ -35,6 +36,7 @@ const ProjectTeamSection = () => {
             console.error(`Failed to fetch ${member.username}`, error)
             return {
               ...member,
+              name: member.username,
               avatar: "/",
               url: "#",
             } as TeamMember
@@ -57,7 +59,7 @@ const ProjectTeamSection = () => {
           {members.map((member, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 "
+              className="flex items-center gap-4"
             >
               <img
                 src={member.avatar}
@@ -74,7 +76,7 @@ const ProjectTeamSection = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-[#80C41C] dark:text-[#80C41C] hover:text-[#80C41C]/70"
                 >
-                  {member.handle}
+                  @{member.handle}
                 </a>
               </div>
             </div>
