@@ -39,26 +39,29 @@ export default function BreadcrumbDocs() {
   return (
     <div
       className={`prose max-w-none transition-colors ${
-        theme === "dark" ? "prose-invert" : "prose-slate"
+        theme === "dark"
+          ? "prose-invert"
+          : "prose-slate prose-headings:text-gray-900"
       }`}
     >
+
       {/* Heading */}
-      <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+      <h2 className="text-4xl font-bold mb-6">
         Breadcrumb
       </h2>
-      <p className="text-gray-600 dark:text-gray-300 mb-8">
+      <p>
         The Breadcrumb component provides navigation context showing the user's
         location within the application hierarchy.
       </p>
 
       {/* Import Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3">
         Import
       </h3>
       <CodeBlock code={`import { Breadcrumb } from "alope-ui";`} />
 
       {/* Props Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3">
         Props
       </h3>
       <div
@@ -101,7 +104,7 @@ export default function BreadcrumbDocs() {
       </div>
 
       {/* Examples Section */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3">
         Basic Usage
       </h3>
       <div
@@ -125,7 +128,7 @@ export default function BreadcrumbDocs() {
       />
 
       {/* Custom Separator */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3">
         Custom Separator
       </h3>
       <div
@@ -160,7 +163,7 @@ export default function BreadcrumbDocs() {
       />
 
       {/* Custom Styling */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3">
         Custom Styling
       </h3>
       <div
@@ -183,7 +186,7 @@ export default function BreadcrumbDocs() {
       />
 
       {/* With Icons */}
-      <h3 className="text-2xl font-semibold mt-10 mb-3 dark:text-gray-100">
+      <h3 className="text-2xl font-semibold mt-10 mb-3">
         Breadcrumb with Icons
       </h3>
       <div

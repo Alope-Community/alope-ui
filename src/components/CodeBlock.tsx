@@ -7,16 +7,23 @@ import {
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Copy } from "lucide-react";
-import { useTheme } from "../context/ThemeContext"; // ⬅️ pakai context
+import { useTheme } from "../context/ThemeContext";
 
 interface CodeBlockProps {
   code: string;
   lang?: string;
+  label?: string;        // custom label (contoh: "npm", "bash")
+  showHeader?: boolean;  // sembunyikan header jika false
 }
 
-export default function CodeBlock({ code, lang = "tsx" }: CodeBlockProps) {
+export default function CodeBlock({
+  code,
+  lang = "tsx",
+  label,
+  showHeader = true,
+}: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
-  const { theme } = useTheme(); // ⬅️ ambil theme
+  const { theme } = useTheme();
   const isDark = theme === "dark";
 
   const handleCopy = async () => {
@@ -27,34 +34,30 @@ export default function CodeBlock({ code, lang = "tsx" }: CodeBlockProps) {
 
   return (
     <div
-      className={`
-        relative rounded-lg overflow-hidden shadow-md mb-6 border 
-        ${isDark ? "border-slate-700 bg-slate-900" : "border-slate-200 bg-slate-50"}
-      `}
+      className={`relative rounded-lg overflow-hidden shadow-md mb-6 border 
+        ${isDark ? "border-slate-700 bg-slate-900" : "border-slate-200 bg-slate-50"}`}
     >
       {/* Header */}
-      <div
-        className={`
-          flex items-center justify-between text-sm px-3 py-2 border-b
-          ${isDark
-            ? "bg-slate-800 text-slate-200 border-slate-700"
-            : "bg-slate-100 text-slate-800 border-slate-200"}
-        `}
-      >
-        <span className="uppercase text-xs font-medium tracking-wide">
-          {lang}
-        </span>
-        <button
-          onClick={handleCopy}
-          className={`
-            flex items-center gap-1 px-2 py-1 text-xs rounded transition-colors
-            ${isDark ? "hover:bg-slate-700" : "hover:bg-slate-200"}
-          `}
+      {showHeader && (
+        <div
+          className={`flex items-center justify-between text-sm px-3 py-2 border-b
+            ${isDark
+              ? "bg-slate-800 text-slate-200 border-slate-700"
+              : "bg-slate-100 text-slate-800 border-slate-200"}`}
         >
-          <Copy className="w-4 h-4" />
-          {copied ? "Copied!" : "Copy"}
-        </button>
-      </div>
+          <span className="uppercase text-xs font-medium tracking-wide">
+            {label ?? lang}
+          </span>
+          <button
+            onClick={handleCopy}
+            className={`flex items-center gap-1 px-2 py-1 text-xs rounded transition-colors
+              ${isDark ? "hover:bg-slate-700" : "hover:bg-slate-200"}`}
+          >
+            <Copy className="w-4 h-4" />
+            {copied ? "Copied!" : "Copy"}
+          </button>
+        </div>
+      )}
 
       {/* Code */}
       <SyntaxHighlighter

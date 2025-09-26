@@ -3,6 +3,7 @@ import TableOfContents from "./TableOfContents";
 import { ToastProvider } from "alope-ui";
 import Navbar from "../components/Navbar";
 import { useTheme } from "../context/ThemeContext";
+import { useState } from "react";
 
 interface NavItem {
   name: string;
@@ -42,91 +43,165 @@ const navSections: NavSection[] = [
 export default function LayoutDocs() {
   const location = useLocation();
   const { theme } = useTheme();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div
-      className={`flex h-screen transition-colors ${
+      className={`flex flex-col min-h-screen transition-colors ${
         theme === "dark"
           ? "bg-gray-900 text-gray-100"
           : "bg-gray-50 text-gray-900"
       }`}
     >
-      {/* Navbar */}
-      <Navbar />
+      {/* Navbar dengan tombol toggle */}
+      <Navbar onToggleSidebar={() => setSidebarOpen(true)} />
 
-      {/* Sidebar kiri */}
-      {/* Sidebar kiri */}
-      <aside
-        className={`fixed inset-y-0 left-0 top-16 w-64 backdrop-blur-md p-6 border-r z-20 transition-colors
-    ${
-      theme === "dark"
-        ? "bg-gray-800 border-gray-700"
-        : "bg-white border-gray-200"
-    }
-    overflow-y-auto
-  `}
-      >
-        <h1
-          className={`text-2xl font-bold mb-6 tracking-tight ${
-            theme === "dark" ? "text-green-400" : "text-green-600"
-          }`}
+      {/* Wrapper utama */}
+      <div className="flex-1 container mx-auto flex pt-16">
+        {/* Sidebar kiri (desktop) */}
+        <aside
+          className={`hidden lg:block w-64 p-6 border-r backdrop-blur-md transition-colors
+            ${
+              theme === "dark"
+                ? "bg-gray-800 border-gray-700"
+                : "bg-white border-gray-200"
+            }
+            sticky top-16 h-[calc(100vh-64px)] overflow-y-auto
+          `}
         >
-          Docs
-        </h1>
-
-        <nav className="space-y-8">
-          {navSections.map((section) => (
-            <div key={section.title}>
-              <h2
-                className={`text-xs font-semibold uppercase tracking-wide mb-3 ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-500"
-                }`}
-              >
-                {section.title}
-              </h2>
-              <div className="space-y-1">
-                {section.items.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
-                      location.pathname === item.path
-                        ? theme === "dark"
-                          ? "bg-green-900 text-green-300 font-semibold shadow-sm"
-                          : "bg-green-100 text-green-700 font-semibold shadow-sm"
-                        : theme === "dark"
-                        ? "text-gray-300 hover:bg-green-800 hover:text-green-300"
-                        : "text-gray-700 hover:bg-green-50 hover:text-green-600"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+          <nav className="space-y-8">
+            {navSections.map((section) => (
+              <div key={section.title}>
+                <h2
+                  className={`text-xs font-semibold uppercase tracking-wide mb-3 ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  }`}
+                >
+                  {section.title}
+                </h2>
+                <div className="space-y-1">
+                  {section.items.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setSidebarOpen(false)}
+                      className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
+                        location.pathname === item.path
+                          ? "bg-[#80C41C] text-white font-semibold shadow-sm"
+                          : theme === "dark"
+                          ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
+                          : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
-        </nav>
-      </aside>
+            ))}
+          </nav>
+        </aside>
 
-      {/* Konten utama */}
-      <main
-  className={`flex-1 ml-64 mr-64 px-10 pb-12 max-w-5xl mx-auto overflow-y-auto transition-colors`}
-  style={{ height: "calc(100vh - 64px)", marginTop: "64px" }} // ⬅️ navbar tinggi 64px (top-16)
->
-        <ToastProvider>
-          <Outlet />
-        </ToastProvider>
-      </main>
+        {/* Konten utama */}
+        <main
+          className="flex-1 px-4 sm:px-6 lg:px-10 pb-12 overflow-y-auto"
+          style={{ height: "calc(100vh - 64px)" }}
+        >
+          <ToastProvider>
+            <Outlet />
+          </ToastProvider>
+        </main>
 
-      {/* TOC kanan */}
+        {/* TOC kanan */}
+        <div
+          className={`hidden lg:block w-64 border-l backdrop-blur-md transition-colors
+            ${
+              theme === "dark"
+                ? "bg-gray-800 border-gray-700"
+                : "bg-white border-gray-100"
+            }
+            sticky top-16 h-[calc(100vh-64px)] overflow-y-auto
+          `}
+        >
+          <TableOfContents />
+        </div>
+      </div>
+
+      {/* Sidebar mobile overlay */}
       <div
-        className={`fixed inset-y-0 right-0 top-16 w-64 backdrop-blur-md border-l transition-colors ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-100"
+        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <TableOfContents />
+        {/* Overlay gelap */}
+        <div
+          className="absolute inset-0 bg-black/40"
+          onClick={() => setSidebarOpen(false)}
+        />
+
+        {/* Panel Sidebar */}
+        <div
+          className={`relative w-full md:w-1/2 h-full shadow-xl p-6 flex flex-col transition-colors
+      ${
+        theme === "dark"
+          ? "bg-gray-900 text-gray-100"
+          : "bg-white text-gray-900"
+      }
+    `}
+        >
+          {/* Header Sidebar */}
+          <div className="mb-4">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-lg font-semibold">Browse docs</h2>
+              <button
+                className={`${
+                  theme === "dark" ? "text-gray-200" : "text-gray-700"
+                }`}
+                onClick={() => setSidebarOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+            <hr
+              className={`border-0 h-px ${
+                theme === "dark" ? "bg-gray-700" : "bg-gray-200"
+              }`}
+            />
+          </div>
+
+          {/* Isi nav */}
+          <nav className="flex-1 overflow-y-auto space-y-8">
+            {navSections.map((section) => (
+              <div key={section.title}>
+                <h2
+                  className={`text-sm font-semibold uppercase tracking-wide mb-3 ${
+                    theme === "dark" ? "text-gray-400" : "text-black"
+                  }`}
+                >
+                  {section.title}
+                </h2>
+                <div className="space-y-1">
+                  {section.items.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setSidebarOpen(false)}
+                      className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
+                        location.pathname === item.path
+                          ? "bg-[#80C41C] text-white font-semibold shadow-sm"
+                          : theme === "dark"
+                          ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
+                          : "text-gray-700 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </nav>
+        </div>
       </div>
     </div>
   );

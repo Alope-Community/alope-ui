@@ -59,10 +59,11 @@ export default function TableOfContents() {
   return (
     <aside
       className={`fixed top-0 right-0 bottom-0 w-64 backdrop-blur-md border-l overflow-y-auto
-        ${theme === "dark" 
-          ? "bg-gray-900/90 border-gray-800" 
-          : "bg-gray-50/90 border-gray-200"}`
-      }
+        ${
+          theme === "dark"
+            ? "bg-gray-900/90 border-gray-800"
+            : "bg-gray-50/90 border-gray-200"
+        }`}
     >
       <div className="pt-16 p-6">
         <h3
@@ -80,16 +81,14 @@ export default function TableOfContents() {
                   ${heading.level === 3 ? "ml-4" : ""}
                   ${
                     activeId === heading.id
-                      ? theme === "dark"
-                        ? "text-green-400 font-semibold bg-green-900/30"
-                        : "text-green-700 font-semibold bg-green-100"
+                      ? " text-[#80C41C] font-semibold "
                       : theme === "dark"
-                        ? "text-gray-300 hover:text-green-400 hover:bg-gray-800/50"
-                        : "text-gray-600 hover:text-green-700 hover:bg-gray-100"
+                      ? "text-gray-300 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                      : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
                   }`}
               >
                 {activeId === heading.id && (
-                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-green-500 rounded-r-md" />
+                  <span className="absolute left-0 top-0 bottom-0 w-1 bg-[#80C41C] rounded-r-md" />
                 )}
                 {heading.text}
               </a>
