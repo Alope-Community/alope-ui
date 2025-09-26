@@ -38,7 +38,7 @@ export default function Navbar() {
         isScrolled
           ? "bg-white/80 dark:bg-gray-900/80 shadow backdrop-blur-md"
           : "bg-transparent"
-      } px-4 md:px-20 py-5`}
+      } px-4 md:px-20 py-2`}
     >
       <div className="flex items-center justify-between container mx-auto">
         <a href="/" className="flex items-center space-x-2">
@@ -76,7 +76,7 @@ export default function Navbar() {
             <a
               key={i}
               href={href}
-              className="text-sm hover:text-green-600 transition dark:text-white"
+              className="text-sm hover:text-[#80C41C]  transition dark:text-white"
             >
               {href.replace("/", "").charAt(0).toUpperCase() + href.slice(2)}
             </a>
@@ -86,7 +86,7 @@ export default function Navbar() {
             <select
               value={version}
               onChange={handleVersionChange}
-              className="w-full md:w-auto text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-green-400 transition appearance-none"
+              className="w-full md:w-auto text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none"
             >
               <option value="v1.0.8">v1.0</option>
               {/* <option value="v2.0">v2.0</option>
@@ -127,15 +127,15 @@ export default function Navbar() {
             </a>
           ))}
 
-          <div className="relative">
+          <div className="relative px-1">
             <select
               value={version}
               onChange={handleVersionChange}
-              className="w-full text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-green-400 transition appearance-none"
+              className="w-full text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C]  transition appearance-none"
             >
               <option value="v1.0.8">v1.0</option>
-              <option value="v2.0">v2.0</option>
-              <option value="v3.0">v3.0</option>
+              {/* <option value="v2.0">v2.0</option>
+              <option value="v3.0">v3.0</option> */}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
