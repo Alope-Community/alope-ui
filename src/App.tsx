@@ -17,75 +17,76 @@ import TextInput from "./pages/docs/TextInput";
 import Offcanvas from "./pages/docs/Offcanvas";
 import QuickStart from "./pages/docs/installation";
 import { Button, Card } from "./components";
-        
-export default function App() {
-  const docs = [
-    {
-      label: "Button",
-      to: "/button",
-      description: "Interactive button components.",
-    },
-    {
-      label: "Badge",
-      to: "/badge",
-      description: "Small count or status indicators.",
-    },
-    {
-      label: "Accordion",
-      to: "/accordion",
-      description: "Expandable and collapsible sections.",
-    },
-    {
-      label: "Alert",
-      to: "/alert",
-      description: "Display important messages to users.",
-    },
-    {
-      label: "Breadcrumb",
-      to: "/breadcrumb",
-      description: "Navigation for multi-level pages.",
-    },
-    {
-      label: "Card",
-      to: "/card",
-      description: "Container for displaying content.",
-    },
-    {
-      label: "Modal",
-      to: "/modal",
-      description: "Overlays for dialogs and interactions.",
-    },
-    {
-      label: "Offcanvas",
-      to: "/offcanvas",
-      description: "Sliding panels for navigation or content.",
-    },
-    { label: "Toast", to: "/toast", description: "Temporary notifications." },
-    {
-      label: "Text Input",
-      to: "/text-input",
-      description: "Single-line text input fields.",
-    },
-    {
-      label: "Select Input",
-      to: "/select-input",
-      description: "Dropdown selection component.",
-    },
-    {
-      label: "Radio Input",
-      to: "/radio-input",
-      description: "Choose one from a group of options.",
-    },
-    {
-      label: "Checkbox Input",
-      to: "/checkbox-input",
-      description: "Toggle multiple selections.",
-    },
-  ];
+import HomePage from "./pages/HomePage";
+
+export default const docs = [
+  {
+    label: "Button",
+    to: "/button",
+    description: "Interactive button components.",
+  },
+  {
+    label: "Badge",
+    to: "/badge",
+    description: "Small count or status indicators.",
+  },
+  {
+    label: "Accordion",
+    to: "/accordion",
+    description: "Expandable and collapsible sections.",
+  },
+  {
+    label: "Alert",
+    to: "/alert",
+    description: "Display important messages to users.",
+  },
+  {
+    label: "Breadcrumb",
+    to: "/breadcrumb",
+    description: "Navigation for multi-level pages.",
+  },
+  {
+    label: "Card",
+    to: "/card",
+    description: "Container for displaying content.",
+  },
+  {
+    label: "Modal",
+    to: "/modal",
+    description: "Overlays for dialogs and interactions.",
+  },
+  {
+    label: "Offcanvas",
+    to: "/offcanvas",
+    description: "Sliding panels for navigation or content.",
+  },
+  { label: "Toast", to: "/toast", description: "Temporary notifications." },
+  {
+    label: "Text Input",
+    to: "/text-input",
+    description: "Single-line text input fields.",
+  },
+  {
+    label: "Select Input",
+    to: "/select-input",
+    description: "Dropdown selection component.",
+  },
+  {
+    label: "Radio Input",
+    to: "/radio-input",
+    description: "Choose one from a group of options.",
+  },
+  {
+    label: "Checkbox Input",
+    to: "/checkbox-input",
+    description: "Toggle multiple selections.",
+  },
+];
 
   return (
     <Routes>
       {/* Docs routes */}
+      <Route path="/" element={<HomePage />} />
       <Route path="/docs" element={<LayoutDocs />}>
         <Route path="installation" element={<QuickStart />} />
         <Route path="accordion" element={<Accordion />} />
