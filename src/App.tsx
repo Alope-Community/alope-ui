@@ -18,7 +18,7 @@ import Offcanvas from "./pages/docs/Offcanvas";
 import QuickStart from "./pages/docs/installation";
 import { Button, Card } from "./components";
         
-function App() {
+export default function App() {
   const docs = [
     {
       label: "Button",
@@ -83,7 +83,6 @@ function App() {
     },
   ];
 
-export default function App() {
   return (
     <Routes>
       {/* Docs routes */}
