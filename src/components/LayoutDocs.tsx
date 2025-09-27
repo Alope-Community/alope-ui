@@ -57,7 +57,7 @@ export default function LayoutDocs() {
       <Navbar onToggleSidebar={() => setSidebarOpen(true)} />
 
       {/* Wrapper utama */}
-      <div className="flex-1 container mx-auto flex pt-16">
+      <div className="flex-1 flex pt-16">
         {/* Sidebar kiri (desktop) */}
         <aside
           className={`hidden lg:block w-64 p-6 border-r backdrop-blur-md transition-colors
@@ -104,7 +104,7 @@ export default function LayoutDocs() {
 
         {/* Konten utama */}
         <main
-          className="flex-1 px-4 sm:px-6 lg:px-10 pb-12 overflow-y-auto"
+          className="flex-1 px-4 sm:px-6 lg:px-10 pb-12 overflow-y-auto pt-10"
           style={{ height: "calc(100vh - 64px)" }}
         >
           <ToastProvider>

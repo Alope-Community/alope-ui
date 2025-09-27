@@ -72,13 +72,14 @@ export default function Navbar() {
         </button>
 
         <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
-          {["/docs"].map((href, i) => (
+          {["/docs/installation"].map((href, i) => (
             <a
               key={i}
               href={href}
               className="text-sm hover:text-[#80C41C]  transition dark:text-white"
             >
-              {href.replace("/", "").charAt(0).toUpperCase() + href.slice(2)}
+              {/* {href.replace("/", "").charAt(0).toUpperCase() + href.slice(2)} */}
+              Documentation
             </a>
           ))}
 

@@ -130,22 +130,16 @@ export default function Footer() {
 
       <div className="mt-10 pt-6 pb-8 px-4 sm:px-6 container mx-auto flex flex-col md:flex-row justify-between items-center gap-y-4 text-center md:text-left">
         <p className="text-xs text-gray-500">
-          © 2025 AlopeUI. All rights reserved.
+          © 2025 Alope Community. All rights reserved.
         </p>
         <div className="flex space-x-4 text-gray-600 dark:text-gray-400">
-          <a href="#" aria-label="GitHub">
+          <a target="_blank" href="https://github.com/Alope-Community/alope-ui" aria-label="GitHub">
             <FaGithub className="w-5 h-5 hover:text-black dark:hover:text-white" />
           </a>
-          <a href="#" aria-label="RSS">
-            <FaRss className="w-5 h-5 hover:text-orange-500" />
-          </a>
-          <a href="#" aria-label="LinkedIn">
+          <a target="_blank" href="https://www.linkedin.com/company/alope-coding-room/posts/?feedView=all" aria-label="LinkedIn">
             <FaLinkedin className="w-5 h-5 hover:text-blue-700" />
           </a>
-          <a href="#" aria-label="YouTube">
-            <FaYoutube className="w-5 h-5 hover:text-red-600" />
-          </a>
-          <a href="#" aria-label="Discord">
+          <a target="_blank" href="https://discord.gg/j2BhcCKb" aria-label="Discord">
             <FaDiscord className="w-5 h-5 hover:text-indigo-500" />
           </a>
         </div>

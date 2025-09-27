@@ -75,7 +75,7 @@ export default function Hero() {
                   </div>
                   <button
                     onClick={handleCopy}
-                    className="absolute top-1/2 -translate-y-1/2 right-3 text-gray-600 dark:text-gray-300 hover:text-[#80C41C] dark:hover:text-[#80C41C] transition"
+                    className="absolute top-1/2 -translate-y-1/2 right-3 text-gray-600 dark:text-gray-300 hover:text-[#80C41C] dark:hover:text-[#80C41C] transition cursor-pointer"
                     title="Copy to clipboard"
                   >
                     {copied ? (
