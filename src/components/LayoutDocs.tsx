@@ -1,9 +1,9 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import TableOfContents from "./TableOfContents";
 import { ToastProvider } from "alope-ui";
-import Navbar from "../components/Navbar";
 import { useTheme } from "../context/ThemeContext";
 import { useState } from "react";
+import Navbar from "../components/Layout/Navbar";
 
 interface NavItem {
   name: string;

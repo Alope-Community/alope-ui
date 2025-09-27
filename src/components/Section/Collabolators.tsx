@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 interface TeamMember {
-  name?: string
-  handle: string
-  username: string
-  avatar?: string
-  url?: string
+  name?: string;
+  handle: string;
+  username: string;
+  avatar?: string;
+  url?: string;
 }
 
 const teamMembers: TeamMember[] = [
@@ -13,40 +13,42 @@ const teamMembers: TeamMember[] = [
   { handle: "MrFatra", username: "MrFatra" },
   { handle: "AkaSengko24", username: "AkaSengko24" },
   { handle: "firdanaja", username: "firdanaja" },
-]
+];
 
 const ProjectTeamSection = () => {
-  const [members, setMembers] = useState<TeamMember[]>(teamMembers)
+  const [members, setMembers] = useState<TeamMember[]>(teamMembers);
 
   useEffect(() => {
     async function fetchAvatars() {
       const updated = await Promise.all(
         teamMembers.map(async (member) => {
           try {
-            const res = await fetch(`https://api.github.com/users/${member.username}`)
-            if (!res.ok) throw new Error("User not found")
-            const data = await res.json()
+            const res = await fetch(
+              `https://api.github.com/users/${member.username}`
+            );
+            if (!res.ok) throw new Error("User not found");
+            const data = await res.json();
             return {
               ...member,
               name: data.name || member.username,
               avatar: data.avatar_url,
               url: data.html_url,
-            } as TeamMember
+            } as TeamMember;
           } catch (error) {
-            console.error(`Failed to fetch ${member.username}`, error)
+            console.error(`Failed to fetch ${member.username}`, error);
             return {
               ...member,
               name: member.username,
               avatar: "/",
               url: "#",
-            } as TeamMember
+            } as TeamMember;
           }
         })
-      )
-      setMembers(updated)
+      );
+      setMembers(updated);
     }
-    fetchAvatars()
-  }, [])
+    fetchAvatars();
+  }, []);
 
   return (
     <section className="container mx-auto py-16 px-6 md:px-20">
@@ -57,7 +59,9 @@ const ProjectTeamSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {members.map((member, index) => (
-            <div
+            <a
+              href={member.url}
+              target="_blank"
               key={index}
               className="flex items-center gap-4"
             >
@@ -70,21 +74,16 @@ const ProjectTeamSection = () => {
                 <div className="text-base font-medium text-gray-800 dark:text-white">
                   {member.name}
                 </div>
-                <a
-                  href={member.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-[#80C41C] dark:text-[#80C41C] hover:text-[#80C41C]/70"
-                >
+                <div className="text-sm text-[#80C41C] dark:text-[#80C41C] hover:text-[#80C41C]/70">
                   @{member.handle}
-                </a>
+                </div>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ProjectTeamSection
+export default ProjectTeamSection;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaCheck, FaRegCopy } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   const [copied, setCopied] = useState(false);
@@ -20,7 +21,6 @@ export default function Hero() {
 
   return (
     <div className="relative px-6 md:px-20 bg-white dark:bg-gray-900 transition-colors duration-500 pt-10">
-  
       <div
         className="absolute z-10 inset-0 blur-xl h-[400px] md:h-[650px] pointer-events-none"
         style={{
@@ -32,7 +32,6 @@ export default function Hero() {
       <div className="relative z-10 container mx-auto">
         <section>
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10 py-20 md:py-28 text-gray-600">
-        
             <div className="space-y-6 text-center md:text-left flex-1">
               <NewsAlert />
 
@@ -50,8 +49,8 @@ export default function Hero() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center md:justify-start">
-                <a
-                  href="/docs/installation"
+                <Link
+                  to="/docs/installation"
                   className="flex items-center justify-center gap-x-1 py-2 px-5 text-white font-medium bg-[#80C41C] hover:bg-[#80C41C]/80 active:bg-gray-900 rounded-lg transition md:inline-flex w-full sm:w-auto"
                 >
                   Get started
@@ -66,9 +65,8 @@ export default function Hero() {
                       clipRule="evenodd"
                     />
                   </svg>
-                </a>
+                </Link>
 
-               
                 <div className="relative w-full max-w-xs">
                   <div className="bg-green-200 dark:bg-gray-800 text-sm font-mono px-4 py-2 rounded-lg text-gray-800 dark:text-gray-200 select-text text-center sm:text-left">
                     $ {command}
@@ -97,14 +95,15 @@ export default function Hero() {
 function NewsAlert() {
   return (
     <a
-      href="/docs/installation"
+      target="_blank"
+      href="https://alope.id"
       className="inline-flex gap-x-4 items-center rounded-lg p-1 pr-5 border border-gray-300 dark:border-gray-700 text-sm font-medium duration-150 hover:bg-[#80C41C]/10 dark:hover:bg-[#80C41C]/30 transition-colors"
     >
       <span className="inline-block rounded-lg px-3 py-1 bg-[#80C41C] text-white text-xs">
         News
       </span>
       <p className="flex items-center text-gray-800 dark:text-white">
-        How to Installation
+        Level Up Your Programming Skill
         <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
           <path
             fillRule="evenodd"
