@@ -55,7 +55,7 @@ export const Alert: React.FC<AlertProps> = ({
     if (!visible) return null;
 
     return (
-        <div id="alopeAlert" className={cn("flex gap-2 p-3 rounded-md w-full", AlertType[type], AlertVariants[variant])}>
+        <div id="alopeAlert" className={cn("flex gap-2 p-4 rounded-md w-full", AlertType[type], AlertVariants[variant])}>
             {
                 icon ??
                 <svg viewBox="0 0 24 24" className={cn("w-6 h-6", IconColors[iconColor])}>
@@ -66,7 +66,7 @@ export const Alert: React.FC<AlertProps> = ({
             }
 
             {/* Content + Action */}
-            <div className="flex justify-between items-center w-full">
+            <div className="flex md:flex-row flex-col justify-between md:items-center gap-4 w-full">
                 <div className="flex flex-col gap-2">
                     <p className={cn("font-medium", titleClassName)}>{title}</p>
                     {description && <p className={cn("text-sm", descriptionClassName)}>{description}</p>}
@@ -87,7 +87,7 @@ export const Alert: React.FC<AlertProps> = ({
 
             {
                 withClose &&
-                <svg onClick={() => setVisible(false)} viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-7 h-7">
+                <svg onClick={() => setVisible(false)} viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-7 h-7 hover:cursor-pointer">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             }

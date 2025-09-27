@@ -100,16 +100,13 @@ export const Tabs: React.FC<TabsProps> = ({
     const indicator = indicatorRef.current;
 
     if (currentTab && indicator) {
-      const tabRect = currentTab.getBoundingClientRect();
-      const containerRect = currentTab.parentElement?.getBoundingClientRect();
+      const left = currentTab.offsetLeft;
+      const width = currentTab.offsetWidth;
 
-      if (containerRect) {
-        const left = tabRect.left - containerRect.left;
-        const width = tabRect.width;
+      indicator.style.transform = `translateX(${left}px)`;
+      indicator.style.width = `${width}px`;
 
-        indicator.style.transform = `translateX(${left}px)`;
-        indicator.style.width = `${width}px`;
-      }
+      currentTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
     }
   }, [activeTab, tabs]);
 
@@ -124,7 +121,7 @@ export const Tabs: React.FC<TabsProps> = ({
   return (
     <div>
       <div className={cn('relative', variantClasses.wrapper, wrapperClassName)}>
-        <nav className="relative -mb-px flex space-x-2" aria-label="Tabs">
+        <nav className="relative -mb-px flex space-x-2 overflow-x-auto scroll-smooth" aria-label="Tabs">
           {tabs.map((tab, index) => {
             const className = cn(
               'hover:cursor-pointer',
@@ -142,7 +139,7 @@ export const Tabs: React.FC<TabsProps> = ({
                 <a
                   key={tab.label}
                   href={!tab.disabled ? tab.link : undefined}
-                  ref={(el) => {tabRefs.current[index] = el}}
+                  ref={(el) => { tabRefs.current[index] = el }}
                   className={className}
                   aria-disabled={tab.disabled}
                   onClick={(e) => tab.disabled && e.preventDefault()}
@@ -155,7 +152,7 @@ export const Tabs: React.FC<TabsProps> = ({
             return (
               <button
                 key={tab.label}
-                ref={(el) => {tabRefs.current[index] = el}}
+                ref={(el) => { tabRefs.current[index] = el }}
                 onClick={() => handleTabClick(index)}
                 disabled={tab.disabled}
                 className={className}

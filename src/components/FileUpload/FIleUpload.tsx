@@ -198,7 +198,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                         capture={mediaCapture}
                         onChange={handleFileChange}
                     />
-                    {files.length > 0 ? renderPreview() : <p>Drag & drop files here, or click to select files</p>}
+                    {files.length > 0 ? renderPreview() : <p className='text-sm md:text-base'>Drag & drop files here, or click to select files</p>}
                 </div>
                 {errorMessage ? (
                     <p className="text-error text-sm mt-2">{errorMessage}</p>

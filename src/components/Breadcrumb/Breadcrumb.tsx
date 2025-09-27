@@ -27,7 +27,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }) => {
   return (
     <nav aria-label="breadcrumb">
-      <ol className="flex space-x-2 text-gray-600">
+      <ol className="flex flex-wrap gap-2 text-gray-600">
         {data.map((item, index) => {
           const isLast = item.path === null || index === data.length - 1;
           return (
