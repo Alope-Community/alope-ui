@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Installation",
+    "description": "",
+    "url": "/docs/installation"
+  },
+  {
+    "title": "Accordion",
+    "description": "The Accordion component allows users to show and hide sections of related content on a page.",
+    "url": "/docs/accordion"
+  },
+  {
+    "title": "Alert",
+    "description": "The Alert component displays important messages to users with different severity levels.",
+    "url": "/docs/alert"
+  },
+  {
+    "title": "Badge",
+    "description": "The Badge component is used to display small pieces of information like status, count, or labels.",
+    "url": "/docs/badge"
+  },
+  {
+    "title": "Breadcrumb",
+    "description": "The Breadcrumb component provides navigation context showing the user's location within the application hierarchy.",
+    "url": "/docs/breadcrumb"
+  },
+  {
+    "title": "Button",
+    "description": "The Button component provides clickable elements for user interactions with various styles and states.",
+    "url": "/docs/button"
+  },
+  {
+    "title": "Card",
+    "description": "The Card component provides a flexible container for displaying content in a structured format.",
+    "url": "/docs/card"
+  },
+  {
+    "title": "Modal",
+    "description": "The Modal component provides overlay dialogs for important user interactions and information.",
+    "url": "/docs/modal"
+  },
+  {
+    "title": "Offcanvas",
+    "description": "The Offcanvas component provides a sliding panel for displaying hidden content like menus or sidebars that slide in from the side.",
+    "url": "/docs/offcanvas"
+  },
+  {
+    "title": "Toast",
+    "description": "The Toast component provides brief, auto-dismissable messages to inform users about actions or status updates.",
+    "url": "/docs/toast"
+  },
+  {
+    "title": "Checkbox Input",
+    "description": "The CheckboxInput component provides checkbox functionality for selecting single or multiple options, with indeterminate state support.",
+    "url": "/docs/checkbox"
+  },
+  {
+    "title": "Radio Input",
+    "description": "The RadioInput component allows users to choose one option from a list of mutually exclusive choices.",
+    "url": "/docs/radio"
+  },
+  {
+    "title": "Select Input",
+    "description": "The SelectInput component provides a dropdown interface for selecting one or multiple options from a list.",
+    "url": "/docs/select"
+  },
+  {
+    "title": "Text Input",
+    "description": "The TextInput component provides a text input field for users to enter textual information such as names, emails, or any short form data.",
+    "url": "/docs/textinput"
+  }
+]

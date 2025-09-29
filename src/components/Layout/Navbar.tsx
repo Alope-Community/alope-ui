@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import SearchInput from "../Search";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
@@ -52,6 +53,8 @@ export default function Navbar() {
           </span>
         </a>
 
+        <SearchInput/>
+        
         <button
           className="md:hidden text-gray-800 dark:text-white focus:outline-none"
           onClick={() => setMenuOpen(!menuOpen)}
