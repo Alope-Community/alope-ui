@@ -32,6 +32,9 @@ export default function Navbar() {
     setVersion(e.target.value as "v1.0.8" | "v2.0" | "v3.0");
   };
 
+  
+  const menuLinks = ["/docs", "/blog"];
+
   return (
     <nav
       className={`w-full fixed top-0 z-50 transition-all duration-300 ${
@@ -71,12 +74,13 @@ export default function Navbar() {
           </svg>
         </button>
 
+        {/* Menu desktop */}
         <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
-          {["/docs"].map((href, i) => (
+          {menuLinks.map((href, i) => (
             <a
               key={i}
               href={href}
-              className="text-sm hover:text-[#80C41C]  transition dark:text-white"
+              className="text-sm hover:text-[#80C41C] transition dark:text-white"
             >
               {href.replace("/", "").charAt(0).toUpperCase() + href.slice(2)}
             </a>
@@ -89,8 +93,6 @@ export default function Navbar() {
               className="w-full md:w-auto text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none"
             >
               <option value="v1.0.8">v1.0</option>
-              {/* <option value="v2.0">v2.0</option>
-              <option value="v3.0">v3.0</option> */}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
@@ -115,9 +117,10 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Menu mobile */}
       {menuOpen && (
         <div className="flex flex-col mt-4 space-y-3 md:hidden pb-4 max-h-[80vh] overflow-y-auto transition-all duration-300">
-          {["/docs"].map((href, i) => (
+          {menuLinks.map((href, i) => (
             <a
               key={i}
               href={href}
@@ -131,15 +134,13 @@ export default function Navbar() {
             <select
               value={version}
               onChange={handleVersionChange}
-              className="w-full text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C]  transition appearance-none"
+              className="w-full text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-white border border-gray-300 dark:border-gray-600 px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none"
             >
               <option value="v1.0.8">v1.0</option>
-              {/* <option value="v2.0">v2.0</option>
-              <option value="v3.0">v3.0</option> */}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
-                className="w-4 h-4"
+                className="w-4 h-4" 
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "tags": ["Tailwind CSS", "Alope UI"],
+    "title": "Alope UI v1 Release: Build faster with our new design system",
+    "desc": "Alope UI v1 is finally here! Crafted for developers and designers who want clean, scalable, and responsive UI components. Explore our roadmap and future updates.",
+    "author": "Firdan Fauzan",
+    "published": "2 weeks ago"
+  },
+  {
+    "id": 2,
+    "tags": ["React", "Vue", "Components"],
+    "title": "We just shipped 50+ ready-to-use components",
+    "desc": "From cards to dashboards — discover more than 50+ components designed with Tailwind CSS, fully customizable, and ready for your projects.",
+    "author": "Alope Team",
+    "published": "1 month ago"
+  },
+  {
+    "id": 3,
+    "tags": ["Open Source", "Community"],
+    "title": "The future of Alope UI: roadmap & contributions",
+    "desc": "Transparency is key. Here's a sneak peek into our roadmap and how you can contribute to building the future of Alope UI with us.",
+    "author": "Alope Contributors",
+    "published": "2 months ago"
+  }
+]

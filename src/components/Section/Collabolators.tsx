@@ -28,7 +28,7 @@ const ProjectTeamSection = () => {
             const data = await res.json()
             return {
               ...member,
-              name: data.name || member.username, // pakai nama asli GitHub, fallback ke username
+              name: data.name || member.username, 
               avatar: data.avatar_url,
               url: data.html_url,
             } as TeamMember
