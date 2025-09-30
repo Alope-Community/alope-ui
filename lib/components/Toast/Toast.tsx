@@ -62,15 +62,16 @@ const Toast: React.FC<ToastProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false)
   const [isFadingOut, setIsFadingOut] = useState(false)
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     setTimeout(() => setIsVisible(true), 50)
 
-    const timer = setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       handleClose()
-    }, 5000)
+    }, 3500)
 
-    return () => clearTimeout(timer)
+    return () => { timeoutRef.current && clearTimeout(timeoutRef.current) }
   }, []);
 
   const handleClose = () => {
@@ -80,8 +81,23 @@ const Toast: React.FC<ToastProps> = ({
     }, 500)
   };
 
+  const handleOnMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+  }
+
+  const handleOnMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      handleClose()
+    }, 3500)
+  }
+
   return (
     <div
+      onMouseEnter={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
       className={cn(`flex max-w-sm items-start gap-3 p-4 mb-3 rounded-lg shadow-lg transition-all duration-500 transform`,
         ToastTypes[type],
         ToastVariants[variant],
@@ -105,7 +121,7 @@ const Toast: React.FC<ToastProps> = ({
 
       <button
         onClick={handleClose}
-        className="ml-2 text-lg leading-none hover:text-red-500 focus:outline-none"
+        className="ml-2 text-lg leading-none hover:text-red-500 focus:outline-none cursor-pointer"
         aria-label="Close"
       >
         &times;

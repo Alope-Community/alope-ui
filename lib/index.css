@@ -21,4 +21,52 @@
     --color-secondary-30: #E4E7EC;
 }
 
+@layer components {
+    @keyframes flash-anim {
+        0% {
+            background-color: hsla(201, 20%, 70%, 0.6);
+        }
+
+        100% {
+            background-color: hsla(200, 20%, 85%, 0.6);
+        }
+    }
+
+    .flash {
+        animation: flash-anim 800ms linear infinite alternate;
+    }
+
+    @keyframes shimmer-anim {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    .shimmer {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(90deg,
+                hsla(200, 20%, 75%, 0.7) 25%,
+                hsla(200, 20%, 92%, 0.9) 50%,
+                hsla(200, 20%, 75%, 0.7) 75%);
+        background-size: 200% 100%;
+        animation: shimmer-anim 2.5s infinite linear;
+    }
+}
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 @source "../dist";

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+SC:wght@100..900&display=swap');
 
+@import 'tailwindcss';
+
 @theme {
     --color-success: #50C878;
     --color-info: #0096FF;
@@ -21,6 +23,44 @@
     --color-error-30: #FECACA;
     --color-primary-30: #A6B8FF;
     --color-secondary-30: #E4E7EC;
+
+}
+
+@layer components {
+    @keyframes flash-anim {
+        0% {
+            background-color: hsla(201, 20%, 70%, 0.6);
+        }
+
+        100% {
+            background-color: hsla(200, 20%, 85%, 0.6);
+        }
+    }
+
+    .flash {
+        animation: flash-anim 800ms linear infinite alternate;
+    }
+
+    @keyframes shimmer-anim {
+        0% {
+            background-position: -200% 0;
+        }
+
+        100% {
+            background-position: 200% 0;
+        }
+    }
+
+    .shimmer {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(90deg,
+                hsla(200, 20%, 75%, 0.7) 25%,
+                hsla(200, 20%, 92%, 0.9) 50%,
+                hsla(200, 20%, 75%, 0.7) 75%);
+        background-size: 200% 100%;
+        animation: shimmer-anim 2.5s infinite linear;
+    }
 }
 
 * {
@@ -30,7 +70,6 @@
 }
 
 body {
-    /* @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
