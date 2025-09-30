@@ -29,216 +29,231 @@ export default function AccordionDocs() {
 
   return (
     <div
-      className={`prose max-w-none transition-colors ${
-        theme === "dark" ? "prose-invert" : "prose-slate"
+      className={`transition-colors ${
+        theme === "dark"
+          ? "prose prose-invert max-w-none"
+          : "prose prose-slate prose-headings:text-gray-900 max-w-none"
       }`}
     >
-      {/* Title */}
-      <h2>Accordion</h2>
-      <p>
-        The Accordion component allows users to show and hide sections of
-        related content on a page.
-      </p>
+      {/* Wrapper container supaya responsif */}
+      <div className="container mx-auto px-4">
+        {/* Title */}
+        <h2 className="text-4xl font-bold mb-6">Accordion</h2>
+        <p>
+          The Accordion component allows users to show and hide sections of
+          related content on a page.
+        </p>
 
-      {/* Import */}
-      <h3>Import</h3>
-      <CodeBlock code={`import { Accordion } from "alope-ui";`} />
+        {/* Import */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">Import</h3>
+        <CodeBlock code={`import { Accordion } from "alope-ui";`} />
 
-      {/* Props */}
-      <h3>Props</h3>
-      <div className="overflow-x-auto mb-10">
-        <table
-          className={`w-full border rounded-lg shadow-sm text-sm transition-colors ${
+        {/* Props */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
+        <div className="overflow-x-auto mb-10">
+          <table
+            className={`w-full border rounded-lg shadow-sm text-sm transition-colors ${
+              theme === "dark"
+                ? "bg-gray-800 border-gray-700"
+                : "bg-white border-gray-200"
+            }`}
+          >
+            <thead
+              className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}
+            >
+              <tr>
+                <th className="p-3 border">Prop</th>
+                <th className="p-3 border">Type</th>
+                <th className="p-3 border">Default</th>
+                <th className="p-3 border">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                ["data", "AccordionItem[]", "[]", "Array of accordion items"],
+                [
+                  "single",
+                  "boolean",
+                  "true",
+                  "Allow only one panel open at a time",
+                ],
+                [
+                  "openIndex",
+                  "number | number[]",
+                  "undefined",
+                  "Controlled open state",
+                ],
+                [
+                  "onToggleItem",
+                  "function",
+                  "undefined",
+                  "Callback when item is toggled",
+                ],
+                ["icon", "function", "undefined", "Custom icon renderer"],
+                [
+                  "labelClassName",
+                  "string",
+                  `""`,
+                  "Custom CSS class for labels",
+                ],
+                [
+                  "labelContainerClassName",
+                  "string",
+                  `""`,
+                  "Custom CSS class for label containers",
+                ],
+                [
+                  "descriptionClassName",
+                  "string",
+                  `""`,
+                  "Custom CSS class for descriptions",
+                ],
+              ].map(([prop, type, def, desc], i) => (
+                <tr
+                  key={i}
+                  className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+                >
+                  <td className="p-3 border font-mono">{prop}</td>
+                  <td className="p-3 border">{type}</td>
+                  <td className="p-3 border">{def}</td>
+                  <td className="p-3 border">{desc}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Basic Usage */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Usage</h3>
+        <div
+          className={`border rounded-lg p-4 mb-6 transition-colors ${
             theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
           }`}
         >
-          <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
-            <tr>
-              <th className="p-3 border">Prop</th>
-              <th className="p-3 border">Type</th>
-              <th className="p-3 border">Default</th>
-              <th className="p-3 border">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              ["data", "AccordionItem[]", "[]", "Array of accordion items"],
-              [
-                "single",
-                "boolean",
-                "true",
-                "Allow only one panel open at a time",
-              ],
-              [
-                "openIndex",
-                "number | number[]",
-                "undefined",
-                "Controlled open state",
-              ],
-              [
-                "onToggleItem",
-                "function",
-                "undefined",
-                "Callback when item is toggled",
-              ],
-              ["icon", "function", "undefined", "Custom icon renderer"],
-              ["labelClassName", "string", `""`, "Custom CSS class for labels"],
-              [
-                "labelContainerClassName",
-                "string",
-                `""`,
-                "Custom CSS class for label containers",
-              ],
-              [
-                "descriptionClassName",
-                "string",
-                `""`,
-                "Custom CSS class for descriptions",
-              ],
-            ].map(([prop, type, def, desc], i) => (
-              <tr
-                key={i}
-                className={theme === "dark" ? "bg-gray-900" : "bg-white"}
-              >
-                <td className="p-3 border font-mono">{prop}</td>
-                <td className="p-3 border">{type}</td>
-                <td className="p-3 border">{def}</td>
-                <td className="p-3 border">{desc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Basic Usage */}
-      <h3>Basic Usage</h3>
-      <div
-        className={`border rounded-lg p-4 mb-6 transition-colors ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        }`}
-      >
-        <Accordion
-          data={accordionData}
-          descriptionClassName="alope-accordion-description"
-        />
-      </div>
-      <CodeBlock
-        code={`<Accordion
+          <Accordion
+            data={accordionData}
+            descriptionClassName="alope-accordion-description"
+          />
+        </div>
+        <CodeBlock
+          code={`<Accordion
   data={accordionData}
   descriptionClassName="alope-accordion-description"
 />`}
-      />
-
-      {/* Single Panel */}
-      <h3>Single Panel Mode</h3>
-      <div
-        className={`border rounded-lg p-4 mb-6 transition-colors ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        }`}
-      >
-        <Accordion
-          single
-          data={accordionData}
-          descriptionClassName="alope-accordion-description"
         />
-      </div>
-      <CodeBlock
-        code={`<Accordion
+
+        {/* Single Panel */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">Single Panel Mode</h3>
+        <div
+          className={`border rounded-lg p-4 mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
+        >
+          <Accordion
+            single
+            data={accordionData}
+            descriptionClassName="alope-accordion-description"
+          />
+        </div>
+        <CodeBlock
+          code={`<Accordion
   single
   data={accordionData}
   descriptionClassName="alope-accordion-description"
 />`}
-      />
-
-      {/* Multiple Panels */}
-      <h3>Multiple Panels Mode</h3>
-      <div
-        className={`border rounded-lg p-4 mb-6 transition-colors ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        }`}
-      >
-        <Accordion
-          single={false}
-          data={accordionData}
-          descriptionClassName="alope-accordion-description"
         />
-      </div>
-      <CodeBlock
-        code={`<Accordion
+
+        {/* Multiple Panels */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">
+          Multiple Panels Mode
+        </h3>
+        <div
+          className={`border rounded-lg p-4 mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
+        >
+          <Accordion
+            single={false}
+            data={accordionData}
+            descriptionClassName="alope-accordion-description"
+          />
+        </div>
+        <CodeBlock
+          code={`<Accordion
   single={false}
   data={accordionData}
   descriptionClassName="alope-accordion-description"
 />`}
-      />
-
-      {/* Custom Styling */}
-      <h3>Custom Styling</h3>
-      <div
-        className={`border rounded-lg p-4 mb-6 transition-colors ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        }`}
-      >
-        <Accordion
-          data={accordionData}
-          labelClassName="font-bold text-lg"
-          labelContainerClassName="bg-blue-50 dark:bg-blue-600 hover:bg-blue-100 dark:hover:bg-blue-700"
-          descriptionClassName="alope-accordion-description"
         />
-      </div>
-      <CodeBlock
-        code={`<Accordion
+
+        {/* Custom Styling */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Styling</h3>
+        <div
+          className={`border rounded-lg p-4 mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
+        >
+          <Accordion
+            data={accordionData}
+            labelClassName="font-bold text-lg"
+            labelContainerClassName="bg-blue-50 dark:bg-blue-600 hover:bg-blue-100 dark:hover:bg-blue-700"
+            descriptionClassName="alope-accordion-description"
+          />
+        </div>
+        <CodeBlock
+          code={`<Accordion
   data={accordionData}
   labelClassName="font-bold text-lg"
   labelContainerClassName="bg-blue-50 dark:bg-blue-600 hover:bg-blue-100 dark:hover:bg-blue-700"
   descriptionClassName="alope-accordion-description"
 />`}
-      />
-
-      {/* Controlled State + Custom Icon */}
-      <h3>Controlled State with Custom Icon</h3>
-      <div
-        className={`border rounded-lg p-4 mb-6 transition-colors ${
-          theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-        }`}
-      >
-        <Accordion
-          data={accordionData}
-          openIndex={openIndex}
-          onToggleItem={(i) => setOpenIndex(i)}
-          descriptionClassName="alope-accordion-description"
-          icon={(isActive) => (
-            <svg
-              className={`w-5 h-5 transition-transform duration-300 ${
-                isActive ? "rotate-180" : "rotate-0"
-              }`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          )}
         />
-      </div>
-      <CodeBlock
-        code={`<Accordion
+
+        {/* Controlled State + Custom Icon */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">
+          Controlled State with Custom Icon
+        </h3>
+        <div
+          className={`border rounded-lg p-4 mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
+        >
+          <Accordion
+            data={accordionData}
+            openIndex={openIndex}
+            onToggleItem={(i) => setOpenIndex(i)}
+            descriptionClassName="alope-accordion-description"
+            icon={(isActive) => (
+              <svg
+                className={`w-5 h-5 transition-transform duration-300 ${
+                  isActive ? "rotate-180" : "rotate-0"
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            )}
+          />
+        </div>
+        <CodeBlock
+          code={`<Accordion
   data={accordionData}
   openIndex={openIndex}
   onToggleItem={(i) => setOpenIndex(i)}
@@ -254,7 +269,8 @@ export default function AccordionDocs() {
     </svg>
   )}
 />`}
-      />
+        />
+      </div>
     </div>
   );
 }
