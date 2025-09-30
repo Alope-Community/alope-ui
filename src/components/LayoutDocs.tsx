@@ -3,6 +3,7 @@ import TableOfContents from "./TableOfContents";
 import { ToastProvider } from "alope-ui";
 import { useTheme } from "../context/ThemeContext";
 import { useState } from "react";
+import { useLayoutEffect } from "react";
 import Navbar from "../components/Layout/Navbar";
 
 interface NavItem {
@@ -44,6 +45,13 @@ export default function LayoutDocs() {
   const location = useLocation();
   const { theme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    const main = document.querySelector("main");
+    if (main) {
+      main.scrollTo({ top: 0, behavior: "auto" });
+    }
+  }, [location.pathname]);
 
   return (
     <div

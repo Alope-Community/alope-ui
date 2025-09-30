@@ -9,6 +9,7 @@ import {
 } from "react-icons/hi";
 import logo from "../../assets/Asset 3.svg";
 import { useTheme } from "../../context/ThemeContext";
+import SearchInput from "./../Search";
 
 export default function Navbar({
   onToggleSidebar,
@@ -71,6 +72,8 @@ export default function Navbar({
             </span>
           </Link>
         </div>
+
+        <SearchInput />
 
         {/* Menu Desktop */}
         <div className="hidden lg:flex items-center space-x-4 lg:space-x-6">
