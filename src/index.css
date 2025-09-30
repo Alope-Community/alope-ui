@@ -7,10 +7,74 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-success: #50C878;
-    --color-info: #0096FF;
-    --color-warning: #FFAC1C;
-    --color-error: #F87171;
-    --color-primary: #6366F1;
-    --color-secondary: #D1D5DB;
+  --color-success: #50c878;
+  --color-info: #0096ff;
+  --color-warning: #ffac1c;
+  --color-error: #f87171;
+  --color-primary: #6366f1;
+  --color-secondary: #d1d5db;
+
+  --color-primary-700: #4338ca;
+  --color-success-700: #3c9c5a;
+  --color-info-700: #0070c0;
+  --color-warning-700: #cc8700;
+  --color-error-700: #dc2626;
+  --color-secondary-700: #9ca3af;
+
+  --color-success-30: #c2e6d3;
+  --color-info-30: #b8dfff;
+  --color-warning-30: #ffe2b2;
+  --color-error-30: #fecaca;
+  --color-primary-30: #a6b8ff;
+  --color-secondary-30: #e4e7ec;
+}
+
+@layer components {
+  @keyframes flash-anim {
+    0% {
+      background-color: hsla(201, 20%, 70%, 0.6);
+    }
+
+    100% {
+      background-color: hsla(200, 20%, 85%, 0.6);
+    }
+  }
+
+  .flash {
+    animation: flash-anim 800ms linear infinite alternate;
+  }
+
+  @keyframes shimmer-anim {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+      90deg,
+      hsla(200, 20%, 75%, 0.7) 25%,
+      hsla(200, 20%, 92%, 0.9) 50%,
+      hsla(200, 20%, 75%, 0.7) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-anim 2.5s infinite linear;
+  }
+}
+
+* {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

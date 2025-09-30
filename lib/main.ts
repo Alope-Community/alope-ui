@@ -12,3 +12,14 @@ export * from './components/RadioInput/RadioInput';
 export * from './components/SelectInput/SelectInput';
 export * from './components/TextInput/TextInput';
 export * from './components/Toast/ToastProvider';
+export * from './components/Avatar/Avatar'
+export * from './components/Avatar/AvatarGroup'
+export * from './components/FileUpload/FIleUpload'
+export * from './components/Pagination/Pagination'
+export * from './components/Skeleton/Skeleton'
+export * from './components/Spinner/Spinner'
+export * from './components/Table/Table'
+export * from './components/Tabs/Tabs'
+export * from './components/Textarea/Textarea'
+export * from './components/Toggle/Toggle'
+export * from './components/Tooltip/Tooltip'

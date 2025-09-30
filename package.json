@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/Alope-Community/alope-ui.git"
   },
-  "version": "1.0.8",
+  "version": "1.1.2",
   "type": "module",
   "files": [
     "dist"
@@ -73,5 +73,8 @@
   "bugs": {
     "url": "https://github.com/Alope-Community/alope-ui/issues"
   },
-  "homepage": "https://github.com/Alope-Community/alope-ui#readme"
+  "homepage": "https://github.com/Alope-Community/alope-ui#readme",
+  "directories": {
+    "lib": "lib"
+  }
 }

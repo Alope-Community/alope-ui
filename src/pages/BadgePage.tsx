@@ -55,7 +55,7 @@ function BadgePage() {
                     <div className="flex ">
                         {positions.map((position) => (
                             <div className="bg-gray-200 p-5">
-                                <Card containerClassName='relative'>
+                                <Card containerClassName='relative overflow-visible'>
                                     <Badge variant="success" position={position} isAbsolute>
                                         100
                                     </Badge>
@@ -74,7 +74,7 @@ function BadgePage() {
                     <div className="flex">
                         {positions.map((position) => (
                             <div className="bg-gray-200 p-5">
-                                <Card containerClassName='relative'>
+                                <Card containerClassName='relative overflow-visible'>
                                     <Badge
                                         isAbsolute
                                         variant="success"
