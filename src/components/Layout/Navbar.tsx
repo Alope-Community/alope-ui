@@ -7,7 +7,7 @@ import {
   HiOutlineX,
   HiOutlineDotsVertical,
 } from "react-icons/hi";
-import logo from "../../assets/Asset 3.svg";
+import logo from "../../assets/logo.svg";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function Navbar({

@@ -1,10 +1,4 @@
-import {
-  FaGithub,
-  FaRss,
-  FaLinkedin,
-  FaYoutube,
-  FaDiscord,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaDiscord } from "react-icons/fa";
 // import { TextInput } from "../TextInput/TextInput";
 
 export default function Footer() {
@@ -133,13 +127,25 @@ export default function Footer() {
           © 2025 Alope Community. All rights reserved.
         </p>
         <div className="flex space-x-4 text-gray-600 dark:text-gray-400">
-          <a target="_blank" href="https://github.com/Alope-Community/alope-ui" aria-label="GitHub">
+          <a
+            target="_blank"
+            href="https://github.com/Alope-Community/alope-ui"
+            aria-label="GitHub"
+          >
             <FaGithub className="w-5 h-5 hover:text-black dark:hover:text-white" />
           </a>
-          <a target="_blank" href="https://www.linkedin.com/company/alope-coding-room/posts/?feedView=all" aria-label="LinkedIn">
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/company/alope-coding-room/posts/?feedView=all"
+            aria-label="LinkedIn"
+          >
             <FaLinkedin className="w-5 h-5 hover:text-blue-700" />
           </a>
-          <a target="_blank" href="https://discord.gg/j2BhcCKb" aria-label="Discord">
+          <a
+            target="_blank"
+            href="https://discord.gg/j2BhcCKb"
+            aria-label="Discord"
+          >
             <FaDiscord className="w-5 h-5 hover:text-indigo-500" />
           </a>
         </div>
