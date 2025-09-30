@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "tags": ["React", "Tailwind"],
+    "title": "Belajar React Router untuk Pemula",
+    "author": "Firdan Fauzan",
+    "published": "2025-09-20",
+    "banner": "./img/banner.jpg",
+    "content": [
+       "Alope UI v1 has been released to help developers build faster with reusable components and consistent design patterns.",
+      "With Tailwind CSS integration, developers can easily customize and scale their projects while maintaining clean and modern UI.",
+      "This release focuses on simplicity, performance, and accessibility, ensuring a smooth developer experience."
+    ]
+    },
+  {
+    "id": 2,
+    "tags": ["Next.js", "Performance"],
+    "title": "Optimasi Website dengan Next.js",
+    "author": "Alope Team",
+    "published": "2025-09-22",
+    "banner": "",
+    "content": [
+      "Next.js memberikan fitur server-side rendering (SSR) untuk meningkatkan performa website.",
+      "Dengan SSR, halaman dapat ditampilkan lebih cepat di browser user.",
+      "Selain itu, Next.js juga mendukung static site generation (SSG) untuk kebutuhan SEO yang lebih baik."
+    ]
+  },
+  {
+    "id": 3,
+    "tags": ["UI/UX", "Design"],
+    "title": "Tips Meningkatkan User Experience",
+    "author": "Guest Author",
+    "published": "2025-09-24",
+    "banner": "",
+    "content": [
+      "User Experience (UX) adalah faktor penting dalam keberhasilan sebuah aplikasi.",
+      "Desain yang sederhana namun intuitif lebih disukai oleh pengguna.",
+      "Gunakan kombinasi warna, tipografi, dan layout yang konsisten agar aplikasi lebih nyaman digunakan."
+    ]
+  }
+]

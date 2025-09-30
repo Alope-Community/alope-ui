@@ -17,12 +17,16 @@ import TextInput from "./pages/docs/TextInput";
 import Offcanvas from "./pages/docs/Offcanvas";
 import QuickStart from "./pages/docs/installation";
 import HomePage from "./pages/HomePage";
+import Blog from "./pages/Blog";
+import DetailBlog from "./pages/DetailBlog";
 
 export default function App() {
   return (
     <Routes>
       {/* Docs routes */}
       <Route path="/" element={<HomePage />} />
+      <Route path="/blog" element={<Blog />}></Route>
+      <Route path="/detailblog/:id" element={<DetailBlog />}></Route>
       <Route path="/docs" element={<LayoutDocs />}>
         <Route path="installation" element={<QuickStart />} />
         <Route path="accordion" element={<Accordion />} />

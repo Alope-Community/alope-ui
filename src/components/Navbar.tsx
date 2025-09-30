@@ -7,9 +7,9 @@ import {
   HiOutlineX,
   HiOutlineDotsVertical,
 } from "react-icons/hi";
-import logo from "../../assets/logo.svg";
-import { useTheme } from "../../context/ThemeContext";
-import SearchInput from "./../Search";
+import logo from "../assets/logo.svg";
+import { useTheme } from "../context/ThemeContext";
+import SearchInput from "./Search";
 
 export default function Navbar({
   onToggleSidebar,
@@ -37,13 +37,13 @@ export default function Navbar({
   return (
     <nav
       className={cn(
-        `fixed top-0 z-50 shadow w-full transition-all duration-300`,
+        `fixed top-0 z-50 shadow w-full transition-all duration-300 h-16 `,
         isScrolled
           ? "bg-white/80 dark:bg-gray-900/80 shadow backdrop-blur-md"
           : "bg-transparent"
       )}
     >
-      <div className="flex items-center justify-between sm:px-10 px-3 py-3">
+      <div className="container mx-auto flex items-center justify-between px-4 py-2">
         {/* Kiri: Hamburger + Logo */}
         <div className="flex items-center space-x-2">
           {/* Tombol Hamburger (sidebar kiri) */}
@@ -85,17 +85,7 @@ export default function Navbar({
                 : "text-gray-800 hover:text-[#80C41C]"
             }`}
           >
-            Documentation
-          </Link>
-          <Link
-            to="/blog"
-            className={`text-sm transition ${
-              theme === "dark"
-                ? "text-white hover:text-[#80C41C]"
-                : "text-gray-800 hover:text-[#80C41C]"
-            }`}
-          >
-            Blogs
+            Docs
           </Link>
 
           {/* Select Version */}
@@ -110,6 +100,8 @@ export default function Navbar({
               } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
             >
               <option value="v1.0.8">v1.0</option>
+              <option value="v2.0">v2.0</option>
+              <option value="v3.0">v3.0</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
@@ -178,10 +170,7 @@ export default function Navbar({
             {/* Menu 2 kolom */}
             <div className="grid grid-cols-2 gap-4 text-sm font-medium">
               <Link to="/docs/installation" onClick={() => setMenuOpen(false)}>
-                Documentation
-              </Link>
-              <Link to="/blog" onClick={() => setMenuOpen(false)}>
-                Blogs
+                Docs
               </Link>
             </div>
 
@@ -196,8 +185,8 @@ export default function Navbar({
                 className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm"
               >
                 <option value="v1.0.8">v1.0</option>
-                {/* <option value="v2.0">v2.0</option>
-                <option value="v3.0">v3.0</option> */}
+                <option value="v2.0">v2.0</option>
+                <option value="v3.0">v3.0</option>
               </select>
             </div>
 
