@@ -18,8 +18,7 @@ const DetailBlog = () => {
   const [darkMode] = useState(false)
   const { id } = useParams<{ id: string }>()
 
-  
-  const blogs: Blog[] = blogsData as Blog[];
+  const blogs: Blog[] = blogsData as Blog[]
   const blog = blogs.find((b) => b.id === Number(id))
 
   if (!blog) {
@@ -36,9 +35,10 @@ const DetailBlog = () => {
         <Navbar />
 
         <main className="container mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-        
-          <aside className="md:col-span-1 space-y-6 sticky top-20 h-fit">
-            <div className="p-5 border border-gray-5 rounded-md dark:bg-gray-800 dark:border-gray-700 transition-colors duration-500">
+          
+         
+         <aside className="hidden lg:block lg:col-span-1 space-y-6 sticky top-20 h-fit">
+            <div className="p-5 border border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700">
               <h2 className="font-bold text-black dark:text-white text-lg">ALOPE UI BLOG</h2>
               <p className="text-sm mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
                 Stay updated with the latest tutorials, design trends, and community news from ALOPE UI.
@@ -46,7 +46,8 @@ const DetailBlog = () => {
             </div>
           </aside>
 
-      
+
+       
           <article className="md:col-span-2 mt-10 space-y-6">
             <div className="flex flex-wrap gap-2 mb-6">
               {blog.tags.map((tag: string, i: number) => (
@@ -60,25 +61,43 @@ const DetailBlog = () => {
             </div>
 
             <h1 className="text-3xl md:text-4xl font-bold leading-snug">{blog.title}</h1>
-  <img src={blog.banner} alt={blog.title} className="rounded-lg w-full mb-6" />
-            <div className="text-sm text-gray-500 dark:text-gray-400">
-              By <span className="font-semibold">{blog.author}</span> • {blog.published}
-            </div>
             
+             <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+  By <span className="font-semibold">{blog.author}</span> • {blog.published}
+</div>
 
-            <section className="prose prose-lg dark:prose-invert max-w-none">
-              {blog.content.map((para: string, idx: number) => (
-                <p key={idx}>{para}</p>
-              ))}
-            </section>
+            {blog.banner ? (
+              <img 
+                src={blog.banner} 
+                alt={blog.title} 
+                className="rounded-lg w-full  object-cover"
+              />
+            ) : (
+              <img 
+                src="https://via.placeholder.com/800x400?text=No+Image" 
+                alt="default banner" 
+                className="rounded-lg w-full  object-cover"
+              />
+            )}
+
+           
+            
+            <section className="space-y-2 leading-relaxed">
+  {blog.content.map((para: string, idx: number) => (
+    <p key={idx} className="text-base text-gray-700 dark:text-gray-300 text-justify">
+      {para}
+    </p>
+  ))}
+</section>
+
           </article>
 
-
+   
           <aside className="md:col-span-1 space-y-6 sticky top-20 self-start">
-            <div className="p-5 border border-gray-5 rounded-md dark:bg-gray-800 dark:border-gray-700 transition-colors duration-500">
+            <div className="p-5 border border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700 transition-colors duration-500">
               <h2 className="font-bold text-black dark:text-white text-lg">RECOMMENDED TOPICS</h2>
               <div className="flex flex-wrap gap-2 mt-3">
-                {["React", "Vue", "Tailwind", "Next.js", "Figma", "Open Source"].map((topic, i) => (
+                {["React", "Vue", "Alope UI", "Next.js", "Figma", "Open Source"].map((topic, i) => (
                   <span
                     key={i}
                     className="px-3 py-1 rounded-md text-xs font-medium bg-[#80C41C]/10 text-[#80C41C]"
@@ -89,7 +108,7 @@ const DetailBlog = () => {
               </div>
             </div>
 
-            <div className="p-5 border border-gray-5 rounded-md dark:bg-gray-800 dark:border-gray-700 transition-colors duration-500">
+            <div className="p-5 border border-gray-200 rounded-md dark:bg-gray-800 dark:border-gray-700 transition-colors duration-500">
               <h2 className="font-bold text-black dark:text-white text-lg">COMMUNITY AUTHORS</h2>
               <ul className="mt-3 space-y-2 text-sm">
                 <li><strong className="text-[#80C41C]">Firdan Fauzan</strong> – Frontend Developer</li>

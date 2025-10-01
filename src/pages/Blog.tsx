@@ -63,7 +63,7 @@ const BlogPage = () => {
             <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
               <h2 className="font-bold text-black dark:text-white text-lg">RECOMMENDED TOPICS</h2>
               <div className="flex flex-wrap gap-2 mt-3">
-                {["React", "Vue", "Tailwind", "Next.js", "Figma", "Open Source"].map((topic, i) => (
+                {["React", "Vue", "Alope UI", "Next.js", "Figma", "Open Source"].map((topic, i) => (
                   <span
                     key={i}
                     className="px-3 py-1 rounded-md text-xs font-medium bg-[#80C41C]/10 text-[#80C41C]"

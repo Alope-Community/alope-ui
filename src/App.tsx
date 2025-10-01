@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import LayoutDocs from "./components/LayoutDocs";
 
-// Docs pages
+
 import Accordion from "./pages/docs/Accordion";
 import ButtonDocs from "./pages/docs/Button";
 import CardDocs from "./pages/docs/Card";
@@ -23,7 +23,7 @@ import DetailBlog from "./pages/DetailBlog";
 export default function App() {
   return (
     <Routes>
-      {/* Docs routes */}
+
       <Route path="/" element={<HomePage />} />
       <Route path="/blog" element={<Blog />}></Route>
       <Route path="/detailblog/:id" element={<DetailBlog />}></Route>

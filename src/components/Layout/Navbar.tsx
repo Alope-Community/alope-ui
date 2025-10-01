@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between container mx-auto">
         <a href="/" className="flex items-center space-x-2">
           <img
-            src="./img/svg/logo.svg"
+            src="/img/svg/logo.svg"
             alt="AlopeUI"
             className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:rotate-12"
           />
@@ -80,7 +80,7 @@ export default function Navbar() {
             <a
               key={i}
               href={href}
-              className="text-sm hover:text-[#80C41C] transition dark:text-white"
+              className="text-sm hover:text-[#80C41C] transition-300 dark:text-white"
             >
               {href.replace("/", "").charAt(0).toUpperCase() + href.slice(2)}
             </a>
