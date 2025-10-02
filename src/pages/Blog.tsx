@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 import Navbar from "../components/Layout/Navbar"
 import Footer from "../components/Layout/Footer"
 import blog from "../data/blog.json" 
+import { TextInput } from "../components/TextInput/TextInput"
+
 
 const BlogPage = () => {
   const [darkMode] = useState(false)
@@ -12,23 +14,51 @@ const BlogPage = () => {
       <div className="dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 transition-colors duration-300 pt-10">
         <Navbar />
 
-        <main className="container mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <main className="container mx-auto px-4 sm:px-20 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-          <aside className="order-2 md:order-1 md:col-span-1 space-y-6 md:sticky md:top-20 h-fit">
-            <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
-              <h2 className="font-bold text-black dark:text-white text-lg">ALOPE UI BLOG</h2>
-              <p className="text-sm mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
-                Stay updated with the latest tutorials, design trends, and community news from ALOPE UI.
-              </p>
-            </div>
-          </aside>
+         <aside className="order-2 md:order-1 md:col-span-1 space-y-6 md:sticky  md:top-20 h-fit">
+  <div className="p-6">
+  
+    <img
+      src="/img/svg/logo.svg"
+      alt="Alope UI Logo"
+      className="w-24 h-24 mb-2 transform rotate-7"
+    />
 
 
-          <section className="order-1 md:order-2 md:col-span-2 space-y-8">
+    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+      Alope UI Blog
+    </h2>
+    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+      Stay updated with the latest tutorials, design trends, and community 
+      news from <span className="font-semibold text-[#80C41C]">ALOPE UI</span>.
+    </p>
+  </div>
+
+  <div className="px-6">
+    <div className="p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
+      <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+        Subscribe to our Newsletter
+      </h3>
+      <TextInput
+      type="email"
+      name="email"
+      placeholder="Enter your email"
+      aria-label="Email address"
+    />
+      <button className="w-full bg-[#80C41C] text-white mt-3 text-sm font-semibold py-2 rounded-md 
+                         hover:bg-[#80C41C]/90  transition">
+        Subscribe
+      </button>
+    </div>
+  </div>
+</aside>
+
+          <section className="order-1 md:order-2 md:col-span-3 space-y-8">
             {blog.map((blog) => (
               <article
                 key={blog.id}
-                className="p-6 border-b border-gray-300 dark:border-gray-700 transition last:border-b-0"
+                className=" border-b border-gray-300 dark:border-gray-700 transition last:border-b-0"
               >
                 <div className="flex flex-wrap gap-2 mb-3">
                   {blog.tags.map((tag, j) => (
@@ -57,32 +87,6 @@ const BlogPage = () => {
               </article>
             ))}
           </section>
-
-
-          <aside className="order-3 md:order-3 md:col-span-1 space-y-6 md:sticky md:top-20 self-start">
-            <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
-              <h2 className="font-bold text-black dark:text-white text-lg">RECOMMENDED TOPICS</h2>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {["React", "Vue", "Alope UI", "Next.js", "Figma", "Open Source"].map((topic, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-md text-xs font-medium bg-[#80C41C]/10 text-[#80C41C]"
-                  >
-                    #{topic}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
-              <h2 className="font-bold text-black dark:text-white text-lg">COMMUNITY AUTHORS</h2>
-              <ul className="mt-3 space-y-2 text-sm">
-                <li><strong className="text-[#80C41C]">Firdan Fauzan</strong> – Frontend Developer</li>
-                <li><strong className="text-[#80C41C]">Alope Team</strong> – Open Source</li>
-                <li><strong className="text-[#80C41C]">Guest Author</strong> – UI/UX Designer</li>
-              </ul>
-            </div>
-          </aside>
         </main>
 
         <Footer />
