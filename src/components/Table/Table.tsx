@@ -80,17 +80,17 @@ export function Table<T extends { id: any }>({
     return (
         <div className={cn("overflow-x-auto w-full", stickyHeader && "max-h-[400px] overflow-y-auto", containerClassName)}>
             {
-                caption && captionPosition === 'top' && <p className={cn("text-center text-sm font-medium mb-1", captionClassName)}>{caption}</p>
+                caption && captionPosition === 'top' && <p className={cn("text-center text-sm font-medium mb-1 dark:text-white", captionClassName)}>{caption}</p>
             }
-            <table className={cn("relative min-w-full outline outline-gray-200", tableSizeClass, tableClassName)}>
-                <thead className={cn(headerClassName)}>
+            <table className={cn("relative min-w-full outline outline-gray-200 dark:outline-gray-600", tableSizeClass, tableClassName)}>
+                <thead className={cn("dark:bg-gray-700 dark:text-white", headerClassName)}>
                     <tr>
                         {selectable && (
                             <th
                                 className={cn(
-                                    "px-4 py-2 text-left text-sm border-b",
+                                    "px-4 py-2 text-left text-sm border-b dark:border-b-secondary-700",
                                     tableSizeClass,
-                                    stickyHeader && "sticky top-0 bg-white z-10",
+                                    stickyHeader && "sticky top-0 bg-secondary dark:bg-gray-700 z-10",
                                     headerClassName
                                 )}
                             >
@@ -105,9 +105,9 @@ export function Table<T extends { id: any }>({
                             <th
                                 key={idx}
                                 className={cn(
-                                    "px-4 py-2 text-left text-sm border-b",
+                                    "px-4 py-2 text-left text-sm border-b dark:border-b-secondary-700",
                                     tableSizeClass,
-                                    stickyHeader && "sticky top-0 bg-white z-10",
+                                    stickyHeader && "sticky top-0 bg-secondary dark:bg-gray-700 z-10",
                                     headerClassName
                                 )}
                             >
@@ -116,15 +116,15 @@ export function Table<T extends { id: any }>({
                         ))}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="dark:bg-gray-800 dark:text-white">
                     {data.length > 0 ? (
                         data.map((row, rIdx) => (
                             <tr
                                 key={rIdx}
-                                className={cn("hover:bg-gray-700 hover:text-white transition-colors", striped && rIdx % 2 !== 0 && (stripeColor ?? 'bg-gray-300'), dataRowClassName)}
+                                className={cn("hover:bg-gray-700 hover:text-white dark:hover:bg-gray-600 transition-colors", striped && rIdx % 2 !== 0 && (stripeColor ?? 'bg-gray-300 dark:bg-gray-700'), dataRowClassName)}
                             >
                                 {selectable && (
-                                    <td className={cn("px-4 py-2 border-b border-white", dataColumnClassName, tableSizeClass)}>
+                                    <td className={cn("px-4 py-2 border-b border-secondary-700 dark:border-secondary-dark-700", (striped || stripeColor) && 'border-none', dataColumnClassName, tableSizeClass)}>
                                         <CheckboxInput
                                             checked={selectedRows.some(r => r.id === row.id)}
                                             onChange={() => handleSelectRow(row)}
@@ -134,7 +134,7 @@ export function Table<T extends { id: any }>({
                                 {columns.map((col, cIdx) => (
                                     <td
                                         key={cIdx}
-                                        className={cn("px-4 py-2 border-b border-white", dataColumnClassName, tableSizeClass)}
+                                        className={cn("px-4 py-2 border-b border-secondary-700 dark:border-secondary-dark-700", (striped || stripeColor) && 'border-none', dataColumnClassName, tableSizeClass)}
                                     >
                                         {col.render ? col.render(row[col.accessor], row) : String(row[col.accessor])}
                                     </td>
@@ -154,7 +154,7 @@ export function Table<T extends { id: any }>({
                 </tbody>
             </table>
             {
-                caption && captionPosition === 'bottom' && <p className={cn("text-center text-sm font-medium mt-1", captionClassName)}>{caption}</p>
+                caption && captionPosition === 'bottom' && <p className={cn("text-center text-sm font-medium mt-1 dark:text-white", captionClassName)}>{caption}</p>
             }
         </div>
     );

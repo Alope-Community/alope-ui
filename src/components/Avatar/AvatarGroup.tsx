@@ -28,7 +28,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
                 </div>
             ))}
             {remaining > 0 && (
-                <div className={cn('flex items-center justify-center bg-gray-300 text-gray-700 font-medium', overlap,
+                <div className={cn('flex items-center justify-center bg-secondary dark:bg-secondary-dark font-medium', overlap,
                     size === 'sm' && 'w-8 h-8 text-xs rounded-full',
                     size === 'md' && 'w-12 h-12 text-sm rounded-full',
                     size === 'lg' && 'w-16 h-16 text-base rounded-full'

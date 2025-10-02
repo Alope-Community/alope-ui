@@ -22,7 +22,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     showArrow = true,
     placement = 'top',
     offset = 8,
-    bgColor = 'bg-gray-800',
+    bgColor = 'bg-gray-800 dark:bg-gray-600',
     isOpen: controlledIsOpen,
     onOpenChange,
     disabled = false,
@@ -86,7 +86,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
             {children}
             <div
                 className={cn(
-                    `absolute text-white text-xs rounded py-1 px-2 z-10 transition-all ${bgColor}`,
+                    `absolute text-white text-[.70rem] font-medium tracking-tight rounded py-1 px-2 z-10 transition-all ${bgColor}`,
                     isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'
                 )}
                 style={tooltipStyle}

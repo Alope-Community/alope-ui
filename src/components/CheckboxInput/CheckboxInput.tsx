@@ -74,9 +74,9 @@ export const CheckboxInput = React.forwardRef<HTMLInputElement, CheckboxProps>(
           />
           <span
             className={cn(
-              'w-5 h-5 rounded border border-gray-300 flex items-center justify-center transition-colors duration-200',
+              'w-5 h-5 rounded border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-200',
               {
-                'bg-primary border-primary': isChecked || indeterminate,
+                'bg-primary border-primary dark:bg-primary-dark dark:border-primary-dark': isChecked || indeterminate,
               },
               checkboxClassName
             )}
@@ -108,9 +108,9 @@ export const CheckboxInput = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
         <div className="flex flex-col gap-1">
           {children}
-          {label && <span className={cn('font-medium text-sm', labelClassName)}>{label}</span>}
+          {label && <span className={cn('font-medium text-sm dark:text-white', labelClassName)}>{label}</span>}
           {description && (
-            <span className={cn('text-secondary-700 text-sm', descriptionClassName)}>{description}</span>
+            <span className={cn('text-secondary-700 text-sm dark:text-secondary-dark', descriptionClassName)}>{description}</span>
           )}
         </div>
       </label>

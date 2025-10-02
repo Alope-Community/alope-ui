@@ -1,6 +1,9 @@
 import { Button, Card } from "./components";
+import { useTheme } from "./context/ThemeContext";
 
 function App() {
+  const { theme, toggleTheme } = useTheme();
+
   const docs = [
     { label: "Button", to: "/button", description: "Interactive button components." },
     { label: "Badge", to: "/badge", description: "Small count or status indicators." },
@@ -28,14 +31,18 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/25 via-white to-blue-100 p-10">
+    <div className="p-10 space-y-12 min-h-screen bg-gradient-to-br from-primary/25 to-blue-100 dark:from-gray-900 dark:to-gray-700">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-6">
-          Welcome to <span className="text-primary">ALOPE UI Library</span>
+        <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white mb-6">
+          Welcome to <span className="text-primary dark:text-primary-dark">ALOPE UI Library</span>
         </h1>
-        <p className="text-gray-600 mb-10 text-lg">
+        <p className="text-gray-600 dark:text-gray-300 mb-10 text-lg">
           Explore our beautifully designed components below:
         </p>
+
+        <Button onClick={toggleTheme} className="absolute top-10 right-10">
+          Toggle {theme.charAt(0).toUpperCase() + theme.slice(1)} Mode
+        </Button>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {docs.map(({ label, to, description }) => (
@@ -49,7 +56,9 @@ function App() {
                   Go to Docs
                 </Button>
               }
-              containerClassName="hover:shadow-md transition-shadow"
+              titleClassName="dark:text-white"
+              descriptionClassName="dark:text-secondary"
+              containerClassName="hover:shadow-md transition-shadow dark:bg-gray-800 dark:border dark:border-gray-700"
             />
           ))}
         </div>

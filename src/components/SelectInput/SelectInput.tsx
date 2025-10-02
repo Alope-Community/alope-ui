@@ -17,39 +17,42 @@ export type SelectInputProps = {
 
 export const SelectInput: React.FC<SelectInputProps> = ({ label, error, labelClassName, errorClassName, customClassNames, ...props }) => {
   const defaultClassNames: ClassNamesConfig<SelectOptionType, boolean, GroupBase<SelectOptionType>> = {
+    clearIndicator: () => cn(
+      "hover:cursor-pointer hover:!text-error dark:hover:!text-error-dark"
+    ),
     control: ({ isFocused }) => cn(
-      `!w-full !border !rounded-md !shadow-sm !sm:text-sm !min-h-[38px]`,
+      `!w-full !border !rounded-md !shadow-sm !sm:text-sm !min-h-[38px] !bg-transparent`,
       error
-        ? '!border-error'
+        ? isFocused ? 'border-primary !ring-1 !ring-primary' : '!border-error dark:!border-error-dark'
         : isFocused
           ? 'border-primary !ring-1 !ring-primary'
-          : '!border-secondary'
+          : '!border-secondary dark:!border-secondary-dark'
     ),
     option: ({ isFocused, isSelected }) =>
       `!px-4 !py-2 !cursor-pointer ${isSelected
         ? '!bg-primary !text-white'
         : isFocused
-          ? '!bg-primary/30'
-          : '!bg-white'
+          ? '!bg-primary/30 dark:!bg-primary-dark/30'
+          : '!bg-white dark:!bg-gray-700'
       }`,
-    multiValue: () => '!bg-primary/30 !rounded-md !flex !items-center !mr-1',
-    multiValueLabel: () => '!text-primary-700 !text-sm !px-2 !py-0.5',
+    multiValue: () => '!bg-primary-30 dark:!bg-primary-dark-30-50 !rounded-md !flex !items-center !mr-1',
+    multiValueLabel: () => '!text-primary-700 dark:!text-primary-dark-30-20 !text-sm !px-2 !py-0.5',
     multiValueRemove: () =>
       '!text-primary-700 !hover:bg-primary/30 !hover:text-primary-700 !rounded-r-md !px-1 !cursor-pointer',
-    menu: () => '!mt-1 !border-secondary !bg-white !rounded-md !shadow-lg !z-10',
-    input: () => '!text-gray-900',
+    menu: () => '!mt-1 dark:!text-white !border-secondary dark:!border-secondary-dark !bg-white dark:!bg-gray-700 !rounded-md !shadow-lg !z-10',
+    input: () => '!text-gray-900 dark:!text-white',
     placeholder: () => '!text-gray-400',
-    singleValue: () => '!text-gray-900',
+    singleValue: () => '!text-gray-900 dark:!text-white',
   }
 
   return (
     <div className="w-full">
-      {label && <label className={cn("block text-sm font-medium text-gray-700 mb-1", labelClassName)}>{label}</label>}
+      {label && <label className={cn("block text-sm font-medium dark:text-white mb-1", labelClassName)}>{label}</label>}
       <Select
         classNames={{ ...defaultClassNames, ...customClassNames }}
         {...props}
       />
-      {error && <p className={cn("mt-1 text-sm text-[var(--color-error)]", errorClassName)}>{error}</p>}
+      {error && <p className={cn("mt-1 text-sm text-error", errorClassName)}>{error}</p>}
     </div>
   )
 }

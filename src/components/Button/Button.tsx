@@ -15,42 +15,42 @@ const ButtonRadius = {
 
 export const ButtonVariantsMap = {
   primary: {
-    solid: 'bg-primary text-white hover:bg-primary/90',
-    outline: 'border border-primary text-primary hover:bg-primary/10',
-    ghost: 'text-primary hover:bg-primary/10',
-    plain: 'text-primary',
-  },
-  error: {
-    solid: 'bg-error text-white hover:bg-error/90',
-    outline: 'border border-error text-error hover:bg-error/10',
-    ghost: 'text-error hover:bg-error/10',
-    plain: 'text-error',
-  },
-  warning: {
-    solid: 'bg-warning text-white hover:bg-warning/90',
-    outline: 'border border-warning text-warning hover:bg-warning/10',
-    ghost: 'text-warning hover:bg-warning/10',
-    plain: 'text-warning',
-  },
-  success: {
-    solid: 'bg-success text-white hover:bg-success/90',
-    outline: 'border border-success text-success hover:bg-success/10',
-    ghost: 'text-success hover:bg-success/10',
-    plain: 'text-success',
-  },
-  info: {
-    solid: 'bg-info text-white hover:bg-info/90',
-    outline: 'border border-info text-info hover:bg-info/10',
-    ghost: 'text-info hover:bg-info/10',
-    plain: 'text-info',
+    solid: 'bg-primary text-white hover:bg-primary-dark dark:bg-primary-dark dark:hover:bg-primary-dark/70',
+    outline: 'border border-primary text-primary hover:bg-primary-20 dark:bg-primary-dark/30 dark:border-primary-dark dark:text-white dark:hover:bg-primary-dark/70',
+    ghost: 'text-primary hover:bg-primary-30 dark:text-primary-dark dark:hover:bg-primary-dark/70 dark:hover:text-white',
+    plain: 'text-primary dark:text-primary-dark',
   },
   secondary: {
-    solid: 'bg-gray-200 text-black hover:bg-gray-300',
-    outline: 'border border-gray-300 text-black hover:bg-gray-100',
-    ghost: 'text-black hover:bg-gray-100',
-    plain: 'text-black',
+    solid: 'bg-secondary text-black hover:bg-secondary-dark/80 dark:bg-secondary-dark dark:text-white dark:hover:bg-secondary-dark/70',
+    outline: 'border border-secondary text-black hover:bg-secondary-20 dark:bg-secondary-dark/30 dark:border-secondary-dark dark:text-white dark:hover:bg-secondary-dark/70',
+    ghost: 'text-black hover:bg-secondary-30 dark:text-white dark:hover:bg-secondary-dark/70',
+    plain: 'text-black dark:text-white',
   },
-}
+  success: {
+    solid: 'bg-success text-white hover:bg-success-dark dark:bg-success-dark dark:hover:bg-success-dark/70',
+    outline: 'border border-success text-success hover:bg-success-20 dark:bg-success-dark/30 dark:border-success-dark dark:text-white dark:hover:bg-success-dark/70',
+    ghost: 'text-success hover:bg-success-30 dark:text-success-dark dark:hover:bg-success-dark/70 dark:hover:text-white',
+    plain: 'text-success dark:text-success-dark',
+  },
+  warning: {
+    solid: 'bg-warning text-white hover:bg-warning-dark dark:bg-warning-dark dark:hover:bg-warning-dark/70',
+    outline: 'border border-warning text-warning hover:bg-warning-20 dark:bg-warning-dark/30 dark:border-warning-dark dark:text-white dark:hover:bg-warning-dark/70',
+    ghost: 'text-warning hover:bg-warning-30 dark:text-warning-dark dark:hover:bg-warning-dark/70 dark:hover:text-white',
+    plain: 'text-warning dark:text-warning-dark',
+  },
+  error: {
+    solid: 'bg-error text-white hover:bg-error-dark dark:bg-error-dark dark:hover:bg-error-dark/70',
+    outline: 'border border-error text-error hover:bg-error-20 dark:bg-error-dark/30 dark:border-error-dark dark:text-white dark:hover:bg-error-dark/70',
+    ghost: 'text-error hover:bg-error-30 dark:text-error-dark dark:hover:bg-error-dark/70 dark:hover:text-white',
+    plain: 'text-error dark:text-error-dark',
+  },
+  info: {
+    solid: 'bg-info text-white hover:bg-info-dark dark:bg-info-dark dark:hover:bg-info-dark/70',
+    outline: 'border border-info text-info hover:bg-info-20 dark:bg-info-dark/30 dark:border-info-dark dark:text-white dark:hover:bg-info-dark/70',
+    ghost: 'text-info hover:bg-info-30 dark:text-info-dark dark:hover:bg-info-dark/70 dark:hover:text-white',
+    plain: 'text-info dark:text-info-dark',
+  },
+};
 
 export type VariantType = keyof typeof ButtonVariantsMap
 export type Variant = keyof typeof ButtonVariantsMap[VariantType]
@@ -93,7 +93,7 @@ export const Button: React.FC<ButtonProps> = ({
   suffixIcon,
   className
 }) => {
-  
+
   const buttonBorderClass = ButtonRadius[borderType]
   const variantClass = getVariantClasses(variant, variantType)
   const sizeClass = ButtonSizes[size] || ''

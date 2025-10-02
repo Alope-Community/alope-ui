@@ -8,12 +8,12 @@ const SpinnerSize = {
 }
 
 const SpinnerColor = {
-    primary: 'border-primary',
-    error: 'border-error',
-    warning: 'border-warning',
-    success: 'border-success',
-    info: 'border-info',
-    secondary: 'border-secondary'
+    primary: 'border-primary dark:border-primary-dark',
+    error: 'border-error dark:border-error-dark',
+    warning: 'border-warning dark:border-warning-dark',
+    success: 'border-success dark:border-success-dark',
+    info: 'border-info dark:border-info-dark',
+    secondary: 'border-secondary dark:border-secondary-dark'
 }
 
 export type SpinnerProps = {
@@ -39,7 +39,7 @@ export const Spinner: React.FC<SpinnerProps> = ({
 
     return (
         <span
-            className={cn(`flex rounded-full animate-spin ${spinnerSize} ${spinnerColor} border-t-transparent`, customClassName)}
+            className={cn(spinnerSize, spinnerColor, `flex rounded-full animate-spin`, customClassName, 'border-t-transparent dark:border-t-transparent')}
             style={{ animationDuration, borderWidth }}
         >
         </span>

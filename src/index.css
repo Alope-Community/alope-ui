@@ -2,13 +2,26 @@
 
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-    --color-success: #50C878;
-    --color-info: #0096FF;
-    --color-warning: #FFAC1C;
-    --color-error: #F87171;
     --color-primary: #6366F1;
+    --color-primary-dark: #4338CA;
+
+    --color-success: #50C878;
+    --color-success-dark: #3C9C5A;
+
+    --color-info: #0096FF;
+    --color-info-dark: #0070C0;
+
+    --color-warning: #FFAC1C;
+    --color-warning-dark: #CC8700;
+
+    --color-error: #F87171;
+    --color-error-dark: #DC2626;
+
     --color-secondary: #D1D5DB;
+    --color-secondary-dark: #9CA3AF;
 
     --color-primary-700: #4338CA;
     --color-success-700: #3C9C5A;
@@ -17,28 +30,90 @@
     --color-error-700: #DC2626;
     --color-secondary-700: #9CA3AF;
 
+    --color-primary-dark-700: #2B2A85;
+    --color-success-dark-700: #2F7A49;
+    --color-info-dark-700: #005A9C;
+    --color-warning-dark-700: #996F00;
+    --color-error-dark-700: #9F2424;
+    --color-secondary-dark-700: #6E7281;
+
+    /* Light 30% variants */
+    --color-primary-30: #A6B8FF;
     --color-success-30: #C2E6D3;
     --color-info-30: #B8DFFF;
     --color-warning-30: #FFE2B2;
     --color-error-30: #FECACA;
-    --color-primary-30: #A6B8FF;
     --color-secondary-30: #E4E7EC;
 
+    /* Dark 30% variants */
+    --color-primary-dark-30: #9B94F6;
+    --color-success-dark-30: #97D5A6;
+    --color-info-dark-30: #74B9EB;
+    --color-warning-dark-30: #F0CF6B;
+    --color-error-dark-30: #F28A8A;
+    --color-secondary-dark-30: #D1D5DD;
+
+    --color-primary-30-50: #B3BCFF;
+    --color-primary-dark-30-50: #A6A4FD;
+    --color-primary-dark-30-20: #2D2E48;
+
+    --color-success-30-50: #CEEBDC;
+    --color-success-dark-30-50: #A3DAAF;
+    --color-success-dark-30-20: #2C3E40;
+
+    --color-info-30-50: #C4E7FF;
+    --color-info-dark-30-50: #7CC3F4;
+    --color-info-dark-30-20: #2A3F5D;
+
+    --color-warning-30-50: #FFEDCC;
+    --color-warning-dark-30-50: #F6D88A;
+    --color-warning-dark-30-20: #544A27;
+
+    --color-error-30-50: #FEBEBD;
+    --color-error-dark-30-50: #F89B9B;
+    --color-error-dark-30-20: #5E2C2C;
+
+    --color-secondary-30-50: #EBEFF5;
+    --color-secondary-dark-30-50: #D7DBE2;
+    --color-secondary-dark-30-20: #2C313E;
+
+    --color-flash-light-0: hsla(201, 20%, 70%, 0.6);
+    --color-flash-light-100: hsla(200, 20%, 85%, 0.6);
+
+    --background-shimmer-light: linear-gradient(90deg,
+            hsla(200, 20%, 75%, 0.7) 25%,
+            hsla(200, 20%, 92%, 0.9) 50%,
+            hsla(200, 20%, 75%, 0.7) 75%);
+
+    --color-flash-dark-0: hsla(220, 10%, 30%, 0.6);
+    --color-flash-dark-100: hsla(220, 10%, 45%, 0.6);
+
+    --background-shimmer-dark: linear-gradient(90deg,
+            hsla(220, 10%, 35%, 0.7) 25%,
+            hsla(220, 10%, 50%, 0.9) 50%,
+            hsla(220, 10%, 35%, 0.7) 75%);
 }
 
 @layer components {
     @keyframes flash-anim {
         0% {
-            background-color: hsla(201, 20%, 70%, 0.6);
+            background-color: var(--flash-anim-start);
         }
 
         100% {
-            background-color: hsla(200, 20%, 85%, 0.6);
+            background-color: var(--flash-anim-end);
         }
     }
 
     .flash {
         animation: flash-anim 800ms linear infinite alternate;
+        --flash-anim-start: var(--color-flash-light-0);
+        --flash-anim-end: var(--color-flash-light-100);
+    }
+
+    .dark .flash {
+        --flash-anim-start: var(--color-flash-dark-0);
+        --flash-anim-end: var(--color-flash-dark-100);
     }
 
     @keyframes shimmer-anim {
@@ -54,10 +129,15 @@
     .shimmer {
         position: relative;
         overflow: hidden;
-        background: linear-gradient(90deg,
-                hsla(200, 20%, 75%, 0.7) 25%,
-                hsla(200, 20%, 92%, 0.9) 50%,
-                hsla(200, 20%, 75%, 0.7) 75%);
+        background: var(--background-shimmer-light);
+        background-size: 200% 100%;
+        animation: shimmer-anim 2.5s infinite linear;
+    }
+
+    .dark .shimmer {
+        position: relative;
+        overflow: hidden;
+        background: var(--background-shimmer-dark);
         background-size: 200% 100%;
         animation: shimmer-anim 2.5s infinite linear;
     }
