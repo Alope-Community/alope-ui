@@ -27,7 +27,8 @@ function App() {
     { label: "Textarea", to: "/textarea", description: "Multi-line text input fields." },
     { label: "Avatar", to: "/avatar", description: "Displays user profile images or initials." },
     { label: "File Upload", to: "/file-upload", description: "Allow users to upload files." },
-    { label: "Tabs", to: "/tabs", description: "Used to navigate between different sections." }
+    { label: "Tabs", to: "/tabs", description: "Used to navigate between different sections." },
+    { label: "Collection", to: "/collection", description: "A component to display a collection of items." }
   ];
 
   return (
