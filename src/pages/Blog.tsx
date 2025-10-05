@@ -19,20 +19,15 @@ const BlogPage = () => {
          <aside className="order-2 md:order-1 md:col-span-1 space-y-6 md:sticky  md:top-20 h-fit">
   <div className="p-6">
   
-    <img
-      src="/img/svg/logo.svg"
-      alt="Alope UI Logo"
-      className="w-24 h-24 mb-2 transform rotate-7"
-    />
 
-
-    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
+    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-">
       Alope UI Blog
     </h2>
-    <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-      Stay updated with the latest tutorials, design trends, and community 
-      news from <span className="font-semibold text-[#80C41C]">ALOPE UI</span>.
-    </p>
+  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-justify tracking-wide">
+  Stay updated with the latest tutorials, design trends, and community 
+   from <span className="font-semibold text-[#80C41C]">ALOPE UI</span>.
+</p>
+
   </div>
 
   <div className="px-6">
