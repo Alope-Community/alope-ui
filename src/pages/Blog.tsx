@@ -1,37 +1,71 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
-import blog from "../data/blog.json";
+import blogData from "../data/blog.json";
 import { TextInput } from "../components/TextInput/TextInput";
+import Navbar from "../components/Navbar";
+
+interface Blog {
+  id: number;
+  title: string;
+  desc: string;
+  author: string;
+  published: string;
+  tags: string[];
+}
 
 const BlogPage = () => {
   const [darkMode] = useState(false);
+  const blogs: Blog[] = blogData as Blog[];
 
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="dark:bg-gray-900 min-h-screen text-gray-900 dark:text-gray-100 transition-colors duration-300 pt-10">
         <Navbar onToggleSidebar={() => {}} />
 
-        <main className="container mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <main className="container mx-auto px-4 sm:px-20 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* Sidebar */}
           <aside className="order-2 md:order-1 md:col-span-1 space-y-6 md:sticky md:top-20 h-fit">
-            <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
-              <h2 className="font-bold text-black dark:text-white text-lg">
-                ALOPE UI BLOG
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                Alope UI Blog
               </h2>
-              <p className="text-sm mt-2 text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-justify tracking-wide">
                 Stay updated with the latest tutorials, design trends, and
-                community news from ALOPE UI.
+                community from{" "}
+                <span className="font-semibold text-[#80C41C]">ALOPE UI</span>.
               </p>
+            </div>
+
+            <div className="px-6">
+              <div className="p-4 rounded-lg bg-gray-100 dark:bg-gray-800">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                  Subscribe to our Newsletter
+                </h3>
+                <TextInput
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  aria-label="Email address"
+                />
+                <button
+                  className="w-full bg-[#80C41C] text-white mt-3 text-sm font-semibold py-2 rounded-md 
+                             hover:bg-[#80C41C]/90 transition"
+                >
+                  Subscribe
+                </button>
+              </div>
             </div>
           </aside>
 
-          <section className="order-1 md:order-2 md:col-span-2 space-y-8">
-            {blog.map((blog) => (
+          {/* Blog List */}
+          <section className="order-1 md:order-2 md:col-span-3 space-y-8">
+            {blogs.map((blog) => (
               <article
                 key={blog.id}
-                className=" border-b border-gray-300 dark:border-gray-700 transition last:border-b-0"
+                className="border-b border-gray-300 dark:border-gray-700 pb-6 last:border-none transition"
               >
+                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-3">
                   {blog.tags.map((tag, j) => (
                     <span
@@ -43,15 +77,19 @@ const BlogPage = () => {
                   ))}
                 </div>
 
+                {/* Title */}
                 <Link to={`/detailblog/${blog.id}`}>
                   <h3 className="text-xl sm:text-2xl font-bold hover:underline cursor-pointer">
                     {blog.title}
                   </h3>
                 </Link>
 
+                {/* Description */}
                 <p className="mt-3 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
                   {blog.desc}
                 </p>
+
+                {/* Meta Info */}
                 <div className="mt-5 flex flex-wrap justify-between items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                   <span>{blog.author}</span>
                   <span>{blog.published}</span>
@@ -59,51 +97,6 @@ const BlogPage = () => {
               </article>
             ))}
           </section>
-
-          <aside className="order-3 md:order-3 md:col-span-1 space-y-6 md:sticky md:top-20 self-start">
-            <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
-              <h2 className="font-bold text-black dark:text-white text-lg">
-                RECOMMENDED TOPICS
-              </h2>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {[
-                  "React",
-                  "Vue",
-                  "Tailwind",
-                  "Next.js",
-                  "Figma",
-                  "Open Source",
-                ].map((topic, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-md text-xs font-medium bg-[#80C41C]/10 text-[#80C41C]"
-                  >
-                    #{topic}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-5 border border-gray-300 rounded-md dark:bg-gray-800 dark:border-gray-700">
-              <h2 className="font-bold text-black dark:text-white text-lg">
-                COMMUNITY AUTHORS
-              </h2>
-              <ul className="mt-3 space-y-2 text-sm">
-                <li>
-                  <strong className="text-[#80C41C]">Firdan Fauzan</strong> –
-                  Frontend Developer
-                </li>
-                <li>
-                  <strong className="text-[#80C41C]">Alope Team</strong> – Open
-                  Source
-                </li>
-                <li>
-                  <strong className="text-[#80C41C]">Guest Author</strong> –
-                  UI/UX Designer
-                </li>
-              </ul>
-            </div>
-          </aside>
         </main>
 
         <Footer />
