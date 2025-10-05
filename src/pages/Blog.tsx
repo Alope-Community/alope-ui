@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
 import blog from "../data/blog.json";
+import { TextInput } from "../components/TextInput/TextInput";
 
 const BlogPage = () => {
   const [darkMode] = useState(false);
@@ -29,7 +30,7 @@ const BlogPage = () => {
             {blog.map((blog) => (
               <article
                 key={blog.id}
-                className="p-6 border-b border-gray-300 dark:border-gray-700 transition last:border-b-0"
+                className=" border-b border-gray-300 dark:border-gray-700 transition last:border-b-0"
               >
                 <div className="flex flex-wrap gap-2 mb-3">
                   {blog.tags.map((tag, j) => (
