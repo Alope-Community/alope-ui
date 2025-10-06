@@ -96,16 +96,23 @@ export default App;
 
 - [🪗 Accordion](#accordion) - Collapsible content panels
 - [🍞 Breadcrumb](#breadcrumb) - Navigation trail
+- [📑 Tabs](#tabs) - Tabbed navigation interface
+- [📄 Pagination](#pagination) - Page navigation controls
 
 ### Feedback Components
 
 - [⚠️ Alert](#alert) - Status messages and notifications
 - [🍞 Toast](#toast) - Temporary notification messages
+- [💡 Tooltip](#tooltip) - Contextual information on hover
+- [⏳ Spinner](#spinner) - Loading indicators
+- [💀 Skeleton](#skeleton) - Content loading placeholders
 
 ### Data Display
 
 - [🏷️ Badge](#badge) - Status indicators and labels
 - [🃏 Card](#card) - Content containers
+- [📊 Table](#table) - Tabular data display
+- [👤 Avatar](#avatar) - User profile images
 
 ### Form Controls
 
@@ -113,6 +120,9 @@ export default App;
 - [🔘 Radio Input](#radio-input) - Single choice selections
 - [📝 Select Input](#select-input) - Dropdown selections
 - [⌨️ Text Input](#text-input) - Text input fields
+- [📝 Textarea](#textarea) - Multi-line text input
+- [🔄 Toggle](#toggle) - Switch controls
+- [📁 File Upload](#file-upload) - File selection and upload
 
 ### Interactive Elements
 
