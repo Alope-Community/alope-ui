@@ -21,19 +21,40 @@ function Preview({ children }: { children: React.ReactNode }) {
 
 const Comparation: React.FC = () => {
   return (
-    <div className="relative px-4 md:px-10 lg:px-20 bg-white dark:bg-gray-900 transition-colors duration-500 pt-10 pb-20">
-      <div className="max-w-6xl mx-auto">
+    <section
+      className="relative px-4 md:px-10 lg:px-20 transition-colors duration-500 pt-10 pb-24 mb-20 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(0deg, rgba(132, 252, 178, 0.1) 20.79%, rgba(121, 249, 142, 0.26) 40.92%, rgba(171, 238, 204, 0) 70.35%)",
+      }}
+    >
+      <div
+        className="absolute bottom-0 left-0 w-full h-20 dark:block hidden pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(17,24,39,1) 100%)",
+        }}
+      ></div>
+      <div
+        className="absolute bottom-0 left-0 w-full h-20 dark:hidden block pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)",
+        }}
+      ></div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
           Components, meet <span className="text-[#80C41C]">Alope UI</span> &{" "}
           <span className="text-[#80C41C]">React + Tailwind</span>
         </h1>
+
         <p className="mt-4 text-base md:text-lg text-gray-600 dark:text-gray-300">
           Alope UI provides <strong>ready-to-use components</strong> such as
           buttons, cards, and modals. Meanwhile, React + Tailwind gives you{" "}
           <strong>full control</strong> with utility classes. Both have their
           own advantages depending on your needs.
         </p>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mt-10">
           <div>
             <h2 className="text-lg font-semibold mb-4">Alope UI</h2>
@@ -87,7 +108,7 @@ const Comparation: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

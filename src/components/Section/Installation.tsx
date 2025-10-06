@@ -1,5 +1,5 @@
 "use client";
-
+import { Link } from "react-router-dom";
 import CodeBlock from "../CodeBlock";
 
 const Installation: React.FC = () => {
@@ -13,17 +13,17 @@ const Installation: React.FC = () => {
           Jump right into building with Alope UI — use the CDN, install it via
           package manager, or download the source code.
         </p>
-        <a
-          href="/docs/installation"
+        <Link
+          to="/docs/installation"
           className="inline-block mt-6 text-[#80C41C] hover:underline font-medium"
         >
           Read installation docs →
-        </a>
+        </Link>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-16 max-w-6xl mx-auto">
-        <div>
-          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+      <div className="mt-16 max-w-6xl mx-auto">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
             Install via package manager
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -33,27 +33,6 @@ const Installation: React.FC = () => {
           <div className="space-y-4">
             <CodeBlock code={`npm install alope-ui`} lang="bash" label="npm" />
             <CodeBlock code={`yarn add alope-ui`} lang="bash" label="yarn" />
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-            Include via CDN
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
-            When you only need to include compiled CSS or JS, you can use jsDelivr.
-          </p>
-          <div className="space-y-4">
-            <CodeBlock
-              code={`<link href="https://cdn.jsdelivr.net/npm/alope-ui/dist/alope.min.css" rel="stylesheet" />`}
-              lang="html"
-              label="html"
-            />
-            <CodeBlock
-              code={`<script src="https://cdn.jsdelivr.net/npm/alope-ui/dist/alope.min.js"></script>`}
-              lang="js"
-              label="js"
-            />
           </div>
         </div>
       </div>

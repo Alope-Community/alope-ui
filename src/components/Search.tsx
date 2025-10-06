@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Modal from "./ModalSearch";
-import searchData from "./DataSearch.json";
+import searchData from "../data/DataSearch.json";
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
@@ -96,7 +97,7 @@ useEffect(() => {
         <div className="w-full sm:w-75 max-w-md mx-auto">
           <button
             type="button"
-            className="hidden sm:flex w-full relative items-center p-1 ps-10 pe-16 text-sm rounded-lg bg-green-200 dark:bg-gray-800 text-gray-500 dark:text-white dark:border-gray-600 shadow-sm focus:outline-none focus:ring-0 cursor-pointer hover:shadow-md"
+            className="hidden sm:flex w-full relative items-center p-1 ps-10 pe-16 text-sm rounded-md bg-white border-gray-300 dark:bg-gray-800 text-gray-500 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 cursor-pointer shadow-sm"
             onClick={openModal}
           >
             <svg
@@ -117,7 +118,7 @@ useEffect(() => {
 
             <span className="text-gray-500 dark:text-gray-200">Search</span>
 
-            <kbd className="absolute top-1/2 right-2 -translate-y-1/2 px-1 py-0.5 text-xs font-semibold text-gray-500 bg-green-200 rounded-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-500">
+            <kbd className="absolute top-1/2 right-2 -translate-y-1/2 px-1 py-0.5 text-xs font-semibold text-gray-500 bg-white rounded-lg dark:bg-gray-800 dark:text-gray-100 dark:border-gray-500">
               Ctrl+K
             </kbd>
           </button>
@@ -202,9 +203,9 @@ useEffect(() => {
           {query ? (
             <>
               {filteredData.map((item, idx) => (
-                <a
+                <Link
                   key={idx}
-                  href={item.url}
+                  to={item.url}
                   className="block p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
                   <h4 className="font-medium">
@@ -213,7 +214,7 @@ useEffect(() => {
                   <p className="text-xs text-gray-500 dark:text-gray-400">
                     {highlightText(item.description, query)}
                   </p>
-                </a>
+                </Link>
               ))}
 
               {filteredData.length === 0 && (
