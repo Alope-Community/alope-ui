@@ -55,7 +55,7 @@ export const ButtonVariantsMap = {
 export type VariantType = keyof typeof ButtonVariantsMap
 export type Variant = keyof typeof ButtonVariantsMap[VariantType]
 
-const getVariantClasses = (
+export const getVariantClasses = (
   variant: Variant,
   variantType: VariantType
 ): string => {
