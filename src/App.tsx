@@ -28,7 +28,8 @@ function App() {
     { label: "Avatar", to: "/avatar", description: "Displays user profile images or initials." },
     { label: "File Upload", to: "/file-upload", description: "Allow users to upload files." },
     { label: "Tabs", to: "/tabs", description: "Used to navigate between different sections." },
-    { label: "Collection", to: "/collection", description: "A component to display a collection of items." }
+    { label: "Collection", to: "/collection", description: "A component to display a collection of items." },
+    { label: "FAB", to: "/fab", description: "A floating button for primary actions." }
   ];
 
   return (
