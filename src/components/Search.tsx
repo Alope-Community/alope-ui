@@ -206,6 +206,10 @@ useEffect(() => {
                 <Link
                   key={idx}
                   to={item.url}
+                  onClick={() => {
+      closeModal();
+      setQuery(""); // opsional: bersihkan input setelah klik
+    }}
                   className="block p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
                   <h4 className="font-medium">
