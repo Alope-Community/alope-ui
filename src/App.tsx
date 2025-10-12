@@ -30,7 +30,8 @@ function App() {
     { label: "Tabs", to: "/tabs", description: "Used to navigate between different sections." },
     { label: "Collection", to: "/collection", description: "A component to display a collection of items." },
     { label: "FAB", to: "/fab", description: "A floating button for primary actions." },
-    { label: "Bottom Navbar", to: "/bottom-navbar", description: "A navigation bar that appears at the bottom of the screen, typically used in mobile views." }
+    { label: "Bottom Navbar", to: "/bottom-navbar", description: "A navigation bar that appears at the bottom of the screen, typically used in mobile views." },
+    { label: "Grid", to: "/grid", description: "Create a grid layouts." }
   ];
 
   return (
