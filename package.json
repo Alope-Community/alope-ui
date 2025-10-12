@@ -1,11 +1,11 @@
 {
-  "name": "alope-ui-staging",
-  "description": "Alope UI Library Kit V3",
+  "name": "alope-ui",
+  "description": "Alope UI Library Kit",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Alope-Community/alope-ui.git"
   },
-  "version": "2.0.0",
+  "version": "1.1.6",
   "type": "module",
   "files": [
     "dist"
@@ -60,5 +60,8 @@
   "bugs": {
     "url": "https://github.com/Alope-Community/alope-ui/issues"
   },
-  "homepage": "https://github.com/Alope-Community/alope-ui#readme"
+  "homepage": "https://ui.alope.id/",
+  "directories": {
+    "lib": "lib"
+  }
 }

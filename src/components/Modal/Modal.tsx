@@ -40,22 +40,36 @@ export const Modal: React.FC<ModalProps> = ({
     if (!isOpen) return null
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+        <div
+            className="fixed inset-0 z-[999] flex items-center justify-center px-4"
+            role="dialog"
+            aria-modal="true"
+        >
+            <div
+                className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                onClick={overlayClose ? onClose : undefined}
+            />
+
             <div
                 className={cn(
-                    'bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-h-[90vh] overflow-y-auto transition-all',
+                    'relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-h-[90vh] overflow-y-auto transition-all',
                     sizeClasses[size],
                     className
                 )}
                 onClick={(e) => e.stopPropagation()}
             >
-                {title && (
+                {(title || showCloseButton) && (
                     <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
-                        <h2 className="text-lg font-semibold text-gray-800 dark:text-white">{title}</h2>
+                        {title && (
+                            <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+                                {title}
+                            </h2>
+                        )}
                         {showCloseButton && (
                             <button
                                 onClick={onClose}
                                 className="text-gray-500 hover:text-gray-800 transition dark:text-gray-400 dark:hover:text-white hover:cursor-pointer"
+                                aria-label="Close modal"
                             >
                                 ✕
                             </button>
@@ -64,10 +78,6 @@ export const Modal: React.FC<ModalProps> = ({
                 )}
                 <div className="p-4">{children}</div>
             </div>
-            {/* Overlay click to close */}
-            {
-                overlayClose && <div className="absolute inset-0 -z-10" onClick={onClose} />
-            }
         </div>
     )
 }
