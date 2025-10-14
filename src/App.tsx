@@ -31,7 +31,8 @@ function App() {
     { label: "Collection", to: "/collection", description: "A component to display a collection of items." },
     { label: "FAB", to: "/fab", description: "A floating button for primary actions." },
     { label: "Bottom Navbar", to: "/bottom-navbar", description: "A navigation bar that appears at the bottom of the screen, typically used in mobile views." },
-    { label: "Grid", to: "/grid", description: "Create a grid layouts." }
+    { label: "Grid", to: "/grid", description: "Create a grid layouts." },
+    { label: "Masonry", to: "/masonry", description: "Create a \"Masonry Grid\" layout." },
   ];
 
   return (
