@@ -1,9 +1,9 @@
 "use client";
 
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { Badge, Button, Card } from "alope-ui";
 import { CheckIcon } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function BadgeDocs() {
   const { theme } = useTheme();
@@ -19,8 +19,8 @@ export default function BadgeDocs() {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold mb-6">Badge</h2>
         <p>
-          The Badge component is used to display small pieces of information like
-          status, count, or labels.
+          The Badge component is used to display small pieces of information
+          like status, count, or labels.
         </p>
 
         {/* Import Section */}
@@ -29,57 +29,52 @@ export default function BadgeDocs() {
 
         {/* Props Section */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-        <div
-          className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
-            theme === "dark"
-              ? "bg-gray-800 border-gray-700"
-              : "bg-gray-50 border-gray-200"
-          }`}
-        >
-          <table className="w-full">
-            <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">variant</td>
-                <td className="p-3 border">
-                  'default' | 'success' | 'info' | 'warning' | 'error'
-                </td>
-                <td className="p-3 border">'default'</td>
-                <td className="p-3 border">Badge color variant</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">children</td>
-                <td className="p-3 border">ReactNode</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Badge content</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">isAbsolute</td>
-                <td className="p-3 border">boolean</td>
-                <td className="p-3 border">false</td>
-                <td className="p-3 border">Absolute positioning</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">position</td>
-                <td className="p-3 border">
-                  'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
-                </td>
-                <td className="p-3 border">'top-right'</td>
-                <td className="p-3 border">Position when absolute</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">icon</td>
-                <td className="p-3 border">ReactNode</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Custom icon</td>
-              </tr>
+              {[
+                [
+                  "variant",
+                  "'default' | 'success' | 'info' | 'warning' | 'error'",
+                  "'default'",
+                  "Badge color variant",
+                ],
+                ["children", "ReactNode", "undefined", "Badge content"],
+                ["isAbsolute", "boolean", "false", "Absolute positioning"],
+                [
+                  "position",
+                  "'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'",
+                  "'top-right'",
+                  "Position when absolute",
+                ],
+                ["icon", "ReactNode", "undefined", "Custom icon"],
+              ].map(([prop, type, def, desc]) => (
+                <tr
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
+                >
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -198,28 +193,28 @@ export default function BadgeDocs() {
         </div>
         <CodeBlock
           code={`<div className="grid grid-cols-2 gap-4 w-fit">
-  <Card containerClassName="relative p-8 bg-white dark:bg-gray-900">
+  <Card containerClassName="relative p-8">
     <Badge variant="success" position="top-left" isAbsolute>
       1
     </Badge>
     <span>Top Left</span>
   </Card>
 
-  <Card containerClassName="relative p-8 bg-white dark:bg-gray-900">
+  <Card containerClassName="relative p-8">
     <Badge variant="info" position="top-right" isAbsolute>
       2
     </Badge>
     <span>Top Right</span>
   </Card>
 
-  <Card containerClassName="relative p-8 bg-white dark:bg-gray-900">
+  <Card containerClassName="relative p-8">
     <Badge variant="warning" position="bottom-left" isAbsolute>
       3
     </Badge>
     <span>Bottom Left</span>
   </Card>
 
-  <Card containerClassName="relative p-8 bg-white dark:bg-gray-900">
+  <Card containerClassName="relative p-8">
     <Badge variant="error" position="bottom-right" isAbsolute>
       4
     </Badge>

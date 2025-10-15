@@ -1,7 +1,7 @@
 "use client";
 
-import CodeBlock from "../../components/CodeBlock";
-import { useTheme } from "../../context/ThemeContext";
+import CodeBlock from "../../../components/CodeBlock";
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function Installation() {
   const { theme } = useTheme();

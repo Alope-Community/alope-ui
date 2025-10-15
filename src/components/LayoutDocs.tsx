@@ -2,55 +2,31 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 import TableOfContents from "./TableOfContents";
 import { ToastProvider } from "alope-ui";
 import { useTheme } from "../context/ThemeContext";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useLayoutEffect } from "react";
 import Navbar from "../components/Layout/Navbar";
-
-interface NavItem {
-  name: string;
-  path: string;
-}
-
-interface NavSection {
-  title: string;
-  items: NavItem[];
-}
-
-const navSections: NavSection[] = [
-  {
-    title: "Getting Started",
-    items: [{ name: "Installation", path: "/docs/installation" }],
-  },
-  {
-    title: "Components",
-    items: [
-      { name: "Accordion", path: "/docs/accordion" },
-      { name: "Alert", path: "/docs/alert" },
-      { name: "Badge", path: "/docs/badge" },
-      { name: "Breadcrumb", path: "/docs/breadcrumb" },
-      { name: "Button", path: "/docs/button" },
-      { name: "Card", path: "/docs/card" },
-      { name: "Modal", path: "/docs/modal" },
-      { name: "Offcanvas", path: "/docs/offcanvas" },
-      { name: "Toast", path: "/docs/toast" },
-      { name: "Checkbox", path: "/docs/checkbox" },
-      { name: "Radio", path: "/docs/radio" },
-      { name: "Select", path: "/docs/select" },
-      { name: "TextInput", path: "/docs/textinput" },
-    ],
-  },
-];
+import { generateNavSections } from "../data/navSections";
+import { Spinner } from "alope-ui";
 
 export default function LayoutDocs() {
   const location = useLocation();
   const { theme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // Ambil versi dari URL, misalnya: /docs/v1.0.8/button → "v1.0.8"
+  const versionKey = location.pathname.split("/")[2];
+
+  // Gunakan memo agar tidak regenerate tiap render
+  const navSections = useMemo(
+    () => generateNavSections(versionKey),
+    [versionKey]
+  );
+
+  // Scroll ke atas setiap kali halaman berubah
   useLayoutEffect(() => {
     const main = document.querySelector("main");
-    if (main) {
-      main.scrollTo({ top: 0, behavior: "auto" });
-    }
+    if (main) main.scrollTo({ top: 0, behavior: "auto" });
   }, [location.pathname]);
 
   return (
@@ -61,8 +37,19 @@ export default function LayoutDocs() {
           : "bg-gray-50 text-gray-900"
       }`}
     >
-      {/* Navbar dengan tombol toggle */}
-      <Navbar onToggleSidebar={() => setSidebarOpen(true)} />
+      {/* Navbar */}
+      <Navbar
+        onToggleSidebar={() => setSidebarOpen(true)}
+        isLoading={isLoading}
+        setIsLoading={setIsLoading}
+      />
+
+      {/* Spinner overlay penuh layar */}
+      {isLoading && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <Spinner color="success" size="lg" />
+        </div>
+      )}
 
       {/* Wrapper utama */}
       <div className="flex-1 flex pt-16">
@@ -88,22 +75,30 @@ export default function LayoutDocs() {
                   {section.title}
                 </h2>
                 <div className="space-y-1">
-                  {section.items.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setSidebarOpen(false)}
-                      className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
-                        location.pathname === item.path
-                          ? "bg-[#80C41C] text-white font-semibold shadow-sm"
-                          : theme === "dark"
-                          ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
-                          : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {section.items.map((item) => {
+                    const fullPath = `/docs/${versionKey}/${item.path.replace(
+                      /^\/docs\/[^/]+\//,
+                      ""
+                    )}`;
+                    const isActive = location.pathname === fullPath;
+
+                    return (
+                      <Link
+                        key={item.path}
+                        to={fullPath}
+                        onClick={() => setSidebarOpen(false)}
+                        className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
+                          isActive
+                            ? "bg-[#80C41C] text-white font-semibold shadow-sm"
+                            : theme === "dark"
+                            ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
+                            : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -116,7 +111,7 @@ export default function LayoutDocs() {
           style={{ height: "calc(100vh - 64px)" }}
         >
           <ToastProvider>
-            <Outlet />
+            <Outlet key={versionKey} />{" "}
           </ToastProvider>
         </main>
 
@@ -189,22 +184,30 @@ export default function LayoutDocs() {
                   {section.title}
                 </h2>
                 <div className="space-y-1">
-                  {section.items.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setSidebarOpen(false)}
-                      className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
-                        location.pathname === item.path
-                          ? "bg-[#80C41C] text-white font-semibold shadow-sm"
-                          : theme === "dark"
-                          ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
-                          : "text-gray-700 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                  {section.items.map((item) => {
+                    const fullPath = `/docs/${versionKey}/${item.path.replace(
+                      /^\/docs\/[^/]+\//,
+                      ""
+                    )}`;
+                    const isActive = location.pathname === fullPath;
+
+                    return (
+                      <Link
+                        key={item.path}
+                        to={fullPath}
+                        onClick={() => setSidebarOpen(false)}
+                        className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
+                          isActive
+                            ? "bg-[#80C41C] text-white font-semibold shadow-sm"
+                            : theme === "dark"
+                            ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
+                            : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}

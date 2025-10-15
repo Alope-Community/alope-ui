@@ -50,7 +50,7 @@ export default function Hero() {
 
               <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center md:justify-start">
                 <Link
-                  to="/docs/installation"
+                  to="/docs/v1.0.8/installation"
                   className="flex items-center justify-center gap-x-1 py-2 px-5 text-white font-medium bg-[#80C41C] hover:bg-[#80C41C]/80 active:bg-gray-900 rounded-lg transition md:inline-flex w-full sm:w-auto"
                 >
                   Get started
