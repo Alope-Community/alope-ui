@@ -1,7 +1,10 @@
 [
   {
     "id": 1,
-    "tags": ["React", "Alope UI"],
+    "tags": [
+      "React",
+      "Alope UI"
+    ],
     "title": "Alope UI v1 Release: Build faster with our new design system",
     "desc": "Alope UI v1 is finally here! Crafted for developers and designers who want clean, scalable, and responsive UI components. Explore our roadmap and future updates.",
     "author": "Firdan Fauzan",
@@ -9,7 +12,11 @@
   },
   {
     "id": 2,
-    "tags": ["React", "Alope UI", "Components"],
+    "tags": [
+      "React",
+      "Alope UI",
+      "Components"
+    ],
     "title": "We just shipped 50+ ready-to-use components",
     "desc": "From cards to dashboards — discover more than 50+ components designed with Alope UI, fully customizable, and ready for your projects.",
     "author": "Alope Team",
@@ -17,7 +24,10 @@
   },
   {
     "id": 3,
-    "tags": ["Open Source", "Community"],
+    "tags": [
+      "Open Source",
+      "Community"
+    ],
     "title": "The future of Alope UI: roadmap & contributions",
     "desc": "Transparency is key. Here's a sneak peek into our roadmap and how you can contribute to building the future of Alope UI with us.",
     "author": "Alope Contributors",
