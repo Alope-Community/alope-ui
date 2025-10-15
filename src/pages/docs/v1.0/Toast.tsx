@@ -1,8 +1,8 @@
 "use client";
 
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { Button, useToast } from "alope-ui";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function ToastDocs() {
   const { addToast } = useToast();
@@ -20,8 +20,8 @@ export default function ToastDocs() {
         {/* Title */}
         <h2 className="text-4xl font-bold mb-6">Toast</h2>
         <p>
-          The Toast component provides brief, auto-dismissable messages to inform
-          users about actions or status updates.
+          The Toast component provides brief, auto-dismissable messages to
+          inform users about actions or status updates.
         </p>
 
         {/* Adding Provider */}
@@ -30,13 +30,19 @@ export default function ToastDocs() {
           First, import the <code>ToastProvider</code> and wrap your main
           application component (e.g. in <code>App.tsx</code>).
         </p>
-        <CodeBlock
-          code={`import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import { ToastProvider } from "alope-ui";
+        <CodeBlock code={`import { ToastProvider } from "alope-ui";`} />
 
-createRoot(document.getElementById("root")!).render(
+        <p>
+          Then, wrap your main application component with the provider (e.g. in
+          App.tsx or your entry file):
+        </p>
+        <CodeBlock
+          code={`import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import { ToastProvider } from 'alope-ui';
+
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ToastProvider>
       <App />
@@ -50,27 +56,25 @@ createRoot(document.getElementById("root")!).render(
         <p>
           Use the <code>useToast()</code> hook to trigger toasts in your app.
         </p>
-        <CodeBlock
-          code={`import { useToast } from "alope-ui";
-const { addToast } = useToast();`}
-        />
+        <CodeBlock code={`import { useToast } from "alope-ui";`} />
+        <CodeBlock code={`const { addToast } = useToast();`} />
 
         {/* Props Section */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-        <div className="overflow-x-auto mb-10">
-          <table
-            className={`w-full border rounded-lg shadow-sm text-sm transition-colors ${
-              theme === "dark"
-                ? "bg-gray-800 border-gray-700"
-                : "bg-white border-gray-200"
-            }`}
-          >
-            <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg">
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
@@ -95,15 +99,17 @@ const { addToast } = useToast();`}
                   "'topRight'",
                   "Toast position on screen",
                 ],
-              ].map(([prop, type, def, desc], i) => (
+              ].map(([prop, type, def, desc]) => (
                 <tr
-                  key={i}
-                  className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
-                  <td className="p-3 border font-mono">{prop}</td>
-                  <td className="p-3 border">{type}</td>
-                  <td className="p-3 border">{def}</td>
-                  <td className="p-3 border">{desc}</td>
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -119,7 +125,7 @@ const { addToast } = useToast();`}
               : "bg-white border-gray-200"
           }`}
         >
-          <div className="flex flex-wrap gap-4">
+          <div className="flex gap-4">
             <Button
               onClick={() =>
                 addToast({
@@ -131,6 +137,7 @@ const { addToast } = useToast();`}
             >
               Success Toast
             </Button>
+
             <Button
               onClick={() =>
                 addToast({
@@ -142,6 +149,7 @@ const { addToast } = useToast();`}
             >
               Error Toast
             </Button>
+
             <Button
               onClick={() =>
                 addToast({
@@ -153,6 +161,7 @@ const { addToast } = useToast();`}
             >
               Info Toast
             </Button>
+
             <Button
               onClick={() =>
                 addToast({
@@ -167,19 +176,63 @@ const { addToast } = useToast();`}
           </div>
         </div>
         <CodeBlock
-          code={`const { addToast } = useToast();
+          code={`import { useToast } from "alope-ui";
 
-<Button
-  onClick={() =>
-    addToast({
-      title: "Success",
-      message: "This is a success message!",
-      type: "success",
-    })
-  }
->
-  Success Toast
-</Button>`}
+const BasicExample = () => {
+  const { addToast } = useToast();
+
+  return (
+    <div className="flex gap-4">
+      <Button
+        onClick={() =>
+          addToast({
+            title: "Success",
+            message: "This is a success message!",
+            type: "success",
+          })
+        }
+      >
+        Success Toast
+      </Button>
+
+      <Button
+        onClick={() =>
+          addToast({
+            title: "Error",
+            message: "This is an error message!",
+            type: "error",
+          })
+        }
+      >
+        Error Toast
+      </Button>
+
+      <Button
+        onClick={() =>
+          addToast({
+            title: "Info",
+            message: "This is an info message!",
+            type: "info",
+          })
+        }
+      >
+        Info Toast
+      </Button>
+
+      <Button
+        onClick={() =>
+          addToast({
+            title: "Warning",
+            message: "This is a warning message!",
+            type: "warning",
+          })
+        }
+      >
+        Warning Toast
+      </Button>
+    </div>
+  );
+};`}
         />
 
         <h3 className="text-2xl font-semibold mt-10 mb-3">Outline Variant</h3>
@@ -201,8 +254,9 @@ const { addToast } = useToast();`}
                 })
               }
             >
-              Success Toast
+              Success Outline Toast
             </Button>
+
             <Button
               onClick={() =>
                 addToast({
@@ -213,46 +267,27 @@ const { addToast } = useToast();`}
                 })
               }
             >
-              Error Toast
-            </Button>
-            <Button
-              onClick={() =>
-                addToast({
-                  title: "Info",
-                  message: "This is an info message!",
-                  type: "info",
-                  variant: "outline",
-                })
-              }
-            >
-              Info Toast
-            </Button>
-            <Button
-              onClick={() =>
-                addToast({
-                  title: "Warning",
-                  message: "This is a warning message!",
-                  type: "warning",
-                  variant: "outline",
-                })
-              }
-            >
-              Warning Toast
+              Error Outline Toast
             </Button>
           </div>
         </div>
         <CodeBlock
-          code={`<Button
-  onClick={() =>
-    addToast({
-      title: "Success",
-      message: "This is a success message!",
-      type: "success",
-      variant: "outline",
-    })
-  }
->
+          code={`<Button onClick={() => addToast({
+  title: 'Success',
+  message: 'This is a success message!',
+  type: 'success',
+  variant: 'outline'
+})}>
   Success Outline Toast
+</Button>
+
+<Button onClick={() => addToast({
+  title: 'Error',
+  message: 'This is an error message!',
+  type: 'error',
+  variant: 'outline'
+})}>
+  Error Outline Toast
 </Button>`}
         />
 
@@ -278,38 +313,13 @@ const { addToast } = useToast();`}
             >
               Top Left Toast
             </Button>
-            <Button
-              onClick={() =>
-                addToast({
-                  title: "Top Right",
-                  message: "This toast appears at top right!",
-                  type: "error",
-                  variant: "outline",
-                  position: "topRight",
-                })
-              }
-            >
-              Top Right Toast
-            </Button>
-            <Button
-              onClick={() =>
-                addToast({
-                  title: "Bottom Left",
-                  message: "This toast appears at bottom left!",
-                  type: "info",
-                  variant: "outline",
-                  position: "bottomLeft",
-                })
-              }
-            >
-              Bottom Left Toast
-            </Button>
+
             <Button
               onClick={() =>
                 addToast({
                   title: "Bottom Right",
                   message: "This toast appears at bottom right!",
-                  type: "warning",
+                  type: "info",
                   variant: "outline",
                   position: "bottomRight",
                 })
@@ -320,18 +330,24 @@ const { addToast } = useToast();`}
           </div>
         </div>
         <CodeBlock
-          code={`<Button
-  onClick={() =>
-    addToast({
-      title: "Top Left",
-      message: "This toast appears at top left!",
-      type: "success",
-      variant: "outline",
-      position: "topLeft",
-    })
-  }
->
+          code={`<Button onClick={() => addToast({
+  title: 'Top Left',
+  message: 'This toast appears at top left!',
+  type: 'success',
+  variant: 'outline',
+  position: 'topLeft'
+})}>
   Top Left Toast
+</Button>
+
+<Button onClick={() => addToast({
+  title: 'Bottom Right',
+  message: 'This toast appears at bottom right!',
+  type: 'info',
+  variant: 'outline',
+  position: 'bottomRight'
+})}>
+  Bottom Right Toast
 </Button>`}
         />
       </div>

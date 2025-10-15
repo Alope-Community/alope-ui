@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { cn } from "clsx-for-tailwind";
 import {
@@ -13,13 +13,17 @@ import SearchInput from "./../Search";
 
 export default function Navbar({
   onToggleSidebar,
+  setIsLoading,
 }: {
   onToggleSidebar: () => void;
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const { theme, toggleTheme } = useTheme();
-  const [version, setVersion] = useState<"v1.0.8" | "v2.0" | "v3.0">("v1.0.8");
+  const [version, setVersion] = useState<"v1.0.8" | "v1.1" | "v2.0">("v1.0.8");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +35,18 @@ export default function Navbar({
   }, []);
 
   const handleVersionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setVersion(e.target.value as "v1.0.8" | "v2.0" | "v3.0");
+    const selectedVersion = e.target.value as "v1.0.8" | "v1.1" | "v2.0";
+    setVersion(selectedVersion);
+
+    // ✅ Tutup offCanvas kanan otomatis setiap ganti versi
+    setMenuOpen(false);
+    setIsLoading(true);
+
+    // Navigasi otomatis ke halaman versi baru
+    setTimeout(() => {
+      navigate(`/docs/${selectedVersion}/installation`);
+      setIsLoading(false); // 🔴 Matikan spinner setelah navigasi
+    }, 1000);
   };
 
   return (
@@ -110,6 +125,7 @@ export default function Navbar({
               } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
             >
               <option value="v1.0.8">v1.0</option>
+              <option value="v1.1">v1.1</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
@@ -196,8 +212,8 @@ export default function Navbar({
                 className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm"
               >
                 <option value="v1.0.8">v1.0</option>
-                {/* <option value="v2.0">v2.0</option>
-                <option value="v3.0">v3.0</option> */}
+                <option value="v1.1">v1.1</option>
+                {/*<option value="v3.0">v3.0</option> */}
               </select>
             </div>
 

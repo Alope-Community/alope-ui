@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { cn } from "clsx-for-tailwind";
+import { useNavigate } from "react-router-dom";
 import {
   HiOutlineMenu,
   HiOutlineX,
@@ -17,7 +18,9 @@ export default function Navbar({
   onToggleSidebar: () => void;
 }) {
   const { theme, toggleTheme } = useTheme();
-  const [version, setVersion] = useState<"v1.0.8" | "v2.0" | "v3.0">("v1.0.8");
+  const [version, setVersion] = useState<"v1.0.0" | "v1.1.0" | "v1.2.0">(
+    "v1.0.0"
+  );
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -30,8 +33,16 @@ export default function Navbar({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navigate = useNavigate();
+
   const handleVersionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setVersion(e.target.value as "v1.0.8" | "v2.0" | "v3.0");
+    setVersion(e.target.value as "v1.0.0" | "v1.1.0" | "v1.2.0");
+    setVersion(version);
+
+    if (version === "v1.0.0") navigate("/docs/v1.1.0/installation");
+    else if (version === "v1.1.0") navigate("/docs/v1.1.0/installation");
+    else if (version === "v1.2.0") navigate("/docs/v1.2.0/installation");
+    else if (version === "v1.3.0") navigate("/docs/v1.3.0/installation");
   };
 
   return (
@@ -99,9 +110,9 @@ export default function Navbar({
                   : "bg-white text-gray-800 border-gray-300"
               } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
             >
-              <option value="v1.0.8">v1.0</option>
-              <option value="v2.0">v2.0</option>
-              <option value="v3.0">v3.0</option>
+              <option value="v1.0.0">v1.0.0</option>
+              <option value="v1.1.0">v1.1.0</option>
+              <option value="v1.2.0">v1.2.0</option>
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
@@ -184,9 +195,9 @@ export default function Navbar({
                 onChange={handleVersionChange}
                 className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm"
               >
-                <option value="v1.0.8">v1.0</option>
-                <option value="v2.0">v2.0</option>
-                <option value="v3.0">v3.0</option>
+                <option value="v1.0.0">v1.0.0</option>
+                <option value="v1.1.0">v1.1.0</option>
+                <option value="v1.2.0">v1.2.0</option>
               </select>
             </div>
 

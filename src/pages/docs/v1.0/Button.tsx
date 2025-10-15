@@ -1,8 +1,9 @@
 "use client";
 
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { Button } from "alope-ui";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
+import { PlusIcon } from "lucide-react";
 
 function Preview({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
@@ -44,94 +45,63 @@ export default function ButtonDocs() {
 
         {/* Props Section */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-        <div
-          className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
-            theme === "dark"
-              ? "bg-gray-800 border-gray-700"
-              : "bg-gray-50 border-gray-200"
-          }`}
-        >
-          <table className="w-full">
-            <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg">
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">variant</td>
-                <td className="p-3 border">
-                  'solid' | 'outline' | 'ghost' | 'plain'
-                </td>
-                <td className="p-3 border">'solid'</td>
-                <td className="p-3 border">Button style variant</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">variantType</td>
-                <td className="p-3 border">
-                  'primary' | 'secondary' | 'success' | 'info' | 'warning' |
-                  'error'
-                </td>
-                <td className="p-3 border">'primary'</td>
-                <td className="p-3 border">Button color theme</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">size</td>
-                <td className="p-3 border">'sm' | 'md' | 'lg'</td>
-                <td className="p-3 border">'md'</td>
-                <td className="p-3 border">Button size</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">radius</td>
-                <td className="p-3 border">'regular' | 'stadium'</td>
-                <td className="p-3 border">'regular'</td>
-                <td className="p-3 border">Border radius style</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">fullWidth</td>
-                <td className="p-3 border">boolean</td>
-                <td className="p-3 border">false</td>
-                <td className="p-3 border">Full width button</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">disabled</td>
-                <td className="p-3 border">boolean</td>
-                <td className="p-3 border">false</td>
-                <td className="p-3 border">Disabled state</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">to</td>
-                <td className="p-3 border">string</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Link destination</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">prefixIcon</td>
-                <td className="p-3 border">ReactNode</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Icon before text</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">suffixIcon</td>
-                <td className="p-3 border">ReactNode</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Icon after text</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">onClick</td>
-                <td className="p-3 border">function</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Click handler</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">children</td>
-                <td className="p-3 border">ReactNode</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Button content</td>
-              </tr>
+              {[
+                [
+                  "variant",
+                  "'solid' | 'outline' | 'ghost' | 'plain'",
+                  "'solid'",
+                  "Button style variant",
+                ],
+                [
+                  "variantType",
+                  "'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error'",
+                  "'primary'",
+                  "Button color theme",
+                ],
+                ["size", "'sm' | 'md' | 'lg'", "'md'", "Button size"],
+                [
+                  "borderType",
+                  "'regular' | 'stadium'",
+                  "'regular'",
+                  "Border radius style",
+                ],
+                ["fullWidth", "boolean", "false", "Full width button"],
+                ["disabled", "boolean", "false", "Disabled state"],
+                ["to", "string", "undefined", "Link destination"],
+                ["prefixIcon", "ReactNode", "undefined", "Icon before text"],
+                ["suffixIcon", "ReactNode", "undefined", "Icon after text"],
+                ["onClick", "function", "undefined", "Click handler"],
+                ["children", "ReactNode", "undefined", "Button content"],
+              ].map(([prop, type, def, desc]) => (
+                <tr
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
+                >
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -204,8 +174,8 @@ export default function ButtonDocs() {
         </Preview>
         <CodeBlock
           code={`<div className="flex flex-wrap gap-2">
-  <Button radius="regular">Regular Radius</Button>
-  <Button radius="stadium">Stadium Radius</Button>
+  <Button borderType="regular">Regular Radius</Button>
+  <Button borderType="stadium">Stadium Radius</Button>
 </div>`}
         />
 
@@ -317,7 +287,7 @@ export default function ButtonDocs() {
 
         <h3 className="text-2xl font-semibold mt-10 mb-3">Link Button</h3>
         <Preview>
-          <Button to="#" variantType="info">
+          <Button to="/dashboard" variantType="info">
             Go to Dashboard
           </Button>
         </Preview>
@@ -335,7 +305,7 @@ export default function ButtonDocs() {
                 variant="solid"
                 variantType="primary"
                 size="lg"
-                prefixIcon={<span>➕</span>}
+                prefixIcon={<PlusIcon />}
                 onClick={() => alert("Button clicked!")}
               >
                 Create New

@@ -1,8 +1,8 @@
 "use client";
 
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { TextInput } from "alope-ui";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function TextInputDocs() {
   const { theme } = useTheme();
@@ -52,59 +52,41 @@ export default function TextInputDocs() {
         >
           Props
         </h3>
-        <div className="overflow-x-auto mb-10">
-          <table
-            className={`w-full border rounded-lg shadow-sm text-sm ${
-              theme === "dark" ? "border-gray-700" : "border-gray-200"
-            }`}
-          >
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
+          <table className="w-full text-sm text-left">
             <thead
-              className={theme === "dark" ? "bg-gray-800" : "bg-gray-100"}
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
             >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
               {[
-                [
-                  "id",
-                  "string",
-                  "required",
-                  "Unique identifier for the input element",
-                ],
+                ["id", "string", "required", "Input element ID"],
                 ["name", "string", "required", "Input name attribute"],
-                [
-                  "label",
-                  "string",
-                  "undefined",
-                  "Label text displayed above the input",
-                ],
-                [
-                  "placeholder",
-                  "string",
-                  "undefined",
-                  "Placeholder text for guidance",
-                ],
-                [
-                  "error",
-                  "string",
-                  "undefined",
-                  "Error message to display below the input",
-                ],
-                ["disabled", "boolean", "false", "Disable the input field"],
+                ["label", "string", "undefined", "Label text for the input"],
+                ["placeholder", "string", "undefined", "Placeholder text"],
+                ["error", "string", "undefined", "Error message to display"],
+                ["disabled", "boolean", "false", "Disable the input"],
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
-                  <td className="p-3 border font-mono">{prop}</td>
-                  <td className="p-3 border">{type}</td>
-                  <td className="p-3 border">{def}</td>
-                  <td className="p-3 border">{desc}</td>
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
                 </tr>
               ))}
             </tbody>

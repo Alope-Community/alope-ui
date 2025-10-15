@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { CheckboxInput, ListCheckboxInput } from "alope-ui";
 import type { CheckboxOptionType } from "alope-ui";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 const options: CheckboxOptionType[] = [
   { value: "chocolate", label: "Chocolate" },
@@ -43,9 +43,7 @@ export default function CheckboxDocs() {
             : "prose-slate prose-headings:text-gray-900"
         }`}
       >
-        <h2 className="text-4xl font-bold mb-6 text-gray-900">
-          Checkbox Input
-        </h2>
+        <h2 className="text-4xl font-bold mb-6">Checkbox Input</h2>
         <p>
           The <code>CheckboxInput</code> component provides checkbox
           functionality for selecting single or multiple options, with
@@ -63,57 +61,57 @@ import type { CheckboxOptionType } from "alope-ui";`}
         <h3 className="text-2xl font-semibold mt-10 mb-3">
           CheckboxInput Props
         </h3>
-        <div
-          className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
-            theme === "dark"
-              ? "bg-gray-800 border-gray-700"
-              : "bg-gray-50 border-gray-200"
-          }`}
-        >
-          <table className="w-full">
-            <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg">
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">label</td>
-                <td className="p-3 border">string</td>
-                <td className="p-3 border">required</td>
-                <td className="p-3 border">Checkbox label text</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">checked</td>
-                <td className="p-3 border">boolean</td>
-                <td className="p-3 border">false</td>
-                <td className="p-3 border">Checkbox checked state</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">indeterminate</td>
-                <td className="p-3 border">boolean</td>
-                <td className="p-3 border">false</td>
-                <td className="p-3 border">
-                  Indeterminate state for partial selection
-                </td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">onChange</td>
-                <td className="p-3 border">
-                  (e: ChangeEvent&lt;HTMLInputElement&gt;) =&gt; void
-                </td>
-                <td className="p-3 border">required</td>
-                <td className="p-3 border">Change handler function</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">description</td>
-                <td className="p-3 border">string</td>
-                <td className="p-3 border">undefined</td>
-                <td className="p-3 border">Additional description text</td>
-              </tr>
+              {[
+                ["label", "string", "required", "Checkbox label text"],
+                ["checked", "boolean", "false", "Checkbox checked state"],
+                [
+                  "indeterminate",
+                  "boolean",
+                  "false",
+                  "Indeterminate state for partial selection",
+                ],
+                [
+                  "onChange",
+                  "(e: ChangeEvent<HTMLInputElement>) => void",
+                  "required",
+                  "Change handler function",
+                ],
+                [
+                  "description",
+                  "string",
+                  "undefined",
+                  "Additional description text",
+                ],
+              ].map(([prop, type, def, desc]) => (
+                <tr
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
+                >
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -122,61 +120,63 @@ import type { CheckboxOptionType } from "alope-ui";`}
         <h3 className="text-2xl font-semibold mt-10 mb-3">
           ListCheckboxInput Props
         </h3>
-        <div
-          className={`overflow-x-auto mb-10 border rounded-lg shadow-sm text-sm transition-colors ${
-            theme === "dark"
-              ? "bg-gray-800 border-gray-700"
-              : "bg-gray-50 border-gray-200"
-          }`}
-        >
-          <table className="w-full">
-            <thead className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">options</td>
-                <td className="p-3 border">CheckboxOptionType[]</td>
-                <td className="p-3 border">required</td>
-                <td className="p-3 border">Array of checkbox options</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">selectedValues</td>
-                <td className="p-3 border">CheckboxOptionType[]</td>
-                <td className="p-3 border">[]</td>
-                <td className="p-3 border">Currently selected options</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">onValueChange</td>
-                <td className="p-3 border">
-                  (values: CheckboxOptionType[]) =&gt; void
-                </td>
-                <td className="p-3 border">required</td>
-                <td className="p-3 border">Change handler for selected values</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">variant</td>
-                <td className="p-3 border">'solid' | 'subtle' | 'outline'</td>
-                <td className="p-3 border">'solid'</td>
-                <td className="p-3 border">Visual variant style</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">checkboxSize</td>
-                <td className="p-3 border">'sm' | 'md' | 'lg'</td>
-                <td className="p-3 border">'md'</td>
-                <td className="p-3 border">Checkbox size</td>
-              </tr>
-              <tr className={theme === "dark" ? "bg-gray-900" : "bg-white"}>
-                <td className="p-3 border font-mono">containerClassName</td>
-                <td className="p-3 border">string</td>
-                <td className="p-3 border">""</td>
-                <td className="p-3 border">Container CSS class</td>
-              </tr>
+              {[
+                [
+                  "options",
+                  "CheckboxOptionType[]",
+                  "required",
+                  "Array of checkbox options",
+                ],
+                [
+                  "selectedValues",
+                  "CheckboxOptionType[]",
+                  "[]",
+                  "Currently selected options",
+                ],
+                [
+                  "onValueChange",
+                  "(values: CheckboxOptionType[]) => void",
+                  "required",
+                  "Change handler for selected values",
+                ],
+                [
+                  "variant",
+                  "'solid' | 'subtle' | 'outline'",
+                  "'solid'",
+                  "Visual variant style",
+                ],
+                ["checkboxSize", "'sm' | 'md' | 'lg'", "'md'", "Checkbox size"],
+                ["containerClassName", "string", '""', "Container CSS class"],
+              ].map(([prop, type, def, desc]) => (
+                <tr
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
+                >
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -211,9 +211,7 @@ const BasicExample = () => {
 };`}
         />
 
-        <h3 className="text-2xl font-semibold mt-10 mb-3">
-          ListCheckboxInput
-        </h3>
+        <h3 className="text-2xl font-semibold mt-10 mb-3">ListCheckboxInput</h3>
         <Preview>
           <ListCheckboxInput
             options={options}
@@ -266,6 +264,7 @@ const ListExample = () => {
             }}
             description="Check to select all options or uncheck to deselect all."
           />
+
           <ListCheckboxInput
             options={options}
             selectedValues={selectedOptions}
@@ -305,20 +304,36 @@ const ListExample = () => {
         <h3 className="text-2xl font-semibold mt-10 mb-3">Variants</h3>
         <Preview>
           <div className="space-y-4">
-            {(["solid", "subtle", "outline"] as const).map((variant) => (
-              <ListCheckboxInput
-                key={variant}
-                options={options}
-                selectedValues={selectedOptions}
-                onValueChange={setSelectedOptions}
-                variant={variant}
-                checkboxSize="md"
-              />
-            ))}
+            {/* Solid Variant */}
+            <ListCheckboxInput
+              options={options}
+              selectedValues={selectedOptions}
+              onValueChange={setSelectedOptions}
+              variant="solid"
+              checkboxSize="md"
+            />
+            {/* Subtle Variant */}
+            <ListCheckboxInput
+              options={options}
+              selectedValues={selectedOptions}
+              onValueChange={setSelectedOptions}
+              variant="subtle"
+              checkboxSize="md"
+            />
+            {/* Outline Variant */}
+            <ListCheckboxInput
+              options={options}
+              selectedValues={selectedOptions}
+              onValueChange={setSelectedOptions}
+              variant="outline"
+              checkboxSize="md"
+            />
           </div>
         </Preview>
         <CodeBlock
-          code={`{/* Solid Variant */}
+          code={`{
+  /* Solid Variant */
+}
 <ListCheckboxInput
   options={options}
   selectedValues={selectedOptions}
@@ -327,7 +342,9 @@ const ListExample = () => {
   checkboxSize="md"
 />;
 
-{/* Subtle Variant */}
+{
+  /* Subtle Variant */
+}
 <ListCheckboxInput
   options={options}
   selectedValues={selectedOptions}
@@ -336,7 +353,9 @@ const ListExample = () => {
   checkboxSize="md"
 />;
 
-{/* Outline Variant */}
+{
+  /* Outline Variant */
+}
 <ListCheckboxInput
   options={options}
   selectedValues={selectedOptions}
@@ -348,6 +367,7 @@ const ListExample = () => {
 
         <h3 className="text-2xl font-semibold mt-10 mb-3">Sizes</h3>
         <Preview>
+          {/* Large Size */}
           <ListCheckboxInput
             options={options}
             selectedValues={selectedOptions}

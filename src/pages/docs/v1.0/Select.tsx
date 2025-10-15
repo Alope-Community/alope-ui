@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { SelectInput } from "alope-ui";
 import type { SelectOptionType } from "alope-ui";
 import { cn } from "clsx-for-tailwind";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 const options: SelectOptionType[] = [
   { value: "chocolate", label: "Chocolate" },
@@ -42,8 +42,8 @@ export default function SelectDocs() {
           )}
         >
           The <code className="font-mono text-sm">SelectInput</code> component
-          provides a dropdown interface for selecting one or multiple options from
-          a list.
+          provides a dropdown interface for selecting one or multiple options
+          from a list.
         </p>
 
         {/* Import Section */}
@@ -69,21 +69,20 @@ import type { SelectOptionType } from "alope-ui";`}
         >
           Props
         </h3>
-        <div className="overflow-x-auto mb-10">
-          <table
-            className={cn(
-              "w-full border rounded-lg shadow-sm text-sm",
-              theme === "dark"
-                ? "border-gray-700"
-                : "border-gray-200"
-            )}
-          >
-            <thead className={theme === "dark" ? "bg-gray-800" : "bg-gray-100"}>
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
@@ -133,12 +132,14 @@ import type { SelectOptionType } from "alope-ui";`}
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={theme === "dark" ? "bg-gray-900" : "bg-white"}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
-                  <td className="p-3 border font-mono">{prop}</td>
-                  <td className="p-3 border">{type}</td>
-                  <td className="p-3 border">{def}</td>
-                  <td className="p-3 border">{desc}</td>
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -167,7 +168,9 @@ import type { SelectOptionType } from "alope-ui";`}
         <div
           className={cn(
             "border rounded-lg p-4 mb-6",
-            theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+            theme === "dark"
+              ? "bg-gray-900 border-gray-700"
+              : "bg-white border-gray-200"
           )}
         >
           <SelectInput
@@ -182,14 +185,14 @@ import type { SelectOptionType } from "alope-ui";`}
           />
         </div>
         <CodeBlock
-          code={`import { useState } from "react";
+          code={`import { useState } from 'react';
 import { SelectInput } from "alope-ui";
 import type { SelectOptionType } from "alope-ui";
 
 const options: SelectOptionType[] = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' },
 ];
 
 const SingleExample = () => {
@@ -222,7 +225,9 @@ const SingleExample = () => {
         <div
           className={cn(
             "border rounded-lg p-4 mb-6",
-            theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+            theme === "dark"
+              ? "bg-gray-900 border-gray-700"
+              : "bg-white border-gray-200"
           )}
         >
           <SelectInput
@@ -265,7 +270,9 @@ const SingleExample = () => {
         <div
           className={cn(
             "border rounded-lg p-4 mb-6",
-            theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+            theme === "dark"
+              ? "bg-gray-900 border-gray-700"
+              : "bg-white border-gray-200"
           )}
         >
           <SelectInput
@@ -298,7 +305,9 @@ const SingleExample = () => {
         <div
           className={cn(
             "border rounded-lg p-4 mb-6",
-            theme === "dark" ? "bg-gray-900 border-gray-700" : "bg-white border-gray-200"
+            theme === "dark"
+              ? "bg-gray-900 border-gray-700"
+              : "bg-white border-gray-200"
           )}
         >
           <SelectInput
