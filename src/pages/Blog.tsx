@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Layout/Footer";
-import blogData from "../data/blog.json";
+import blogData from "../data/Blog.json";
 import { TextInput } from "../components/TextInput/TextInput";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Layout/Navbar";
 
 interface Blog {
   id: number;

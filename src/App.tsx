@@ -46,8 +46,6 @@ function App() {
       <Route path="/detailblog/:id" element={<DetailBlog />}></Route>
        {/* Layout Docs */}
       <Route path="/docs" element={<LayoutDocs />}>
-        {/* Versi 1.0.8 */}
-        <Route path="v1.0.8/*">
           <Route path="installation" element={<QuickStart />} />
           <Route path="accordion" element={<Accordion />} />
           <Route path="button" element={<ButtonDocs />} />
@@ -62,10 +60,6 @@ function App() {
           <Route path="select" element={<SelectDocs />} />
           <Route path="breadcrumb" element={<Breadcrumb />} />
           <Route path="offcanvas" element={<Offcanvas />} />
-        </Route>
-
-        {/* Versi 1.1 */}
-        <Route path="v1.1/*">
           <Route path="installation" element={<Installation />} />
           <Route path="skeleton" element={<Skeleton />} />
           <Route path="spinner" element={<Spinner />} />
@@ -78,7 +72,6 @@ function App() {
           <Route path="avatar" element={<Avatar />} />
           <Route path="avatarGroup" element={<AvatarGroup />} />
           <Route path="pagination" element={<Pagnation />} />
-        </Route>
       </Route>
     </Routes>
   );

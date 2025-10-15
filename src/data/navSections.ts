@@ -21,17 +21,28 @@ export const baseNavSections: NavSection[] = [
     items: [
       { name: "Accordion", path: "accordion" },
       { name: "Alert", path: "alert" },
+      { name: "Avatar", path: "avatar" },
+      { name: "AvatarGroup", path: "avatarGroup" },
       { name: "Badge", path: "badge" },
       { name: "Breadcrumb", path: "breadcrumb" },
       { name: "Button", path: "button" },
       { name: "Card", path: "card" },
+      { name: "Checkbox", path: "checkbox" },
+      { name: "FileUpload", path: "fileUpload" },
       { name: "Modal", path: "modal" },
       { name: "Offcanvas", path: "offcanvas" },
-      { name: "Toast", path: "toast" },
-      { name: "Checkbox", path: "checkbox" },
+      { name: "Pagination", path: "pagination" },
       { name: "Radio", path: "radio" },
       { name: "Select", path: "select" },
+      { name: "Skeleton", path: "skeleton" },
+      { name: "Spinner", path: "spinner" },
+      { name: "Table", path: "tableDocs" },
+      { name: "Tabs", path: "tabsDocs" },
+      { name: "Text Area", path: "textArea" },
       { name: "TextInput", path: "textinput" },
+      { name: "Toast", path: "toast" },
+      { name: "Toggle", path: "toggle" },
+      { name: "Tooltip", path: "tooltip" },
     ],
   },
 ];
@@ -48,6 +59,7 @@ export function generateNavSections(version: string): NavSection[] {
         title: "Getting Started",
         items: [
           { name: "Installation", path: `/docs/${version}/installation` },
+
 
         ],
       },

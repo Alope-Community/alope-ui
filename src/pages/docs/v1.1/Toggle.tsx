@@ -11,11 +11,10 @@ export default function ToggleDocs() {
 
   return (
     <div
-      className={`transition-colors overflow-x-hidden ${
-        theme === "dark"
-          ? "prose prose-invert max-w-none"
-          : "prose prose-slate prose-headings:text-gray-900 max-w-none"
-      }`}
+      className={`transition-colors ${theme === "dark"
+        ? "prose prose-invert max-w-none"
+        : "prose prose-slate prose-headings:text-gray-900 max-w-none"
+        }`}
     >
       <div className="container mx-auto px-4 overflow-x-hidden">
         {/* Title */}
@@ -35,11 +34,10 @@ export default function ToggleDocs() {
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
           <table className="w-full text-sm text-left">
             <thead
-              className={`${
-                theme === "dark"
-                  ? "bg-gray-800 text-gray-200"
-                  : "bg-gray-100 text-gray-700"
-              }`}
+              className={`${theme === "dark"
+                ? "bg-gray-800 text-gray-200"
+                : "bg-gray-100 text-gray-700"
+                }`}
             >
               <tr>
                 <th className="px-4 py-2 font-semibold">Prop</th>
@@ -90,9 +88,8 @@ export default function ToggleDocs() {
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={`border-t ${
-                    theme === "dark" ? "border-gray-800" : "border-gray-200"
-                  }`}
+                  className={`border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"
+                    }`}
                 >
                   <td className="px-4 py-2 font-medium">{prop}</td>
                   <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
@@ -113,257 +110,21 @@ export default function ToggleDocs() {
           />
         </ExampleBox>
         <CodeBlock
-          code={`import { useState } from "react";
-import { Toggle } from "alope-ui";
+          code={`
+            import { useState } from "react";
+            import { Toggle } from "alope-ui";
 
-const BasicExample = () => {
-  const [isChecked, setIsChecked] = useState(false);
+            const BasicExample = () => {
+              const [isChecked, setIsChecked] = useState(false);
 
-  return (
-    <Toggle
-      checked={isChecked}
-      onChange={(e) => setIsChecked(e.target.checked)}
-    />
-  );
-};`}
-        />
-
-        {/* With Label */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">With Label</h3>
-        <ExampleBox theme={theme}>
-          <Toggle
-            checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
-            label="Enable notifications"
-          />
-        </ExampleBox>
-        <CodeBlock
-          code={`<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  label="Enable notifications"
-/>`}
-        />
-
-        {/* Variants */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Variants</h3>
-        <ExampleBox theme={theme}>
-          <VariantsExample />
-        </ExampleBox>
-        <CodeBlock
-          code={`{
-  /* Primary Variant */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  variant="primary"
-  label="Primary"
-/>;
-
-{
-  /* Error Variant */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  variant="error"
-  label="Error"
-/>;
-
-{
-  /* Warning Variant */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  variant="warning"
-  label="Warning"
-/>;
-
-{
-  /* Success Variant */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  variant="success"
-  label="Success"
-/>;
-
-{
-  /* Info Variant */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  variant="info"
-  label="Info"
-/>;
-
-{
-  /* Secondary Variant */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  variant="secondary"
-  label="Secondary"
-/>;`}
-        />
-
-        {/* Sizes */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Sizes</h3>
-        <ExampleBox theme={theme}>
-          <SizesExample />
-        </ExampleBox>
-        <CodeBlock
-          code={`{
-  /* Small Size */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  customSize="sm"
-  label="Small"
-/>;
-
-{
-  /* Medium Size */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  customSize="md"
-  label="Medium"
-/>;
-
-{
-  /* Large Size */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  customSize="lg"
-  label="Large"
-/>;`}
-        />
-
-        {/* Thumb Shapes */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Thumb Shapes</h3>
-        <ExampleBox theme={theme}>
-          <ShapesExample />
-        </ExampleBox>
-        <CodeBlock
-          code={`{
-  /* Stadium Shape (Fully Rounded) */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  thumbShape="stadium"
-  label="Stadium"
-/>;
-
-{
-  /* Rounded Shape (Slightly Rounded) */
-}
-<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  thumbShape="rounded"
-  label="Rounded"
-/>;
-`}
-        />
-
-        {/* Disabled */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Disabled State</h3>
-        <ExampleBox theme={theme}>
-          <Toggle label="Disabled toggle" disabled />
-        </ExampleBox>
-        <CodeBlock
-          code={`<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  disabled
-  label="Disabled toggle"
-/>`}
-        />
-
-        {/* Custom Styling */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Styling</h3>
-        <ExampleBox theme={theme}>
-          <Toggle
-            checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
-            label="Custom styled toggle"
-            wrapperClassName="bg-gray-100 p-4 rounded-lg"
-            labelClassName="text-lg font-bold text-blue-600"
-          />
-        </ExampleBox>
-        <CodeBlock
-          code={`<Toggle
-  checked={isChecked}
-  onChange={(e) => setIsChecked(e.target.checked)}
-  label="Custom styled toggle"
-  wrapperClassName="bg-gray-100 p-4 rounded-lg"
-  labelClassName="text-lg font-bold text-blue-600"
-/>`}
-        />
-
-        {/* Complete Example */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Complete Example</h3>
-        <ExampleBox theme={theme}>
-          <CompleteExample />
-        </ExampleBox>
-        <CodeBlock
-          code={`import { useState } from "react";
-import { Toggle } from "alope-ui";
-
-const CompleteExample = () => {
-  const [settings, setSettings] = useState({
-    notifications: false,
-    darkMode: true,
-    autoSave: false,
-  });
-
-  const handleToggle =
-    (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSettings((prev) => ({
-        ...prev,
-        [key]: e.target.checked,
-      }));
-    };
-
-  return (
-    <div className="space-y-4">
-      <Toggle
-        checked={settings.notifications}
-        onChange={handleToggle("notifications")}
-        variant="primary"
-        customSize="md"
-        label="Enable notifications"
-      />
-
-      <Toggle
-        checked={settings.darkMode}
-        onChange={handleToggle("darkMode")}
-        variant="secondary"
-        customSize="md"
-        label="Dark mode"
-      />
-
-      <Toggle
-        checked={settings.autoSave}
-        onChange={handleToggle("autoSave")}
-        variant="success"
-        customSize="md"
-        label="Auto-save documents"
-      />
-    </div>
-  );
-};`}
+              return (
+                <Toggle
+                  checked={isChecked}
+                  onChange={(e) => setIsChecked(e.target.checked)}
+                />
+              );
+            };`
+          }
         />
       </div>
     </div>
@@ -380,11 +141,10 @@ function ExampleBox({
 }) {
   return (
     <div
-      className={`border rounded-lg p-4 mb-6 transition-colors ${
-        theme === "dark"
-          ? "bg-gray-800 border-gray-700"
-          : "bg-white border-gray-200"
-      }`}
+      className={`border rounded-lg p-4 mb-6 transition-colors ${theme === "dark"
+        ? "bg-gray-800 border-gray-700"
+        : "bg-white border-gray-200"
+        }`}
     >
       {children}
     </div>
@@ -392,102 +152,102 @@ function ExampleBox({
 }
 
 /* === Inline Examples === */
-function VariantsExample() {
-  const [isChecked, setIsChecked] = useState(false);
-  const variants = [
-    "primary",
-    "error",
-    "warning",
-    "success",
-    "info",
-    "secondary",
-  ] as const;
-  return (
-    <div className="flex flex-wrap gap-4">
-      {variants.map((v) => (
-        <Toggle
-          key={v}
-          variant={v}
-          label={v.charAt(0).toUpperCase() + v.slice(1)}
-          checked={isChecked}
-          onChange={(e) => setIsChecked(e.target.checked)}
-        />
-      ))}
-    </div>
-  );
-}
+// function VariantsExample() {
+//   const [isChecked, setIsChecked] = useState(false);
+//   const variants = [
+//     "primary",
+//     "error",
+//     "warning",
+//     "success",
+//     "info",
+//     "secondary",
+//   ] as const;
+//   return (
+//     <div className="flex flex-wrap gap-4">
+//       {variants.map((v) => (
+//         <Toggle
+//           key={v}
+//           variant={v}
+//           label={v.charAt(0).toUpperCase() + v.slice(1)}
+//           checked={isChecked}
+//           onChange={(e) => setIsChecked(e.target.checked)}
+//         />
+//       ))}
+//     </div>
+//   );
+// }
 
-function SizesExample() {
-  const [isChecked, setIsChecked] = useState(true);
-  const sizes = ["sm", "md", "lg"] as const;
-  return (
-    <div className="flex flex-wrap gap-4">
-      {sizes.map((s) => (
-        <Toggle
-          key={s}
-          customSize={s}
-          label={s.charAt(0).toUpperCase() + s.slice(1)}
-          checked={isChecked}
-          onChange={(e) => setIsChecked(e.target.checked)}
-        />
-      ))}
-    </div>
-  );
-}
+// function SizesExample() {
+//   const [isChecked, setIsChecked] = useState(true);
+//   const sizes = ["sm", "md", "lg"] as const;
+//   return (
+//     <div className="flex flex-wrap gap-4">
+//       {sizes.map((s) => (
+//         <Toggle
+//           key={s}
+//           customSize={s}
+//           label={s.charAt(0).toUpperCase() + s.slice(1)}
+//           checked={isChecked}
+//           onChange={(e) => setIsChecked(e.target.checked)}
+//         />
+//       ))}
+//     </div>
+//   );
+// }
 
-function ShapesExample() {
-  const [isChecked, setIsChecked] = useState(true);
-  return (
-    <div className="flex flex-wrap gap-4">
-      <Toggle
-        thumbShape="stadium"
-        label="Stadium"
-        checked={isChecked}
-        onChange={(e) => setIsChecked(e.target.checked)}
-      />
-      <Toggle
-        thumbShape="rounded"
-        label="Rounded"
-        checked={isChecked}
-        onChange={(e) => setIsChecked(e.target.checked)}
-      />
-    </div>
-  );
-}
+// function ShapesExample() {
+//   const [isChecked, setIsChecked] = useState(true);
+//   return (
+//     <div className="flex flex-wrap gap-4">
+//       <Toggle
+//         thumbShape="stadium"
+//         label="Stadium"
+//         checked={isChecked}
+//         onChange={(e) => setIsChecked(e.target.checked)}
+//       />
+//       <Toggle
+//         thumbShape="rounded"
+//         label="Rounded"
+//         checked={isChecked}
+//         onChange={(e) => setIsChecked(e.target.checked)}
+//       />
+//     </div>
+//   );
+// }
 
-function CompleteExample() {
-  const [settings, setSettings] = useState({
-    notifications: false,
-    darkMode: true,
-    autoSave: false,
-  });
+// function CompleteExample() {
+//   const [settings, setSettings] = useState({
+//     notifications: false,
+//     darkMode: true,
+//     autoSave: false,
+//   });
 
-  const handleToggle =
-    (key: keyof typeof settings) =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSettings((prev) => ({ ...prev, [key]: e.target.checked }));
-    };
+//   const handleToggle =
+//     (key: keyof typeof settings) =>
+//       (e: React.ChangeEvent<HTMLInputElement>) => {
+//         setSettings((prev) => ({ ...prev, [key]: e.target.checked }));
+//       };
 
-  return (
-    <div className="space-y-4">
-      <Toggle
-        checked={settings.notifications}
-        onChange={handleToggle("notifications")}
-        variant="primary"
-        label="Enable notifications"
-      />
-      <Toggle
-        checked={settings.darkMode}
-        onChange={handleToggle("darkMode")}
-        variant="secondary"
-        label="Dark mode"
-      />
-      <Toggle
-        checked={settings.autoSave}
-        onChange={handleToggle("autoSave")}
-        variant="success"
-        label="Auto-save documents"
-      />
-    </div>
-  );
-}
+//   return (
+//     <div className="space-y-4">
+//       <Toggle
+//         checked={settings.notifications}
+//         onChange={handleToggle("notifications")}
+//         variant="primary"
+//         label="Enable notifications"
+//       />
+//       <Toggle
+//         checked={settings.darkMode}
+//         onChange={handleToggle("darkMode")}
+//         variant="secondary"
+//         label="Dark mode"
+//       />
+//       <Toggle
+//         checked={settings.autoSave}
+//         onChange={handleToggle("autoSave")}
+//         variant="success"
+//         label="Auto-save documents"
+//       />
+//     </div>
+//   );
+// }

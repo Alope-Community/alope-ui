@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { cn } from "clsx-for-tailwind";
 import {
@@ -16,14 +16,19 @@ export default function Navbar({
   setIsLoading,
 }: {
   onToggleSidebar: () => void;
-  isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  isLoading?: boolean;
+  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const location = useLocation();
+
+
+  console.log(setIsLoading)
+
   const { theme, toggleTheme } = useTheme();
   const [version, setVersion] = useState<"v1.0.8" | "v1.1" | "v2.0">("v1.0.8");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,12 +45,12 @@ export default function Navbar({
 
     // ✅ Tutup offCanvas kanan otomatis setiap ganti versi
     setMenuOpen(false);
-    setIsLoading(true);
+    // setIsLoading(true);
 
     // Navigasi otomatis ke halaman versi baru
     setTimeout(() => {
-      navigate(`/docs/${selectedVersion}/installation`);
-      setIsLoading(false); // 🔴 Matikan spinner setelah navigasi
+      // navigate(`/docs/${selectedVersion}/installation`);
+      // setIsLoading(false); // 🔴 Matikan spinner setelah navigasi
     }, 1000);
   };
 
@@ -63,9 +68,8 @@ export default function Navbar({
         <div className="flex items-center space-x-2">
           {/* Tombol Hamburger (sidebar kiri) */}
           <button
-            className={`lg:hidden focus:outline-none ${
-              theme === "dark" ? "text-white" : "text-gray-800"
-            }`}
+            className={`lg:hidden focus:outline-none ${theme === "dark" ? "text-white" : "text-gray-800"
+              }`}
             onClick={onToggleSidebar}
           >
             <HiOutlineMenu className="w-6 h-6" />
@@ -79,9 +83,8 @@ export default function Navbar({
               className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:rotate-12"
             />
             <span
-              className={`text-xl md:text-2xl font-semibold transition-colors ${
-                theme === "dark" ? "text-white" : "text-gray-900"
-              }`}
+              className={`text-xl md:text-2xl font-semibold transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"
+                }`}
             >
               AlopeUI
             </span>
@@ -94,21 +97,23 @@ export default function Navbar({
         <div className="hidden lg:flex items-center space-x-4 lg:space-x-6">
           <Link
             to="/docs/installation"
-            className={`text-sm transition ${
-              theme === "dark"
-                ? "text-white hover:text-[#80C41C]"
+            className={`text-sm transition ${theme === "dark"
+              ? location.pathname.startsWith("/docs")
+                ? "text-[#80C41C] font-semibold"
+                : "text-white hover:text-[#80C41C]"
+              : location.pathname.startsWith("/docs")
+                ? "text-[#80C41C] font-semibold"
                 : "text-gray-800 hover:text-[#80C41C]"
-            }`}
+              }`}
           >
             Documentation
           </Link>
           <Link
             to="/blog"
-            className={`text-sm transition ${
-              theme === "dark"
-                ? "text-white hover:text-[#80C41C]"
-                : "text-gray-800 hover:text-[#80C41C]"
-            }`}
+            className={`text-sm transition ${theme === "dark"
+              ? "text-white hover:text-[#80C41C]"
+              : "text-gray-800 hover:text-[#80C41C]"
+              }`}
           >
             Blogs
           </Link>
@@ -118,14 +123,13 @@ export default function Navbar({
             <select
               value={version}
               onChange={handleVersionChange}
-              className={`w-full md:w-auto text-sm ${
-                theme === "dark"
-                  ? "bg-gray-800 text-white border-gray-600"
-                  : "bg-white text-gray-800 border-gray-300"
-              } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
+              className={`w-full md:w-auto text-sm ${theme === "dark"
+                ? "bg-gray-800 text-white border-gray-600"
+                : "bg-white text-gray-800 border-gray-300"
+                } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
             >
               <option value="v1.0.8">v1.0</option>
-              <option value="v1.1">v1.1</option>
+              {/* <option value="v1.1">v1.1</option> */}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
@@ -152,9 +156,8 @@ export default function Navbar({
 
         {/* Mobile: kebab menu (kanan) */}
         <button
-          className={`lg:hidden focus:outline-none ${
-            theme === "dark" ? "text-white" : "text-gray-800"
-          }`}
+          className={`lg:hidden focus:outline-none ${theme === "dark" ? "text-white" : "text-gray-800"
+            }`}
           onClick={() => setMenuOpen(true)}
         >
           <HiOutlineDotsVertical className="w-6 h-6" />
@@ -163,9 +166,8 @@ export default function Navbar({
 
       {/* Mobile Offcanvas dari kanan */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Overlay */}
         <div
@@ -175,9 +177,7 @@ export default function Navbar({
 
         {/* Panel kanan */}
         <div
-          className={`absolute right-0 top-0 w-full md:w-1/2 h-full shadow-xl p-6 flex flex-col transition-colors
-    bg-[#80C41C] text-white
-  `}
+          className={`absolute right-0 top-0 w-full md:w-1/2 h-full shadow-xl p-6 flex flex-col transition-colors bg-[#80C41C] text-white`}
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
@@ -212,7 +212,7 @@ export default function Navbar({
                 className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm"
               >
                 <option value="v1.0.8">v1.0</option>
-                <option value="v1.1">v1.1</option>
+                {/* <option value="v1.1">v1.1</option> */}
                 {/*<option value="v3.0">v3.0</option> */}
               </select>
             </div>

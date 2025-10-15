@@ -31,11 +31,10 @@ export default function LayoutDocs() {
 
   return (
     <div
-      className={`flex flex-col min-h-screen transition-colors ${
-        theme === "dark"
+      className={`flex flex-col min-h-screen transition-colors ${theme === "dark"
           ? "bg-gray-900 text-gray-100"
           : "bg-gray-50 text-gray-900"
-      }`}
+        }`}
     >
       {/* Navbar */}
       <Navbar
@@ -56,10 +55,9 @@ export default function LayoutDocs() {
         {/* Sidebar kiri (desktop) */}
         <aside
           className={`hidden lg:block w-64 p-6 border-r backdrop-blur-md transition-colors
-            ${
-              theme === "dark"
-                ? "bg-gray-800 border-gray-700"
-                : "bg-white border-gray-200"
+            ${theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
             }
             sticky top-16 h-[calc(100vh-64px)] overflow-y-auto
           `}
@@ -68,15 +66,14 @@ export default function LayoutDocs() {
             {navSections.map((section) => (
               <div key={section.title}>
                 <h2
-                  className={`text-xs font-semibold uppercase tracking-wide mb-3 ${
-                    theme === "dark" ? "text-white" : "text-black"
-                  }`}
+                  className={`text-xs font-semibold uppercase tracking-wide mb-3 ${theme === "dark" ? "text-white" : "text-black"
+                    }`}
                 >
                   {section.title}
                 </h2>
                 <div className="space-y-1">
                   {section.items.map((item) => {
-                    const fullPath = `/docs/${versionKey}/${item.path.replace(
+                    const fullPath = `/docs/${item.path.replace(
                       /^\/docs\/[^/]+\//,
                       ""
                     )}`;
@@ -87,13 +84,12 @@ export default function LayoutDocs() {
                         key={item.path}
                         to={fullPath}
                         onClick={() => setSidebarOpen(false)}
-                        className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
-                          isActive
+                        className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${isActive
                             ? "bg-[#80C41C] text-white font-semibold shadow-sm"
                             : theme === "dark"
-                            ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
-                            : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
-                        }`}
+                              ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
+                              : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                          }`}
                       >
                         {item.name}
                       </Link>
@@ -118,10 +114,9 @@ export default function LayoutDocs() {
         {/* TOC kanan */}
         <div
           className={`hidden lg:block w-64 border-l backdrop-blur-md transition-colors
-            ${
-              theme === "dark"
-                ? "bg-gray-800 border-gray-700"
-                : "bg-white border-gray-100"
+            ${theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-100"
             }
             sticky top-16 h-[calc(100vh-64px)] overflow-y-auto
           `}
@@ -132,9 +127,8 @@ export default function LayoutDocs() {
 
       {/* Sidebar mobile overlay */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         {/* Overlay gelap */}
         <div
@@ -145,11 +139,10 @@ export default function LayoutDocs() {
         {/* Panel Sidebar */}
         <div
           className={`relative w-full md:w-1/2 h-full shadow-xl p-6 flex flex-col transition-colors
-      ${
-        theme === "dark"
-          ? "bg-gray-900 text-gray-100"
-          : "bg-white text-gray-900"
-      }
+      ${theme === "dark"
+              ? "bg-gray-900 text-gray-100"
+              : "bg-white text-gray-900"
+            }
     `}
         >
           {/* Header Sidebar */}
@@ -157,18 +150,16 @@ export default function LayoutDocs() {
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg font-semibold">Browse docs</h2>
               <button
-                className={`${
-                  theme === "dark" ? "text-gray-200" : "text-gray-700"
-                }`}
+                className={`${theme === "dark" ? "text-gray-200" : "text-gray-700"
+                  }`}
                 onClick={() => setSidebarOpen(false)}
               >
                 ✕
               </button>
             </div>
             <hr
-              className={`border-0 h-px ${
-                theme === "dark" ? "bg-gray-700" : "bg-gray-200"
-              }`}
+              className={`border-0 h-px ${theme === "dark" ? "bg-gray-700" : "bg-gray-200"
+                }`}
             />
           </div>
 
@@ -177,15 +168,14 @@ export default function LayoutDocs() {
             {navSections.map((section) => (
               <div key={section.title}>
                 <h2
-                  className={`text-sm font-semibold uppercase tracking-wide mb-3 ${
-                    theme === "dark" ? "text-gray-400" : "text-black"
-                  }`}
+                  className={`text-sm font-semibold uppercase tracking-wide mb-3 ${theme === "dark" ? "text-gray-400" : "text-black"
+                    }`}
                 >
                   {section.title}
                 </h2>
                 <div className="space-y-1">
                   {section.items.map((item) => {
-                    const fullPath = `/docs/${versionKey}/${item.path.replace(
+                    const fullPath = `/docs/${item.path.replace(
                       /^\/docs\/[^/]+\//,
                       ""
                     )}`;
@@ -196,13 +186,12 @@ export default function LayoutDocs() {
                         key={item.path}
                         to={fullPath}
                         onClick={() => setSidebarOpen(false)}
-                        className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${
-                          isActive
+                        className={`block rounded-md px-3 py-2 text-sm transition-all duration-200 ${isActive
                             ? "bg-[#80C41C] text-white font-semibold shadow-sm"
                             : theme === "dark"
-                            ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
-                            : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
-                        }`}
+                              ? "text-gray-300 hover:bg-[#80C41C]/80 hover:text-white"
+                              : "text-gray-600 hover:bg-[#80C41C]/20 hover:text-[#80C41C]"
+                          }`}
                       >
                         {item.name}
                       </Link>
