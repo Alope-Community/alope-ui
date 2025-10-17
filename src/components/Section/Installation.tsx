@@ -7,11 +7,11 @@ const Installation: React.FC = () => {
     <section className="relative px-4 md:px-10 lg:px-20 bg-white dark:bg-gray-900 transition-colors duration-500 pt-16 pb-20">
       <div className="max-w-5xl mx-auto text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-          Get started any way you want
+          Get started
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-          Jump right into building with Alope UI — use the CDN, install it via
-          package manager, or download the source code.
+          Install directly via npm and enjoy a fast, consistent, and modern
+          development experience.
         </p>
         <Link
           to="/docs/installation"

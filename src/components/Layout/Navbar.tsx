@@ -21,8 +21,7 @@ export default function Navbar({
 }) {
   const location = useLocation();
 
-
-  console.log(setIsLoading)
+  console.log(setIsLoading);
 
   const { theme, toggleTheme } = useTheme();
   const [version, setVersion] = useState<"v1.0.8" | "v1.1" | "v2.0">("v1.0.8");
@@ -68,8 +67,9 @@ export default function Navbar({
         <div className="flex items-center space-x-2">
           {/* Tombol Hamburger (sidebar kiri) */}
           <button
-            className={`lg:hidden focus:outline-none ${theme === "dark" ? "text-white" : "text-gray-800"
-              }`}
+            className={`lg:hidden focus:outline-none ${
+              theme === "dark" ? "text-white" : "text-gray-800"
+            }`}
             onClick={onToggleSidebar}
           >
             <HiOutlineMenu className="w-6 h-6" />
@@ -83,8 +83,9 @@ export default function Navbar({
               className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 hover:rotate-12"
             />
             <span
-              className={`text-xl md:text-2xl font-semibold transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
+              className={`text-xl md:text-2xl font-semibold transition-colors ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
             >
               AlopeUI
             </span>
@@ -97,18 +98,19 @@ export default function Navbar({
         <div className="hidden lg:flex items-center space-x-4 lg:space-x-6">
           <Link
             to="/docs/installation"
-            className={`text-sm transition ${theme === "dark"
-              ? location.pathname.startsWith("/docs")
-                ? "text-[#80C41C] font-semibold"
-                : "text-white hover:text-[#80C41C]"
-              : location.pathname.startsWith("/docs")
+            className={`text-sm transition ${
+              theme === "dark"
+                ? location.pathname.startsWith("/docs")
+                  ? "text-[#80C41C] font-semibold"
+                  : "text-white hover:text-[#80C41C]"
+                : location.pathname.startsWith("/docs")
                 ? "text-[#80C41C] font-semibold"
                 : "text-gray-800 hover:text-[#80C41C]"
-              }`}
+            }`}
           >
             Documentation
           </Link>
-          <Link
+          {/* <Link
             to="/blog"
             className={`text-sm transition ${theme === "dark"
               ? "text-white hover:text-[#80C41C]"
@@ -116,17 +118,18 @@ export default function Navbar({
               }`}
           >
             Blogs
-          </Link>
+          </Link> */}
 
           {/* Select Version */}
           <div className="relative">
             <select
               value={version}
               onChange={handleVersionChange}
-              className={`w-full md:w-auto text-sm ${theme === "dark"
-                ? "bg-gray-800 text-white border-gray-600"
-                : "bg-white text-gray-800 border-gray-300"
-                } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
+              className={`w-full md:w-auto text-sm ${
+                theme === "dark"
+                  ? "bg-gray-800 text-white border-gray-600"
+                  : "bg-white text-gray-800 border-gray-300"
+              } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
             >
               <option value="v1.0.8">v1.0</option>
               {/* <option value="v1.1">v1.1</option> */}
@@ -156,8 +159,9 @@ export default function Navbar({
 
         {/* Mobile: kebab menu (kanan) */}
         <button
-          className={`lg:hidden focus:outline-none ${theme === "dark" ? "text-white" : "text-gray-800"
-            }`}
+          className={`lg:hidden focus:outline-none ${
+            theme === "dark" ? "text-white" : "text-gray-800"
+          }`}
           onClick={() => setMenuOpen(true)}
         >
           <HiOutlineDotsVertical className="w-6 h-6" />
@@ -166,8 +170,9 @@ export default function Navbar({
 
       {/* Mobile Offcanvas dari kanan */}
       <div
-        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${menuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+        className={`fixed inset-0 z-50 lg:hidden transition-transform duration-300 ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
       >
         {/* Overlay */}
         <div
@@ -196,9 +201,9 @@ export default function Navbar({
               <Link to="/docs/installation" onClick={() => setMenuOpen(false)}>
                 Documentation
               </Link>
-              <Link to="/blog" onClick={() => setMenuOpen(false)}>
+              {/* <Link to="/blog" onClick={() => setMenuOpen(false)}>
                 Blogs
-              </Link>
+              </Link> */}
             </div>
 
             <hr className="border-white/30" />
