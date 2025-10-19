@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { AccordionPage, AlertPage, AvatarPage, BadgePage, BottomNavbarPage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, CollectionPage, FABPage, FileUploadPage, GridPage, MasonryPage, ModalPage, OffcanvasPage, PaginationPage, RadioInputPage, SelectInputPage, SkeletonPage, SpinnerPage, TablePage, TabsPage, TextareaPage, TextInputPage, ToastPage, TogglePage, TooltipPage } from './pages'
+import { AccordionPage, AlertPage, AvatarPage, BadgePage, BottomNavbarPage, BreadcrumbPage, ButtonPage, CardPage, CheckboxInputPage, CollectionPage, FABPage, FileUploadPage, GridPage, MasonryPage, ModalPage, OffcanvasPage, PaginationPage, RadioInputPage, SelectInputPage, SkeletonPage, SpinnerPage, TablePage, TabsPage, TextareaPage, TextInputPage, TimelinePage, ToastPage, TogglePage, TooltipPage } from './pages'
 import { ToastProvider } from './components/Toast/ToastProvider'
 import { ThemeProvider } from './context/ThemeContext.tsx'
 
@@ -42,6 +42,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/bottom-navbar" element={<BottomNavbarPage />} />
             <Route path="/grid" element={<GridPage />} />
             <Route path="/masonry" element={<MasonryPage />} />
+            <Route path="/timeline" element={<TimelinePage />} />
           </Routes>
         </BrowserRouter>
       </ToastProvider>

@@ -33,6 +33,7 @@ function App() {
     { label: "Bottom Navbar", to: "/bottom-navbar", description: "A navigation bar that appears at the bottom of the screen, typically used in mobile views." },
     { label: "Grid", to: "/grid", description: "Create a grid layouts." },
     { label: "Masonry", to: "/masonry", description: "Create a \"Masonry Grid\" layout." },
+    { label: "Timeline", to: "/timeline", description: "Displays a list of events in chronological order." },
   ];
 
   return (
