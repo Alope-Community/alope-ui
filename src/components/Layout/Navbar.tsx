@@ -185,7 +185,7 @@ export default function Navbar({
 
         {/* Panel kanan */}
         <div
-          className={`absolute right-0 top-0 w-full md:w-1/2 h-full shadow-xl p-6 flex flex-col transition-colors bg-[#80C41C] text-white`}
+          className={`absolute right-0 top-0 w-full md:w-1/2 h-screen shadow-xl p-6 flex flex-col transition-colors bg-[#80C41C] text-white z-50`}
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
