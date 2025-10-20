@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { HiChevronRight } from "react-icons/hi";
 // import { FaCheck, FaRegCopy } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -13,7 +14,7 @@ export default function Hero() {
   // };
 
   useEffect(() => {
-    document.onclick = () => { };
+    document.onclick = () => {};
     return () => {
       document.onclick = null;
     };
@@ -97,21 +98,19 @@ function NewsAlert() {
     <a
       target="_blank"
       href="https://alope.id"
-      className="inline-flex gap-x-4 items-center rounded-lg p-1 pr-5 border border-gray-300 dark:border-gray-700 text-sm font-medium duration-150 hover:bg-[#80C41C]/10 dark:hover:bg-[#80C41C]/30 transition-colors"
+      className="inline-flex items-center overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700 text-sm font-medium duration-150 hover:bg-[#80C41C]/10 dark:hover:bg-[#80C41C]/30 transition-colors p-1 pr-3 sm:gap-5 gap-1.5 sm:max-w-full max-w-64"
     >
-      <span className="inline-block rounded-lg px-3 py-1 bg-[#80C41C] text-white text-xs">
+      <span className="flex-shrink-0 rounded-lg px-3 py-1 bg-[#80C41C] text-white text-xs">
         News
       </span>
-      <p className="flex items-center text-gray-800 dark:text-white">
-        Level Up Your Programming Skill
-        <svg className="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
-          <path
-            fillRule="evenodd"
-            d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </p>
+
+      {/* Wrapper untuk teks berjalan */}
+      <div className="relative overflow-hidden">
+        <p className="whitespace-nowrap animate-scroll flex items-center gap-3 text-gray-800 dark:text-white">
+          Level Up Your Programming Skill
+          <HiChevronRight className="md:block hidden" />
+        </p>
+      </div>
     </a>
   );
 }

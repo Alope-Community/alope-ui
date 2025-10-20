@@ -7,10 +7,32 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-success: #50C878;
-    --color-info: #0096FF;
-    --color-warning: #FFAC1C;
-    --color-error: #F87171;
-    --color-primary: #6366F1;
-    --color-secondary: #D1D5DB;
+  --color-success: #50c878;
+  --color-info: #0096ff;
+  --color-warning: #ffac1c;
+  --color-error: #f87171;
+  --color-primary: #6366f1;
+  --color-secondary: #d1d5db;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  35% {
+    transform: translateX(-0%);
+  }
+  65% {
+    transform: translateX(-0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Hanya aktif di mobile */
+@media (max-width: 1023px) {
+  .animate-scroll {
+    animation: scroll 5s linear infinite;
+  }
 }
