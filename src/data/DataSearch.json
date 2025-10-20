@@ -15,6 +15,16 @@
     "url": "/docs/alert"
   },
   {
+    "title": "Avatar",
+    "description": "The Avatar component displays user profile images with fallback initials, status indicators, and various styling options.",
+    "url": "/docs/avatar"
+  },
+  {
+    "title": "Avatar Group",
+    "description": "The AvatarGroup component displays multiple avatars in an overlapping stack with a counter for additional avatars.",
+    "url": "/docs/avatarGroup"
+  },
+  {
     "title": "Badge",
     "description": "The Badge component is used to display small pieces of information like status, count, or labels.",
     "url": "/docs/badge"
@@ -35,6 +45,16 @@
     "url": "/docs/card"
   },
   {
+    "title": "Checkbox Input",
+    "description": "The CheckboxInput component provides checkbox functionality for selecting single or multiple options, with indeterminate state support.",
+    "url": "/docs/checkbox"
+  },
+  {
+    "title": "FileUpload",
+    "description": "The FileUpload component provides a flexible file upload interface with support for drag-and-drop, file validation, preview, and two display modes (dropzone and text input).",
+    "url": "/docs/fileUpload"
+  },
+  {
     "title": "Modal",
     "description": "The Modal component provides overlay dialogs for important user interactions and information.",
     "url": "/docs/modal"
@@ -45,14 +65,9 @@
     "url": "/docs/offcanvas"
   },
   {
-    "title": "Toast",
-    "description": "The Toast component provides brief, auto-dismissable messages to inform users about actions or status updates.",
-    "url": "/docs/toast"
-  },
-  {
-    "title": "Checkbox Input",
-    "description": "The CheckboxInput component provides checkbox functionality for selecting single or multiple options, with indeterminate state support.",
-    "url": "/docs/checkbox"
+    "title": "Pagination",
+    "description": "The Pagination component provides navigation controls for paginated content, supporting both simplified and full pagination modes with customizable appearance.",
+    "url": "/docs/pagination"
   },
   {
     "title": "Radio Input",
@@ -65,8 +80,43 @@
     "url": "/docs/select"
   },
   {
+    "title": "Skeleton",
+    "description": "The Skeleton component displays a placeholder preview of content before the actual data is loaded, improving perceived performance and user experience.",
+    "url": "/docs/skeleton"
+  },
+  {
+    "title": "Spinner",
+    "description": "The Spinner component displays an animated loading indicator with customizable size, color, duration, and thickness.",
+    "url": "/docs/spinner"
+  },
+  {
+    "title": "Table",
+    "description": "The Table component provides a flexible and feature-rich data table with support for custom rendering, row selection, striping, sticky headers, and responsive design.",
+    "url": "/docs/tableDocs"
+  },
+  {
+    "title": "Textarea",
+    "description": "The Textarea component provides a multi-line text input with optional auto-resize functionality, label, error messages, and dark mode support.",
+    "url": "/docs/textArea"
+  },
+  {
     "title": "Text Input",
     "description": "The TextInput component provides a text input field for users to enter textual information such as names, emails, or any short form data.",
     "url": "/docs/textinput"
+  },
+  {
+    "title": "Toast",
+    "description": "The Toast component provides brief, auto-dismissable messages to inform users about actions or status updates.",
+    "url": "/docs/toast"
+  },
+  {
+    "title": "Toggle",
+    "description": "The Toggle component provides an animated switch control for toggling between on/off states with various visual styles and sizes.",
+    "url": "/docs/toggle"
+  },
+  {
+    "title": "Tooltip",
+    "description": "The Tooltip component displays informative text when hovering over an element, with customizable placement, styling, and animation options.",
+    "url": "/docs/tooltip"
   }
 ]
