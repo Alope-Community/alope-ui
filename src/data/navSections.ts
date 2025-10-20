@@ -22,13 +22,13 @@ export const baseNavSections: NavSection[] = [
       { name: "Accordion", path: "accordion" },
       { name: "Alert", path: "alert" },
       { name: "Avatar", path: "avatar" },
-      { name: "AvatarGroup", path: "avatarGroup" },
+      { name: "Avatar Group", path: "avatarGroup" },
       { name: "Badge", path: "badge" },
       { name: "Breadcrumb", path: "breadcrumb" },
       { name: "Button", path: "button" },
       { name: "Card", path: "card" },
       { name: "Checkbox", path: "checkbox" },
-      { name: "FileUpload", path: "fileUpload" },
+      { name: "File Upload", path: "fileUpload" },
       { name: "Modal", path: "modal" },
       { name: "Offcanvas", path: "offcanvas" },
       { name: "Pagination", path: "pagination" },
@@ -39,7 +39,7 @@ export const baseNavSections: NavSection[] = [
       { name: "Table", path: "tableDocs" },
       { name: "Tabs", path: "tabsDocs" },
       { name: "Text Area", path: "textArea" },
-      { name: "TextInput", path: "textinput" },
+      { name: "Text Input", path: "textinput" },
       { name: "Toast", path: "toast" },
       { name: "Toggle", path: "toggle" },
       { name: "Tooltip", path: "tooltip" },
@@ -59,16 +59,14 @@ export function generateNavSections(version: string): NavSection[] {
         title: "Getting Started",
         items: [
           { name: "Installation", path: `/docs/${version}/installation` },
-
-
         ],
       },
       {
         title: "Components",
         items: [
           { name: "Avatar", path: `/docs/${version}/avatar` },
-          { name: "AvatarGroup", path: `/docs/${version}/avatarGroup` },
-          { name: "FileUpload", path: `/docs/${version}/fileUpload` },
+          { name: "Avatar Group", path: `/docs/${version}/avatarGroup` },
+          { name: "File Upload", path: `/docs/${version}/fileUpload` },
           { name: "Pagination", path: `/docs/${version}/pagination` },
           { name: "Skeleton", path: `/docs/${version}/skeleton` },
           { name: "Spinner", path: `/docs/${version}/spinner` },
@@ -78,7 +76,7 @@ export function generateNavSections(version: string): NavSection[] {
           { name: "Toggle", path: `/docs/${version}/toggle` },
           { name: "Tooltip", path: `/docs/${version}/tooltip` },
         ],
-      }
+      },
     ];
   }
 
