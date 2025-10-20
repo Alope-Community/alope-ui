@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Modal from "./ModalSearch";
 import searchData from "../data/DataSearch.json";
+import { HiSearch } from "react-icons/hi";
 
 export default function Search() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,53 +16,52 @@ export default function Search() {
 
   const closeModal = () => setIsOpen(false);
 
-    // Ctrl+K / Esc
-    useEffect(() => {
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === "k") {
-          e.preventDefault();
-          setIsOpen((prev) => !prev);
-        }
-        if (e.key === "Escape") {
-          setIsOpen(false);
-        }
-      };
-
-      window.addEventListener("keydown", handleKeyDown);
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }, []);
-
-    useEffect(() => {
-      if (isOpen) {
-        requestAnimationFrame(() => {
-          inputRef.current?.focus();
-        });
+  // Ctrl+K / Esc
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        setIsOpen((prev) => !prev);
       }
-    }, [isOpen]);
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
 
-// Scroll lock with scrollbar compensation
-useEffect(() => {
-  const lockScroll = () => {
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
-  };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
-  const unlockScroll = () => {
-    document.body.style.overflow = "";
-    document.body.style.paddingRight = "";
-  };
+  useEffect(() => {
+    if (isOpen) {
+      requestAnimationFrame(() => {
+        inputRef.current?.focus();
+      });
+    }
+  }, [isOpen]);
 
-  if (isOpen) {
-    lockScroll();
-  } else {
-    unlockScroll();
-  }
+  // Scroll lock with scrollbar compensation
+  useEffect(() => {
+    const lockScroll = () => {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    };
 
-  return () => unlockScroll();
-}, [isOpen]);
+    const unlockScroll = () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
 
+    if (isOpen) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
 
+    return () => unlockScroll();
+  }, [isOpen]);
 
   // Highlight
   const highlightText = (text: string, query: string) => {
@@ -97,24 +97,10 @@ useEffect(() => {
         <div className="w-full sm:w-75 max-w-md mx-auto">
           <button
             type="button"
-            className="hidden sm:flex w-full relative items-center p-1 ps-10 pe-16 text-sm rounded-md bg-white border-gray-300 dark:bg-gray-800 text-gray-500 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 cursor-pointer shadow-sm"
+            className="hidden sm:flex w-full relative items-center p-2 ps-10 pe-16 text-sm rounded-md bg-white border-gray-300 dark:bg-gray-800 text-gray-500 dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 cursor-pointer shadow-sm"
             onClick={openModal}
           >
-            <svg
-              className="w-4 h-4 absolute inset-y-0 start-3 my-auto text-gray-500 dark:text-gray-400 pointer-events-none"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
+            <HiSearch className="w-5 h-5 absolute inset-y-0 start-3 my-auto text-gray-500 dark:text-gray-400 pointer-events-none" />
 
             <span className="text-gray-500 dark:text-gray-200">Search</span>
 
@@ -127,23 +113,10 @@ useEffect(() => {
         {/* Mobile trigger */}
         <div className="sm:hidden flex items-center justify-end">
           <button
-            className="sm:hidden flex items-center justify-center pe-1 rounded-lg"
+            className="sm:hidden flex items-center justify-center pe-1 rounded-lg cursor-pointer"
             onClick={openModal}
           >
-            <svg
-              className="w-6 h-6 text-gray-500 dark:text-gray-200"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
-              />
-            </svg>
+            <HiSearch className="w-6 h-6 text-gray-500 dark:text-gray-200" />
           </button>
         </div>
       </div>
@@ -161,27 +134,14 @@ useEffect(() => {
           />
 
           <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-            <svg
-              className="w-5 h-5 text-gray-400"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
-              />
-            </svg>
+            <HiSearch className="w-5 h-5 text-gray-400 dark:text-gray-100" />
           </div>
 
           {/* Cancel button (mobile) */}
           <button
             type="button"
             onClick={closeModal}
-            className="sm:hidden absolute inset-y-0 right-3 flex items-center text-sm font-medium text-gray-600 dark:text-gray-300"
+            className="sm:hidden absolute inset-y-0 right-3 flex items-center text-sm font-medium text-gray-600 dark:text-gray-300 cursor-pointer"
           >
             Cancel
           </button>
@@ -207,9 +167,9 @@ useEffect(() => {
                   key={idx}
                   to={item.url}
                   onClick={() => {
-      closeModal();
-      setQuery(""); // opsional: bersihkan input setelah klik
-    }}
+                    closeModal();
+                    setQuery(""); // opsional: bersihkan input setelah klik
+                  }}
                   className="block p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
                 >
                   <h4 className="font-medium">

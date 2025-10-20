@@ -12,8 +12,8 @@ import { useTheme } from "../context/ThemeContext";
 interface CodeBlockProps {
   code: string;
   lang?: string;
-  label?: string;        // custom label (contoh: "npm", "bash")
-  showHeader?: boolean;  // sembunyikan header jika false
+  label?: string; // custom label (contoh: "npm", "bash")
+  showHeader?: boolean; // sembunyikan header jika false
 }
 
 export default function CodeBlock({
@@ -35,15 +35,21 @@ export default function CodeBlock({
   return (
     <div
       className={`relative rounded-lg overflow-hidden shadow-md mb-6 border 
-        ${isDark ? "border-slate-700 bg-slate-900" : "border-slate-200 bg-slate-50"}`}
+        ${
+          isDark
+            ? "border-slate-700 bg-slate-900"
+            : "border-slate-200 bg-slate-50"
+        }`}
     >
       {/* Header */}
       {showHeader && (
         <div
           className={`flex items-center justify-between text-sm px-3 py-2 border-b
-            ${isDark
-              ? "bg-slate-800 text-slate-200 border-slate-700"
-              : "bg-slate-100 text-slate-800 border-slate-200"}`}
+            ${
+              isDark
+                ? "bg-slate-800 text-slate-200 border-slate-700"
+                : "bg-slate-100 text-slate-800 border-slate-200"
+            }`}
         >
           <span className="uppercase text-xs font-medium tracking-wide">
             {label ?? lang}

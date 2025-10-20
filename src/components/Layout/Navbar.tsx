@@ -66,14 +66,17 @@ export default function Navbar({
         {/* Kiri: Hamburger + Logo */}
         <div className="flex items-center space-x-2">
           {/* Tombol Hamburger (sidebar kiri) */}
-          <button
-            className={`lg:hidden focus:outline-none ${
-              theme === "dark" ? "text-white" : "text-gray-800"
-            }`}
-            onClick={onToggleSidebar}
-          >
-            <HiOutlineMenu className="w-6 h-6" />
-          </button>
+
+          {location.pathname !== "/" && (
+            <button
+              className={`lg:hidden focus:outline-none cursor-pointer ${
+                theme === "dark" ? "text-white" : "text-gray-800"
+              }`}
+              onClick={onToggleSidebar}
+            >
+              <HiOutlineMenu className="w-6 h-6" />
+            </button>
+          )}
 
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
@@ -159,7 +162,7 @@ export default function Navbar({
 
         {/* Mobile: kebab menu (kanan) */}
         <button
-          className={`lg:hidden focus:outline-none ${
+          className={`lg:hidden focus:outline-none cursor-pointer ${
             theme === "dark" ? "text-white" : "text-gray-800"
           }`}
           onClick={() => setMenuOpen(true)}
@@ -187,7 +190,10 @@ export default function Navbar({
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold">AlopeUI</h2>
-            <button onClick={() => setMenuOpen(false)}>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="cursor-pointer"
+            >
               <HiOutlineX className="w-6 h-6" />
             </button>
           </div>
@@ -214,7 +220,7 @@ export default function Navbar({
               <select
                 value={version}
                 onChange={handleVersionChange}
-                className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm"
+                className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm cursor-pointer"
               >
                 <option value="v1.0.8">v1.0</option>
                 {/* <option value="v1.1">v1.1</option> */}
@@ -230,7 +236,7 @@ export default function Navbar({
                 toggleTheme();
                 setMenuOpen(false);
               }}
-              className="flex items-center space-x-2 text-sm"
+              className="flex items-center space-x-2 text-sm cursor-pointer"
             >
               {theme === "dark" ? (
                 <FaSun className="w-4 h-4 text-yellow-200" />
