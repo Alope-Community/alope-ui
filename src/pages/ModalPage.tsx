@@ -35,7 +35,7 @@ const ModalPage = () => {
             </section>
 
             {/* Confirmation Modal */}
-            <section className="space-y-4">
+            {/* <section className="space-y-4">
                 <h2 className="text-xl font-semibold dark:text-white">Confirmation Modal</h2>
                 <div className="flex flex-wrap gap-4">
                     <Button onClick={() => setIsConfirmOpen(true)} variantType="error">
@@ -62,6 +62,34 @@ const ModalPage = () => {
                         </div>
                     </Modal>
                 </div>
+            </section> */}
+
+            <section>
+                <Button onClick={() => setIsConfirmOpen(true)}>Open Modal</Button>
+                <Modal
+                    isOpen={isConfirmOpen}
+                    onClose={() => setIsConfirmOpen(false)}
+                    title="Konfirmasi Logout"
+                    size="md"
+                    overlayClose
+                    className="z-50"
+                >
+                    <div className="p-4">
+                        <p className="text-gray-600 mb-4">Apakah yakin ingin logout?</p>
+                        <div className="flex justify-end gap-2">
+                            <Button
+                                variant="outline"
+                                variantType="secondary"
+                                onClick={() => setIsConfirmOpen(false)}
+                            >
+                                Batal
+                            </Button>
+                            <Button variantType="error" onClick={() => {}}>
+                                Yakin Logout
+                            </Button>
+                        </div>
+                    </div>
+                </Modal>
             </section>
 
         </Container>
