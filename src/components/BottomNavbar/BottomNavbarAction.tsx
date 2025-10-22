@@ -34,7 +34,7 @@ export const BottomNavbarAction: React.FC<BottomNavbarActionProps> = ({
       {icon}
       <span className={cn(
         `text-sm`,
-        isActive ? 'text-primary' : 'text-secondary-dark-700 dark:text-secondary-dark-700 group-hover:text-secondary-700 dark:group-hover:text-white',
+        isActive ? 'text-primary' : 'text-secondary-dark-700 dark:text-secondary-dark group-hover:text-secondary-700 dark:group-hover:text-white',
         labelClassName
       )}>
         {label}
