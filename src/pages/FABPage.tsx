@@ -16,15 +16,15 @@ function FABPage() {
 
       <section>
         <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Interactive Demo</h2>
-        <div className="space-y-4 p-4 border rounded-lg">
+        <div className="space-y-4 p-4 border dark:border-white rounded-lg">
           <div className="flex flex-wrap gap-4 items-center">
-            <p className='font-medium'>Toggle FAB:</p>
+            <p className='font-medium dark:text-white'>Toggle FAB:</p>
             <Button onClick={() => setIsOpen(!isOpen)} variant="outline">
               {isOpen ? 'Close FAB' : 'Open FAB'}
             </Button>
           </div>
           <div className="flex flex-wrap gap-4 items-center">
-            <p className='font-medium'>Set Direction:</p>
+            <p className='font-medium dark:text-white'>Set Direction:</p>
             <Button
               variant={direction === 'vertical' ? 'solid' : 'outline'}
               onClick={() => setDirection('vertical')}
