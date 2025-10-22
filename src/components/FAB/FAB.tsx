@@ -74,23 +74,28 @@ export const FAB = ({
   return (
     <div className="fixed bottom-8 right-8 flex flex-col items-end z-50">
       {/* Action buttons container */}
-      <div className={cn('flex items-center transition-all duration-300 ease-in-out', directionClasses[direction])}>
-        {shouldRender && animatedChildren}
+      <div className={direction === 'vertical' ? 'block' : 'flex'}>
+
+        <div className={cn('flex items-center transition-all duration-300 ease-in-out', directionClasses[direction])}>
+          {shouldRender && animatedChildren}
+        </div>
+
+        {/* Main FAB button */}
+        <button
+          onClick={onOpen}
+          className={cn("shadow-lg flex w-full items-center justify-center hover:cursor-pointer", sizeClasses, variantClasses)}
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+        >
+          <span
+            className={`transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
+          >
+            {icon}
+          </span>
+        </button>
+
       </div>
 
-      {/* Main FAB button */}
-      <button
-        onClick={onOpen}
-        className={cn("shadow-lg flex w-full items-center justify-center hover:cursor-pointer", sizeClasses, variantClasses)}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-      >
-        <span
-          className={`transform transition-transform duration-300 ${isOpen ? 'rotate-45' : 'rotate-0'}`}
-        >
-          {icon}
-        </span>
-      </button>
     </div>
   )
 }
