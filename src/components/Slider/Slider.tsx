@@ -126,7 +126,7 @@ export const Slider: React.FC<SliderProps> = ({
     return (
         <div className="w-full p-4 relative overflow-x-clip">
             {label && (
-                <label htmlFor={id || name} className="block text-sm font-medium mb-1">
+                <label htmlFor={id || name} className="block text-sm font-medium mb-1 dark:text-white">
                     {label}
                 </label>
             )}
