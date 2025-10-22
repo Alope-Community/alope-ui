@@ -47,24 +47,25 @@ const TimelineItem: React.FC<TimelineItemProps & { position?: 'split' | 'right' 
         <li className={cn("mb-5", {
             "ms-8": position === 'left',
             "me-8 text-end": position === 'right',
-            "ms-4 md:w-1/2 md:odd:pe-8 md:odd:ms-0 md:odd:text-end md:even:ps-8 md:even:ms-auto": position === 'split'
+            "ms-4 md:w-1/2 ps-4 md:odd:pe-8 md:odd:ms-0 md:odd:text-end md:even:ps-8 md:even:ms-auto": position === 'split'
         })}>
             {
                 icon
                     ? <div className={cn("flex items-center justify-center absolute w-10 h-10 rounded-full mt-1.5 outline outline-white dark:outline-secondary",
                         dotColorClassName,
                         {
-                            "-start-[21px]": position === 'left' || (position === 'split' && "md:hidden"),
+                            "-start-[20px]": position === 'left' || (position === 'split' && "md:hidden"),
                             "-end-[21px]": position === 'right',
-                            "-start-[7.1px] md:start-1/2 md:-ms-[19px]": position === 'split'
-                        })}>
+                            "-start-[21px] md:start-1/2 md:-ms-[19px]": position === 'split'
+                        }
+                    )}>
                         {icon}
                     </div>
                     : <div className={cn("absolute w-3 h-3 rounded-full mt-1.5 outline outline-white dark:outline-secondary",
                         dotColorClassName,
                         {
-                            "-start-[7.1px]": position === 'left' || (position === 'split' && "md:hidden"),
-                            "-end-[6.9px]": position === 'right',
+                            "-start-[7px]": position === 'left' || (position === 'split' && "md:hidden"),
+                            "-end-[7px]": position === 'right',
                             "-start-[7.1px] md:start-1/2 md:-ms-[4.7px]": position === 'split'
                         })}></div>
             }
