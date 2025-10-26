@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { cn } from "clsx-for-tailwind";
 import {
@@ -9,16 +9,25 @@ import {
 } from "react-icons/hi";
 import logo from "../../assets/logo.svg";
 import { useTheme } from "../../context/ThemeContext";
+import SearchInput from "./../Search";
 
 export default function Navbar({
   onToggleSidebar,
+  setIsLoading,
 }: {
   onToggleSidebar: () => void;
+  isLoading?: boolean;
+  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const location = useLocation();
+
+  console.log(setIsLoading);
+
   const { theme, toggleTheme } = useTheme();
-  const [version, setVersion] = useState<"v1.0.8" | "v2.0" | "v3.0">("v1.0.8");
+  const [version, setVersion] = useState<"v1.0.8" | "v1.1" | "v2.0">("v1.0.8");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +39,18 @@ export default function Navbar({
   }, []);
 
   const handleVersionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setVersion(e.target.value as "v1.0.8" | "v2.0" | "v3.0");
+    const selectedVersion = e.target.value as "v1.0.8" | "v1.1" | "v2.0";
+    setVersion(selectedVersion);
+
+    // ✅ Tutup offCanvas kanan otomatis setiap ganti versi
+    setMenuOpen(false);
+    // setIsLoading(true);
+
+    // Navigasi otomatis ke halaman versi baru
+    setTimeout(() => {
+      // navigate(`/docs/${selectedVersion}/installation`);
+      // setIsLoading(false); // 🔴 Matikan spinner setelah navigasi
+    }, 1000);
   };
 
   return (
@@ -46,14 +66,17 @@ export default function Navbar({
         {/* Kiri: Hamburger + Logo */}
         <div className="flex items-center space-x-2">
           {/* Tombol Hamburger (sidebar kiri) */}
-          <button
-            className={`lg:hidden focus:outline-none ${
-              theme === "dark" ? "text-white" : "text-gray-800"
-            }`}
-            onClick={onToggleSidebar}
-          >
-            <HiOutlineMenu className="w-6 h-6" />
-          </button>
+
+          {location.pathname !== "/" && (
+            <button
+              className={`lg:hidden focus:outline-none cursor-pointer ${
+                theme === "dark" ? "text-white" : "text-gray-800"
+              }`}
+              onClick={onToggleSidebar}
+            >
+              <HiOutlineMenu className="w-6 h-6" />
+            </button>
+          )}
 
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
@@ -72,18 +95,33 @@ export default function Navbar({
           </Link>
         </div>
 
+        <SearchInput />
+
         {/* Menu Desktop */}
         <div className="hidden lg:flex items-center space-x-4 lg:space-x-6">
           <Link
             to="/docs/installation"
             className={`text-sm transition ${
               theme === "dark"
-                ? "text-white hover:text-[#80C41C]"
+                ? location.pathname.startsWith("/docs")
+                  ? "text-[#80C41C] font-semibold"
+                  : "text-white hover:text-[#80C41C]"
+                : location.pathname.startsWith("/docs")
+                ? "text-[#80C41C] font-semibold"
                 : "text-gray-800 hover:text-[#80C41C]"
             }`}
           >
             Documentation
           </Link>
+          {/* <Link
+            to="/blog"
+            className={`text-sm transition ${theme === "dark"
+              ? "text-white hover:text-[#80C41C]"
+              : "text-gray-800 hover:text-[#80C41C]"
+              }`}
+          >
+            Blogs
+          </Link> */}
 
           {/* Select Version */}
           <div className="relative">
@@ -97,8 +135,7 @@ export default function Navbar({
               } px-3 py-0.5 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-[#80C41C] transition appearance-none`}
             >
               <option value="v1.0.8">v1.0</option>
-              <option value="v2.0">v2.0</option>
-              <option value="v3.0">v3.0</option>
+              {/* <option value="v1.1">v1.1</option> */}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-400">
               <svg
@@ -125,7 +162,7 @@ export default function Navbar({
 
         {/* Mobile: kebab menu (kanan) */}
         <button
-          className={`lg:hidden focus:outline-none ${
+          className={`lg:hidden focus:outline-none cursor-pointer ${
             theme === "dark" ? "text-white" : "text-gray-800"
           }`}
           onClick={() => setMenuOpen(true)}
@@ -148,14 +185,15 @@ export default function Navbar({
 
         {/* Panel kanan */}
         <div
-          className={`absolute right-0 top-0 w-full md:w-1/2 h-full shadow-xl p-6 flex flex-col transition-colors
-    bg-[#80C41C] text-white
-  `}
+          className={`absolute right-0 top-0 w-full md:w-1/2 h-screen shadow-xl p-6 flex flex-col transition-colors bg-[#80C41C] text-white z-50`}
         >
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold">AlopeUI</h2>
-            <button onClick={() => setMenuOpen(false)}>
+            <button
+              onClick={() => setMenuOpen(false)}
+              className="cursor-pointer"
+            >
               <HiOutlineX className="w-6 h-6" />
             </button>
           </div>
@@ -167,8 +205,11 @@ export default function Navbar({
             {/* Menu 2 kolom */}
             <div className="grid grid-cols-2 gap-4 text-sm font-medium">
               <Link to="/docs/installation" onClick={() => setMenuOpen(false)}>
-                Docs
+                Documentation
               </Link>
+              {/* <Link to="/blog" onClick={() => setMenuOpen(false)}>
+                Blogs
+              </Link> */}
             </div>
 
             <hr className="border-white/30" />
@@ -179,11 +220,11 @@ export default function Navbar({
               <select
                 value={version}
                 onChange={handleVersionChange}
-                className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm"
+                className="w-full rounded-md bg-[#6aa318] text-white border border-white/20 px-2 py-1 text-sm cursor-pointer"
               >
                 <option value="v1.0.8">v1.0</option>
-                {/* <option value="v2.0">v2.0</option>
-                <option value="v3.0">v3.0</option> */}
+                {/* <option value="v1.1">v1.1</option> */}
+                {/*<option value="v3.0">v3.0</option> */}
               </select>
             </div>
 
@@ -195,7 +236,7 @@ export default function Navbar({
                 toggleTheme();
                 setMenuOpen(false);
               }}
-              className="flex items-center space-x-2 text-sm"
+              className="flex items-center space-x-2 text-sm cursor-pointer"
             >
               {theme === "dark" ? (
                 <FaSun className="w-4 h-4 text-yellow-200" />

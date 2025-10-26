@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import CodeBlock from "../../components/CodeBlock";
+import CodeBlock from "../../../components/CodeBlock";
 import { RadioInput } from "alope-ui";
 import type { RadioOptionType } from "alope-ui";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 const options: RadioOptionType[] = [
   { value: "chocolate", label: "Chocolate" },
@@ -36,27 +36,30 @@ import type { RadioOptionType } from "alope-ui";`}
 
         {/* Props Section */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
-        <div className="overflow-x-auto mb-10">
-          <table
-            className={`w-full border rounded-lg shadow-sm text-sm ${
-              theme === "dark"
-                ? "bg-gray-900 border-gray-700"
-                : "bg-white border-gray-200"
-            }`}
-          >
+        <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
+          <table className="w-full text-sm text-left">
             <thead
-              className={theme === "dark" ? "bg-gray-700" : "bg-gray-100"}
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
             >
               <tr>
-                <th className="p-3 border">Prop</th>
-                <th className="p-3 border">Type</th>
-                <th className="p-3 border">Default</th>
-                <th className="p-3 border">Description</th>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
               </tr>
             </thead>
             <tbody>
               {[
-                ["name", "string", "required", "Name attribute for radio group"],
+                [
+                  "name",
+                  "string",
+                  "required",
+                  "Name attribute for radio group",
+                ],
                 [
                   "options",
                   "RadioOptionType[]",
@@ -88,12 +91,7 @@ import type { RadioOptionType } from "alope-ui";`}
                   "Radio button size",
                 ],
                 ["disabled", "boolean", "false", "Disable all radio options"],
-                [
-                  "containerClassName",
-                  "string",
-                  '""',
-                  "Container CSS class",
-                ],
+                ["containerClassName", "string", '""', "Container CSS class"],
                 [
                   "inputGroupClassName",
                   "string | (isChecked: boolean) => string",
@@ -112,15 +110,17 @@ import type { RadioOptionType } from "alope-ui";`}
                   '""',
                   "Radio input CSS class",
                 ],
-              ].map(([prop, type, def, desc], i) => (
+              ].map(([prop, type, def, desc]) => (
                 <tr
-                  key={i}
-                  className={theme === "dark" ? "bg-gray-800" : "bg-white"}
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
-                  <td className="p-3 border font-mono">{prop}</td>
-                  <td className="p-3 border">{type}</td>
-                  <td className="p-3 border">{def}</td>
-                  <td className="p-3 border">{desc}</td>
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -155,7 +155,8 @@ const options: RadioOptionType[] = [
 ];
 
 const BasicExample = () => {
-  const [selectedValue, setSelectedValue] = useState<RadioOptionType | undefined>(options[0]);
+  const [selectedValue, setSelectedValue] =
+    (useState < RadioOptionType) | (undefined > options[0]);
 
   return (
     <RadioInput
@@ -177,6 +178,7 @@ const BasicExample = () => {
               : "bg-white border-gray-200"
           }`}
         >
+          {/* Subtle Variant */}
           <RadioInput
             name="variant-subtle"
             options={options}
@@ -184,6 +186,7 @@ const BasicExample = () => {
             onValueChange={setSelectedValue}
             variant="subtle"
           />
+          {/* Solid Variant */}
           <RadioInput
             name="variant-solid"
             options={options}
@@ -191,6 +194,7 @@ const BasicExample = () => {
             onValueChange={setSelectedValue}
             variant="solid"
           />
+          {/* Outline Variant */}
           <RadioInput
             name="variant-outline"
             options={options}
@@ -200,29 +204,38 @@ const BasicExample = () => {
           />
         </div>
         <CodeBlock
-          code={`<RadioInput
+          code={`{
+  /* Subtle Variant */
+}
+<RadioInput
   name="variant-subtle"
   options={options}
   selectedValue={selectedValue}
   onValueChange={setSelectedValue}
   variant="subtle"
-/>
+/>;
 
+{
+  /* Solid Variant */
+}
 <RadioInput
   name="variant-solid"
   options={options}
   selectedValue={selectedValue}
   onValueChange={setSelectedValue}
   variant="solid"
-/>
+/>;
 
+{
+  /* Outline Variant */
+}
 <RadioInput
   name="variant-outline"
   options={options}
   selectedValue={selectedValue}
   onValueChange={setSelectedValue}
   variant="outline"
-/>`}
+/>;`}
         />
 
         {/* Sizes */}
@@ -234,6 +247,7 @@ const BasicExample = () => {
               : "bg-white border-gray-200"
           }`}
         >
+          {/* Small Size */}
           <RadioInput
             name="size-sm"
             options={options}
@@ -241,13 +255,7 @@ const BasicExample = () => {
             onValueChange={setSelectedValue}
             radioSize="sm"
           />
-          <RadioInput
-            name="size-md"
-            options={options}
-            selectedValue={selectedValue}
-            onValueChange={setSelectedValue}
-            radioSize="md"
-          />
+          {/* Large Size */}
           <RadioInput
             name="size-lg"
             options={options}
@@ -257,21 +265,27 @@ const BasicExample = () => {
           />
         </div>
         <CodeBlock
-          code={`<RadioInput
+          code={`{
+  /* Small Size */
+}
+<RadioInput
   name="size-sm"
   options={options}
   selectedValue={selectedValue}
   onValueChange={setSelectedValue}
   radioSize="sm"
-/>
+/>;
 
+{
+  /* Large Size */
+}
 <RadioInput
   name="size-lg"
   options={options}
   selectedValue={selectedValue}
   onValueChange={setSelectedValue}
   radioSize="lg"
-/>`}
+/>;`}
         />
 
         {/* Disabled */}
@@ -315,21 +329,19 @@ const BasicExample = () => {
             options={options}
             selectedValue={selectedValue}
             onValueChange={setSelectedValue}
-            containerClassName="gap-6 p-4 rounded-lg bg-blue-50 dark:bg-blue-900"
+            containerClassName="gap-6 bg-blue-50 p-4 rounded-lg"
             inputGroupClassName={(isChecked) =>
               isChecked
-                ? "bg-blue-100 dark:bg-blue-800 border border-blue-500 shadow-md"
-                : "bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                ? "bg-blue-100 border-blue-500 shadow-md"
+                : "bg-white border-gray-300 hover:bg-gray-100"
             }
             inputLabelClassName={(isChecked) =>
-              isChecked
-                ? "text-blue-800 dark:text-blue-200 font-bold"
-                : "text-gray-700 dark:text-gray-300"
+              isChecked ? "text-blue-800 font-bold" : "text-gray-600"
             }
             inputRadioClassName={(isChecked) =>
               isChecked
                 ? "bg-blue-600 border-blue-600"
-                : "bg-white dark:bg-gray-700 border-gray-400 dark:border-gray-500"
+                : "bg-white border-gray-400"
             }
           />
         </div>
@@ -339,19 +351,17 @@ const BasicExample = () => {
   options={options}
   selectedValue={selectedValue}
   onValueChange={setSelectedValue}
-  containerClassName="gap-6 bg-blue-50 dark:bg-blue-900 p-4 rounded-lg"
+  containerClassName="gap-6 bg-blue-50 p-4 rounded-lg"
   inputGroupClassName={(isChecked) =>
     isChecked
-      ? "bg-blue-100 dark:bg-blue-800 border-blue-500 shadow-md"
-      : "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+      ? "bg-blue-100 border-blue-500 shadow-md"
+      : "bg-white border-gray-300 hover:bg-gray-100"
   }
   inputLabelClassName={(isChecked) =>
-    isChecked ? "text-blue-800 dark:text-blue-200 font-bold" : "text-gray-600 dark:text-gray-300"
+    isChecked ? "text-blue-800 font-bold" : "text-gray-600"
   }
   inputRadioClassName={(isChecked) =>
-    isChecked
-      ? "bg-blue-600 border-blue-600"
-      : "bg-white dark:bg-gray-700 border-gray-400 dark:border-gray-500"
+    isChecked ? "bg-blue-600 border-blue-600" : "bg-white border-gray-400"
   }
 />`}
         />

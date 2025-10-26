@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "tags": [
+      "React",
+      "Alope UI"
+    ],
+    "title": "Alope UI v1.0 Release: Build faster with our new design system",
+    "author": "Firdan Fauzan",
+    "published": "2025-09-20",
+    "banner": "/img/banner.jpg",
+    "content": [
+      "Alope UI v1 has been released to help developers build faster with reusable components and consistent design patterns.",
+      "With Tailwind CSS integration, developers can easily customize and scale their projects while maintaining clean and modern UI.",
+      "This release focuses on simplicity, performance, and accessibility, ensuring a smooth developer experience."
+    ]
+  },
+  {
+    "id": 2,
+    "tags": [
+      "Next.js",
+      "Performance"
+    ],
+    "title": "We just shipped 50+ ready-to-use components",
+    "author": "Alope Team",
+    "published": "2025-09-22",
+    "banner": "/img/banner2.jpg",
+    "content": [
+      "Build faster with our design system. Every component is fully  responsive, accessible,",
+      "and customizable — so you can focus on less styling and more building"
+    ]
+  },
+  {
+    "id": 3,
+    "tags": [
+      "Design"
+    ],
+    "title": "The future of Alope UI: roadmap & contributions",
+    "author": "Alope Contributors",
+    "published": "2025-09-24",
+    "banner": "",
+    "content": [
+      "As the demand for digital design continues to grow, Alope UI is here to provide a more flexible, modern, and consistent solution for building user interfaces. This framework focuses not only on aesthetics but also on development speed and user experience (UX).",
+      "The roadmap for Alope UI includes several key priorities: refining existing components, introducing more advanced ones, and improving documentation to ensure accessibility for both designers and developers.",
+      "Another major focus is accessibility. Every component will be designed with inclusivity in mind, ensuring that applications built with Alope UI are usable by people with different abilities.",
+      "We believe community contributions are essential to the success of an open-source project like this. Contributors can help in many ways: adding new components, fixing bugs, improving documentation, or sharing ideas about emerging design trends.",
+      "To make collaboration easier, Alope UI provides a clear contribution guide on its GitHub repository. Even first-time contributors can easily get started without feeling overwhelmed.",
+      "In the long term, our vision for Alope UI is to become a design system that is not only used internally but also widely adopted by the global community. With the support of contributors, Alope UI will continue to evolve alongside frontend technologies and industry needs.",
+      "Let’s build a better UI/UX ecosystem together through Alope UI. Every contribution, no matter how small, makes a meaningful impact on the future of this framework."
+    ]
+  }
+]

@@ -13,6 +13,7 @@ const teamMembers: TeamMember[] = [
   { handle: "MrFatra", username: "MrFatra" },
   { handle: "AkaSengko24", username: "AkaSengko24" },
   { handle: "firdanaja", username: "firdanaja" },
+  { handle: "dikrifzn", username: "dikrifzn" },
 ];
 
 const ProjectTeamSection = () => {
@@ -54,10 +55,10 @@ const ProjectTeamSection = () => {
     <section className="container mx-auto py-16 px-6 md:px-20">
       <div className="text-center">
         <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 tracking-widest uppercase mb-12">
-          A Collaborators
+          Meet the Collaborators
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {members.map((member, index) => (
             <a
               href={member.url}
