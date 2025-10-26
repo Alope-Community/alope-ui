@@ -93,42 +93,54 @@ export default App;
 ## 🧩 Component Library
 
 ### Navigation Components
+- [🪗 Accordion](#accordion) - Collapsible content panels  
+- [🍞 Breadcrumb](#breadcrumb) - Navigation trail  
+- [📑 Tabs](#tabs) - Tabbed navigation interface  
+- [📄 Pagination](#pagination) - Page navigation controls  
+- [📱 Bottom Navbar](#bottom-navbar) - Mobile bottom navigation bar  
 
-- [🪗 Accordion](#accordion) - Collapsible content panels
-- [🍞 Breadcrumb](#breadcrumb) - Navigation trail
-- [📑 Tabs](#tabs) - Tabbed navigation interface
-- [📄 Pagination](#pagination) - Page navigation controls
+---
 
 ### Feedback Components
+- [⚠️ Alert](#alert) - Status messages and notifications  
+- [🍞 Toast](#toast) - Temporary notification messages  
+- [💡 Tooltip](#tooltip) - Contextual information on hover  
+- [⏳ Spinner](#spinner) - Loading indicators  
+- [💀 Skeleton](#skeleton) - Content loading placeholders  
+- [📅 Date Picker](#datepicker) - Date selection calendar  
 
-- [⚠️ Alert](#alert) - Status messages and notifications
-- [🍞 Toast](#toast) - Temporary notification messages
-- [💡 Tooltip](#tooltip) - Contextual information on hover
-- [⏳ Spinner](#spinner) - Loading indicators
-- [💀 Skeleton](#skeleton) - Content loading placeholders
+---
 
 ### Data Display
+- [🏷️ Badge](#badge) - Status indicators and labels  
+- [🃏 Card](#card) - Content containers  
+- [📊 Table](#table) - Tabular data display  
+- [👤 Avatar](#avatar) - User profile images  
+- [🧱 Grid](#grid) - Structured layout with columns and rows  
+- [🧩 Masonry](#masonry) - Pinterest-style staggered grid layout  
+- [🕒 Timeline](#timeline) - Chronological event display  
+- [📚 Collection](#collection) - Grouped content or list display  
 
-- [🏷️ Badge](#badge) - Status indicators and labels
-- [🃏 Card](#card) - Content containers
-- [📊 Table](#table) - Tabular data display
-- [👤 Avatar](#avatar) - User profile images
+---
 
 ### Form Controls
+- [☑️ Checkbox Input](#checkbox-input) - Multiple choice selections  
+- [🔘 Radio Input](#radio-input) - Single choice selections  
+- [📝 Select Input](#select-input) - Dropdown selections  
+- [⌨️ Text Input](#text-input) - Text input fields  
+- [📝 Textarea](#textarea) - Multi-line text input  
+- [🔄 Toggle](#toggle) - Switch controls  
+- [📁 File Upload](#file-upload) - File selection and upload  
+- [🔢 Code Input](#codeinput) - Multi-field input for codes or OTPs  
+- [🎚️ Slider](#slider) - Range or value selector  
 
-- [☑️ Checkbox Input](#checkbox-input) - Multiple choice selections
-- [🔘 Radio Input](#radio-input) - Single choice selections
-- [📝 Select Input](#select-input) - Dropdown selections
-- [⌨️ Text Input](#text-input) - Text input fields
-- [📝 Textarea](#textarea) - Multi-line text input
-- [🔄 Toggle](#toggle) - Switch controls
-- [📁 File Upload](#file-upload) - File selection and upload
+---
 
 ### Interactive Elements
-
-- [🔘 Button](#button) - Clickable actions
-- [🪟 Modal](#modal) - Dialog boxes and overlays
-- [📱 Offcanvas](#offcanvas) - Side panels and drawers
+- [🔘 Button](#button) - Clickable actions  
+- [🪟 Modal](#modal) - Dialog boxes and overlays  
+- [📱 Offcanvas](#offcanvas) - Side panels and drawers  
+- [➕ FAB (Floating Action Button)](#fab-floating-action-button) - Prominent floating action button
 
 ---
 
@@ -553,7 +565,7 @@ import { Button } from "alope-ui";
 | `variant`     | `'solid' \| 'outline' \| 'ghost' \| 'plain'`                              | `'solid'`   | Button style variant |
 | `variantType` | `'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'primary'` | Button color theme   |
 | `size`        | `'sm' \| 'md' \| 'lg'`                                                    | `'md'`      | Button size          |
-| `radius`      | `'regular' \| 'stadium'`                                                  | `'regular'` | Border radius style  |
+| `borderType`      | `'regular' \| 'stadium'`                                                  | `'regular'` | Border radius style  |
 | `fullWidth`   | `boolean`                                                                 | `false`     | Full width button    |
 | `disabled`    | `boolean`                                                                 | `false`     | Disabled state       |
 | `to`          | `string`                                                                  | `undefined` | Link destination     |
@@ -600,8 +612,8 @@ import { Button } from "alope-ui";
 
 ```jsx
 <div className="flex flex-wrap gap-2">
-  <Button radius="regular">Regular Radius</Button>
-  <Button radius="stadium">Stadium Radius</Button>
+  <Button borderType="regular">Regular Radius</Button>
+  <Button borderType="stadium">Stadium Radius</Button>
 </div>
 ```
 
@@ -3088,7 +3100,7 @@ const CompleteExample = () => {
 
 ---
 
-## FileUpload
+## File Upload
 
 The FileUpload component provides a flexible file upload interface with support for drag-and-drop, file validation, preview, and two display modes (dropzone and text input).
 
@@ -4089,6 +4101,3007 @@ const CompleteGroupExample = () => {
       size="md"
       overlap="-ml-3"
     />
+  );
+};
+```
+
+## Collection
+
+The Collection component displays a list of items with optional active state management and customizable rendering.
+
+### Import
+
+```jsx
+import { Collection } from "alope-ui";
+import type { CollectionProps } from "alope-ui";
+```
+
+### Props
+
+| Prop                | Type                                                      | Default     | Description                              |
+| ------------------- | --------------------------------------------------------- | ----------- | ---------------------------------------- |
+| `data`              | `T[]`                                                     | `required`  | Array of items to display                |
+| `title`             | `string`                                                  | `undefined` | Optional title for the collection        |
+| `children`          | `(item: T, index: number, isActive: boolean) => React.ReactNode` | `undefined` | Custom render function for items |
+| `className`         | `string`                                                  | `""`        | Container CSS class                      |
+| `wrapperClassName`  | `string`                                                  | `""`        | List wrapper CSS class                   |
+| `suffixIcon`        | `React.ReactNode \| ((item?: T, index?: number, isActive?: boolean) => React.ReactNode)` | `undefined` | Icon or render function for item suffix |
+| `activeItem`        | `any`                                                     | `undefined` | ID of the currently active item          |
+| `onChangeActive`    | `(item: T, index: number) => void`                        | `undefined` | Callback when item is clicked            |
+
+### Type Constraint
+
+The generic type `T` must extend `{ id: any, name?: string }`:
+
+```typescript
+type ItemType = {
+  id: string | number;
+  name?: string;
+  // ... other properties
+}
+```
+
+### Basic Collection
+
+```jsx
+import { Collection } from "alope-ui";
+
+const BasicExample = () => {
+  const items = [
+    { id: 1, name: "Item 1" },
+    { id: 2, name: "Item 2" },
+    { id: 3, name: "Item 3" },
+  ];
+
+  return <Collection data={items} />;
+};
+```
+
+### With Title
+
+```jsx
+<Collection 
+  data={items} 
+  title="My Collection" 
+/>
+```
+
+### With Active State
+
+```jsx
+import { useState } from "react";
+import { Collection } from "alope-ui";
+
+const ActiveStateExample = () => {
+  const [activeId, setActiveId] = useState(1);
+
+  const items = [
+    { id: 1, name: "Item 1" },
+    { id: 2, name: "Item 2" },
+    { id: 3, name: "Item 3" },
+  ];
+
+  return (
+    <Collection
+      data={items}
+      activeItem={activeId}
+      onChangeActive={(item) => setActiveId(item.id)}
+    />
+  );
+};
+```
+
+### With Suffix Icon
+
+```jsx
+import { ChevronRight } from "lucide-react";
+
+{/* Static icon */}
+<Collection
+  data={items}
+  suffixIcon={<ChevronRight size={20} />}
+/>
+
+{/* Dynamic icon based on state */}
+<Collection
+  data={items}
+  activeItem={activeId}
+  onChangeActive={(item) => setActiveId(item.id)}
+  suffixIcon={(item, index, isActive) => (
+    isActive ? <Check size={20} /> : <ChevronRight size={20} />
+  )}
+/>
+```
+
+### Custom Rendering
+
+```jsx
+import { Collection } from "alope-ui";
+
+const CustomRenderExample = () => {
+  const [activeId, setActiveId] = useState(1);
+
+  const items = [
+    { id: 1, name: "Task 1", completed: false },
+    { id: 2, name: "Task 2", completed: true },
+    { id: 3, name: "Task 3", completed: false },
+  ];
+
+  return (
+    <Collection
+      data={items}
+      activeItem={activeId}
+      onChangeActive={(item) => setActiveId(item.id)}
+    >
+      {(item, index, isActive) => (
+        <div
+          className={`
+            p-4 border rounded-lg cursor-pointer
+            ${isActive ? "bg-blue-100 border-blue-500" : "border-gray-300"}
+            ${item.completed ? "opacity-50" : ""}
+          `}
+        >
+          <div className="flex items-center justify-between">
+            <span className={item.completed ? "line-through" : ""}>
+              {item.name}
+            </span>
+            {item.completed && <span className="text-green-600">✓</span>}
+          </div>
+        </div>
+      )}
+    </Collection>
+  );
+};
+```
+
+### Custom Styling
+
+```jsx
+<Collection
+  data={items}
+  title="Styled Collection"
+  className="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl border-2"
+  wrapperClassName="space-y-4"
+  activeItem={activeId}
+  onChangeActive={(item) => setActiveId(item.id)}
+/>
+```
+
+### Empty State
+
+```jsx
+{/* When data array is empty */}
+<Collection data={[]} title="Empty Collection" />
+{/* Displays: "No items to display." */}
+```
+
+### Complete Example
+
+```jsx
+import { useState } from "react";
+import { Collection } from "alope-ui";
+import { CheckCircle, Circle, Trash2 } from "lucide-react";
+
+const CompleteExample = () => {
+  const [activeId, setActiveId] = useState(null);
+  const [todos, setTodos] = useState([
+    { id: 1, name: "Complete project documentation", completed: false },
+    { id: 2, name: "Review pull requests", completed: true },
+    { id: 3, name: "Update dependencies", completed: false },
+  ]);
+
+  const toggleComplete = (id) => {
+    setTodos(todos.map(todo => 
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  return (
+    <Collection
+      data={todos}
+      title="Todo List"
+      activeItem={activeId}
+      onChangeActive={(item) => setActiveId(item.id)}
+      className="max-w-md"
+    >
+      {(item, index, isActive) => (
+        <div
+          className={`
+            p-4 border rounded-lg cursor-pointer transition-all
+            ${isActive ? "bg-blue-50 border-blue-500" : "border-gray-300"}
+          `}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleComplete(item.id);
+                }}
+                className="text-gray-600 hover:text-blue-600"
+              >
+                {item.completed ? (
+                  <CheckCircle size={20} className="text-green-600" />
+                ) : (
+                  <Circle size={20} />
+                )}
+              </button>
+              <span className={item.completed ? "line-through text-gray-500" : ""}>
+                {item.name}
+              </span>
+            </div>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setTodos(todos.filter(t => t.id !== item.id));
+              }}
+              className="text-red-500 hover:text-red-700"
+            >
+              <Trash2 size={18} />
+            </button>
+          </div>
+        </div>
+      )}
+    </Collection>
+  );
+};
+```
+
+## FAB (Floating Action Button)
+
+The FAB component provides a floating action button with expandable child actions, typically positioned at the bottom-right corner of the screen.
+
+### Import
+
+```jsx
+import { FAB } from "alope-ui";
+```
+
+### Props
+
+| Prop          | Type                                | Default      | Description                              |
+| ------------- | ----------------------------------- | ------------ | ---------------------------------------- |
+| `children`    | `React.ReactNode`                   | `required`   | Action buttons to display when expanded  |
+| `isOpen`      | `boolean`                           | `required`   | Controls the expanded state              |
+| `onOpen`      | `() => void`                        | `required`   | Callback to toggle open/close state      |
+| `direction`   | `'horizontal' \| 'vertical'`        | `'vertical'` | Direction of child actions expansion     |
+| `size`        | `'sm' \| 'md' \| 'lg'`              | `'md'`       | Size of the FAB button                   |
+| `variant`     | `'solid' \| 'outline' \| 'ghost' \| 'soft'` | `'solid'` | Visual variant style            |
+| `variantType` | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'warning' \| 'info'` | `'primary'` | Color theme |
+| `icon`        | `React.ReactNode`                   | `'+'`        | Icon displayed on the main FAB button    |
+
+### Basic FAB
+
+```jsx
+import { useState } from "react";
+import { FAB } from "alope-ui";
+import { Button } from "alope-ui";
+
+const BasicExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)}>
+      <Button variant="solid" variantType="primary">
+        Action 1
+      </Button>
+      <Button variant="solid" variantType="secondary">
+        Action 2
+      </Button>
+      <Button variant="solid" variantType="success">
+        Action 3
+      </Button>
+    </FAB>
+  );
+};
+```
+
+### Directions
+
+```jsx
+{/* Vertical direction (default) */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  direction="vertical"
+>
+  {/* Actions */}
+</FAB>
+
+{/* Horizontal direction */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  direction="horizontal"
+>
+  {/* Actions */}
+</FAB>
+```
+
+### Sizes
+
+```jsx
+{/* Small size */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  size="sm"
+>
+  {/* Actions */}
+</FAB>
+
+{/* Medium size */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  size="md"
+>
+  {/* Actions */}
+</FAB>
+
+{/* Large size */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  size="lg"
+>
+  {/* Actions */}
+</FAB>
+```
+
+### Variants
+
+```jsx
+{/* Solid variant */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  variant="solid"
+  variantType="primary"
+>
+  {/* Actions */}
+</FAB>
+
+{/* Outline variant */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  variant="outline"
+  variantType="secondary"
+>
+  {/* Actions */}
+</FAB>
+
+{/* Ghost variant */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  variant="ghost"
+  variantType="success"
+>
+  {/* Actions */}
+</FAB>
+
+{/* Soft variant */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  variant="soft"
+  variantType="warning"
+>
+  {/* Actions */}
+</FAB>
+```
+
+### Variant Types (Colors)
+
+```jsx
+{/* Primary */}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="primary">
+  {/* Actions */}
+</FAB>
+
+{/* Secondary */}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="secondary">
+  {/* Actions */}
+</FAB>
+
+{/* Success */}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="success">
+  {/* Actions */}
+</FAB>
+
+{/* Error */}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="error">
+  {/* Actions */}
+</FAB>
+
+{/* Warning */}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="warning">
+  {/* Actions */}
+</FAB>
+
+{/* Info */}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="info">
+  {/* Actions */}
+</FAB>
+```
+
+### Custom Icon
+
+```jsx
+import { Plus, Menu } from "lucide-react";
+
+{/* Custom icon */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  icon={<Plus size={24} />}
+>
+  {/* Actions */}
+</FAB>
+
+{/* Menu icon */}
+<FAB 
+  isOpen={isOpen} 
+  onOpen={() => setIsOpen(!isOpen)}
+  icon={<Menu size={24} />}
+>
+  {/* Actions */}
+</FAB>
+```
+
+### With Icon Actions
+
+```jsx
+import { useState } from "react";
+import { FAB } from "alope-ui";
+import { Button } from "alope-ui";
+import { Edit, Trash, Share, Plus } from "lucide-react";
+
+const IconActionsExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <FAB 
+      isOpen={isOpen} 
+      onOpen={() => setIsOpen(!isOpen)}
+      icon={<Plus size={24} />}
+    >
+      <Button variant="solid" variantType="primary" size="sm">
+        <Edit size={18} />
+      </Button>
+      <Button variant="solid" variantType="error" size="sm">
+        <Trash size={18} />
+      </Button>
+      <Button variant="solid" variantType="success" size="sm">
+        <Share size={18} />
+      </Button>
+    </FAB>
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { useState } from "react";
+import { FAB } from "alope-ui";
+import { Button } from "alope-ui";
+import { 
+  Plus, 
+  MessageCircle, 
+  Phone, 
+  Video, 
+  Mail 
+} from "lucide-react";
+
+const CompleteExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleAction = (action) => {
+    console.log(`${action} clicked`);
+    setIsOpen(false);
+  };
+
+  return (
+    <FAB
+      isOpen={isOpen}
+      onOpen={() => setIsOpen(!isOpen)}
+      direction="vertical"
+      size="md"
+      variant="solid"
+      variantType="primary"
+      icon={<Plus size={24} />}
+    >
+      <Button
+        variant="solid"
+        variantType="primary"
+        size="sm"
+        onClick={() => handleAction("Message")}
+      >
+        <MessageCircle size={20} />
+        <span className="ml-2">Message</span>
+      </Button>
+      
+      <Button
+        variant="solid"
+        variantType="success"
+        size="sm"
+        onClick={() => handleAction("Call")}
+      >
+        <Phone size={20} />
+        <span className="ml-2">Call</span>
+      </Button>
+      
+      <Button
+        variant="solid"
+        variantType="info"
+        size="sm"
+        onClick={() => handleAction("Video")}
+      >
+        <Video size={20} />
+        <span className="ml-2">Video</span>
+      </Button>
+      
+      <Button
+        variant="solid"
+        variantType="secondary"
+        size="sm"
+        onClick={() => handleAction("Email")}
+      >
+        <Mail size={20} />
+        <span className="ml-2">Email</span>
+      </Button>
+    </FAB>
+  );
+};
+```
+
+### Horizontal Layout Example
+
+```jsx
+import { useState } from "react";
+import { FAB } from "alope-ui";
+import { Button } from "alope-ui";
+import { Plus, Home, User, Settings } from "lucide-react";
+
+const HorizontalExample = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <FAB
+      isOpen={isOpen}
+      onOpen={() => setIsOpen(!isOpen)}
+      direction="horizontal"
+      size="md"
+      variant="solid"
+      variantType="primary"
+      icon={<Plus size={24} />}
+    >
+      <Button variant="solid" variantType="primary" size="sm">
+        <Home size={20} />
+      </Button>
+      <Button variant="solid" variantType="secondary" size="sm">
+        <User size={20} />
+      </Button>
+      <Button variant="solid" variantType="info" size="sm">
+        <Settings size={20} />
+      </Button>
+    </FAB>
+  );
+};
+```
+
+## BottomNavbar
+
+The BottomNavbar component provides a mobile-friendly navigation bar fixed at the bottom of the screen, composed of BottomNavbarAction items.
+
+### Import
+
+```jsx
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+```
+
+### BottomNavbar Props
+
+| Prop            | Type                        | Default     | Description                              |
+| --------------- | --------------------------- | ----------- | ---------------------------------------- |
+| `children`      | `React.ReactNode`           | `required`  | BottomNavbarAction components            |
+| `value`         | `string`                    | `required`  | Currently selected action value          |
+| `onChangeValue` | `(value: string) => void`   | `required`  | Callback when action is selected         |
+| `className`     | `string`                    | `""`        | Additional CSS class                     |
+
+### BottomNavbarAction Props
+
+| Prop             | Type              | Default     | Description                              |
+| ---------------- | ----------------- | ----------- | ---------------------------------------- |
+| `value`          | `string`          | `required`  | Unique identifier for the action         |
+| `label`          | `React.ReactNode` | `undefined` | Label text or component                  |
+| `icon`           | `React.ReactNode` | `undefined` | Icon component                           |
+| `selectedValue`  | `string`          | `undefined` | Currently selected value (auto-injected) |
+| `onChangeValue`  | `(value: string) => void` | `undefined` | Change handler (auto-injected) |
+| `labelClassName` | `string`          | `""`        | Label CSS class                          |
+| `className`      | `string`          | `""`        | Additional CSS class                     |
+
+### Basic BottomNavbar
+
+```jsx
+import { useState } from "react";
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+import { Home, Search, Bell, User } from "lucide-react";
+
+const BasicExample = () => {
+  const [activeTab, setActiveTab] = useState("home");
+
+  return (
+    <BottomNavbar value={activeTab} onChangeValue={setActiveTab}>
+      <BottomNavbarAction 
+        value="home" 
+        icon={<Home size={24} />} 
+        label="Home" 
+      />
+      <BottomNavbarAction 
+        value="search" 
+        icon={<Search size={24} />} 
+        label="Search" 
+      />
+      <BottomNavbarAction 
+        value="notifications" 
+        icon={<Bell size={24} />} 
+        label="Notifications" 
+      />
+      <BottomNavbarAction 
+        value="profile" 
+        icon={<User size={24} />} 
+        label="Profile" 
+      />
+    </BottomNavbar>
+  );
+};
+```
+
+### Without Labels
+
+```jsx
+import { useState } from "react";
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+import { Home, Search, Bell, User } from "lucide-react";
+
+const IconOnlyExample = () => {
+  const [activeTab, setActiveTab] = useState("home");
+
+  return (
+    <BottomNavbar value={activeTab} onChangeValue={setActiveTab}>
+      <BottomNavbarAction 
+        value="home" 
+        icon={<Home size={24} />} 
+      />
+      <BottomNavbarAction 
+        value="search" 
+        icon={<Search size={24} />} 
+      />
+      <BottomNavbarAction 
+        value="notifications" 
+        icon={<Bell size={24} />} 
+      />
+      <BottomNavbarAction 
+        value="profile" 
+        icon={<User size={24} />} 
+      />
+    </BottomNavbar>
+  );
+};
+```
+
+### With Badge Indicators
+
+```jsx
+import { useState } from "react";
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+import { Home, ShoppingCart, Bell, User } from "lucide-react";
+
+const BadgeExample = () => {
+  const [activeTab, setActiveTab] = useState("home");
+
+  return (
+    <BottomNavbar value={activeTab} onChangeValue={setActiveTab}>
+      <BottomNavbarAction 
+        value="home" 
+        icon={<Home size={24} />} 
+        label="Home" 
+      />
+      <BottomNavbarAction 
+        value="cart" 
+        icon={
+          <div className="relative">
+            <ShoppingCart size={24} />
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              3
+            </span>
+          </div>
+        } 
+        label="Cart" 
+      />
+      <BottomNavbarAction 
+        value="notifications" 
+        icon={
+          <div className="relative">
+            <Bell size={24} />
+            <span className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full"></span>
+          </div>
+        } 
+        label="Notifications" 
+      />
+      <BottomNavbarAction 
+        value="profile" 
+        icon={<User size={24} />} 
+        label="Profile" 
+      />
+    </BottomNavbar>
+  );
+};
+```
+
+### Custom Styling
+
+```jsx
+import { useState } from "react";
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+import { Home, Search, Heart, User } from "lucide-react";
+
+const CustomStyledExample = () => {
+  const [activeTab, setActiveTab] = useState("home");
+
+  return (
+    <BottomNavbar 
+      value={activeTab} 
+      onChangeValue={setActiveTab}
+      className="border-t-2 border-primary"
+    >
+      <BottomNavbarAction 
+        value="home" 
+        icon={<Home size={24} />} 
+        label="Home"
+        labelClassName="font-semibold"
+      />
+      <BottomNavbarAction 
+        value="search" 
+        icon={<Search size={24} />} 
+        label="Search"
+        labelClassName="font-semibold"
+      />
+      <BottomNavbarAction 
+        value="favorites" 
+        icon={<Heart size={24} />} 
+        label="Favorites"
+        labelClassName="font-semibold"
+      />
+      <BottomNavbarAction 
+        value="profile" 
+        icon={<User size={24} />} 
+        label="Profile"
+        labelClassName="font-semibold"
+      />
+    </BottomNavbar>
+  );
+};
+```
+
+### With Routing Integration
+
+```jsx
+import { useState, useEffect } from "react";
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+import { Home, Compass, PlusSquare, Heart, User } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+
+const RoutingExample = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState("home");
+
+  useEffect(() => {
+    // Update active tab based on current route
+    const path = location.pathname.substring(1) || "home";
+    setActiveTab(path);
+  }, [location]);
+
+  const handleTabChange = (value) => {
+    setActiveTab(value);
+    navigate(`/${value}`);
+  };
+
+  return (
+    <BottomNavbar value={activeTab} onChangeValue={handleTabChange}>
+      <BottomNavbarAction 
+        value="home" 
+        icon={<Home size={24} />} 
+        label="Home" 
+      />
+      <BottomNavbarAction 
+        value="explore" 
+        icon={<Compass size={24} />} 
+        label="Explore" 
+      />
+      <BottomNavbarAction 
+        value="create" 
+        icon={<PlusSquare size={24} />} 
+        label="Create" 
+      />
+      <BottomNavbarAction 
+        value="likes" 
+        icon={<Heart size={24} />} 
+        label="Likes" 
+      />
+      <BottomNavbarAction 
+        value="profile" 
+        icon={<User size={24} />} 
+        label="Profile" 
+      />
+    </BottomNavbar>
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { useState } from "react";
+import { BottomNavbar, BottomNavbarAction } from "alope-ui";
+import { 
+  Home, 
+  Search, 
+  PlusCircle, 
+  MessageCircle, 
+  User 
+} from "lucide-react";
+
+const CompleteExample = () => {
+  const [activeTab, setActiveTab] = useState("home");
+  const [notifications, setNotifications] = useState({
+    messages: 5,
+    hasNewNotifications: true,
+  });
+
+  const handleTabChange = (value) => {
+    setActiveTab(value);
+    
+    // Clear notifications when viewing messages
+    if (value === "messages") {
+      setNotifications({ ...notifications, messages: 0 });
+    }
+  };
+
+  return (
+    <div className="relative min-h-screen pb-20">
+      {/* Your page content here */}
+      <div className="p-4">
+        <h1 className="text-2xl font-bold">
+          {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Page
+        </h1>
+        <p className="text-gray-600 mt-2">
+          Current active tab: {activeTab}
+        </p>
+      </div>
+
+      {/* Bottom Navigation */}
+      <BottomNavbar value={activeTab} onChangeValue={handleTabChange}>
+        <BottomNavbarAction 
+          value="home" 
+          icon={<Home size={24} />} 
+          label="Home" 
+        />
+        
+        <BottomNavbarAction 
+          value="search" 
+          icon={<Search size={24} />} 
+          label="Search" 
+        />
+        
+        <BottomNavbarAction 
+          value="create" 
+          icon={<PlusCircle size={28} />} 
+          label="Create"
+          className="relative -top-2"
+        />
+        
+        <BottomNavbarAction 
+          value="messages" 
+          icon={
+            <div className="relative">
+              <MessageCircle size={24} />
+              {notifications.messages > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {notifications.messages}
+                </span>
+              )}
+            </div>
+          } 
+          label="Messages" 
+        />
+        
+        <BottomNavbarAction 
+          value="profile" 
+          icon={
+            <div className="relative">
+              <User size={24} />
+              {notifications.hasNewNotifications && (
+                <span className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full"></span>
+              )}
+            </div>
+          } 
+          label="Profile" 
+        />
+      </BottomNavbar>
+    </div>
+  );
+};
+```
+
+
+## Grid
+
+The Grid component provides a flexible and responsive CSS Grid layout system with support for responsive columns and gaps.
+
+### Import
+
+```jsx
+import { Grid, GridItem } from "alope-ui";
+```
+
+### Grid Props
+
+| Prop        | Type                          | Default     | Description                              |
+| ----------- | ----------------------------- | ----------- | ---------------------------------------- |
+| `children`  | `React.ReactNode`             | `required`  | Grid items to display                    |
+| `cols`      | `ResponsiveCols`              | `undefined` | Number of columns (1-12) or responsive   |
+| `gap`       | `ResponsiveGap`               | `undefined` | Gap between items (1-6) or responsive    |
+| `className` | `string`                      | `""`        | Additional CSS class                     |
+
+### GridItem Props
+
+| Prop        | Type                          | Default     | Description                              |
+| ----------- | ----------------------------- | ----------- | ---------------------------------------- |
+| `children`  | `React.ReactNode`             | `required`  | Content to display                       |
+| `colSpan`   | `ResponsiveColSpan`           | `undefined` | Number of columns to span (1-12 or 'full') |
+| `className` | `string`                      | `""`        | Additional CSS class                     |
+
+### Responsive Types
+
+```typescript
+type ResponsiveValue<T> = T | Partial<Record<Breakpoint, T>>
+type Breakpoint = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
+// Examples:
+cols={3}                                    // Same for all breakpoints
+cols={{ base: 1, md: 2, lg: 3 }}           // Responsive columns
+gap={4}                                     // Same for all breakpoints
+gap={{ base: 2, md: 4, lg: 6 }}            // Responsive gaps
+```
+
+### Basic Grid
+
+```jsx
+import { Grid, GridItem } from "alope-ui";
+
+const BasicExample = () => {
+  return (
+    <Grid cols={3} gap={4}>
+      <GridItem>Item 1</GridItem>
+      <GridItem>Item 2</GridItem>
+      <GridItem>Item 3</GridItem>
+      <GridItem>Item 4</GridItem>
+      <GridItem>Item 5</GridItem>
+      <GridItem>Item 6</GridItem>
+    </Grid>
+  );
+};
+```
+
+### Responsive Columns
+
+```jsx
+{/* 1 column on mobile, 2 on tablet, 3 on desktop */}
+<Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+  <GridItem>Item 1</GridItem>
+  <GridItem>Item 2</GridItem>
+  <GridItem>Item 3</GridItem>
+  <GridItem>Item 4</GridItem>
+  <GridItem>Item 5</GridItem>
+  <GridItem>Item 6</GridItem>
+</Grid>
+```
+
+### Responsive Gaps
+
+```jsx
+{/* Small gap on mobile, larger on desktop */}
+<Grid 
+  cols={3} 
+  gap={{ base: 2, md: 4, lg: 6 }}
+>
+  <GridItem>Item 1</GridItem>
+  <GridItem>Item 2</GridItem>
+  <GridItem>Item 3</GridItem>
+</Grid>
+```
+
+### Column Spanning
+
+```jsx
+{/* Items spanning multiple columns */}
+<Grid cols={4} gap={4}>
+  <GridItem colSpan={2}>Spans 2 columns</GridItem>
+  <GridItem colSpan={2}>Spans 2 columns</GridItem>
+  <GridItem colSpan={1}>1 column</GridItem>
+  <GridItem colSpan={3}>Spans 3 columns</GridItem>
+  <GridItem colSpan={4}>Spans full width</GridItem>
+</Grid>
+```
+
+### Responsive Column Spanning
+
+```jsx
+{/* Different spans at different breakpoints */}
+<Grid cols={{ base: 2, md: 4, lg: 6 }} gap={4}>
+  <GridItem colSpan={{ base: 2, md: 2, lg: 3 }}>
+    Full width on mobile, half on tablet, half on desktop
+  </GridItem>
+  <GridItem colSpan={{ base: 2, md: 2, lg: 3 }}>
+    Full width on mobile, half on tablet, half on desktop
+  </GridItem>
+  <GridItem colSpan={{ base: 1, md: 2, lg: 2 }}>
+    Responsive span
+  </GridItem>
+  <GridItem colSpan={{ base: 1, md: 2, lg: 2 }}>
+    Responsive span
+  </GridItem>
+</Grid>
+```
+
+### Card Layout
+
+```jsx
+import { Grid, GridItem } from "alope-ui";
+
+const CardLayoutExample = () => {
+  const cards = [
+    { id: 1, title: "Card 1", description: "Description 1" },
+    { id: 2, title: "Card 2", description: "Description 2" },
+    { id: 3, title: "Card 3", description: "Description 3" },
+    { id: 4, title: "Card 4", description: "Description 4" },
+  ];
+
+  return (
+    <Grid cols={{ base: 1, md: 2, lg: 4 }} gap={4}>
+      {cards.map((card) => (
+        <GridItem key={card.id}>
+          <div className="p-4 border rounded-lg shadow-sm">
+            <h3 className="font-bold text-lg">{card.title}</h3>
+            <p className="text-gray-600">{card.description}</p>
+          </div>
+        </GridItem>
+      ))}
+    </Grid>
+  );
+};
+```
+
+### Dashboard Layout
+
+```jsx
+import { Grid, GridItem } from "alope-ui";
+
+const DashboardExample = () => {
+  return (
+    <Grid cols={{ base: 1, lg: 12 }} gap={4}>
+      {/* Header - Full width */}
+      <GridItem colSpan={{ base: 1, lg: 12 }}>
+        <div className="p-6 bg-blue-500 text-white rounded-lg">
+          <h1 className="text-2xl font-bold">Dashboard Header</h1>
+        </div>
+      </GridItem>
+
+      {/* Sidebar - Full width on mobile, 3 cols on desktop */}
+      <GridItem colSpan={{ base: 1, lg: 3 }}>
+        <div className="p-6 bg-gray-100 rounded-lg h-full">
+          <h2 className="font-bold mb-4">Sidebar</h2>
+          <ul className="space-y-2">
+            <li>Menu Item 1</li>
+            <li>Menu Item 2</li>
+            <li>Menu Item 3</li>
+          </ul>
+        </div>
+      </GridItem>
+
+      {/* Main content - Full width on mobile, 9 cols on desktop */}
+      <GridItem colSpan={{ base: 1, lg: 9 }}>
+        <div className="p-6 bg-white border rounded-lg">
+          <h2 className="font-bold text-xl mb-4">Main Content</h2>
+          <p>Your main content goes here...</p>
+        </div>
+      </GridItem>
+    </Grid>
+  );
+};
+```
+
+### Image Gallery
+
+```jsx
+import { Grid, GridItem } from "alope-ui";
+
+const GalleryExample = () => {
+  const images = [
+    { id: 1, src: "image1.jpg", featured: true },
+    { id: 2, src: "image2.jpg", featured: false },
+    { id: 3, src: "image3.jpg", featured: false },
+    { id: 4, src: "image4.jpg", featured: false },
+    { id: 5, src: "image5.jpg", featured: true },
+    { id: 6, src: "image6.jpg", featured: false },
+  ];
+
+  return (
+    <Grid cols={{ base: 2, md: 4, lg: 6 }} gap={2}>
+      {images.map((image) => (
+        <GridItem
+          key={image.id}
+          colSpan={
+            image.featured 
+              ? { base: 2, md: 2, lg: 3 } 
+              : { base: 1, md: 1, lg: 1 }
+          }
+        >
+          <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
+            <img
+              src={image.src}
+              alt={`Image ${image.id}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </GridItem>
+      ))}
+    </Grid>
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { Grid, GridItem } from "alope-ui";
+
+const CompleteExample = () => {
+  return (
+    <div className="p-8">
+      <h1 className="text-3xl font-bold mb-8">Responsive Grid Layout</h1>
+      
+      <Grid 
+        cols={{ base: 1, sm: 2, md: 3, lg: 4, xl: 6 }} 
+        gap={{ base: 2, md: 4, lg: 6 }}
+      >
+        {/* Hero section - Full width */}
+        <GridItem colSpan={{ base: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
+          <div className="p-8 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg">
+            <h2 className="text-2xl font-bold mb-2">Hero Section</h2>
+            <p>Full width across all breakpoints</p>
+          </div>
+        </GridItem>
+
+        {/* Feature cards */}
+        <GridItem colSpan={{ base: 1, sm: 1, md: 1, lg: 2, xl: 2 }}>
+          <div className="p-6 bg-blue-100 rounded-lg h-full">
+            <h3 className="font-bold mb-2">Feature 1</h3>
+            <p className="text-sm">Description of feature 1</p>
+          </div>
+        </GridItem>
+
+        <GridItem colSpan={{ base: 1, sm: 1, md: 1, lg: 2, xl: 2 }}>
+          <div className="p-6 bg-green-100 rounded-lg h-full">
+            <h3 className="font-bold mb-2">Feature 2</h3>
+            <p className="text-sm">Description of feature 2</p>
+          </div>
+        </GridItem>
+
+        <GridItem colSpan={{ base: 1, sm: 2, md: 1, lg: 4, xl: 2 }}>
+          <div className="p-6 bg-purple-100 rounded-lg h-full">
+            <h3 className="font-bold mb-2">Feature 3</h3>
+            <p className="text-sm">Description of feature 3</p>
+          </div>
+        </GridItem>
+
+        {/* Grid items */}
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <GridItem key={item}>
+            <div className="p-4 border rounded-lg text-center">
+              <p className="font-semibold">Item {item}</p>
+            </div>
+          </GridItem>
+        ))}
+
+        {/* Footer - Full width */}
+        <GridItem colSpan={{ base: 1, sm: 2, md: 3, lg: 4, xl: 6 }}>
+          <div className="p-6 bg-gray-800 text-white rounded-lg text-center">
+            <p>Footer - Full width</p>
+          </div>
+        </GridItem>
+      </Grid>
+    </div>
+  );
+};
+```
+
+## Masonry
+
+The Masonry component provides a Pinterest-style masonry layout using CSS columns, perfect for displaying items of varying heights in a visually appealing grid.
+
+### Import
+
+```jsx
+import { Masonry } from "alope-ui";
+```
+
+### Props
+
+| Prop        | Type                          | Default     | Description                              |
+| ----------- | ----------------------------- | ----------- | ---------------------------------------- |
+| `children`  | `React.ReactNode`             | `required`  | Items to display in masonry layout       |
+| `cols`      | `ResponsiveCols`              | `undefined` | Number of columns (1-12) or responsive   |
+| `gap`       | `ResponsiveGap`               | `4`         | Gap between items (1-6) or responsive    |
+| `className` | `string`                      | `""`        | Additional CSS class                     |
+
+### Responsive Types
+
+```typescript
+type ResponsiveValue<T> = T | Partial<Record<Breakpoint, T>>
+type Breakpoint = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
+// Examples:
+cols={3}                                    // Same for all breakpoints
+cols={{ base: 1, md: 2, lg: 3 }}           // Responsive columns
+gap={4}                                     // Same for all breakpoints
+gap={{ base: 2, md: 4, lg: 6 }}            // Responsive gaps
+```
+
+### Basic Masonry
+
+```jsx
+import { Masonry } from "alope-ui";
+
+const BasicExample = () => {
+  return (
+    <Masonry cols={3} gap={4}>
+      <div className="p-4 bg-blue-100 rounded">Item 1</div>
+      <div className="p-4 bg-green-100 rounded">Item 2</div>
+      <div className="p-4 bg-purple-100 rounded">Item 3</div>
+      <div className="p-4 bg-yellow-100 rounded">Item 4</div>
+      <div className="p-4 bg-pink-100 rounded">Item 5</div>
+      <div className="p-4 bg-indigo-100 rounded">Item 6</div>
+    </Masonry>
+  );
+};
+```
+
+### Responsive Columns
+
+```jsx
+{/* 1 column on mobile, 2 on tablet, 3 on desktop */}
+<Masonry cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
+  <div className="p-4 bg-blue-100 rounded">Item 1</div>
+  <div className="p-4 bg-green-100 rounded">Item 2</div>
+  <div className="p-4 bg-purple-100 rounded">Item 3</div>
+  <div className="p-4 bg-yellow-100 rounded">Item 4</div>
+  <div className="p-4 bg-pink-100 rounded">Item 5</div>
+  <div className="p-4 bg-indigo-100 rounded">Item 6</div>
+</Masonry>
+```
+
+### Responsive Gaps
+
+```jsx
+{/* Small gap on mobile, larger on desktop */}
+<Masonry 
+  cols={3} 
+  gap={{ base: 2, md: 4, lg: 6 }}
+>
+  <div className="p-4 bg-blue-100 rounded">Item 1</div>
+  <div className="p-4 bg-green-100 rounded">Item 2</div>
+  <div className="p-4 bg-purple-100 rounded">Item 3</div>
+</Masonry>
+```
+
+### Image Gallery
+
+```jsx
+import { Masonry } from "alope-ui";
+
+const ImageGalleryExample = () => {
+  const images = [
+    { id: 1, src: "image1.jpg", height: "h-64" },
+    { id: 2, src: "image2.jpg", height: "h-48" },
+    { id: 3, src: "image3.jpg", height: "h-80" },
+    { id: 4, src: "image4.jpg", height: "h-56" },
+    { id: 5, src: "image5.jpg", height: "h-72" },
+    { id: 6, src: "image6.jpg", height: "h-40" },
+  ];
+
+  return (
+    <Masonry cols={{ base: 2, md: 3, lg: 4 }} gap={3}>
+      {images.map((image) => (
+        <div key={image.id} className="break-inside-avoid mb-3">
+          <img
+            src={image.src}
+            alt={`Image ${image.id}`}
+            className={`w-full ${image.height} object-cover rounded-lg`}
+          />
+        </div>
+      ))}
+    </Masonry>
+  );
+};
+```
+
+### Card Masonry
+
+```jsx
+import { Masonry } from "alope-ui";
+
+const CardMasonryExample = () => {
+  const cards = [
+    { id: 1, title: "Card 1", content: "Short content" },
+    { id: 2, title: "Card 2", content: "This is a longer content that will make the card taller than others in the masonry layout." },
+    { id: 3, title: "Card 3", content: "Medium length content here." },
+    { id: 4, title: "Card 4", content: "Another short one." },
+    { id: 5, title: "Card 5", content: "This card has quite a bit more content to display, making it one of the taller cards in the layout." },
+  ];
+
+  return (
+    <Masonry cols={{ base: 1, sm: 2, lg: 3 }} gap={4}>
+      {cards.map((card) => (
+        <div 
+          key={card.id} 
+          className="break-inside-avoid mb-4 p-6 bg-white border rounded-lg shadow-sm"
+        >
+          <h3 className="font-bold text-lg mb-2">{card.title}</h3>
+          <p className="text-gray-600">{card.content}</p>
+        </div>
+      ))}
+    </Masonry>
+  );
+};
+```
+
+### Pinterest-Style Layout
+
+```jsx
+import { Masonry } from "alope-ui";
+
+const PinterestExample = () => {
+  const pins = [
+    { id: 1, image: "pin1.jpg", title: "Design Inspiration", height: "h-64" },
+    { id: 2, image: "pin2.jpg", title: "Photography", height: "h-80" },
+    { id: 3, image: "pin3.jpg", title: "Architecture", height: "h-56" },
+    { id: 4, image: "pin4.jpg", title: "Nature", height: "h-72" },
+    { id: 5, image: "pin5.jpg", title: "Food", height: "h-48" },
+    { id: 6, image: "pin6.jpg", title: "Travel", height: "h-96" },
+  ];
+
+  return (
+    <Masonry cols={{ base: 2, md: 3, lg: 4, xl: 5 }} gap={{ base: 2, md: 3 }}>
+      {pins.map((pin) => (
+        <div 
+          key={pin.id} 
+          className="break-inside-avoid mb-3 group cursor-pointer"
+        >
+          <div className="relative overflow-hidden rounded-lg">
+            <img
+              src={pin.image}
+              alt={pin.title}
+              className={`w-full ${pin.height} object-cover transition-transform group-hover:scale-105`}
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 className="font-semibold">{pin.title}</h3>
+            </div>
+          </div>
+        </div>
+      ))}
+    </Masonry>
+  );
+};
+```
+
+### Blog Post Grid
+
+```jsx
+import { Masonry } from "alope-ui";
+
+const BlogGridExample = () => {
+  const posts = [
+    {
+      id: 1,
+      title: "Getting Started with React",
+      excerpt: "Learn the basics of React in this comprehensive guide.",
+      image: "post1.jpg",
+      date: "Jan 15, 2024",
+    },
+    {
+      id: 2,
+      title: "Advanced TypeScript Patterns",
+      excerpt: "Dive deep into advanced TypeScript patterns and best practices for building scalable applications.",
+      image: "post2.jpg",
+      date: "Jan 20, 2024",
+    },
+    {
+      id: 3,
+      title: "CSS Grid vs Flexbox",
+      excerpt: "Understanding when to use Grid and when to use Flexbox.",
+      image: "post3.jpg",
+      date: "Jan 25, 2024",
+    },
+  ];
+
+  return (
+    <Masonry cols={{ base: 1, md: 2, lg: 3 }} gap={5}>
+      {posts.map((post) => (
+        <article 
+          key={post.id} 
+          className="break-inside-avoid mb-5 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+        >
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-6">
+            <time className="text-sm text-gray-500">{post.date}</time>
+            <h2 className="text-xl font-bold mt-2 mb-3">{post.title}</h2>
+            <p className="text-gray-600">{post.excerpt}</p>
+            <button className="mt-4 text-blue-600 hover:text-blue-800 font-medium">
+              Read More →
+            </button>
+          </div>
+        </article>
+      ))}
+    </Masonry>
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { Masonry } from "alope-ui";
+import { Heart, MessageCircle, Share2 } from "lucide-react";
+
+const CompleteExample = () => {
+  const items = [
+    {
+      id: 1,
+      type: "image",
+      src: "nature1.jpg",
+      title: "Mountain Landscape",
+      likes: 234,
+      comments: 12,
+      height: "h-64",
+    },
+    {
+      id: 2,
+      type: "quote",
+      text: "Design is not just what it looks like and feels like. Design is how it works.",
+      author: "Steve Jobs",
+      height: "h-48",
+    },
+    {
+      id: 3,
+      type: "image",
+      src: "architecture.jpg",
+      title: "Modern Architecture",
+      likes: 567,
+      comments: 23,
+      height: "h-80",
+    },
+    {
+      id: 4,
+      type: "article",
+      title: "The Future of Web Development",
+      excerpt: "Exploring upcoming trends and technologies that will shape the future of web development.",
+      readTime: "5 min read",
+      height: "auto",
+    },
+    {
+      id: 5,
+      type: "image",
+      src: "food.jpg",
+      title: "Culinary Art",
+      likes: 189,
+      comments: 8,
+      height: "h-56",
+    },
+  ];
+
+  return (
+    <div className="p-8 bg-gray-50 min-h-screen">
+      <h1 className="text-3xl font-bold mb-8">Masonry Gallery</h1>
+      
+      <Masonry 
+        cols={{ base: 1, sm: 2, md: 3, lg: 4 }} 
+        gap={{ base: 3, md: 4 }}
+      >
+        {items.map((item) => (
+          <div 
+            key={item.id} 
+            className="break-inside-avoid mb-4"
+          >
+            {item.type === "image" && (
+              <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className={`w-full ${item.height} object-cover`}
+                />
+                <div className="p-4">
+                  <h3 className="font-semibold mb-3">{item.title}</h3>
+                  <div className="flex items-center gap-4 text-gray-600">
+                    <button className="flex items-center gap-1 hover:text-red-500">
+                      <Heart size={18} />
+                      <span className="text-sm">{item.likes}</span>
+                    </button>
+                    <button className="flex items-center gap-1 hover:text-blue-500">
+                      <MessageCircle size={18} />
+                      <span className="text-sm">{item.comments}</span>
+                    </button>
+                    <button className="flex items-center gap-1 hover:text-green-500">
+                      <Share2 size={18} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {item.type === "quote" && (
+              <div className={`bg-gradient-to-br from-purple-500 to-pink-500 ${item.height} rounded-lg p-6 text-white flex flex-col justify-center shadow-md`}>
+                <p className="text-xl italic mb-4">"{item.text}"</p>
+                <p className="text-sm opacity-90">— {item.author}</p>
+              </div>
+            )}
+
+            {item.type === "article" && (
+              <div className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow">
+                <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                <p className="text-gray-600 mb-4">{item.excerpt}</p>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-gray-500">{item.readTime}</span>
+                  <button className="text-blue-600 hover:text-blue-800 font-medium">
+                    Read More →
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </Masonry>
+    </div>
+  );
+};
+```
+
+## Slider
+
+The Slider component provides an interactive range input with tooltips, marks, and customizable styling options.
+
+### Import
+
+```jsx
+import { Slider } from "alope-ui";
+```
+
+### Props
+
+| Prop          | Type                                                    | Default     | Description                              |
+| ------------- | ------------------------------------------------------- | ----------- | ---------------------------------------- |
+| `label`       | `string`                                                | `undefined` | Label text for the slider                |
+| `value`       | `number`                                                | `required`  | Current slider value                     |
+| `onChange`    | `(e: ChangeEvent<HTMLInputElement>) => void`            | `required`  | Change handler function                  |
+| `min`         | `number`                                                | `0`         | Minimum value                            |
+| `max`         | `number`                                                | `100`       | Maximum value                            |
+| `step`        | `number`                                                | `1`         | Step increment                           |
+| `color`       | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Color theme |
+| `sliderSize`  | `'sm' \| 'md' \| 'lg' \| 'xl'`                          | `'md'`      | Size of the slider                       |
+| `showTooltip` | `boolean`                                               | `true`      | Show value tooltip on hover              |
+| `showMarks`   | `boolean`                                               | `true`      | Show step marks                          |
+| `prefixIcon`  | `React.ReactNode`                                       | `undefined` | Icon before slider                       |
+| `suffixIcon`  | `React.ReactNode`                                       | `undefined` | Icon after slider                        |
+| `disabled`    | `boolean`                                               | `false`     | Disable slider interaction               |
+| `id`          | `string`                                                | `undefined` | HTML id attribute                        |
+| `name`        | `string`                                                | `undefined` | HTML name attribute                      |
+
+### Basic Slider
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const BasicExample = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <Slider
+      label="Volume"
+      value={value}
+      onChange={(e) => setValue(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Range Configuration
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const RangeExample = () => {
+  const [value, setValue] = useState(25);
+
+  return (
+    <Slider
+      label="Select a value"
+      value={value}
+      min={0}
+      max={100}
+      step={5}
+      onChange={(e) => setValue(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Colors
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const ColorsExample = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <div className="space-y-6">
+      {/* Primary */}
+      <Slider
+        label="Primary"
+        value={value}
+        color="primary"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Success */}
+      <Slider
+        label="Success"
+        value={value}
+        color="success"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Error */}
+      <Slider
+        label="Error"
+        value={value}
+        color="error"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Warning */}
+      <Slider
+        label="Warning"
+        value={value}
+        color="warning"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Info */}
+      <Slider
+        label="Info"
+        value={value}
+        color="info"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Secondary */}
+      <Slider
+        label="Secondary"
+        value={value}
+        color="secondary"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+    </div>
+  );
+};
+```
+
+### Sizes
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const SizesExample = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <div className="space-y-6">
+      {/* Small */}
+      <Slider
+        label="Small"
+        value={value}
+        sliderSize="sm"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Medium */}
+      <Slider
+        label="Medium"
+        value={value}
+        sliderSize="md"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Large */}
+      <Slider
+        label="Large"
+        value={value}
+        sliderSize="lg"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+
+      {/* Extra Large */}
+      <Slider
+        label="Extra Large"
+        value={value}
+        sliderSize="xl"
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+    </div>
+  );
+};
+```
+
+### With Icons
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+import { Volume, Volume2, VolumeX } from "lucide-react";
+
+const IconExample = () => {
+  const [volume, setVolume] = useState(50);
+  const [brightness, setBrightness] = useState(75);
+
+  return (
+    <div className="space-y-6">
+      {/* Volume slider with icons */}
+      <Slider
+        label="Volume Control"
+        value={volume}
+        prefixIcon={<VolumeX size={20} className="text-gray-500" />}
+        suffixIcon={<Volume2 size={20} className="text-gray-500" />}
+        onChange={(e) => setVolume(Number(e.target.value))}
+      />
+
+      {/* Brightness slider */}
+      <Slider
+        label="Brightness"
+        value={brightness}
+        prefixIcon={<Volume size={20} className="text-gray-500" />}
+        suffixIcon={<Volume2 size={20} className="text-gray-500" />}
+        color="warning"
+        onChange={(e) => setBrightness(Number(e.target.value))}
+      />
+    </div>
+  );
+};
+```
+
+### Without Tooltip
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const NoTooltipExample = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <Slider
+      label="No Tooltip"
+      value={value}
+      showTooltip={false}
+      onChange={(e) => setValue(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Without Marks
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const NoMarksExample = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <Slider
+      label="No Marks"
+      value={value}
+      step={10}
+      showMarks={false}
+      onChange={(e) => setValue(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Disabled State
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+
+const DisabledExample = () => {
+  const [value, setValue] = useState(50);
+
+  return (
+    <Slider
+      label="Disabled Slider"
+      value={value}
+      disabled
+      onChange={(e) => setValue(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Price Range Slider
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+import { DollarSign } from "lucide-react";
+
+const PriceRangeExample = () => {
+  const [price, setPrice] = useState(500);
+
+  return (
+    <Slider
+      label="Price Range"
+      value={price}
+      min={0}
+      max={1000}
+      step={50}
+      color="success"
+      prefixIcon={<DollarSign size={20} className="text-green-600" />}
+      onChange={(e) => setPrice(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Temperature Control
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+import { Thermometer } from "lucide-react";
+
+const TemperatureExample = () => {
+  const [temperature, setTemperature] = useState(22);
+
+  const getColor = () => {
+    if (temperature < 18) return "info";
+    if (temperature > 26) return "error";
+    return "success";
+  };
+
+  return (
+    <Slider
+      label={`Temperature: ${temperature}°C`}
+      value={temperature}
+      min={16}
+      max={30}
+      step={1}
+      color={getColor()}
+      prefixIcon={<Thermometer size={20} />}
+      onChange={(e) => setTemperature(Number(e.target.value))}
+    />
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { useState } from "react";
+import { Slider } from "alope-ui";
+import { 
+  Volume2, 
+  Sun, 
+  Gauge, 
+  Settings 
+} from "lucide-react";
+
+const CompleteExample = () => {
+  const [settings, setSettings] = useState({
+    volume: 75,
+    brightness: 60,
+    speed: 50,
+    quality: 80,
+  });
+
+  const updateSetting = (key, value) => {
+    setSettings((prev) => ({ ...prev, [key]: value }));
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto p-8 space-y-8">
+      <div className="flex items-center gap-3 mb-8">
+        <Settings size={32} className="text-primary" />
+        <h1 className="text-2xl font-bold">System Settings</h1>
+      </div>
+
+      {/* Volume Control */}
+      <Slider
+        label="Volume"
+        value={settings.volume}
+        min={0}
+        max={100}
+        step={5}
+        color="primary"
+        sliderSize="md"
+        prefixIcon={<Volume2 size={20} className="text-gray-500" />}
+        onChange={(e) => updateSetting("volume", Number(e.target.value))}
+      />
+
+      {/* Brightness Control */}
+      <Slider
+        label="Brightness"
+        value={settings.brightness}
+        min={0}
+        max={100}
+        step={10}
+        color="warning"
+        sliderSize="md"
+        prefixIcon={<Sun size={20} className="text-yellow-500" />}
+        onChange={(e) => updateSetting("brightness", Number(e.target.value))}
+      />
+
+      {/* Speed Control */}
+      <Slider
+        label="Playback Speed"
+        value={settings.speed}
+        min={25}
+        max={200}
+        step={25}
+        color="info"
+        sliderSize="md"
+        prefixIcon={<Gauge size={20} className="text-blue-500" />}
+        onChange={(e) => updateSetting("speed", Number(e.target.value))}
+      />
+
+      {/* Quality Control */}
+      <Slider
+        label="Video Quality"
+        value={settings.quality}
+        min={0}
+        max={100}
+        step={20}
+        color="success"
+        sliderSize="lg"
+        onChange={(e) => updateSetting("quality", Number(e.target.value))}
+      />
+
+      {/* Settings Summary */}
+      <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+        <h3 className="font-semibold mb-2">Current Settings:</h3>
+        <ul className="space-y-1 text-sm">
+          <li>Volume: {settings.volume}%</li>
+          <li>Brightness: {settings.brightness}%</li>
+          <li>Speed: {settings.speed}%</li>
+          <li>Quality: {settings.quality}%</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+```
+
+## DatePicker
+
+The DatePicker component provides an interactive calendar interface for selecting dates with month and year navigation.
+
+### Import
+
+```jsx
+import { DatePicker } from "alope-ui";
+```
+
+### Props
+
+| Prop             | Type                                                    | Default     | Description                              |
+| ---------------- | ------------------------------------------------------- | ----------- | ---------------------------------------- |
+| `selectedDate`   | `Date`                                                  | `undefined` | Currently selected date                  |
+| `onDateChange`   | `(date: Date) => void`                                  | `undefined` | Callback when date is selected           |
+| `label`          | `string`                                                | `undefined` | Label text for the input                 |
+| `color`          | `'success' \| 'info' \| 'error' \| 'warning' \| 'default'` | `'default'` | Color theme                       |
+| `labelClassName` | `string`                                                | `""`        | Label CSS class                          |
+| `id`             | `string`                                                | `undefined` | HTML id attribute                        |
+| `name`           | `string`                                                | `undefined` | HTML name attribute                      |
+
+### Basic DatePicker
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+
+const BasicExample = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  return (
+    <DatePicker
+      label="Select Date"
+      selectedDate={selectedDate}
+      onDateChange={setSelectedDate}
+    />
+  );
+};
+```
+
+### Without Initial Date
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+
+const NoInitialDateExample = () => {
+  const [selectedDate, setSelectedDate] = useState(undefined);
+
+  return (
+    <DatePicker
+      label="Choose a date"
+      selectedDate={selectedDate}
+      onDateChange={setSelectedDate}
+    />
+  );
+};
+```
+
+### Custom Label Styling
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+
+const CustomLabelExample = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  return (
+    <DatePicker
+      label="Appointment Date"
+      labelClassName="text-lg font-bold text-blue-600"
+      selectedDate={selectedDate}
+      onDateChange={setSelectedDate}
+    />
+  );
+};
+```
+
+### Colors
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+
+const ColorsExample = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  return (
+    <div className="space-y-4">
+      {/* Default */}
+      <DatePicker
+        label="Default"
+        color="default"
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+      />
+
+      {/* Success */}
+      <DatePicker
+        label="Success"
+        color="success"
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+      />
+
+      {/* Info */}
+      <DatePicker
+        label="Info"
+        color="info"
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+      />
+
+      {/* Warning */}
+      <DatePicker
+        label="Warning"
+        color="warning"
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+      />
+
+      {/* Error */}
+      <DatePicker
+        label="Error"
+        color="error"
+        selectedDate={selectedDate}
+        onDateChange={setSelectedDate}
+      />
+    </div>
+  );
+};
+```
+
+### Form Integration
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+import { Button } from "alope-ui";
+
+const FormExample = () => {
+  const [birthDate, setBirthDate] = useState(undefined);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Selected birth date:", birthDate);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <DatePicker
+        label="Birth Date"
+        id="birth-date"
+        name="birthDate"
+        selectedDate={birthDate}
+        onDateChange={setBirthDate}
+      />
+      
+      <Button type="submit" variant="solid" variantType="primary">
+        Submit
+      </Button>
+    </form>
+  );
+};
+```
+
+### Multiple DatePickers
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+
+const MultipleDatePickersExample = () => {
+  const [startDate, setStartDate] = useState(undefined);
+  const [endDate, setEndDate] = useState(undefined);
+
+  return (
+    <div className="space-y-4">
+      <DatePicker
+        label="Start Date"
+        selectedDate={startDate}
+        onDateChange={setStartDate}
+      />
+      
+      <DatePicker
+        label="End Date"
+        selectedDate={endDate}
+        onDateChange={setEndDate}
+      />
+      
+      {startDate && endDate && (
+        <div className="p-4 bg-blue-50 rounded-lg">
+          <p className="text-sm">
+            Duration: {Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24))} days
+          </p>
+        </div>
+      )}
+    </div>
+  );
+};
+```
+
+### Event Booking
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+import { Button } from "alope-ui";
+import { Calendar, Clock } from "lucide-react";
+
+const EventBookingExample = () => {
+  const [eventDate, setEventDate] = useState(undefined);
+
+  const handleBooking = () => {
+    if (eventDate) {
+      alert(`Event booked for ${eventDate.toLocaleDateString()}`);
+    }
+  };
+
+  return (
+    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+      <div className="flex items-center gap-2 mb-6">
+        <Calendar size={24} className="text-primary" />
+        <h2 className="text-xl font-bold">Book an Event</h2>
+      </div>
+      
+      <DatePicker
+        label="Event Date"
+        selectedDate={eventDate}
+        onDateChange={setEventDate}
+      />
+      
+      {eventDate && (
+        <div className="mt-4 p-4 bg-green-50 rounded-lg">
+          <div className="flex items-center gap-2 text-green-700">
+            <Clock size={16} />
+            <p className="text-sm font-medium">
+              Selected: {eventDate.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </p>
+          </div>
+        </div>
+      )}
+      
+      <Button
+        variant="solid"
+        variantType="primary"
+        className="w-full mt-6"
+        onClick={handleBooking}
+        disabled={!eventDate}
+      >
+        Confirm Booking
+      </Button>
+    </div>
+  );
+};
+```
+
+### Travel Booking
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+import { Button } from "alope-ui";
+import { Plane, MapPin } from "lucide-react";
+
+const TravelBookingExample = () => {
+  const [departureDate, setDepartureDate] = useState(undefined);
+  const [returnDate, setReturnDate] = useState(undefined);
+
+  const calculateNights = () => {
+    if (departureDate && returnDate) {
+      const nights = Math.ceil((returnDate - departureDate) / (1000 * 60 * 60 * 24));
+      return nights > 0 ? nights : 0;
+    }
+    return 0;
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg">
+      <div className="flex items-center gap-3 mb-8">
+        <Plane size={32} className="text-indigo-600" />
+        <h2 className="text-2xl font-bold text-gray-800">Flight Booking</h2>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <DatePicker
+          label="Departure Date"
+          selectedDate={departureDate}
+          onDateChange={setDepartureDate}
+        />
+        
+        <DatePicker
+          label="Return Date"
+          selectedDate={returnDate}
+          onDateChange={setReturnDate}
+        />
+      </div>
+      
+      {departureDate && returnDate && calculateNights() > 0 && (
+        <div className="mt-6 p-4 bg-white rounded-lg shadow-sm">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <MapPin size={20} className="text-indigo-600" />
+              <span className="font-semibold text-gray-700">Trip Duration</span>
+            </div>
+            <span className="text-2xl font-bold text-indigo-600">
+              {calculateNights()} {calculateNights() === 1 ? 'night' : 'nights'}
+            </span>
+          </div>
+        </div>
+      )}
+      
+      <Button
+        variant="solid"
+        variantType="primary"
+        className="w-full mt-8"
+        disabled={!departureDate || !returnDate || calculateNights() <= 0}
+      >
+        Search Flights
+      </Button>
+    </div>
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { useState } from "react";
+import { DatePicker } from "alope-ui";
+import { Button } from "alope-ui";
+import { Calendar, User, Mail, Phone } from "lucide-react";
+import { TextInput } from "alope-ui";
+
+const CompleteExample = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    appointmentDate: undefined,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Appointment scheduled successfully!");
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const isFormValid = () => {
+    return (
+      formData.name &&
+      formData.email &&
+      formData.phone &&
+      formData.appointmentDate
+    );
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto p-8">
+      <div className="bg-white rounded-xl shadow-lg p-8">
+        <div className="flex items-center gap-3 mb-8">
+          <Calendar size={32} className="text-primary" />
+          <div>
+            <h1 className="text-2xl font-bold text-gray-800">
+              Schedule Appointment
+            </h1>
+            <p className="text-gray-600 text-sm">
+              Fill in your details to book an appointment
+            </p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Name Input */}
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">
+              <div className="flex items-center gap-2">
+                <User size={16} />
+                Full Name
+              </div>
+            </label>
+            <TextInput
+              type="text"
+              value={formData.name}
+              onChange={(e) => handleInputChange("name", e.target.value)}
+              placeholder="John Doe"
+              required
+            />
+          </div>
+
+          {/* Email Input */}
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">
+              <div className="flex items-center gap-2">
+                <Mail size={16} />
+                Email Address
+              </div>
+            </label>
+            <TextInput
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleInputChange("email", e.target.value)}
+              placeholder="john@example.com"
+              required
+            />
+          </div>
+
+          {/* Phone Input */}
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700">
+              <div className="flex items-center gap-2">
+                <Phone size={16} />
+                Phone Number
+              </div>
+            </label>
+            <TextInput
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => handleInputChange("phone", e.target.value)}
+              placeholder="+1 (555) 000-0000"
+              required
+            />
+          </div>
+
+          {/* Date Picker */}
+          <DatePicker
+            label="Appointment Date"
+            selectedDate={formData.appointmentDate}
+            onDateChange={(date) => handleInputChange("appointmentDate", date)}
+          />
+
+          {/* Selected Date Summary */}
+          {formData.appointmentDate && (
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-sm font-medium text-blue-900">
+                Your appointment is scheduled for:
+              </p>
+              <p className="text-lg font-bold text-blue-700 mt-1">
+                {formData.appointmentDate.toLocaleDateString('en-US', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            variant="solid"
+            variantType="primary"
+            className="w-full"
+            disabled={!isFormValid()}
+          >
+            Schedule Appointment
+          </Button>
+        </form>
+      </div>
+    </div>
+  );
+};
+```
+
+## CodeInput
+
+The CodeInput component provides an input interface for entering verification codes, OTPs, or PINs with individual character boxes and automatic focus management.
+
+### Import
+
+```jsx
+import { CodeInput } from "alope-ui";
+```
+
+### Props
+
+| Prop             | Type                           | Default     | Description                              |
+| ---------------- | ------------------------------ | ----------- | ---------------------------------------- |
+| `value`          | `string`                       | `required`  | Current code value                       |
+| `length`         | `number`                       | `required`  | Number of code digits/characters         |
+| `onCodeChange`   | `(code: string) => void`       | `required`  | Callback when code changes               |
+| `label`          | `string`                       | `undefined` | Label text for the input                 |
+| `inputSize`      | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`      | Size of input boxes                      |
+| `labelClassName` | `string`                       | `""`        | Label CSS class                          |
+| `disabled`       | `boolean`                      | `false`     | Disable all inputs                       |
+| `id`             | `string`                       | `undefined` | HTML id attribute                        |
+| `name`           | `string`                       | `undefined` | HTML name attribute                      |
+
+### Basic CodeInput
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+
+const BasicExample = () => {
+  const [code, setCode] = useState("");
+
+  return (
+    <CodeInput
+      label="Enter Verification Code"
+      value={code}
+      length={6}
+      onCodeChange={setCode}
+    />
+  );
+};
+```
+
+### Sizes
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+
+const SizesExample = () => {
+  const [code, setCode] = useState("");
+
+  return (
+    <div className="space-y-6">
+      {/* Small */}
+      <CodeInput
+        label="Small"
+        value={code}
+        length={4}
+        inputSize="sm"
+        onCodeChange={setCode}
+      />
+
+      {/* Medium */}
+      <CodeInput
+        label="Medium"
+        value={code}
+        length={4}
+        inputSize="md"
+        onCodeChange={setCode}
+      />
+
+      {/* Large */}
+      <CodeInput
+        label="Large"
+        value={code}
+        length={4}
+        inputSize="lg"
+        onCodeChange={setCode}
+      />
+
+      {/* Extra Large */}
+      <CodeInput
+        label="Extra Large"
+        value={code}
+        length={4}
+        inputSize="xl"
+        onCodeChange={setCode}
+      />
+    </div>
+  );
+};
+```
+
+### Different Lengths
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+
+const LengthsExample = () => {
+  const [code4, setCode4] = useState("");
+  const [code6, setCode6] = useState("");
+  const [code8, setCode8] = useState("");
+
+  return (
+    <div className="space-y-6">
+      {/* 4-digit code */}
+      <CodeInput
+        label="4-Digit PIN"
+        value={code4}
+        length={4}
+        onCodeChange={setCode4}
+      />
+
+      {/* 6-digit code */}
+      <CodeInput
+        label="6-Digit OTP"
+        value={code6}
+        length={6}
+        onCodeChange={setCode6}
+      />
+
+      {/* 8-digit code */}
+      <CodeInput
+        label="8-Digit Code"
+        value={code8}
+        length={8}
+        onCodeChange={setCode8}
+      />
+    </div>
+  );
+};
+```
+
+### Disabled State
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+
+const DisabledExample = () => {
+  const [code, setCode] = useState("123456");
+
+  return (
+    <CodeInput
+      label="Disabled Code Input"
+      value={code}
+      length={6}
+      disabled
+      onCodeChange={setCode}
+    />
+  );
+};
+```
+
+### OTP Verification
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+import { Button } from "alope-ui";
+
+const OTPExample = () => {
+  const [otp, setOtp] = useState("");
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
+
+  const handleVerify = () => {
+    setIsVerifying(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsVerifying(false);
+      if (otp === "123456") {
+        setIsVerified(true);
+      } else {
+        alert("Invalid OTP. Please try again.");
+        setOtp("");
+      }
+    }, 1500);
+  };
+
+  return (
+    <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-2">Verify Your Account</h2>
+      <p className="text-gray-600 mb-6">
+        Enter the 6-digit code sent to your email
+      </p>
+
+      <CodeInput
+        label="Verification Code"
+        value={otp}
+        length={6}
+        onCodeChange={setOtp}
+      />
+
+      {isVerified && (
+        <div className="mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
+          ✓ Verification successful!
+        </div>
+      )}
+
+      <Button
+        variant="solid"
+        variantType="primary"
+        className="w-full mt-6"
+        onClick={handleVerify}
+        disabled={otp.length !== 6 || isVerifying || isVerified}
+      >
+        {isVerifying ? "Verifying..." : isVerified ? "Verified" : "Verify"}
+      </Button>
+
+      <button className="w-full mt-4 text-sm text-blue-600 hover:text-blue-800">
+        Resend Code
+      </button>
+    </div>
+  );
+};
+```
+
+### Two-Factor Authentication
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+import { Button } from "alope-ui";
+import { Shield, Clock } from "lucide-react";
+
+const TwoFactorExample = () => {
+  const [code, setCode] = useState("");
+  const [timeLeft, setTimeLeft] = useState(60);
+
+  // Timer logic (simplified)
+  React.useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [timeLeft]);
+
+  return (
+    <div className="max-w-md mx-auto p-8 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-lg">
+      <div className="flex items-center justify-center mb-6">
+        <div className="p-4 bg-blue-600 rounded-full">
+          <Shield size={32} className="text-white" />
+        </div>
+      </div>
+
+      <h2 className="text-2xl font-bold text-center mb-2">
+        Two-Factor Authentication
+      </h2>
+      <p className="text-gray-600 text-center mb-6">
+        Enter the 6-digit code from your authenticator app
+      </p>
+
+      <CodeInput
+        label="Authentication Code"
+        value={code}
+        length={6}
+        inputSize="lg"
+        onCodeChange={setCode}
+      />
+
+      <div className="flex items-center justify-center gap-2 mt-4 text-sm text-gray-600">
+        <Clock size={16} />
+        <span>Code expires in {timeLeft}s</span>
+      </div>
+
+      <Button
+        variant="solid"
+        variantType="primary"
+        className="w-full mt-6"
+        disabled={code.length !== 6}
+      >
+        Verify & Continue
+      </Button>
+    </div>
+  );
+};
+```
+
+### PIN Entry
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+import { Button } from "alope-ui";
+import { Lock, Eye, EyeOff } from "lucide-react";
+
+const PINExample = () => {
+  const [pin, setPin] = useState("");
+  const [showPin, setShowPin] = useState(false);
+
+  const handleSubmit = () => {
+    console.log("PIN entered:", pin);
+    alert("PIN submitted successfully!");
+    setPin("");
+  };
+
+  return (
+    <div className="max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg">
+      <div className="flex items-center gap-3 mb-6">
+        <Lock size={24} className="text-gray-700" />
+        <h2 className="text-xl font-bold">Enter Your PIN</h2>
+      </div>
+
+      <CodeInput
+        label="4-Digit PIN"
+        value={pin}
+        length={4}
+        inputSize="xl"
+        onCodeChange={setPin}
+        type={showPin ? "text" : "password"}
+      />
+
+      <button
+        onClick={() => setShowPin(!showPin)}
+        className="flex items-center gap-2 mt-4 text-sm text-gray-600 hover:text-gray-800"
+      >
+        {showPin ? <EyeOff size={16} /> : <Eye size={16} />}
+        {showPin ? "Hide" : "Show"} PIN
+      </button>
+
+      <Button
+        variant="solid"
+        variantType="primary"
+        className="w-full mt-6"
+        onClick={handleSubmit}
+        disabled={pin.length !== 4}
+      >
+        Submit PIN
+      </Button>
+    </div>
+  );
+};
+```
+
+### Complete Example
+
+```jsx
+import { useState } from "react";
+import { CodeInput } from "alope-ui";
+import { Button } from "alope-ui";
+import { Mail, CheckCircle, AlertCircle } from "lucide-react";
+
+const CompleteExample = () => {
+  const [step, setStep] = useState(1);
+  const [email, setEmail] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSendCode = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError("");
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      setStep(2);
+    }, 1500);
+  };
+
+  const handleVerify = () => {
+    setIsLoading(true);
+    setError("");
+    
+    // Simulate verification
+    setTimeout(() => {
+      setIsLoading(false);
+      if (verificationCode === "123456") {
+        setStep(3);
+      } else {
+        setError("Invalid verification code. Please try again.");
+        setVerificationCode("");
+      }
+    }, 1500);
+  };
+
+  const handleResend = () => {
+    setVerificationCode("");
+    setError("");
+    alert("Verification code resent!");
+  };
+
+  return (
+    <div className="max-w-md mx-auto p-8">
+      <div className="bg-white rounded-xl shadow-lg p-8">
+        {/* Step 1: Enter Email */}
+        {step === 1 && (
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <Mail size={32} className="text-blue-600" />
+              <div>
+                <h2 className="text-2xl font-bold">Email Verification</h2>
+                <p className="text-gray-600 text-sm">
+                  We'll send you a verification code
+                </p>
+              </div>
+            </div>
+
+            <form onSubmit={handleSendCode} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  required
+                />
+              </div>
+
+              <Button
+                type="submit"
+                variant="solid"
+                variantType="primary"
+                className="w-full"
+                disabled={isLoading}
+              >
+                {isLoading ? "Sending..." : "Send Verification Code"}
+              </Button>
+            </form>
+          </div>
+        )}
+
+        {/* Step 2: Enter Code */}
+        {step === 2 && (
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <Mail size={32} className="text-blue-600" />
+              <div>
+                <h2 className="text-2xl font-bold">Enter Code</h2>
+                <p className="text-gray-600 text-sm">
+                  Sent to {email}
+                </p>
+              </div>
+            </div>
+
+            <CodeInput
+              label="6-Digit Verification Code"
+              value={verificationCode}
+              length={6}
+              inputSize="lg"
+              onCodeChange={setVerificationCode}
+            />
+
+            {error && (
+              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
+                <AlertCircle size={20} className="text-red-600 flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-red-600">{error}</p>
+              </div>
+            )}
+
+            <Button
+              variant="solid"
+              variantType="primary"
+              className="w-full mt-6"
+              onClick={handleVerify}
+              disabled={verificationCode.length !== 6 || isLoading}
+            >
+              {isLoading ? "Verifying..." : "Verify Code"}
+            </Button>
+
+            <div className="mt-4 text-center">
+              <button
+                onClick={handleResend}
+                className="text-sm text-blue-600 hover:text-blue-800"
+              >
+                Didn't receive code? Resend
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: Success */}
+        {step === 3 && (
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-6">
+              <div className="p-4 bg-green-100 rounded-full">
+                <CheckCircle size={48} className="text-green-600" />
+              </div>
+            </div>
+            <h2 className="text-2xl font-bold mb-2">Verified!</h2>
+            <p className="text-gray-600 mb-6">
+              Your email has been successfully verified
+            </p>
+            <Button
+              variant="solid"
+              variantType="success"
+              className="w-full"
+              onClick={() => {
+                setStep(1);
+                setEmail("");
+                setVerificationCode("");
+              }}
+            >
+              Continue
+            </Button>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 ```

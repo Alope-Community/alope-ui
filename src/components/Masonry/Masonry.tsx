@@ -139,7 +139,7 @@ const responsiveGapClass = {
   },
 } as const
 
-type Breakpoint = 'base' | 'md' | 'lg' | 'xl' | 'lg' | 'xl' | '2xl'
+type Breakpoint = 'base' | 'sm' | 'md' | 'lg' | 'xl' | 'lg' | 'xl' | '2xl'
 export type ResponsiveValue<T extends number | string> = T | Partial<Record<Breakpoint, T>>
 type ResponsiveCols = ResponsiveValue<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>
 type ResponsiveGap = ResponsiveValue<1 | 2 | 3 | 4 | 5 | 6>
