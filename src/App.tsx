@@ -34,6 +34,7 @@ function App() {
     { label: "Grid", to: "/grid", description: "Create a grid layouts." },
     { label: "Masonry", to: "/masonry", description: "Create a \"Masonry Grid\" layout." },
     { label: "Timeline", to: "/timeline", description: "Displays a list of events in chronological order." },
+    { label: "Popover", to: "/popover", description: "Displays a small box containing additional information or a menu." },
   ];
 
   return (
