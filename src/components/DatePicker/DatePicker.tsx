@@ -2,10 +2,49 @@ import React, { useState, useEffect, useRef, useLayoutEffect, type InputHTMLAttr
 import { TextInput } from '../TextInput/TextInput';
 import { cn } from 'clsx-for-tailwind';
 
+const DatePickerColors = {
+    success: {
+        input: 'focus:ring-success focus:border-success',
+        outline: 'outline-success dark:outline-success-dark',
+        header: 'bg-success dark:bg-success-dark',
+        icon: 'hover:bg-success-700 dark:hover:bg-success-dark-700',
+        day: 'bg-success dark:bg-success-dark',
+    },
+    info: {
+        input: 'focus:ring-info focus:border-info',
+        outline: 'outline-info dark:outline-info-dark',
+        header: 'bg-info dark:bg-info-dark',
+        icon: 'hover:bg-info-700 dark:hover:bg-info-dark-700',
+        day: 'bg-info dark:bg-info-dark',
+    },
+    error: {
+        input: 'focus:ring-error focus:border-error',
+        outline: 'outline-error dark:outline-error-dark',
+        header: 'bg-error dark:bg-error-dark',
+        icon: 'hover:bg-error-700 dark:hover:bg-error-dark-700',
+        day: 'bg-error dark:bg-error-dark',
+    },
+    warning: {
+        input: 'focus:ring-warning focus:border-warning',
+        outline: 'outline-warning dark:outline-warning-dark',
+        header: 'bg-warning dark:bg-warning-dark',
+        icon: 'hover:bg-warning-700 dark:hover:bg-warning-dark-700',
+        day: 'bg-warning dark:bg-warning-dark',
+    },
+    default: {
+        input: '',
+        outline: '',
+        header: '',
+        icon: '',
+        day: '',
+    },
+}
+
 type DatePickerProps = {
     label?: string;
     selectedDate?: Date;
     labelClassName?: string
+    color?: keyof typeof DatePickerColors
     onDateChange?: (date: Date) => void;
 } & InputHTMLAttributes<HTMLInputElement>
 
@@ -13,6 +52,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     label,
     id,
     name,
+    color = 'default',
     labelClassName,
     selectedDate: initialSelectedDate,
     onDateChange,
@@ -31,10 +71,15 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     const datePickerRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    const inputClasess = DatePickerColors[color].input
+    const dayClasess = DatePickerColors[color].day
+    const headerClasess = DatePickerColors[color].header
+    const iconClasess = DatePickerColors[color].icon
+    const outlineClasess = DatePickerColors[color].outline
+
     useLayoutEffect(() => {
         if (isOpen && inputRef.current) {
             const inputRect = inputRef.current.getBoundingClientRect();
-            console.log(inputRect)
             const spaceBelow = window.innerHeight - inputRect.bottom;
             const calendarHeight = 300; // Approximate height of the calendar
 
@@ -105,10 +150,13 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             days.push(
                 <div
                     key={i}
-                    className={`px-4 py-2 flex items-center justify-center cursor-pointer rounded-md text-sm font-medium ${isSelected
-                        ? 'bg-primary dark:bg-primary-dark text-white'
-                        : 'hover:bg-secondary dark:hover:bg-secondary-dark'
-                        }`}
+                    className={cn(
+                        `px-4 py-2 flex items-center justify-center cursor-pointer rounded-md text-sm font-medium hover:bg-secondary dark:hover:bg-secondary-dark`,
+                        {
+                            'bg-primary dark:bg-primary-dark text-white': isSelected,
+                            [dayClasess]: isSelected,
+                        },
+                    )}
                     onClick={() => handleDateChange(date)}
                 >
                     {i}
@@ -138,12 +186,21 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 value={selectedDate ? selectedDate.toLocaleDateString() : ''}
                 onClick={() => setIsOpen(!isOpen)}
                 placeholder="Select a date"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:placeholder:text-white dark:text-white"
+                className={cn(
+                    "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:placeholder:text-white dark:text-white",
+                    inputClasess,
+                )}
             />
             {isOpen && (
-                <div className={`absolute overflow-auto z-10 w-full bg-white outline-3 outline-primary dark:outline-primary-dark rounded-md shadow-lg ${calendarPosition === 'top' ? 'bottom-full mb-2' : 'top-full mt-2'
-                    }`}>
-                    <div className="flex justify-between items-center mb-1 bg-primary dark:bg-primary-dark p-2 text-white">
+                <div className={cn(
+                    `absolute overflow-auto z-10 w-full bg-white outline-3 outline-primary dark:outline-primary-dark rounded-md shadow-lg`,
+                    calendarPosition === 'top' ? 'bottom-full mb-2' : 'top-full mt-2',
+                    outlineClasess,
+                )}>
+                    <div className={cn(
+                        "flex justify-between items-center mb-1 bg-primary dark:bg-primary-dark p-2 text-white",
+                        headerClasess,
+                    )}>
                         <button
                             onClick={() => {
                                 if (currentMonth === 0) {
@@ -153,7 +210,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                                     setCurrentMonth(currentMonth - 1);
                                 }
                             }}
-                            className="px-2 py-1 rounded-md hover:bg-primary-700 dark:hover:bg-primary-dark-700 hover:cursor-pointer"
+                            className={cn(
+                                "px-2 py-1 rounded-md hover:bg-primary-700 dark:hover:bg-primary-dark-700 hover:cursor-pointer",
+                                iconClasess,
+                            )}
                         >
                             &lt;
                         </button>
@@ -181,7 +241,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                                     setCurrentMonth(currentMonth + 1);
                                 }
                             }}
-                            className="px-2 py-1 rounded-md hover:bg-primary-700 dark:hover:bg-primary-dark-700 hover:cursor-pointer"
+                            className={cn(
+                                "px-2 py-1 rounded-md hover:bg-primary-700 dark:hover:bg-primary-dark-700 hover:cursor-pointer",
+                                iconClasess,
+                            )}
                         >
                             &gt;
                         </button>
