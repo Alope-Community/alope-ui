@@ -26,22 +26,22 @@ const CheckboxSizes = {
 
 const CheckboxVariants = {
     solid: {
-        label: 'border-transparent bg-primary/90 text-white hover:bg-primary-700',
-        checked: 'bg-primary-700 hover:bg-primary-700',
+        label: 'border-transparent bg-primary/90 text-white hover:bg-primary-700 dark:bg-primary-dark dark:hover:bg-primary-dark-700',
+        checked: 'bg-primary-700 hover:bg-primary-700 dark:bg-primary-dark-700',
         checkbox: '',
-        checkedCheckbox: 'border-white bg-primary-700',
+        checkedCheckbox: 'border-white bg-primary dark:bg-primary',
     },
     subtle: {
-        label: 'border-slate-200 bg-secondary/30 hover:bg-secondary',
-        checked: 'bg-primary/30 text-primary-700 border-primary/30 hover:bg-primary-700/15',
-        checkbox: '',
-        checkedCheckbox: 'border-primary-700 bg-primary-700',
+        label: 'border-slate-200 border-none bg-secondary/30 hover:bg-primary/30 hover:text-primary-700 dark:text-white dark:bg-primary-dark/50 hover:dark:text-primary-30',
+        checked: 'bg-primary/30 text-primary-700 border-primary/30 dark:border-none hover:bg-primary-700/15 dark:bg-primary/30 dark:text-white hover:dark:text-white dark:hover:bg-primary-dark/50',
+        checkbox: 'dark:bg-primary dark:border-none',
+        checkedCheckbox: 'border-primary-700 bg-primary-700 dark:bg-primary',
     },
     outline: {
-        label: 'border-secondary-700 bg-transparent hover:bg-secondary',
-        checked: 'border-primary bg-primary/30 text-primary-700',
-        checkbox: '',
-        checkedCheckbox: 'border-primary bg-primary-700',
+        label: 'border-secondary-700 bg-transparent hover:bg-primary/30 hover:text-primary-700 dark:hover:text-white hover:border-primary-700 dark:text-white dark:border-secondary-dark dark:hover:bg-primary-dark/20',
+        checked: 'border-primary bg-primary/30 text-primary-700 dark:border-primary-700 dark:bg-primary-dark/20',
+        checkbox: 'dark:border-secondary-dark',
+        checkedCheckbox: 'border-primary bg-primary-700 dark:border-primary-700 dark:border-primary dark:bg-primary',
     },
 }
 

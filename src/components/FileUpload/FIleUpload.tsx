@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
+import { cn } from 'clsx-for-tailwind';
 
 interface FileUploadProps {
     acceptedFiles?: string;
     maxFiles?: number;
     helperText?: string;
     inputLabel?: string;
-    maxByte?: number
+    maxKiloByte?: number
     mediaCapture?: 'user' | 'environment';
     mode?: 'dropzone' | 'textinput';
     clearable?: boolean;
@@ -16,7 +17,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     acceptedFiles = 'image/*',
     maxFiles = 1,
     inputLabel,
-    maxByte = (2 * 1024 * 1024),
+    maxKiloByte = 2048,
     helperText,
     mediaCapture,
     mode = 'dropzone',
@@ -112,14 +113,12 @@ export const FileUpload: React.FC<FileUploadProps> = ({
     };
 
     const handleValidation = (newFiles: File[]): File[] => {
-        const tooLarge = maxByte
-            ? newFiles.find(f => f.size > maxByte)
-            : undefined;
+        const maxByte = maxKiloByte * 1024;
+
+        const tooLarge = newFiles.find(f => f.size > maxByte);
         if (tooLarge) {
             setErrorMessage(
-                `File "${tooLarge.name}" exceeds size limit of ${(maxByte! / 1024 / 1024).toFixed(
-                    2
-                )} MB.`
+                `File "${tooLarge.name}" exceeds size limit of ${(maxKiloByte / 1024).toFixed(2)} MB.`
             );
             inputRef.current!.value = '';
             return [];
@@ -147,16 +146,16 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             <div
                 key={index}
                 onClick={(e) => e.stopPropagation()}
-                className="relative pt-7 pb-3 px-5 border border-gray-400 rounded max-w-sm cursor-default"
+                className="relative pt-7 pb-3 px-5 border border-secondary dark:border-secondary-dark-700 rounded max-w-sm cursor-default"
             >
                 <div className="flex items-center justify-center max-w-full h-56 mb-3">
                     {file.type.startsWith('image/') ? (
                         <img src={URL.createObjectURL(file)} alt={file.name} className="max-w-full h-56 object-cover" />
                     ) : (
-                        <div className="text-gray-500 text-sm italic">Preview not available</div>
+                        <div className="text-secondary dark:text-secondary-dark text-sm italic">Preview not available</div>
                     )}
                 </div>
-                <p className="text-xs text-gray-500 text-center">{file.name}</p>
+                <p className="text-xs text-secondary dark:text-secondary-dark text-center">{file.name}</p>
                 {clearable && files.length > 0 && (
                     <div className="absolute top-0 right-0 z-10">
                         <button onClick={(event) => handleClear(event, index)} className="w-auto h-auto py-2 px-2 bg-error text-white rounded-xs hover:cursor-pointer">
@@ -182,7 +181,10 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         return (
             <div className="">
                 <div
-                    className={`flex gap-5 flex-wrap items-center-safe justify-center-safe border-4 border-dashed rounded-lg p-6 text-center cursor-pointer ${isDragActive ? 'border-blue-500' : 'border-gray-300'}`}
+                    className={cn(
+                        'flex gap-5 flex-wrap items-center-safe justify-center-safe border-4 border-dashed rounded-lg p-6 text-center cursor-pointer dark:text-white',
+                        isDragActive ? 'border-info dark:border-info-dark' : 'border-secondary dark:border-secondary-dark'
+                    )}
                     onDragEnter={handleDragEnter}
                     onDragOver={handleDragEnter}
                     onDragLeave={handleDragLeave}
@@ -203,7 +205,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                 {errorMessage ? (
                     <p className="text-error text-sm mt-2">{errorMessage}</p>
                 ) : (
-                    helperText && <p className="text-sm text-gray-500 mt-2">{helperText}</p>
+                    helperText && <p className="text-sm text-gray-500 dark:text-secondary-dark mt-2">{helperText}</p>
                 )}
             </div>
         );
@@ -221,7 +223,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                 className="hidden"
             />
 
-            <div className="inline-flex items-center gap-2 px-4 py-2 border border-secondary rounded bg-gray-50 hover:bg-gray-100 text-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 border border-secondary rounded bg-gray-50 hover:bg-secondary-30 text-sm dark:border-secondary-dark dark:bg-gray-700 dark:hover:bg-secondary-dark-700 dark:text-white">
                 <span className="font-medium">
                     {files.length > 0
                         ? `${files.length} file${files.length > 1 ? 's' : ''} selected`
@@ -234,7 +236,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             {errorMessage ? (
                 <p className="text-error text-sm mt-2">{errorMessage}</p>
             ) : (
-                helperText && <p className="text-sm text-gray-500 mt-2">{helperText}</p>
+                helperText && <p className="text-sm text-gray-500 dark:text-secondary-dark mt-2">{helperText}</p>
             )}
         </div>
     );

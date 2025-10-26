@@ -61,11 +61,11 @@ export const Accordion: React.FC<AccordionProps> = ({
         return (
           <div
             key={i}
-            className={cn("border border-gray-300 rounded-md overflow-hidden", labelContainerClassName)}
+            className={cn("border border-gray-300 dark:border-white/20 rounded-md overflow-hidden", labelContainerClassName)}
           >
             <button
               onClick={() => toggle(i)}
-              className="w-full flex justify-between items-center p-4 text-left"
+              className="w-full flex justify-between items-center p-4 text-left dark:text-white"
             >
               <span className={cn("font-semibold", labelClassName)}>{item.label}</span>
               {typeof icon === "function"
@@ -88,7 +88,7 @@ export const Accordion: React.FC<AccordionProps> = ({
             </button>
             <div
               className={cn(
-                "overflow-hidden bg-gray-50 px-4 transition-all",
+                "overflow-hidden bg-gray-50 px-4 transition-all dark:bg-gray-700 dark:text-white",
                 isOpen ? "max-h-40 py-4" : "max-h-0",
                 descriptionClassName
               )}

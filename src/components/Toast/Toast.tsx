@@ -24,10 +24,10 @@ export const ToastPositions = {
 }
 
 export const ToastTypes = {
-  success: 'bg-success-30 border-success-700 text-success-700',
-  info: 'bg-info-30 border-info-700 text-info-700',
-  warning: 'bg-warning-30 border-warning-700 text-warning-700',
-  error: 'bg-error-30 border-error-700 text-error-700',
+  success: 'bg-success-30-50 outline-success-700 text-success-700 dark:bg-success-dark-30-20 dark:text-success',
+  info: 'bg-info-30-50 outline-info-700 text-info-700 dark:bg-info-dark-30-20 dark:text-info',
+  warning: 'bg-warning-30-50 outline-warning-700 text-warning-700 dark:bg-warning-dark-30-20 dark:text-warning',
+  error: 'bg-error-30-50 outline-error-700 text-error-700 dark:bg-error-dark-30-20 dark:text-error',
 }
 
 const enterAnimationByPosition: Record<keyof typeof ToastPositions, string> = {

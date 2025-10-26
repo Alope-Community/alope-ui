@@ -3,49 +3,49 @@ import { useEffect, useRef, useState } from 'react';
 
 const TabsVariants = {
   line: {
-    wrapper: 'border-b border-secondary',
+    wrapper: 'border-b border-secondary dark:border-secondary-dark',
     button: 'whitespace-nowrap py-4 px-1 font-medium text-sm',
-    active: 'border-primary text-primary transition-all duration-300 ease-in-out',
-    inactive: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+    active: 'border-primary text-primary dark:text-primary-30 transition-all duration-300 ease-in-out',
+    inactive: 'border-transparent text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark-700',
   },
   solid: {
-    wrapper: 'rounded-md bg-gray-100 p-1',
+    wrapper: 'rounded-md p-1',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-md',
-    active: 'bg-white text-primary transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-gray-700',
+    active: 'bg-indigo-100 dark:bg-indigo-200 text-primary dark:text-primary-dark transition-all duration-300 ease-in-out',
+    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark-700',
   },
   subtle: {
     wrapper: 'rounded-md bg-transparent p-1',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm',
     active: 'text-white transition-all duration-300 ease-in-out z-10',
-    inactive: 'bg-transparent text-primary',
+    inactive: 'bg-transparent text-primary dark:text-primary-30 hover:text-primary-700',
   },
   inline: {
-    wrapper: 'bg-gray-100 border-b border-gray-500',
+    wrapper: 'border border-primary rounded-t-md border-b dark:border-primary-dark-30',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm z-10',
-    active: 'text-primary transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-gray-700',
+    active: 'text-white transition-all duration-300 ease-in-out',
+    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark',
   },
   outline: {
-    wrapper: 'border border-secondary rounded-md p-1',
+    wrapper: 'border border-primary dark:border-primary-dark-30 rounded-md p-1',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-md',
-    active: 'bg-indigo-50 text-primary transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-gray-700',
+    active: 'bg-indigo-100 dark:bg-indigo-200 text-primary dark:text-primary-dark transition-all duration-300 ease-in-out',
+    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark',
   },
   plain: {
     wrapper: '',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm',
-    active: 'text-primary transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-gray-700',
+    active: 'text-primary dark:text-primary-30 transition-all duration-300 ease-in-out',
+    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary',
   },
 }
 
 const IndicatorVariants = {
-  line: 'absolute bottom-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
-  solid: 'absolute bottom-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+  line: 'absolute bottom-0 h-1 bg-primary dark:bg-primary-30 transition-all duration-300 ease-in-out',
+  solid: 'absolute bottom-0 h-1 bg-primary transition-all duration-300 ease-in-out',
   subtle: 'absolute bottom-0 h-full bg-primary rounded-md transition-all duration-300 ease-in-out',
-  inline: 'absolute bottom-0 h-full bg-white border-t border-r border-l border-gray-500 rounded-tl-md rounded-tr-md transition-all duration-300 ease-in-out',
-  outline: 'absolute bottom-0 h-0.5 bg-primary transition-all duration-300 ease-in-out',
+  inline: 'absolute bottom-0 h-full bg-primary border-t border-r border-l border-primary-700 rounded-tl-md rounded-tr-md transition-all duration-300 ease-in-out',
+  outline: 'absolute bottom-0 h-1 bg-primary transition-all duration-300 ease-in-out',
   plain: '',
 }
 

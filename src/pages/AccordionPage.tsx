@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Accordion, Button } from "../components"
 import { useNavigate } from "react-router-dom";
+import Container from "./Container";
 
 const AccordionPage = () => {
   const navigate = useNavigate()
@@ -23,38 +24,11 @@ const AccordionPage = () => {
   ]
 
   return (
-    <div className="p-10 space-y-12 min-h-screen bg-gradient-to-br from-primary/25 via-white to-blue-100">
-
-      <Button
-        onClick={() => navigate(-1)}
-        className="absolute top-10 left-10 flex items-center gap-2"
-        prefixIcon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-            className="w-5 h-5"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-        }>
-        Back
-      </Button>
-
-      <header className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800">Accordion Component</h1>
-        <p className="text-lg text-gray-600 mt-2">
-          Used to show and hide sections of content, allowing users to expand or collapse details.
-        </p>
-      </header>
-
-      <div className="max-w-4xl mx-auto space-y-10">
-
+    <Container title="Accordion Component" description="Used to show and hide sections of content, allowing users to expand or collapse details.">
+      
         {/* Basic */}
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold">Basic Example Accordion</h2>
+          <h2 className="text-xl font-semibold dark:text-gray-200">Basic Example Accordion</h2>
           <div className="flex flex-wrap gap-4">
             <Accordion
               data={data}
@@ -64,7 +38,7 @@ const AccordionPage = () => {
 
         {/* Single State */}
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold">Single State Accordion</h2>
+          <h2 className="text-xl font-semibold dark:text-gray-200">Single State Accordion</h2>
           <div className="flex flex-wrap gap-4">
             <Accordion
               data={data}
@@ -74,7 +48,7 @@ const AccordionPage = () => {
 
         {/* Multiple State */}
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold">Multiple State Accordion</h2>
+          <h2 className="text-xl font-semibold dark:text-gray-200">Multiple State Accordion</h2>
           <div className="flex flex-wrap gap-4">
             <Accordion
               single={false}
@@ -85,7 +59,7 @@ const AccordionPage = () => {
 
         {/* Custom Class */}
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold">With Custom Class</h2>
+          <h2 className="text-xl font-semibold dark:text-gray-200">With Custom Class</h2>
           <div className="flex flex-wrap gap-4">
             <Accordion
               labelClassName="font-bold"
@@ -98,7 +72,7 @@ const AccordionPage = () => {
 
         {/* Custom Class + Icon */}
         <div className="space-y-2">
-          <h2 className="text-xl font-semibold">With Custom Class + Icon</h2>
+          <h2 className="text-xl font-semibold dark:text-gray-200">With Custom Class + Icon</h2>
           <div className="flex flex-wrap gap-4">
             <Accordion
               data={data}
@@ -121,8 +95,7 @@ const AccordionPage = () => {
           </div>
         </div>
 
-      </div>
-    </div>
+    </Container>
   )
 }
 

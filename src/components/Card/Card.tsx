@@ -77,7 +77,7 @@ export const Card: React.FC<CardProps> = ({
     <div
       onClick={onClick}
       className={cn(
-        'relative bg-white rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer overflow-hidden',
+        'relative bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer overflow-hidden dark:border dark:bg-gray-800 dark:border-gray-700',
         horizontal ? 'flex flex-col md:flex-row' : 'flex flex-col',
         sizeClasses[size] || size,
         containerClassName
@@ -105,7 +105,7 @@ export const Card: React.FC<CardProps> = ({
               {title && (
                 <h3
                   className={cn(
-                    'text-lg font-semibold text-gray-800 line-clamp-1',
+                    'text-lg font-semibold text-gray-800 line-clamp-1 dark:text-white',
                     titleClassName
                   )}
                 >
@@ -115,7 +115,7 @@ export const Card: React.FC<CardProps> = ({
               {description && (
                 <p
                   className={cn(
-                    'mt-2 text-gray-500 text-sm mb-2 line-clamp-3',
+                    'mt-2 text-secondary-700 font-medium text-sm mb-2 line-clamp-3 dark:text-secondary-dark',
                     descriptionClassName
                   )}
                 >
