@@ -93,53 +93,58 @@ export default App;
 ## 🧩 Component Library
 
 ### Navigation Components
-- [🪗 Accordion](#accordion) - Collapsible content panels  
-- [🍞 Breadcrumb](#breadcrumb) - Navigation trail  
-- [📑 Tabs](#tabs) - Tabbed navigation interface  
-- [📄 Pagination](#pagination) - Page navigation controls  
-- [📱 Bottom Navbar](#bottom-navbar) - Mobile bottom navigation bar  
+
+- [🪗 Accordion](#accordion) - Collapsible content panels
+- [🍞 Breadcrumb](#breadcrumb) - Navigation trail
+- [📑 Tabs](#tabs) - Tabbed navigation interface
+- [📄 Pagination](#pagination) - Page navigation controls
+- [📱 Bottom Navbar](#bottom-navbar) - Mobile bottom navigation bar
 
 ---
 
 ### Feedback Components
-- [⚠️ Alert](#alert) - Status messages and notifications  
-- [🍞 Toast](#toast) - Temporary notification messages  
-- [💡 Tooltip](#tooltip) - Contextual information on hover  
-- [⏳ Spinner](#spinner) - Loading indicators  
-- [💀 Skeleton](#skeleton) - Content loading placeholders  
-- [📅 Date Picker](#datepicker) - Date selection calendar  
+
+- [⚠️ Alert](#alert) - Status messages and notifications
+- [🍞 Toast](#toast) - Temporary notification messages
+- [💡 Tooltip](#tooltip) - Contextual information on hover
+- [⏳ Spinner](#spinner) - Loading indicators
+- [💀 Skeleton](#skeleton) - Content loading placeholders
+- [📅 Date Picker](#datepicker) - Date selection calendar
 
 ---
 
 ### Data Display
-- [🏷️ Badge](#badge) - Status indicators and labels  
-- [🃏 Card](#card) - Content containers  
-- [📊 Table](#table) - Tabular data display  
-- [👤 Avatar](#avatar) - User profile images  
-- [🧱 Grid](#grid) - Structured layout with columns and rows  
-- [🧩 Masonry](#masonry) - Pinterest-style staggered grid layout  
-- [🕒 Timeline](#timeline) - Chronological event display  
-- [📚 Collection](#collection) - Grouped content or list display  
+
+- [🏷️ Badge](#badge) - Status indicators and labels
+- [🃏 Card](#card) - Content containers
+- [📊 Table](#table) - Tabular data display
+- [👤 Avatar](#avatar) - User profile images
+- [🧱 Grid](#grid) - Structured layout with columns and rows
+- [🧩 Masonry](#masonry) - Pinterest-style staggered grid layout
+- [🕒 Timeline](#timeline) - Chronological event display
+- [📚 Collection](#collection) - Grouped content or list display
 
 ---
 
 ### Form Controls
-- [☑️ Checkbox Input](#checkbox-input) - Multiple choice selections  
-- [🔘 Radio Input](#radio-input) - Single choice selections  
-- [📝 Select Input](#select-input) - Dropdown selections  
-- [⌨️ Text Input](#text-input) - Text input fields  
-- [📝 Textarea](#textarea) - Multi-line text input  
-- [🔄 Toggle](#toggle) - Switch controls  
-- [📁 File Upload](#file-upload) - File selection and upload  
-- [🔢 Code Input](#codeinput) - Multi-field input for codes or OTPs  
-- [🎚️ Slider](#slider) - Range or value selector  
+
+- [☑️ Checkbox Input](#checkbox-input) - Multiple choice selections
+- [🔘 Radio Input](#radio-input) - Single choice selections
+- [📝 Select Input](#select-input) - Dropdown selections
+- [⌨️ Text Input](#text-input) - Text input fields
+- [📝 Textarea](#textarea) - Multi-line text input
+- [🔄 Toggle](#toggle) - Switch controls
+- [📁 File Upload](#file-upload) - File selection and upload
+- [🔢 Code Input](#codeinput) - Multi-field input for codes or OTPs
+- [🎚️ Slider](#slider) - Range or value selector
 
 ---
 
 ### Interactive Elements
-- [🔘 Button](#button) - Clickable actions  
-- [🪟 Modal](#modal) - Dialog boxes and overlays  
-- [📱 Offcanvas](#offcanvas) - Side panels and drawers  
+
+- [🔘 Button](#button) - Clickable actions
+- [🪟 Modal](#modal) - Dialog boxes and overlays
+- [📱 Offcanvas](#offcanvas) - Side panels and drawers
 - [➕ FAB (Floating Action Button)](#fab-floating-action-button) - Prominent floating action button
 
 ---
@@ -565,7 +570,7 @@ import { Button } from "alope-ui";
 | `variant`     | `'solid' \| 'outline' \| 'ghost' \| 'plain'`                              | `'solid'`   | Button style variant |
 | `variantType` | `'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'error'` | `'primary'` | Button color theme   |
 | `size`        | `'sm' \| 'md' \| 'lg'`                                                    | `'md'`      | Button size          |
-| `borderType`      | `'regular' \| 'stadium'`                                                  | `'regular'` | Border radius style  |
+| `borderType`  | `'regular' \| 'stadium'`                                                  | `'regular'` | Border radius style  |
 | `fullWidth`   | `boolean`                                                                 | `false`     | Full width button    |
 | `disabled`    | `boolean`                                                                 | `false`     | Disabled state       |
 | `to`          | `string`                                                                  | `undefined` | Link destination     |
@@ -1739,21 +1744,21 @@ import { Pagination } from "alope-ui";
 
 ### Props
 
-| Prop            | Type                              | Default   | Description                                           |
-| --------------- | --------------------------------- | --------- | ----------------------------------------------------- |
-| `currentPage`   | `number`                          | `required`| Current active page number                            |
-| `onPageChange`  | `(page: number) => void`          | `required`| Callback function when page changes                   |
-| `count`         | `number`                          | `undefined` | Total number of items                               |
-| `pageSize`      | `number`                          | `undefined` | Number of items per page                            |
-| `totalPages`    | `number`                          | `undefined` | Total number of pages (deprecated, use count + pageSize) |
-| `format`        | `'none' \| 'long'`                | `'none'`  | Format for displaying page info                       |
-| `simplified`    | `boolean`                         | `false`   | Show simplified pagination (prev/next only)           |
-| `asLink`        | `boolean`                         | `false`   | Render pagination buttons as links                    |
-| `getPageHref`   | `(page: number) => string`        | `undefined` | Custom href generator for pagination links          |
-| `siblingCount`  | `number`                          | `1`       | Number of page buttons to show on each side           |
-| `prevIcon`      | `React.ReactNode`                 | `'<'`     | Custom icon for previous button                       |
-| `nextIcon`      | `React.ReactNode`                 | `'>'`     | Custom icon for next button                           |
-| `size`          | `'sm' \| 'md' \| 'lg'`            | `'sm'`    | Size variant of pagination buttons                    |
+| Prop           | Type                       | Default     | Description                                              |
+| -------------- | -------------------------- | ----------- | -------------------------------------------------------- |
+| `currentPage`  | `number`                   | `required`  | Current active page number                               |
+| `onPageChange` | `(page: number) => void`   | `required`  | Callback function when page changes                      |
+| `count`        | `number`                   | `undefined` | Total number of items                                    |
+| `pageSize`     | `number`                   | `undefined` | Number of items per page                                 |
+| `totalPages`   | `number`                   | `undefined` | Total number of pages (deprecated, use count + pageSize) |
+| `format`       | `'none' \| 'long'`         | `'none'`    | Format for displaying page info                          |
+| `simplified`   | `boolean`                  | `false`     | Show simplified pagination (prev/next only)              |
+| `asLink`       | `boolean`                  | `false`     | Render pagination buttons as links                       |
+| `getPageHref`  | `(page: number) => string` | `undefined` | Custom href generator for pagination links               |
+| `siblingCount` | `number`                   | `1`         | Number of page buttons to show on each side              |
+| `prevIcon`     | `React.ReactNode`          | `'<'`       | Custom icon for previous button                          |
+| `nextIcon`     | `React.ReactNode`          | `'>'`       | Custom icon for next button                              |
+| `size`         | `'sm' \| 'md' \| 'lg'`     | `'sm'`      | Size variant of pagination buttons                       |
 
 ### Basic Pagination
 
@@ -1796,7 +1801,9 @@ const SimplifiedExample = () => {
 ### Pagination with Format
 
 ```jsx
-{/* None Format - Shows page numbers */}
+{
+  /* None Format - Shows page numbers */
+}
 <Pagination
   currentPage={currentPage}
   count={100}
@@ -1804,9 +1811,11 @@ const SimplifiedExample = () => {
   onPageChange={setCurrentPage}
   format="none"
   simplified
-/>
+/>;
 
-{/* Long Format - Shows item range */}
+{
+  /* Long Format - Shows item range */
+}
 <Pagination
   currentPage={currentPage}
   count={100}
@@ -1814,51 +1823,59 @@ const SimplifiedExample = () => {
   onPageChange={setCurrentPage}
   format="long"
   simplified
-/>
+/>;
 ```
 
 ### Sizes
 
 ```jsx
-{/* Small Size */}
+{
+  /* Small Size */
+}
 <Pagination
   currentPage={currentPage}
   count={100}
   pageSize={10}
   onPageChange={setCurrentPage}
   size="sm"
-/>
+/>;
 
-{/* Medium Size */}
+{
+  /* Medium Size */
+}
 <Pagination
   currentPage={currentPage}
   count={100}
   pageSize={10}
   onPageChange={setCurrentPage}
   size="md"
-/>
+/>;
 
-{/* Large Size */}
+{
+  /* Large Size */
+}
 <Pagination
   currentPage={currentPage}
   count={100}
   pageSize={10}
   onPageChange={setCurrentPage}
   size="lg"
-/>
+/>;
 ```
 
 ### Custom Sibling Count
 
 ```jsx
-{/* Show 2 page buttons on each side */}
+{
+  /* Show 2 page buttons on each side */
+}
 <Pagination
   currentPage={currentPage}
   count={100}
   pageSize={10}
   onPageChange={setCurrentPage}
   siblingCount={2}
-/>
+/>;
 ```
 
 ### Custom Icons
@@ -1873,7 +1890,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
   onPageChange={setCurrentPage}
   prevIcon={<ChevronLeft size={16} />}
   nextIcon={<ChevronRight size={16} />}
-/>
+/>;
 ```
 
 ### As Links
@@ -1892,12 +1909,14 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 ### Using TotalPages (Legacy)
 
 ```jsx
-{/* This approach is deprecated, prefer using count + pageSize */}
+{
+  /* This approach is deprecated, prefer using count + pageSize */
+}
 <Pagination
   currentPage={currentPage}
   totalPages={10}
   onPageChange={setCurrentPage}
-/>
+/>;
 ```
 
 ---
@@ -1915,26 +1934,26 @@ import type { Column } from "alope-ui";
 
 ### Props
 
-| Prop                   | Type                              | Default    | Description                                    |
-| ---------------------- | --------------------------------- | ---------- | ---------------------------------------------- |
-| `columns`              | `Column<T>[]`                     | `required` | Array of column configurations                 |
-| `data`                 | `T[]`                             | `required` | Array of data objects to display               |
-| `striped`              | `boolean`                         | `false`    | Enable alternating row colors                  |
-| `stripeColor`          | `string`                          | `undefined`| Custom color for striped rows                  |
-| `headerClassName`      | `string`                          | `""`       | CSS class for table header                     |
-| `dataColumnClassName`  | `string`                          | `""`       | CSS class for data cells                       |
-| `dataRowClassName`     | `string`                          | `""`       | CSS class for data rows                        |
-| `tableClassName`       | `string`                          | `""`       | CSS class for table element                    |
-| `captionClassName`     | `string`                          | `""`       | CSS class for caption                          |
-| `containerClassName`   | `string`                          | `""`       | CSS class for container                        |
-| `customEmptyData`      | `React.ReactNode`                 | `undefined`| Custom message when no data                    |
-| `size`                 | `'sm' \| 'md' \| 'lg'`            | `'md'`     | Size variant of table                          |
-| `caption`              | `string`                          | `undefined`| Table caption text                             |
-| `captionPosition`      | `'top' \| 'bottom'`               | `'bottom'` | Position of caption                            |
-| `stickyHeader`         | `boolean`                         | `false`    | Make header sticky on scroll                   |
-| `selectable`           | `boolean`                         | `false`    | Enable row selection with checkboxes           |
-| `onSelectionChange`    | `(selected: T[]) => void`         | `undefined`| Callback when selection changes                |
-| `selectedRows`         | `T[]`                             | `[]`       | Array of selected rows                         |
+| Prop                  | Type                      | Default     | Description                          |
+| --------------------- | ------------------------- | ----------- | ------------------------------------ |
+| `columns`             | `Column<T>[]`             | `required`  | Array of column configurations       |
+| `data`                | `T[]`                     | `required`  | Array of data objects to display     |
+| `striped`             | `boolean`                 | `false`     | Enable alternating row colors        |
+| `stripeColor`         | `string`                  | `undefined` | Custom color for striped rows        |
+| `headerClassName`     | `string`                  | `""`        | CSS class for table header           |
+| `dataColumnClassName` | `string`                  | `""`        | CSS class for data cells             |
+| `dataRowClassName`    | `string`                  | `""`        | CSS class for data rows              |
+| `tableClassName`      | `string`                  | `""`        | CSS class for table element          |
+| `captionClassName`    | `string`                  | `""`        | CSS class for caption                |
+| `containerClassName`  | `string`                  | `""`        | CSS class for container              |
+| `customEmptyData`     | `React.ReactNode`         | `undefined` | Custom message when no data          |
+| `size`                | `'sm' \| 'md' \| 'lg'`    | `'md'`      | Size variant of table                |
+| `caption`             | `string`                  | `undefined` | Table caption text                   |
+| `captionPosition`     | `'top' \| 'bottom'`       | `'bottom'`  | Position of caption                  |
+| `stickyHeader`        | `boolean`                 | `false`     | Make header sticky on scroll         |
+| `selectable`          | `boolean`                 | `false`     | Enable row selection with checkboxes |
+| `onSelectionChange`   | `(selected: T[]) => void` | `undefined` | Callback when selection changes      |
+| `selectedRows`        | `T[]`                     | `[]`        | Array of selected rows               |
 
 ### Column Type
 
@@ -1953,10 +1972,10 @@ import { Table } from "alope-ui";
 import type { Column } from "alope-ui";
 
 type User = {
-  id: number;
-  name: string;
-  email: string;
-  role: string;
+  id: number,
+  name: string,
+  email: string,
+  role: string,
 };
 
 const columns: Column<User>[] = [
@@ -1979,28 +1998,36 @@ const BasicExample = () => {
 ### Striped Table
 
 ```jsx
-<Table columns={columns} data={data} striped />
+<Table columns={columns} data={data} striped />;
 
-{/* With custom stripe color */}
+{
+  /* With custom stripe color */
+}
 <Table
   columns={columns}
   data={data}
   striped
   stripeColor="bg-blue-50 dark:bg-blue-900"
-/>
+/>;
 ```
 
 ### Sizes
 
 ```jsx
-{/* Small Size */}
-<Table columns={columns} data={data} size="sm" />
+{
+  /* Small Size */
+}
+<Table columns={columns} data={data} size="sm" />;
 
-{/* Medium Size */}
-<Table columns={columns} data={data} size="md" />
+{
+  /* Medium Size */
+}
+<Table columns={columns} data={data} size="md" />;
 
-{/* Large Size */}
-<Table columns={columns} data={data} size="lg" />
+{
+  /* Large Size */
+}
+<Table columns={columns} data={data} size="lg" />;
 ```
 
 ### Custom Rendering
@@ -2058,21 +2085,25 @@ const SelectableExample = () => {
 ### With Caption
 
 ```jsx
-{/* Caption at bottom */}
+{
+  /* Caption at bottom */
+}
 <Table
   columns={columns}
   data={data}
   caption="User Management Table"
   captionPosition="bottom"
-/>
+/>;
 
-{/* Caption at top */}
+{
+  /* Caption at top */
+}
 <Table
   columns={columns}
   data={data}
   caption="User Management Table"
   captionPosition="top"
-/>
+/>;
 ```
 
 ### Custom Empty State
@@ -2185,19 +2216,19 @@ import { Tooltip } from "alope-ui";
 
 ### Props
 
-| Prop                | Type                                      | Default                           | Description                              |
-| ------------------- | ----------------------------------------- | --------------------------------- | ---------------------------------------- |
-| `children`          | `React.ReactNode`                         | `required`                        | Element that triggers the tooltip        |
-| `text`              | `string`                                  | `required`                        | Text content of the tooltip              |
-| `showArrow`         | `boolean`                                 | `true`                            | Show arrow pointing to trigger element   |
-| `placement`         | `'top' \| 'bottom' \| 'left' \| 'right'`  | `'top'`                           | Position of tooltip relative to trigger  |
-| `offset`            | `number`                                  | `8`                               | Distance from trigger element (in px)    |
-| `bgColor`           | `string`                                  | `'bg-gray-800 dark:bg-gray-600'`  | Background color class                   |
-| `isOpen`            | `boolean`                                 | `undefined`                       | Controlled visibility state              |
-| `onOpenChange`      | `(open: boolean) => void`                 | `undefined`                       | Callback when visibility changes         |
-| `disabled`          | `boolean`                                 | `false`                           | Disable tooltip functionality            |
-| `animationDuration` | `number`                                  | `300`                             | Animation duration (in ms)               |
-| `delay`             | `number`                                  | `700`                             | Delay before showing tooltip (in ms)     |
+| Prop                | Type                                     | Default                          | Description                             |
+| ------------------- | ---------------------------------------- | -------------------------------- | --------------------------------------- |
+| `children`          | `React.ReactNode`                        | `required`                       | Element that triggers the tooltip       |
+| `text`              | `string`                                 | `required`                       | Text content of the tooltip             |
+| `showArrow`         | `boolean`                                | `true`                           | Show arrow pointing to trigger element  |
+| `placement`         | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'`                          | Position of tooltip relative to trigger |
+| `offset`            | `number`                                 | `8`                              | Distance from trigger element (in px)   |
+| `bgColor`           | `string`                                 | `'bg-gray-800 dark:bg-gray-600'` | Background color class                  |
+| `isOpen`            | `boolean`                                | `undefined`                      | Controlled visibility state             |
+| `onOpenChange`      | `(open: boolean) => void`                | `undefined`                      | Callback when visibility changes        |
+| `disabled`          | `boolean`                                | `false`                          | Disable tooltip functionality           |
+| `animationDuration` | `number`                                 | `300`                            | Animation duration (in ms)              |
+| `delay`             | `number`                                 | `700`                            | Delay before showing tooltip (in ms)    |
 
 ### Basic Tooltip
 
@@ -2218,25 +2249,33 @@ const BasicExample = () => {
 ### Placement
 
 ```jsx
-{/* Top Placement */}
+{
+  /* Top Placement */
+}
 <Tooltip text="Tooltip on top" placement="top">
   <button>Top</button>
-</Tooltip>
+</Tooltip>;
 
-{/* Bottom Placement */}
+{
+  /* Bottom Placement */
+}
 <Tooltip text="Tooltip on bottom" placement="bottom">
   <button>Bottom</button>
-</Tooltip>
+</Tooltip>;
 
-{/* Left Placement */}
+{
+  /* Left Placement */
+}
 <Tooltip text="Tooltip on left" placement="left">
   <button>Left</button>
-</Tooltip>
+</Tooltip>;
 
-{/* Right Placement */}
+{
+  /* Right Placement */
+}
 <Tooltip text="Tooltip on right" placement="right">
   <button>Right</button>
-</Tooltip>
+</Tooltip>;
 ```
 
 ### Without Arrow
@@ -2250,15 +2289,19 @@ const BasicExample = () => {
 ### Custom Offset
 
 ```jsx
-{/* Small offset */}
+{
+  /* Small offset */
+}
 <Tooltip text="Close to element" offset={4}>
   <button>Small Offset</button>
-</Tooltip>
+</Tooltip>;
 
-{/* Large offset */}
+{
+  /* Large offset */
+}
 <Tooltip text="Far from element" offset={16}>
   <button>Large Offset</button>
-</Tooltip>
+</Tooltip>;
 ```
 
 ### Custom Background Color
@@ -2292,9 +2335,7 @@ const ControlledExample = () => {
         isOpen={isOpen}
         onOpenChange={setIsOpen}
       >
-        <button onClick={() => setIsOpen(!isOpen)}>
-          Click to toggle
-        </button>
+        <button onClick={() => setIsOpen(!isOpen)}>Click to toggle</button>
       </Tooltip>
     </div>
   );
@@ -2304,29 +2345,37 @@ const ControlledExample = () => {
 ### Custom Animation
 
 ```jsx
-{/* Fast animation */}
+{
+  /* Fast animation */
+}
 <Tooltip text="Fast animation" animationDuration={150}>
   <button>Fast</button>
-</Tooltip>
+</Tooltip>;
 
-{/* Slow animation */}
+{
+  /* Slow animation */
+}
 <Tooltip text="Slow animation" animationDuration={600}>
   <button>Slow</button>
-</Tooltip>
+</Tooltip>;
 ```
 
 ### Custom Delay
 
 ```jsx
-{/* No delay */}
+{
+  /* No delay */
+}
 <Tooltip text="Instant tooltip" delay={0}>
   <button>No Delay</button>
-</Tooltip>
+</Tooltip>;
 
-{/* Long delay */}
+{
+  /* Long delay */
+}
 <Tooltip text="Patient tooltip" delay={1500}>
   <button>Long Delay</button>
-</Tooltip>
+</Tooltip>;
 ```
 
 ### Disabled Tooltip
@@ -2408,13 +2457,13 @@ import { Spinner } from "alope-ui";
 
 ### Props
 
-| Prop        | Type                                                            | Default   | Description                           |
-| ----------- | --------------------------------------------------------------- | --------- | ------------------------------------- |
-| `size`      | `'sm' \| 'md' \| 'lg'`                                          | `'md'`    | Size of the spinner                   |
+| Prop        | Type                                                                      | Default     | Description                     |
+| ----------- | ------------------------------------------------------------------------- | ----------- | ------------------------------- |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                                    | `'md'`      | Size of the spinner             |
 | `color`     | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Color variant of the spinner    |
-| `className` | `string`                                                        | `""`      | Additional CSS classes                |
-| `duration`  | `number`                                                        | `1000`    | Animation duration (in ms)            |
-| `thickness` | `number`                                                        | `undefined` | Custom border thickness (in px)     |
+| `className` | `string`                                                                  | `""`        | Additional CSS classes          |
+| `duration`  | `number`                                                                  | `1000`      | Animation duration (in ms)      |
+| `thickness` | `number`                                                                  | `undefined` | Custom border thickness (in px) |
 
 ### Basic Spinner
 
@@ -2429,56 +2478,82 @@ const BasicExample = () => {
 ### Sizes
 
 ```jsx
-{/* Small Size */}
-<Spinner size="sm" />
+{
+  /* Small Size */
+}
+<Spinner size="sm" />;
 
-{/* Medium Size */}
-<Spinner size="md" />
+{
+  /* Medium Size */
+}
+<Spinner size="md" />;
 
-{/* Large Size */}
-<Spinner size="lg" />
+{
+  /* Large Size */
+}
+<Spinner size="lg" />;
 ```
 
 ### Colors
 
 ```jsx
-{/* Primary Color */}
-<Spinner color="primary" />
+{
+  /* Primary Color */
+}
+<Spinner color="primary" />;
 
-{/* Error Color */}
-<Spinner color="error" />
+{
+  /* Error Color */
+}
+<Spinner color="error" />;
 
-{/* Warning Color */}
-<Spinner color="warning" />
+{
+  /* Warning Color */
+}
+<Spinner color="warning" />;
 
-{/* Success Color */}
-<Spinner color="success" />
+{
+  /* Success Color */
+}
+<Spinner color="success" />;
 
-{/* Info Color */}
-<Spinner color="info" />
+{
+  /* Info Color */
+}
+<Spinner color="info" />;
 
-{/* Secondary Color */}
-<Spinner color="secondary" />
+{
+  /* Secondary Color */
+}
+<Spinner color="secondary" />;
 ```
 
 ### Custom Duration
 
 ```jsx
-{/* Fast animation */}
-<Spinner duration={500} />
+{
+  /* Fast animation */
+}
+<Spinner duration={500} />;
 
-{/* Slow animation */}
-<Spinner duration={2000} />
+{
+  /* Slow animation */
+}
+<Spinner duration={2000} />;
 ```
 
 ### Custom Thickness
 
 ```jsx
-{/* Thin spinner */}
-<Spinner thickness={1} />
+{
+  /* Thin spinner */
+}
+<Spinner thickness={1} />;
 
-{/* Thick spinner */}
-<Spinner thickness={6} />
+{
+  /* Thick spinner */
+}
+<Spinner thickness={6} />;
 ```
 
 ### Combined Customization
@@ -2608,14 +2683,14 @@ import { Skeleton } from "alope-ui";
 
 ### Props
 
-| Prop        | Type                      | Default      | Description                                    |
-| ----------- | ------------------------- | ------------ | ---------------------------------------------- |
-| `width`     | `string`                  | `undefined`  | Width of the skeleton (CSS value)              |
-| `height`    | `string`                  | `undefined`  | Height of the skeleton (CSS value)             |
-| `rounded`   | `boolean`                 | `false`      | Apply rounded shape (full circle/pill)         |
-| `isLoading` | `boolean`                 | `true`       | Show skeleton or actual content                |
-| `children`  | `React.ReactNode`         | `undefined`  | Content to render when not loading             |
-| `animode`   | `'shimmer' \| 'flash'`    | `'flash'`    | Animation mode for the skeleton                |
+| Prop        | Type                   | Default     | Description                            |
+| ----------- | ---------------------- | ----------- | -------------------------------------- |
+| `width`     | `string`               | `undefined` | Width of the skeleton (CSS value)      |
+| `height`    | `string`               | `undefined` | Height of the skeleton (CSS value)     |
+| `rounded`   | `boolean`              | `false`     | Apply rounded shape (full circle/pill) |
+| `isLoading` | `boolean`              | `true`      | Show skeleton or actual content        |
+| `children`  | `React.ReactNode`      | `undefined` | Content to render when not loading     |
+| `animode`   | `'shimmer' \| 'flash'` | `'flash'`   | Animation mode for the skeleton        |
 
 ### Basic Skeleton
 
@@ -2650,37 +2725,53 @@ const SkeletonWithChildren = () => {
 ### Animation Modes
 
 ```jsx
-{/* Flash animation */}
-<Skeleton width="200px" height="20px" animode="flash" />
+{
+  /* Flash animation */
+}
+<Skeleton width="200px" height="20px" animode="flash" />;
 
-{/* Shimmer animation */}
-<Skeleton width="200px" height="20px" animode="shimmer" />
+{
+  /* Shimmer animation */
+}
+<Skeleton width="200px" height="20px" animode="shimmer" />;
 ```
 
 ### Rounded Skeleton
 
 ```jsx
-{/* Rounded rectangle */}
-<Skeleton width="100px" height="100px" rounded />
+{
+  /* Rounded rectangle */
+}
+<Skeleton width="100px" height="100px" rounded />;
 
-{/* Avatar skeleton */}
-<Skeleton width="48px" height="48px" rounded />
+{
+  /* Avatar skeleton */
+}
+<Skeleton width="48px" height="48px" rounded />;
 ```
 
 ### Different Sizes
 
 ```jsx
-{/* Small */}
-<Skeleton width="100px" height="16px" />
+{
+  /* Small */
+}
+<Skeleton width="100px" height="16px" />;
 
-{/* Medium */}
-<Skeleton width="200px" height="20px" />
+{
+  /* Medium */
+}
+<Skeleton width="200px" height="20px" />;
 
-{/* Large */}
-<Skeleton width="300px" height="24px" />
+{
+  /* Large */
+}
+<Skeleton width="300px" height="24px" />;
 
-{/* Full width */}
-<Skeleton width="100%" height="20px" />
+{
+  /* Full width */
+}
+<Skeleton width="100%" height="20px" />;
 ```
 
 ### Text Skeleton
@@ -2795,15 +2886,15 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "alope-ui";
 
 type User = {
-  id: number;
-  name: string;
-  email: string;
-  avatar: string;
+  id: number,
+  name: string,
+  email: string,
+  avatar: string,
 };
 
 const UserProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = (useState < User) | (null > null);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -2887,15 +2978,15 @@ import { Toggle } from "alope-ui";
 
 ### Props
 
-| Prop                | Type                                                           | Default     | Description                              |
-| ------------------- | -------------------------------------------------------------- | ----------- | ---------------------------------------- |
-| `variant`           | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Color variant of the toggle              |
-| `customSize`        | `'sm' \| 'md' \| 'lg'`                                         | `'md'`      | Size of the toggle switch                |
-| `thumbShape`        | `'stadium' \| 'rounded'`                                       | `'stadium'` | Shape of the toggle thumb                |
-| `label`             | `string`                                                       | `undefined` | Label text displayed next to toggle      |
-| `wrapperClassName`  | `string`                                                       | `""`        | CSS class for wrapper element            |
-| `labelClassName`    | `string`                                                       | `""`        | CSS class for label text                 |
-| `...props`          | `InputHTMLAttributes<HTMLInputElement>`                        | -           | All standard HTML input attributes       |
+| Prop               | Type                                                                      | Default     | Description                         |
+| ------------------ | ------------------------------------------------------------------------- | ----------- | ----------------------------------- |
+| `variant`          | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Color variant of the toggle         |
+| `customSize`       | `'sm' \| 'md' \| 'lg'`                                                    | `'md'`      | Size of the toggle switch           |
+| `thumbShape`       | `'stadium' \| 'rounded'`                                                  | `'stadium'` | Shape of the toggle thumb           |
+| `label`            | `string`                                                                  | `undefined` | Label text displayed next to toggle |
+| `wrapperClassName` | `string`                                                                  | `""`        | CSS class for wrapper element       |
+| `labelClassName`   | `string`                                                                  | `""`        | CSS class for label text            |
+| `...props`         | `InputHTMLAttributes<HTMLInputElement>`                                   | -           | All standard HTML input attributes  |
 
 ### Basic Toggle
 
@@ -2928,101 +3019,123 @@ const BasicExample = () => {
 ### Variants
 
 ```jsx
-{/* Primary Variant */}
+{
+  /* Primary Variant */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   variant="primary"
   label="Primary"
-/>
+/>;
 
-{/* Error Variant */}
+{
+  /* Error Variant */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   variant="error"
   label="Error"
-/>
+/>;
 
-{/* Warning Variant */}
+{
+  /* Warning Variant */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   variant="warning"
   label="Warning"
-/>
+/>;
 
-{/* Success Variant */}
+{
+  /* Success Variant */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   variant="success"
   label="Success"
-/>
+/>;
 
-{/* Info Variant */}
+{
+  /* Info Variant */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   variant="info"
   label="Info"
-/>
+/>;
 
-{/* Secondary Variant */}
+{
+  /* Secondary Variant */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   variant="secondary"
   label="Secondary"
-/>
+/>;
 ```
 
 ### Sizes
 
 ```jsx
-{/* Small Size */}
+{
+  /* Small Size */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   customSize="sm"
   label="Small"
-/>
+/>;
 
-{/* Medium Size */}
+{
+  /* Medium Size */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   customSize="md"
   label="Medium"
-/>
+/>;
 
-{/* Large Size */}
+{
+  /* Large Size */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   customSize="lg"
   label="Large"
-/>
+/>;
 ```
 
 ### Thumb Shapes
 
 ```jsx
-{/* Stadium Shape (Fully Rounded) */}
+{
+  /* Stadium Shape (Fully Rounded) */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   thumbShape="stadium"
   label="Stadium"
-/>
+/>;
 
-{/* Rounded Shape (Slightly Rounded) */}
+{
+  /* Rounded Shape (Slightly Rounded) */
+}
 <Toggle
   checked={isChecked}
   onChange={(e) => setIsChecked(e.target.checked)}
   thumbShape="rounded"
   label="Rounded"
-/>
+/>;
 ```
 
 ### Disabled State
@@ -3061,34 +3174,35 @@ const CompleteExample = () => {
     autoSave: false,
   });
 
-  const handleToggle = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSettings(prev => ({
-      ...prev,
-      [key]: e.target.checked
-    }));
-  };
+  const handleToggle =
+    (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSettings((prev) => ({
+        ...prev,
+        [key]: e.target.checked,
+      }));
+    };
 
   return (
     <div className="space-y-4">
       <Toggle
         checked={settings.notifications}
-        onChange={handleToggle('notifications')}
+        onChange={handleToggle("notifications")}
         variant="primary"
         customSize="md"
         label="Enable notifications"
       />
-      
+
       <Toggle
         checked={settings.darkMode}
-        onChange={handleToggle('darkMode')}
+        onChange={handleToggle("darkMode")}
         variant="secondary"
         customSize="md"
         label="Dark mode"
       />
-      
+
       <Toggle
         checked={settings.autoSave}
-        onChange={handleToggle('autoSave')}
+        onChange={handleToggle("autoSave")}
         variant="success"
         customSize="md"
         label="Auto-save documents"
@@ -3112,17 +3226,17 @@ import { FileUpload } from "alope-ui";
 
 ### Props
 
-| Prop             | Type                           | Default      | Description                                      |
-| ---------------- | ------------------------------ | ------------ | ------------------------------------------------ |
-| `onFilesChange`  | `(files: File[]) => void`      | `required`   | Callback fired when files change                 |
-| `acceptedFiles`  | `string`                       | `'image/*'`  | Accepted file types (MIME types or extensions)   |
-| `maxFiles`       | `number`                       | `1`          | Maximum number of files allowed                  |
-| `maxKiloByte`    | `number`                       | `2048`       | Maximum file size in kilobytes                   |
-| `mode`           | `'dropzone' \| 'textinput'`    | `'dropzone'` | Display mode of the file upload                  |
-| `clearable`      | `boolean`                      | `true`       | Show clear button on file previews               |
-| `inputLabel`     | `string`                       | `undefined`  | Label for text input mode button                 |
-| `helperText`     | `string`                       | `undefined`  | Helper text displayed below the input            |
-| `mediaCapture`   | `'user' \| 'environment'`      | `undefined`  | Camera capture mode (for mobile devices)         |
+| Prop            | Type                        | Default      | Description                                    |
+| --------------- | --------------------------- | ------------ | ---------------------------------------------- |
+| `onFilesChange` | `(files: File[]) => void`   | `required`   | Callback fired when files change               |
+| `acceptedFiles` | `string`                    | `'image/*'`  | Accepted file types (MIME types or extensions) |
+| `maxFiles`      | `number`                    | `1`          | Maximum number of files allowed                |
+| `maxKiloByte`   | `number`                    | `2048`       | Maximum file size in kilobytes                 |
+| `mode`          | `'dropzone' \| 'textinput'` | `'dropzone'` | Display mode of the file upload                |
+| `clearable`     | `boolean`                   | `true`       | Show clear button on file previews             |
+| `inputLabel`    | `string`                    | `undefined`  | Label for text input mode button               |
+| `helperText`    | `string`                    | `undefined`  | Helper text displayed below the input          |
+| `mediaCapture`  | `'user' \| 'environment'`   | `undefined`  | Camera capture mode (for mobile devices)       |
 
 ### Basic FileUpload (Dropzone Mode)
 
@@ -3164,53 +3278,55 @@ const BasicExample = () => {
 ### Custom File Types
 
 ```jsx
-{/* Accept only images */}
-<FileUpload
-  acceptedFiles="image/*"
-  onFilesChange={setFiles}
-/>
+{
+  /* Accept only images */
+}
+<FileUpload acceptedFiles="image/*" onFilesChange={setFiles} />;
 
-{/* Accept specific image types */}
+{
+  /* Accept specific image types */
+}
 <FileUpload
   acceptedFiles="image/png, image/jpeg, image/jpg"
   onFilesChange={setFiles}
-/>
+/>;
 
-{/* Accept PDFs */}
-<FileUpload
-  acceptedFiles="application/pdf"
-  onFilesChange={setFiles}
-/>
+{
+  /* Accept PDFs */
+}
+<FileUpload acceptedFiles="application/pdf" onFilesChange={setFiles} />;
 
-{/* Accept by file extension */}
-<FileUpload
-  acceptedFiles=".pdf, .doc, .docx"
-  onFilesChange={setFiles}
-/>
+{
+  /* Accept by file extension */
+}
+<FileUpload acceptedFiles=".pdf, .doc, .docx" onFilesChange={setFiles} />;
 
-{/* Accept multiple types */}
-<FileUpload
-  acceptedFiles="image/*, .pdf, .doc"
-  onFilesChange={setFiles}
-/>
+{
+  /* Accept multiple types */
+}
+<FileUpload acceptedFiles="image/*, .pdf, .doc" onFilesChange={setFiles} />;
 ```
 
 ### File Size Limit
 
 ```jsx
-{/* 5MB limit */}
+{
+  /* 5MB limit */
+}
 <FileUpload
   maxKiloByte={5120}
   onFilesChange={setFiles}
   helperText="Maximum file size: 5MB"
-/>
+/>;
 
-{/* 500KB limit */}
+{
+  /* 500KB limit */
+}
 <FileUpload
   maxKiloByte={512}
   onFilesChange={setFiles}
   helperText="Maximum file size: 500KB"
-/>
+/>;
 ```
 
 ### With Helper Text
@@ -3225,28 +3341,29 @@ const BasicExample = () => {
 ### Camera Capture (Mobile)
 
 ```jsx
-{/* Use front camera */}
+{
+  /* Use front camera */
+}
 <FileUpload
   acceptedFiles="image/*"
   mediaCapture="user"
   onFilesChange={setFiles}
-/>
+/>;
 
-{/* Use back camera */}
+{
+  /* Use back camera */
+}
 <FileUpload
   acceptedFiles="image/*"
   mediaCapture="environment"
   onFilesChange={setFiles}
-/>
+/>;
 ```
 
 ### Non-clearable Files
 
 ```jsx
-<FileUpload
-  onFilesChange={setFiles}
-  clearable={false}
-/>
+<FileUpload onFilesChange={setFiles} clearable={false} />
 ```
 
 ### Complete Example with Dropzone Mode
@@ -3266,7 +3383,7 @@ const DropzoneExample = () => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <h2 className="text-xl font-bold mb-4">Upload Your Images</h2>
-      
+
       <FileUpload
         mode="dropzone"
         acceptedFiles="image/png, image/jpeg, image/jpg"
@@ -3275,7 +3392,7 @@ const DropzoneExample = () => {
         onFilesChange={handleFilesChange}
         helperText="Upload up to 3 images. Max 5MB per file."
       />
-      
+
       {uploadedFiles.length > 0 && (
         <div className="mt-4">
           <p className="font-medium">Selected files:</p>
@@ -3303,7 +3420,7 @@ const TextInputExample = () => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       <h2 className="text-xl font-bold mb-4">Upload Documents</h2>
-      
+
       <FileUpload
         mode="textinput"
         acceptedFiles=".pdf, .doc, .docx"
@@ -3333,13 +3450,13 @@ import type { TextareaType } from "alope-ui";
 
 ### Props
 
-| Prop              | Type                                          | Default | Description                                      |
-| ----------------- | --------------------------------------------- | ------- | ------------------------------------------------ |
-| `label`           | `string`                                      | `undefined` | Label text displayed above textarea          |
-| `error`           | `string`                                      | `undefined` | Error message displayed below textarea       |
-| `autoResize`      | `boolean`                                     | `false` | Enable auto-resize based on content              |
-| `customClassName` | `string`                                      | `""`    | Custom CSS class for textarea element            |
-| `...props`        | `InputHTMLAttributes<HTMLTextAreaElement>`    | -       | All standard HTML textarea attributes            |
+| Prop              | Type                                       | Default     | Description                            |
+| ----------------- | ------------------------------------------ | ----------- | -------------------------------------- |
+| `label`           | `string`                                   | `undefined` | Label text displayed above textarea    |
+| `error`           | `string`                                   | `undefined` | Error message displayed below textarea |
+| `autoResize`      | `boolean`                                  | `false`     | Enable auto-resize based on content    |
+| `customClassName` | `string`                                   | `""`        | Custom CSS class for textarea element  |
+| `...props`        | `InputHTMLAttributes<HTMLTextAreaElement>` | -           | All standard HTML textarea attributes  |
 
 ### Basic Textarea
 
@@ -3393,7 +3510,7 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
   onChange={handleChange}
   error={error}
   placeholder="Enter at least 10 characters..."
-/>
+/>;
 ```
 
 ### Auto-Resize Textarea
@@ -3454,12 +3571,12 @@ const CompleteExample = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (feedback.length < 20) {
       setError("Feedback must be at least 20 characters");
       return;
     }
-    
+
     console.log("Feedback submitted:", feedback);
     setFeedback("");
     setError("");
@@ -3475,7 +3592,7 @@ const CompleteExample = () => {
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6">
       <h2 className="text-xl font-bold mb-4">Share Your Feedback</h2>
-      
+
       <Textarea
         label="Feedback"
         name="feedback"
@@ -3486,11 +3603,11 @@ const CompleteExample = () => {
         placeholder="Tell us what you think... (minimum 20 characters)"
         customClassName="mb-4"
       />
-      
+
       <p className="text-sm text-gray-500 mb-4">
         Character count: {feedback.length}
       </p>
-      
+
       <button
         type="submit"
         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -3512,17 +3629,16 @@ const FormExample = () => {
   const [formData, setFormData] = useState({
     name: "",
     message: "",
-    comments: ""
+    comments: "",
   });
 
-  const handleChange = (field: string) => (
-    e: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: e.target.value
-    }));
-  };
+  const handleChange =
+    (field: string) => (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setFormData((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
+    };
 
   return (
     <div className="space-y-4 max-w-lg mx-auto p-6">
@@ -3530,16 +3646,16 @@ const FormExample = () => {
         label="Message"
         name="message"
         value={formData.message}
-        onChange={handleChange('message')}
+        onChange={handleChange("message")}
         placeholder="Your message..."
         rows={4}
       />
-      
+
       <Textarea
         label="Additional Comments"
         name="comments"
         value={formData.comments}
-        onChange={handleChange('comments')}
+        onChange={handleChange("comments")}
         placeholder="Any additional comments..."
         autoResize
       />
@@ -3563,17 +3679,17 @@ import type { Tabs as TabType } from "alope-ui";
 
 ### Props
 
-| Prop                 | Type                                                | Default  | Description                              |
-| -------------------- | --------------------------------------------------- | -------- | ---------------------------------------- |
-| `tabs`               | `TabType[]`                                         | `required` | Array of tab objects                   |
-| `variant`            | `'line' \| 'solid' \| 'subtle' \| 'inline' \| 'outline' \| 'plain'` | `'line'` | Visual variant style    |
-| `fitted`             | `boolean`                                           | `false`  | Make tabs fill available width           |
-| `wrapperClassName`   | `string`                                            | `""`     | Wrapper container CSS class              |
-| `buttonClassName`    | `string`                                            | `""`     | Tab button CSS class                     |
-| `activeClassName`    | `string`                                            | `""`     | Active tab CSS class                     |
-| `inactiveClassName`  | `string`                                            | `""`     | Inactive tab CSS class                   |
-| `activeTab`          | `number`                                            | `undefined` | Controlled active tab index           |
-| `onTabChange`        | `(index: number) => void`                           | `undefined` | Callback when tab changes             |
+| Prop                | Type                                                                | Default     | Description                    |
+| ------------------- | ------------------------------------------------------------------- | ----------- | ------------------------------ |
+| `tabs`              | `TabType[]`                                                         | `required`  | Array of tab objects           |
+| `variant`           | `'line' \| 'solid' \| 'subtle' \| 'inline' \| 'outline' \| 'plain'` | `'line'`    | Visual variant style           |
+| `fitted`            | `boolean`                                                           | `false`     | Make tabs fill available width |
+| `wrapperClassName`  | `string`                                                            | `""`        | Wrapper container CSS class    |
+| `buttonClassName`   | `string`                                                            | `""`        | Tab button CSS class           |
+| `activeClassName`   | `string`                                                            | `""`        | Active tab CSS class           |
+| `inactiveClassName` | `string`                                                            | `""`        | Inactive tab CSS class         |
+| `activeTab`         | `number`                                                            | `undefined` | Controlled active tab index    |
+| `onTabChange`       | `(index: number) => void`                                           | `undefined` | Callback when tab changes      |
 
 ### Tab Object Type
 
@@ -3583,7 +3699,7 @@ type Tabs = {
   content: React.ReactNode;
   disabled?: boolean;
   link?: string;
-}
+};
 ```
 
 ### Basic Tabs
@@ -3614,30 +3730,44 @@ const BasicExample = () => {
 ### Variants
 
 ```jsx
-{/* Line Variant */}
-<Tabs tabs={tabs} variant="line" />
+{
+  /* Line Variant */
+}
+<Tabs tabs={tabs} variant="line" />;
 
-{/* Solid Variant */}
-<Tabs tabs={tabs} variant="solid" />
+{
+  /* Solid Variant */
+}
+<Tabs tabs={tabs} variant="solid" />;
 
-{/* Subtle Variant */}
-<Tabs tabs={tabs} variant="subtle" />
+{
+  /* Subtle Variant */
+}
+<Tabs tabs={tabs} variant="subtle" />;
 
-{/* Inline Variant */}
-<Tabs tabs={tabs} variant="inline" />
+{
+  /* Inline Variant */
+}
+<Tabs tabs={tabs} variant="inline" />;
 
-{/* Outline Variant */}
-<Tabs tabs={tabs} variant="outline" />
+{
+  /* Outline Variant */
+}
+<Tabs tabs={tabs} variant="outline" />;
 
-{/* Plain Variant */}
-<Tabs tabs={tabs} variant="plain" />
+{
+  /* Plain Variant */
+}
+<Tabs tabs={tabs} variant="plain" />;
 ```
 
 ### Fitted Tabs
 
 ```jsx
-{/* Tabs will fill the available width equally */}
-<Tabs tabs={tabs} fitted />
+{
+  /* Tabs will fill the available width equally */
+}
+<Tabs tabs={tabs} fitted />;
 ```
 
 ### Controlled Tabs
@@ -3660,13 +3790,7 @@ const ControlledExample = () => {
     },
   ];
 
-  return (
-    <Tabs
-      tabs={tabs}
-      activeTab={activeTab}
-      onTabChange={setActiveTab}
-    />
-  );
+  return <Tabs tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />;
 };
 ```
 
@@ -3685,7 +3809,7 @@ const tabs = [
   },
 ];
 
-<Tabs tabs={tabs} />
+<Tabs tabs={tabs} />;
 ```
 
 ### Tabs with Links
@@ -3704,7 +3828,7 @@ const tabs = [
   },
 ];
 
-<Tabs tabs={tabs} />
+<Tabs tabs={tabs} />;
 ```
 
 ### Custom Styling
@@ -3795,19 +3919,19 @@ import { Avatar } from "alope-ui";
 
 ### Props
 
-| Prop              | Type                                                      | Default     | Description                           |
-| ----------------- | --------------------------------------------------------- | ----------- | ------------------------------------- |
-| `imageSrc`        | `string`                                                  | `undefined` | URL of the avatar image               |
-| `fallbackName`    | `string`                                                  | `undefined` | Name to generate initials from        |
-| `fallbackColor`   | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Background color for fallback |
-| `shape`           | `'sharp' \| 'cornered' \| 'rounded'`                      | `'rounded'` | Shape of the avatar                   |
-| `variant`         | `'solid' \| 'outline'`                                    | `'solid'`   | Visual variant style                  |
-| `size`            | `'sm' \| 'md' \| 'lg'`                                    | `'md'`      | Size of the avatar                    |
-| `ring`            | `boolean`                                                 | `false`     | Show ring around avatar               |
-| `ringClassName`   | `string`                                                  | `""`        | Custom ring CSS class                 |
-| `alt`             | `string`                                                  | `'avatar'`  | Alt text for image                    |
-| `status`          | `'online' \| 'offline'`                                   | `undefined` | Status indicator                      |
-| `className`       | `string`                                                  | `""`        | Additional CSS class                  |
+| Prop            | Type                                                                      | Default     | Description                    |
+| --------------- | ------------------------------------------------------------------------- | ----------- | ------------------------------ |
+| `imageSrc`      | `string`                                                                  | `undefined` | URL of the avatar image        |
+| `fallbackName`  | `string`                                                                  | `undefined` | Name to generate initials from |
+| `fallbackColor` | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Background color for fallback  |
+| `shape`         | `'sharp' \| 'cornered' \| 'rounded'`                                      | `'rounded'` | Shape of the avatar            |
+| `variant`       | `'solid' \| 'outline'`                                                    | `'solid'`   | Visual variant style           |
+| `size`          | `'sm' \| 'md' \| 'lg'`                                                    | `'md'`      | Size of the avatar             |
+| `ring`          | `boolean`                                                                 | `false`     | Show ring around avatar        |
+| `ringClassName` | `string`                                                                  | `""`        | Custom ring CSS class          |
+| `alt`           | `string`                                                                  | `'avatar'`  | Alt text for image             |
+| `status`        | `'online' \| 'offline'`                                                   | `undefined` | Status indicator               |
+| `className`     | `string`                                                                  | `""`        | Additional CSS class           |
 
 ### Basic Avatar
 
@@ -3816,10 +3940,7 @@ import { Avatar } from "alope-ui";
 
 const BasicExample = () => {
   return (
-    <Avatar
-      imageSrc="https://i.pravatar.cc/150?img=1"
-      alt="User Avatar"
-    />
+    <Avatar imageSrc="https://i.pravatar.cc/150?img=1" alt="User Avatar" />
   );
 };
 ```
@@ -3827,129 +3948,133 @@ const BasicExample = () => {
 ### Fallback with Initials
 
 ```jsx
-{/* Avatar with fallback name */}
-<Avatar fallbackName="John Doe" />
+{
+  /* Avatar with fallback name */
+}
+<Avatar fallbackName="John Doe" />;
 
-{/* Avatar with no image (shows initials) */}
-<Avatar 
-  imageSrc="invalid-url.jpg" 
-  fallbackName="Jane Smith" 
-/>
+{
+  /* Avatar with no image (shows initials) */
+}
+<Avatar imageSrc="invalid-url.jpg" fallbackName="Jane Smith" />;
 ```
 
 ### Sizes
 
 ```jsx
-{/* Small */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  size="sm" 
-/>
+{
+  /* Small */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" size="sm" />;
 
-{/* Medium */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  size="md" 
-/>
+{
+  /* Medium */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" size="md" />;
 
-{/* Large */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  size="lg" 
-/>
+{
+  /* Large */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" size="lg" />;
 ```
 
 ### Shapes
 
 ```jsx
-{/* Sharp corners */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  shape="sharp" 
-/>
+{
+  /* Sharp corners */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" shape="sharp" />;
 
-{/* Cornered (slightly rounded) */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  shape="cornered" 
-/>
+{
+  /* Cornered (slightly rounded) */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" shape="cornered" />;
 
-{/* Rounded (circular) */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  shape="rounded" 
-/>
+{
+  /* Rounded (circular) */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" shape="rounded" />;
 ```
 
 ### Variants
 
 ```jsx
-{/* Solid variant */}
-<Avatar 
-  fallbackName="John Doe" 
-  variant="solid" 
-/>
+{
+  /* Solid variant */
+}
+<Avatar fallbackName="John Doe" variant="solid" />;
 
-{/* Outline variant */}
-<Avatar 
-  fallbackName="John Doe" 
-  variant="outline" 
-/>
+{
+  /* Outline variant */
+}
+<Avatar fallbackName="John Doe" variant="outline" />;
 ```
 
 ### Fallback Colors
 
 ```jsx
-{/* Primary color */}
-<Avatar fallbackName="John Doe" fallbackColor="primary" />
+{
+  /* Primary color */
+}
+<Avatar fallbackName="John Doe" fallbackColor="primary" />;
 
-{/* Error color */}
-<Avatar fallbackName="John Doe" fallbackColor="error" />
+{
+  /* Error color */
+}
+<Avatar fallbackName="John Doe" fallbackColor="error" />;
 
-{/* Warning color */}
-<Avatar fallbackName="John Doe" fallbackColor="warning" />
+{
+  /* Warning color */
+}
+<Avatar fallbackName="John Doe" fallbackColor="warning" />;
 
-{/* Success color */}
-<Avatar fallbackName="John Doe" fallbackColor="success" />
+{
+  /* Success color */
+}
+<Avatar fallbackName="John Doe" fallbackColor="success" />;
 
-{/* Info color */}
-<Avatar fallbackName="John Doe" fallbackColor="info" />
+{
+  /* Info color */
+}
+<Avatar fallbackName="John Doe" fallbackColor="info" />;
 
-{/* Secondary color */}
-<Avatar fallbackName="John Doe" fallbackColor="secondary" />
+{
+  /* Secondary color */
+}
+<Avatar fallbackName="John Doe" fallbackColor="secondary" />;
 ```
 
 ### With Ring
 
 ```jsx
-{/* Default ring */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  ring 
-/>
+{
+  /* Default ring */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" ring />;
 
-{/* Custom ring color */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  ring 
+{
+  /* Custom ring color */
+}
+<Avatar
+  imageSrc="https://i.pravatar.cc/150?img=1"
+  ring
   ringClassName="ring-success dark:ring-success-dark"
-/>
+/>;
 ```
 
 ### Status Indicator
 
 ```jsx
-{/* Online status */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  status="online" 
-/>
+{
+  /* Online status */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" status="online" />;
 
-{/* Offline status */}
-<Avatar 
-  imageSrc="https://i.pravatar.cc/150?img=1" 
-  status="offline" 
-/>
+{
+  /* Offline status */
+}
+<Avatar imageSrc="https://i.pravatar.cc/150?img=1" status="offline" />;
 ```
 
 ### Complete Example
@@ -3969,7 +4094,7 @@ const CompleteExample = () => {
         status="online"
         alt="John Doe Avatar"
       />
-      
+
       <Avatar
         imageSrc="https://i.pravatar.cc/150?img=2"
         fallbackName="Jane Smith"
@@ -3997,13 +4122,13 @@ import type { AvatarGroupProps } from "alope-ui";
 
 ### Props
 
-| Prop          | Type              | Default  | Description                              |
-| ------------- | ----------------- | -------- | ---------------------------------------- |
-| `avatars`     | `AvatarProps[]`   | `required` | Array of avatar configurations         |
-| `maxVisible`  | `number`          | `3`      | Maximum number of visible avatars        |
-| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of all avatars in the group    |
-| `overlap`     | `string`          | `'-ml-3'` | CSS class for overlap spacing           |
-| `className`   | `string`          | `""`     | Additional CSS class                     |
+| Prop         | Type                   | Default    | Description                       |
+| ------------ | ---------------------- | ---------- | --------------------------------- |
+| `avatars`    | `AvatarProps[]`        | `required` | Array of avatar configurations    |
+| `maxVisible` | `number`               | `3`        | Maximum number of visible avatars |
+| `size`       | `'sm' \| 'md' \| 'lg'` | `'md'`     | Size of all avatars in the group  |
+| `overlap`    | `string`               | `'-ml-3'`  | CSS class for overlap spacing     |
+| `className`  | `string`               | `""`       | Additional CSS class              |
 
 ### Basic AvatarGroup
 
@@ -4032,34 +4157,48 @@ const avatars = [
   { imageSrc: "https://i.pravatar.cc/150?img=5", fallbackName: "User 5" },
 ];
 
-{/* Show only 3 avatars, rest shown as "+2" */}
-<AvatarGroup avatars={avatars} maxVisible={3} />
+{
+  /* Show only 3 avatars, rest shown as "+2" */
+}
+<AvatarGroup avatars={avatars} maxVisible={3} />;
 ```
 
 ### Different Sizes
 
 ```jsx
-{/* Small size */}
-<AvatarGroup avatars={avatars} size="sm" />
+{
+  /* Small size */
+}
+<AvatarGroup avatars={avatars} size="sm" />;
 
-{/* Medium size */}
-<AvatarGroup avatars={avatars} size="md" />
+{
+  /* Medium size */
+}
+<AvatarGroup avatars={avatars} size="md" />;
 
-{/* Large size */}
-<AvatarGroup avatars={avatars} size="lg" />
+{
+  /* Large size */
+}
+<AvatarGroup avatars={avatars} size="lg" />;
 ```
 
 ### Custom Overlap
 
 ```jsx
-{/* More overlap */}
-<AvatarGroup avatars={avatars} overlap="-ml-4" />
+{
+  /* More overlap */
+}
+<AvatarGroup avatars={avatars} overlap="-ml-4" />;
 
-{/* Less overlap */}
-<AvatarGroup avatars={avatars} overlap="-ml-2" />
+{
+  /* Less overlap */
+}
+<AvatarGroup avatars={avatars} overlap="-ml-2" />;
 
-{/* No overlap */}
-<AvatarGroup avatars={avatars} overlap="" />
+{
+  /* No overlap */
+}
+<AvatarGroup avatars={avatars} overlap="" />;
 ```
 
 ### Complete AvatarGroup Example
@@ -4069,28 +4208,28 @@ import { AvatarGroup } from "alope-ui";
 
 const CompleteGroupExample = () => {
   const teamMembers = [
-    { 
-      imageSrc: "https://i.pravatar.cc/150?img=1", 
+    {
+      imageSrc: "https://i.pravatar.cc/150?img=1",
       fallbackName: "John Doe",
-      status: "online"
+      status: "online",
     },
-    { 
-      imageSrc: "https://i.pravatar.cc/150?img=2", 
+    {
+      imageSrc: "https://i.pravatar.cc/150?img=2",
       fallbackName: "Jane Smith",
-      status: "online"
+      status: "online",
     },
-    { 
-      imageSrc: "https://i.pravatar.cc/150?img=3", 
+    {
+      imageSrc: "https://i.pravatar.cc/150?img=3",
       fallbackName: "Bob Wilson",
-      status: "offline"
+      status: "offline",
     },
-    { 
+    {
       fallbackName: "Alice Brown",
-      fallbackColor: "success"
+      fallbackColor: "success",
     },
-    { 
+    {
       fallbackName: "Charlie Davis",
-      fallbackColor: "info"
+      fallbackColor: "info",
     },
   ];
 
@@ -4118,16 +4257,16 @@ import type { CollectionProps } from "alope-ui";
 
 ### Props
 
-| Prop                | Type                                                      | Default     | Description                              |
-| ------------------- | --------------------------------------------------------- | ----------- | ---------------------------------------- |
-| `data`              | `T[]`                                                     | `required`  | Array of items to display                |
-| `title`             | `string`                                                  | `undefined` | Optional title for the collection        |
-| `children`          | `(item: T, index: number, isActive: boolean) => React.ReactNode` | `undefined` | Custom render function for items |
-| `className`         | `string`                                                  | `""`        | Container CSS class                      |
-| `wrapperClassName`  | `string`                                                  | `""`        | List wrapper CSS class                   |
-| `suffixIcon`        | `React.ReactNode \| ((item?: T, index?: number, isActive?: boolean) => React.ReactNode)` | `undefined` | Icon or render function for item suffix |
-| `activeItem`        | `any`                                                     | `undefined` | ID of the currently active item          |
-| `onChangeActive`    | `(item: T, index: number) => void`                        | `undefined` | Callback when item is clicked            |
+| Prop               | Type                                                                                     | Default     | Description                             |
+| ------------------ | ---------------------------------------------------------------------------------------- | ----------- | --------------------------------------- |
+| `data`             | `T[]`                                                                                    | `required`  | Array of items to display               |
+| `title`            | `string`                                                                                 | `undefined` | Optional title for the collection       |
+| `children`         | `(item: T, index: number, isActive: boolean) => React.ReactNode`                         | `undefined` | Custom render function for items        |
+| `className`        | `string`                                                                                 | `""`        | Container CSS class                     |
+| `wrapperClassName` | `string`                                                                                 | `""`        | List wrapper CSS class                  |
+| `suffixIcon`       | `React.ReactNode \| ((item?: T, index?: number, isActive?: boolean) => React.ReactNode)` | `undefined` | Icon or render function for item suffix |
+| `activeItem`       | `any`                                                                                    | `undefined` | ID of the currently active item         |
+| `onChangeActive`   | `(item: T, index: number) => void`                                                       | `undefined` | Callback when item is clicked           |
 
 ### Type Constraint
 
@@ -4138,7 +4277,7 @@ type ItemType = {
   id: string | number;
   name?: string;
   // ... other properties
-}
+};
 ```
 
 ### Basic Collection
@@ -4160,10 +4299,7 @@ const BasicExample = () => {
 ### With Title
 
 ```jsx
-<Collection 
-  data={items} 
-  title="My Collection" 
-/>
+<Collection data={items} title="My Collection" />
 ```
 
 ### With Active State
@@ -4196,21 +4332,22 @@ const ActiveStateExample = () => {
 ```jsx
 import { ChevronRight } from "lucide-react";
 
-{/* Static icon */}
-<Collection
-  data={items}
-  suffixIcon={<ChevronRight size={20} />}
-/>
+{
+  /* Static icon */
+}
+<Collection data={items} suffixIcon={<ChevronRight size={20} />} />;
 
-{/* Dynamic icon based on state */}
+{
+  /* Dynamic icon based on state */
+}
 <Collection
   data={items}
   activeItem={activeId}
   onChangeActive={(item) => setActiveId(item.id)}
-  suffixIcon={(item, index, isActive) => (
+  suffixIcon={(item, index, isActive) =>
     isActive ? <Check size={20} /> : <ChevronRight size={20} />
-  )}
-/>
+  }
+/>;
 ```
 
 ### Custom Rendering
@@ -4270,9 +4407,13 @@ const CustomRenderExample = () => {
 ### Empty State
 
 ```jsx
-{/* When data array is empty */}
-<Collection data={[]} title="Empty Collection" />
-{/* Displays: "No items to display." */}
+{
+  /* When data array is empty */
+}
+<Collection data={[]} title="Empty Collection" />;
+{
+  /* Displays: "No items to display." */
+}
 ```
 
 ### Complete Example
@@ -4291,9 +4432,11 @@ const CompleteExample = () => {
   ]);
 
   const toggleComplete = (id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
   };
 
   return (
@@ -4326,14 +4469,16 @@ const CompleteExample = () => {
                   <Circle size={20} />
                 )}
               </button>
-              <span className={item.completed ? "line-through text-gray-500" : ""}>
+              <span
+                className={item.completed ? "line-through text-gray-500" : ""}
+              >
                 {item.name}
               </span>
             </div>
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setTodos(todos.filter(t => t.id !== item.id));
+                setTodos(todos.filter((t) => t.id !== item.id));
               }}
               className="text-red-500 hover:text-red-700"
             >
@@ -4359,16 +4504,16 @@ import { FAB } from "alope-ui";
 
 ### Props
 
-| Prop          | Type                                | Default      | Description                              |
-| ------------- | ----------------------------------- | ------------ | ---------------------------------------- |
-| `children`    | `React.ReactNode`                   | `required`   | Action buttons to display when expanded  |
-| `isOpen`      | `boolean`                           | `required`   | Controls the expanded state              |
-| `onOpen`      | `() => void`                        | `required`   | Callback to toggle open/close state      |
-| `direction`   | `'horizontal' \| 'vertical'`        | `'vertical'` | Direction of child actions expansion     |
-| `size`        | `'sm' \| 'md' \| 'lg'`              | `'md'`       | Size of the FAB button                   |
-| `variant`     | `'solid' \| 'outline' \| 'ghost' \| 'soft'` | `'solid'` | Visual variant style            |
-| `variantType` | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'warning' \| 'info'` | `'primary'` | Color theme |
-| `icon`        | `React.ReactNode`                   | `'+'`        | Icon displayed on the main FAB button    |
+| Prop          | Type                                                                      | Default      | Description                             |
+| ------------- | ------------------------------------------------------------------------- | ------------ | --------------------------------------- |
+| `children`    | `React.ReactNode`                                                         | `required`   | Action buttons to display when expanded |
+| `isOpen`      | `boolean`                                                                 | `required`   | Controls the expanded state             |
+| `onOpen`      | `() => void`                                                              | `required`   | Callback to toggle open/close state     |
+| `direction`   | `'horizontal' \| 'vertical'`                                              | `'vertical'` | Direction of child actions expansion    |
+| `size`        | `'sm' \| 'md' \| 'lg'`                                                    | `'md'`       | Size of the FAB button                  |
+| `variant`     | `'solid' \| 'outline' \| 'ghost' \| 'soft'`                               | `'solid'`    | Visual variant style                    |
+| `variantType` | `'primary' \| 'secondary' \| 'success' \| 'error' \| 'warning' \| 'info'` | `'primary'`  | Color theme                             |
+| `icon`        | `React.ReactNode`                                                         | `'+'`        | Icon displayed on the main FAB button   |
 
 ### Basic FAB
 
@@ -4399,132 +4544,142 @@ const BasicExample = () => {
 ### Directions
 
 ```jsx
-{/* Vertical direction (default) */}
-<FAB 
-  isOpen={isOpen} 
-  onOpen={() => setIsOpen(!isOpen)}
-  direction="vertical"
->
+{
+  /* Vertical direction (default) */
+}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} direction="vertical">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Horizontal direction */}
-<FAB 
-  isOpen={isOpen} 
-  onOpen={() => setIsOpen(!isOpen)}
-  direction="horizontal"
->
+{
+  /* Horizontal direction */
+}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} direction="horizontal">
   {/* Actions */}
-</FAB>
+</FAB>;
 ```
 
 ### Sizes
 
 ```jsx
-{/* Small size */}
-<FAB 
-  isOpen={isOpen} 
-  onOpen={() => setIsOpen(!isOpen)}
-  size="sm"
->
+{
+  /* Small size */
+}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} size="sm">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Medium size */}
-<FAB 
-  isOpen={isOpen} 
-  onOpen={() => setIsOpen(!isOpen)}
-  size="md"
->
+{
+  /* Medium size */
+}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} size="md">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Large size */}
-<FAB 
-  isOpen={isOpen} 
-  onOpen={() => setIsOpen(!isOpen)}
-  size="lg"
->
+{
+  /* Large size */
+}
+<FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} size="lg">
   {/* Actions */}
-</FAB>
+</FAB>;
 ```
 
 ### Variants
 
 ```jsx
-{/* Solid variant */}
-<FAB 
-  isOpen={isOpen} 
+{
+  /* Solid variant */
+}
+<FAB
+  isOpen={isOpen}
   onOpen={() => setIsOpen(!isOpen)}
   variant="solid"
   variantType="primary"
 >
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Outline variant */}
-<FAB 
-  isOpen={isOpen} 
+{
+  /* Outline variant */
+}
+<FAB
+  isOpen={isOpen}
   onOpen={() => setIsOpen(!isOpen)}
   variant="outline"
   variantType="secondary"
 >
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Ghost variant */}
-<FAB 
-  isOpen={isOpen} 
+{
+  /* Ghost variant */
+}
+<FAB
+  isOpen={isOpen}
   onOpen={() => setIsOpen(!isOpen)}
   variant="ghost"
   variantType="success"
 >
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Soft variant */}
-<FAB 
-  isOpen={isOpen} 
+{
+  /* Soft variant */
+}
+<FAB
+  isOpen={isOpen}
   onOpen={() => setIsOpen(!isOpen)}
   variant="soft"
   variantType="warning"
 >
   {/* Actions */}
-</FAB>
+</FAB>;
 ```
 
 ### Variant Types (Colors)
 
 ```jsx
-{/* Primary */}
+{
+  /* Primary */
+}
 <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="primary">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Secondary */}
+{
+  /* Secondary */
+}
 <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="secondary">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Success */}
+{
+  /* Success */
+}
 <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="success">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Error */}
+{
+  /* Error */
+}
 <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="error">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Warning */}
+{
+  /* Warning */
+}
 <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="warning">
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Info */}
+{
+  /* Info */
+}
 <FAB isOpen={isOpen} onOpen={() => setIsOpen(!isOpen)} variantType="info">
   {/* Actions */}
-</FAB>
+</FAB>;
 ```
 
 ### Custom Icon
@@ -4532,23 +4687,27 @@ const BasicExample = () => {
 ```jsx
 import { Plus, Menu } from "lucide-react";
 
-{/* Custom icon */}
-<FAB 
-  isOpen={isOpen} 
+{
+  /* Custom icon */
+}
+<FAB
+  isOpen={isOpen}
   onOpen={() => setIsOpen(!isOpen)}
   icon={<Plus size={24} />}
 >
   {/* Actions */}
-</FAB>
+</FAB>;
 
-{/* Menu icon */}
-<FAB 
-  isOpen={isOpen} 
+{
+  /* Menu icon */
+}
+<FAB
+  isOpen={isOpen}
   onOpen={() => setIsOpen(!isOpen)}
   icon={<Menu size={24} />}
 >
   {/* Actions */}
-</FAB>
+</FAB>;
 ```
 
 ### With Icon Actions
@@ -4563,8 +4722,8 @@ const IconActionsExample = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <FAB 
-      isOpen={isOpen} 
+    <FAB
+      isOpen={isOpen}
       onOpen={() => setIsOpen(!isOpen)}
       icon={<Plus size={24} />}
     >
@@ -4588,13 +4747,7 @@ const IconActionsExample = () => {
 import { useState } from "react";
 import { FAB } from "alope-ui";
 import { Button } from "alope-ui";
-import { 
-  Plus, 
-  MessageCircle, 
-  Phone, 
-  Video, 
-  Mail 
-} from "lucide-react";
+import { Plus, MessageCircle, Phone, Video, Mail } from "lucide-react";
 
 const CompleteExample = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -4623,7 +4776,7 @@ const CompleteExample = () => {
         <MessageCircle size={20} />
         <span className="ml-2">Message</span>
       </Button>
-      
+
       <Button
         variant="solid"
         variantType="success"
@@ -4633,7 +4786,7 @@ const CompleteExample = () => {
         <Phone size={20} />
         <span className="ml-2">Call</span>
       </Button>
-      
+
       <Button
         variant="solid"
         variantType="info"
@@ -4643,7 +4796,7 @@ const CompleteExample = () => {
         <Video size={20} />
         <span className="ml-2">Video</span>
       </Button>
-      
+
       <Button
         variant="solid"
         variantType="secondary"
@@ -4705,24 +4858,24 @@ import { BottomNavbar, BottomNavbarAction } from "alope-ui";
 
 ### BottomNavbar Props
 
-| Prop            | Type                        | Default     | Description                              |
-| --------------- | --------------------------- | ----------- | ---------------------------------------- |
-| `children`      | `React.ReactNode`           | `required`  | BottomNavbarAction components            |
-| `value`         | `string`                    | `required`  | Currently selected action value          |
-| `onChangeValue` | `(value: string) => void`   | `required`  | Callback when action is selected         |
-| `className`     | `string`                    | `""`        | Additional CSS class                     |
+| Prop            | Type                      | Default    | Description                      |
+| --------------- | ------------------------- | ---------- | -------------------------------- |
+| `children`      | `React.ReactNode`         | `required` | BottomNavbarAction components    |
+| `value`         | `string`                  | `required` | Currently selected action value  |
+| `onChangeValue` | `(value: string) => void` | `required` | Callback when action is selected |
+| `className`     | `string`                  | `""`       | Additional CSS class             |
 
 ### BottomNavbarAction Props
 
-| Prop             | Type              | Default     | Description                              |
-| ---------------- | ----------------- | ----------- | ---------------------------------------- |
-| `value`          | `string`          | `required`  | Unique identifier for the action         |
-| `label`          | `React.ReactNode` | `undefined` | Label text or component                  |
-| `icon`           | `React.ReactNode` | `undefined` | Icon component                           |
-| `selectedValue`  | `string`          | `undefined` | Currently selected value (auto-injected) |
-| `onChangeValue`  | `(value: string) => void` | `undefined` | Change handler (auto-injected) |
-| `labelClassName` | `string`          | `""`        | Label CSS class                          |
-| `className`      | `string`          | `""`        | Additional CSS class                     |
+| Prop             | Type                      | Default     | Description                              |
+| ---------------- | ------------------------- | ----------- | ---------------------------------------- |
+| `value`          | `string`                  | `required`  | Unique identifier for the action         |
+| `label`          | `React.ReactNode`         | `undefined` | Label text or component                  |
+| `icon`           | `React.ReactNode`         | `undefined` | Icon component                           |
+| `selectedValue`  | `string`                  | `undefined` | Currently selected value (auto-injected) |
+| `onChangeValue`  | `(value: string) => void` | `undefined` | Change handler (auto-injected)           |
+| `labelClassName` | `string`                  | `""`        | Label CSS class                          |
+| `className`      | `string`                  | `""`        | Additional CSS class                     |
 
 ### Basic BottomNavbar
 
@@ -4736,25 +4889,21 @@ const BasicExample = () => {
 
   return (
     <BottomNavbar value={activeTab} onChangeValue={setActiveTab}>
-      <BottomNavbarAction 
-        value="home" 
-        icon={<Home size={24} />} 
-        label="Home" 
+      <BottomNavbarAction value="home" icon={<Home size={24} />} label="Home" />
+      <BottomNavbarAction
+        value="search"
+        icon={<Search size={24} />}
+        label="Search"
       />
-      <BottomNavbarAction 
-        value="search" 
-        icon={<Search size={24} />} 
-        label="Search" 
+      <BottomNavbarAction
+        value="notifications"
+        icon={<Bell size={24} />}
+        label="Notifications"
       />
-      <BottomNavbarAction 
-        value="notifications" 
-        icon={<Bell size={24} />} 
-        label="Notifications" 
-      />
-      <BottomNavbarAction 
-        value="profile" 
-        icon={<User size={24} />} 
-        label="Profile" 
+      <BottomNavbarAction
+        value="profile"
+        icon={<User size={24} />}
+        label="Profile"
       />
     </BottomNavbar>
   );
@@ -4773,22 +4922,10 @@ const IconOnlyExample = () => {
 
   return (
     <BottomNavbar value={activeTab} onChangeValue={setActiveTab}>
-      <BottomNavbarAction 
-        value="home" 
-        icon={<Home size={24} />} 
-      />
-      <BottomNavbarAction 
-        value="search" 
-        icon={<Search size={24} />} 
-      />
-      <BottomNavbarAction 
-        value="notifications" 
-        icon={<Bell size={24} />} 
-      />
-      <BottomNavbarAction 
-        value="profile" 
-        icon={<User size={24} />} 
-      />
+      <BottomNavbarAction value="home" icon={<Home size={24} />} />
+      <BottomNavbarAction value="search" icon={<Search size={24} />} />
+      <BottomNavbarAction value="notifications" icon={<Bell size={24} />} />
+      <BottomNavbarAction value="profile" icon={<User size={24} />} />
     </BottomNavbar>
   );
 };
@@ -4806,13 +4943,9 @@ const BadgeExample = () => {
 
   return (
     <BottomNavbar value={activeTab} onChangeValue={setActiveTab}>
-      <BottomNavbarAction 
-        value="home" 
-        icon={<Home size={24} />} 
-        label="Home" 
-      />
-      <BottomNavbarAction 
-        value="cart" 
+      <BottomNavbarAction value="home" icon={<Home size={24} />} label="Home" />
+      <BottomNavbarAction
+        value="cart"
         icon={
           <div className="relative">
             <ShoppingCart size={24} />
@@ -4820,23 +4953,23 @@ const BadgeExample = () => {
               3
             </span>
           </div>
-        } 
-        label="Cart" 
+        }
+        label="Cart"
       />
-      <BottomNavbarAction 
-        value="notifications" 
+      <BottomNavbarAction
+        value="notifications"
         icon={
           <div className="relative">
             <Bell size={24} />
             <span className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full"></span>
           </div>
-        } 
-        label="Notifications" 
+        }
+        label="Notifications"
       />
-      <BottomNavbarAction 
-        value="profile" 
-        icon={<User size={24} />} 
-        label="Profile" 
+      <BottomNavbarAction
+        value="profile"
+        icon={<User size={24} />}
+        label="Profile"
       />
     </BottomNavbar>
   );
@@ -4854,32 +4987,32 @@ const CustomStyledExample = () => {
   const [activeTab, setActiveTab] = useState("home");
 
   return (
-    <BottomNavbar 
-      value={activeTab} 
+    <BottomNavbar
+      value={activeTab}
       onChangeValue={setActiveTab}
       className="border-t-2 border-primary"
     >
-      <BottomNavbarAction 
-        value="home" 
-        icon={<Home size={24} />} 
+      <BottomNavbarAction
+        value="home"
+        icon={<Home size={24} />}
         label="Home"
         labelClassName="font-semibold"
       />
-      <BottomNavbarAction 
-        value="search" 
-        icon={<Search size={24} />} 
+      <BottomNavbarAction
+        value="search"
+        icon={<Search size={24} />}
         label="Search"
         labelClassName="font-semibold"
       />
-      <BottomNavbarAction 
-        value="favorites" 
-        icon={<Heart size={24} />} 
+      <BottomNavbarAction
+        value="favorites"
+        icon={<Heart size={24} />}
         label="Favorites"
         labelClassName="font-semibold"
       />
-      <BottomNavbarAction 
-        value="profile" 
-        icon={<User size={24} />} 
+      <BottomNavbarAction
+        value="profile"
+        icon={<User size={24} />}
         label="Profile"
         labelClassName="font-semibold"
       />
@@ -4914,30 +5047,26 @@ const RoutingExample = () => {
 
   return (
     <BottomNavbar value={activeTab} onChangeValue={handleTabChange}>
-      <BottomNavbarAction 
-        value="home" 
-        icon={<Home size={24} />} 
-        label="Home" 
+      <BottomNavbarAction value="home" icon={<Home size={24} />} label="Home" />
+      <BottomNavbarAction
+        value="explore"
+        icon={<Compass size={24} />}
+        label="Explore"
       />
-      <BottomNavbarAction 
-        value="explore" 
-        icon={<Compass size={24} />} 
-        label="Explore" 
+      <BottomNavbarAction
+        value="create"
+        icon={<PlusSquare size={24} />}
+        label="Create"
       />
-      <BottomNavbarAction 
-        value="create" 
-        icon={<PlusSquare size={24} />} 
-        label="Create" 
+      <BottomNavbarAction
+        value="likes"
+        icon={<Heart size={24} />}
+        label="Likes"
       />
-      <BottomNavbarAction 
-        value="likes" 
-        icon={<Heart size={24} />} 
-        label="Likes" 
-      />
-      <BottomNavbarAction 
-        value="profile" 
-        icon={<User size={24} />} 
-        label="Profile" 
+      <BottomNavbarAction
+        value="profile"
+        icon={<User size={24} />}
+        label="Profile"
       />
     </BottomNavbar>
   );
@@ -4949,13 +5078,7 @@ const RoutingExample = () => {
 ```jsx
 import { useState } from "react";
 import { BottomNavbar, BottomNavbarAction } from "alope-ui";
-import { 
-  Home, 
-  Search, 
-  PlusCircle, 
-  MessageCircle, 
-  User 
-} from "lucide-react";
+import { Home, Search, PlusCircle, MessageCircle, User } from "lucide-react";
 
 const CompleteExample = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -4966,7 +5089,7 @@ const CompleteExample = () => {
 
   const handleTabChange = (value) => {
     setActiveTab(value);
-    
+
     // Clear notifications when viewing messages
     if (value === "messages") {
       setNotifications({ ...notifications, messages: 0 });
@@ -4980,34 +5103,32 @@ const CompleteExample = () => {
         <h1 className="text-2xl font-bold">
           {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Page
         </h1>
-        <p className="text-gray-600 mt-2">
-          Current active tab: {activeTab}
-        </p>
+        <p className="text-gray-600 mt-2">Current active tab: {activeTab}</p>
       </div>
 
       {/* Bottom Navigation */}
       <BottomNavbar value={activeTab} onChangeValue={handleTabChange}>
-        <BottomNavbarAction 
-          value="home" 
-          icon={<Home size={24} />} 
-          label="Home" 
+        <BottomNavbarAction
+          value="home"
+          icon={<Home size={24} />}
+          label="Home"
         />
-        
-        <BottomNavbarAction 
-          value="search" 
-          icon={<Search size={24} />} 
-          label="Search" 
+
+        <BottomNavbarAction
+          value="search"
+          icon={<Search size={24} />}
+          label="Search"
         />
-        
-        <BottomNavbarAction 
-          value="create" 
-          icon={<PlusCircle size={28} />} 
+
+        <BottomNavbarAction
+          value="create"
+          icon={<PlusCircle size={28} />}
           label="Create"
           className="relative -top-2"
         />
-        
-        <BottomNavbarAction 
-          value="messages" 
+
+        <BottomNavbarAction
+          value="messages"
           icon={
             <div className="relative">
               <MessageCircle size={24} />
@@ -5017,12 +5138,12 @@ const CompleteExample = () => {
                 </span>
               )}
             </div>
-          } 
-          label="Messages" 
+          }
+          label="Messages"
         />
-        
-        <BottomNavbarAction 
-          value="profile" 
+
+        <BottomNavbarAction
+          value="profile"
           icon={
             <div className="relative">
               <User size={24} />
@@ -5030,15 +5151,14 @@ const CompleteExample = () => {
                 <span className="absolute -top-1 -right-1 bg-red-500 w-2 h-2 rounded-full"></span>
               )}
             </div>
-          } 
-          label="Profile" 
+          }
+          label="Profile"
         />
       </BottomNavbar>
     </div>
   );
 };
 ```
-
 
 ## Grid
 
@@ -5052,20 +5172,20 @@ import { Grid, GridItem } from "alope-ui";
 
 ### Grid Props
 
-| Prop        | Type                          | Default     | Description                              |
-| ----------- | ----------------------------- | ----------- | ---------------------------------------- |
-| `children`  | `React.ReactNode`             | `required`  | Grid items to display                    |
-| `cols`      | `ResponsiveCols`              | `undefined` | Number of columns (1-12) or responsive   |
-| `gap`       | `ResponsiveGap`               | `undefined` | Gap between items (1-6) or responsive    |
-| `className` | `string`                      | `""`        | Additional CSS class                     |
+| Prop        | Type              | Default     | Description                            |
+| ----------- | ----------------- | ----------- | -------------------------------------- |
+| `children`  | `React.ReactNode` | `required`  | Grid items to display                  |
+| `cols`      | `ResponsiveCols`  | `undefined` | Number of columns (1-12) or responsive |
+| `gap`       | `ResponsiveGap`   | `undefined` | Gap between items (1-6) or responsive  |
+| `className` | `string`          | `""`        | Additional CSS class                   |
 
 ### GridItem Props
 
-| Prop        | Type                          | Default     | Description                              |
-| ----------- | ----------------------------- | ----------- | ---------------------------------------- |
-| `children`  | `React.ReactNode`             | `required`  | Content to display                       |
-| `colSpan`   | `ResponsiveColSpan`           | `undefined` | Number of columns to span (1-12 or 'full') |
-| `className` | `string`                      | `""`        | Additional CSS class                     |
+| Prop        | Type                | Default     | Description                                |
+| ----------- | ------------------- | ----------- | ------------------------------------------ |
+| `children`  | `React.ReactNode`   | `required`  | Content to display                         |
+| `colSpan`   | `ResponsiveColSpan` | `undefined` | Number of columns to span (1-12 or 'full') |
+| `className` | `string`            | `""`        | Additional CSS class                       |
 
 ### Responsive Types
 
@@ -5102,7 +5222,9 @@ const BasicExample = () => {
 ### Responsive Columns
 
 ```jsx
-{/* 1 column on mobile, 2 on tablet, 3 on desktop */}
+{
+  /* 1 column on mobile, 2 on tablet, 3 on desktop */
+}
 <Grid cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
   <GridItem>Item 1</GridItem>
   <GridItem>Item 2</GridItem>
@@ -5110,40 +5232,43 @@ const BasicExample = () => {
   <GridItem>Item 4</GridItem>
   <GridItem>Item 5</GridItem>
   <GridItem>Item 6</GridItem>
-</Grid>
+</Grid>;
 ```
 
 ### Responsive Gaps
 
 ```jsx
-{/* Small gap on mobile, larger on desktop */}
-<Grid 
-  cols={3} 
-  gap={{ base: 2, md: 4, lg: 6 }}
->
+{
+  /* Small gap on mobile, larger on desktop */
+}
+<Grid cols={3} gap={{ base: 2, md: 4, lg: 6 }}>
   <GridItem>Item 1</GridItem>
   <GridItem>Item 2</GridItem>
   <GridItem>Item 3</GridItem>
-</Grid>
+</Grid>;
 ```
 
 ### Column Spanning
 
 ```jsx
-{/* Items spanning multiple columns */}
+{
+  /* Items spanning multiple columns */
+}
 <Grid cols={4} gap={4}>
   <GridItem colSpan={2}>Spans 2 columns</GridItem>
   <GridItem colSpan={2}>Spans 2 columns</GridItem>
   <GridItem colSpan={1}>1 column</GridItem>
   <GridItem colSpan={3}>Spans 3 columns</GridItem>
   <GridItem colSpan={4}>Spans full width</GridItem>
-</Grid>
+</Grid>;
 ```
 
 ### Responsive Column Spanning
 
 ```jsx
-{/* Different spans at different breakpoints */}
+{
+  /* Different spans at different breakpoints */
+}
 <Grid cols={{ base: 2, md: 4, lg: 6 }} gap={4}>
   <GridItem colSpan={{ base: 2, md: 2, lg: 3 }}>
     Full width on mobile, half on tablet, half on desktop
@@ -5151,13 +5276,9 @@ const BasicExample = () => {
   <GridItem colSpan={{ base: 2, md: 2, lg: 3 }}>
     Full width on mobile, half on tablet, half on desktop
   </GridItem>
-  <GridItem colSpan={{ base: 1, md: 2, lg: 2 }}>
-    Responsive span
-  </GridItem>
-  <GridItem colSpan={{ base: 1, md: 2, lg: 2 }}>
-    Responsive span
-  </GridItem>
-</Grid>
+  <GridItem colSpan={{ base: 1, md: 2, lg: 2 }}>Responsive span</GridItem>
+  <GridItem colSpan={{ base: 1, md: 2, lg: 2 }}>Responsive span</GridItem>
+</Grid>;
 ```
 
 ### Card Layout
@@ -5248,8 +5369,8 @@ const GalleryExample = () => {
         <GridItem
           key={image.id}
           colSpan={
-            image.featured 
-              ? { base: 2, md: 2, lg: 3 } 
+            image.featured
+              ? { base: 2, md: 2, lg: 3 }
               : { base: 1, md: 1, lg: 1 }
           }
         >
@@ -5276,9 +5397,9 @@ const CompleteExample = () => {
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-8">Responsive Grid Layout</h1>
-      
-      <Grid 
-        cols={{ base: 1, sm: 2, md: 3, lg: 4, xl: 6 }} 
+
+      <Grid
+        cols={{ base: 1, sm: 2, md: 3, lg: 4, xl: 6 }}
         gap={{ base: 2, md: 4, lg: 6 }}
       >
         {/* Hero section - Full width */}
@@ -5344,12 +5465,12 @@ import { Masonry } from "alope-ui";
 
 ### Props
 
-| Prop        | Type                          | Default     | Description                              |
-| ----------- | ----------------------------- | ----------- | ---------------------------------------- |
-| `children`  | `React.ReactNode`             | `required`  | Items to display in masonry layout       |
-| `cols`      | `ResponsiveCols`              | `undefined` | Number of columns (1-12) or responsive   |
-| `gap`       | `ResponsiveGap`               | `4`         | Gap between items (1-6) or responsive    |
-| `className` | `string`                      | `""`        | Additional CSS class                     |
+| Prop        | Type              | Default     | Description                            |
+| ----------- | ----------------- | ----------- | -------------------------------------- |
+| `children`  | `React.ReactNode` | `required`  | Items to display in masonry layout     |
+| `cols`      | `ResponsiveCols`  | `undefined` | Number of columns (1-12) or responsive |
+| `gap`       | `ResponsiveGap`   | `4`         | Gap between items (1-6) or responsive  |
+| `className` | `string`          | `""`        | Additional CSS class                   |
 
 ### Responsive Types
 
@@ -5386,7 +5507,9 @@ const BasicExample = () => {
 ### Responsive Columns
 
 ```jsx
-{/* 1 column on mobile, 2 on tablet, 3 on desktop */}
+{
+  /* 1 column on mobile, 2 on tablet, 3 on desktop */
+}
 <Masonry cols={{ base: 1, md: 2, lg: 3 }} gap={4}>
   <div className="p-4 bg-blue-100 rounded">Item 1</div>
   <div className="p-4 bg-green-100 rounded">Item 2</div>
@@ -5394,21 +5517,20 @@ const BasicExample = () => {
   <div className="p-4 bg-yellow-100 rounded">Item 4</div>
   <div className="p-4 bg-pink-100 rounded">Item 5</div>
   <div className="p-4 bg-indigo-100 rounded">Item 6</div>
-</Masonry>
+</Masonry>;
 ```
 
 ### Responsive Gaps
 
 ```jsx
-{/* Small gap on mobile, larger on desktop */}
-<Masonry 
-  cols={3} 
-  gap={{ base: 2, md: 4, lg: 6 }}
->
+{
+  /* Small gap on mobile, larger on desktop */
+}
+<Masonry cols={3} gap={{ base: 2, md: 4, lg: 6 }}>
   <div className="p-4 bg-blue-100 rounded">Item 1</div>
   <div className="p-4 bg-green-100 rounded">Item 2</div>
   <div className="p-4 bg-purple-100 rounded">Item 3</div>
-</Masonry>
+</Masonry>;
 ```
 
 ### Image Gallery
@@ -5450,17 +5572,27 @@ import { Masonry } from "alope-ui";
 const CardMasonryExample = () => {
   const cards = [
     { id: 1, title: "Card 1", content: "Short content" },
-    { id: 2, title: "Card 2", content: "This is a longer content that will make the card taller than others in the masonry layout." },
+    {
+      id: 2,
+      title: "Card 2",
+      content:
+        "This is a longer content that will make the card taller than others in the masonry layout.",
+    },
     { id: 3, title: "Card 3", content: "Medium length content here." },
     { id: 4, title: "Card 4", content: "Another short one." },
-    { id: 5, title: "Card 5", content: "This card has quite a bit more content to display, making it one of the taller cards in the layout." },
+    {
+      id: 5,
+      title: "Card 5",
+      content:
+        "This card has quite a bit more content to display, making it one of the taller cards in the layout.",
+    },
   ];
 
   return (
     <Masonry cols={{ base: 1, sm: 2, lg: 3 }} gap={4}>
       {cards.map((card) => (
-        <div 
-          key={card.id} 
+        <div
+          key={card.id}
           className="break-inside-avoid mb-4 p-6 bg-white border rounded-lg shadow-sm"
         >
           <h3 className="font-bold text-lg mb-2">{card.title}</h3>
@@ -5490,8 +5622,8 @@ const PinterestExample = () => {
   return (
     <Masonry cols={{ base: 2, md: 3, lg: 4, xl: 5 }} gap={{ base: 2, md: 3 }}>
       {pins.map((pin) => (
-        <div 
-          key={pin.id} 
+        <div
+          key={pin.id}
           className="break-inside-avoid mb-3 group cursor-pointer"
         >
           <div className="relative overflow-hidden rounded-lg">
@@ -5529,7 +5661,8 @@ const BlogGridExample = () => {
     {
       id: 2,
       title: "Advanced TypeScript Patterns",
-      excerpt: "Dive deep into advanced TypeScript patterns and best practices for building scalable applications.",
+      excerpt:
+        "Dive deep into advanced TypeScript patterns and best practices for building scalable applications.",
       image: "post2.jpg",
       date: "Jan 20, 2024",
     },
@@ -5545,8 +5678,8 @@ const BlogGridExample = () => {
   return (
     <Masonry cols={{ base: 1, md: 2, lg: 3 }} gap={5}>
       {posts.map((post) => (
-        <article 
-          key={post.id} 
+        <article
+          key={post.id}
           className="break-inside-avoid mb-5 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
         >
           <img
@@ -5606,7 +5739,8 @@ const CompleteExample = () => {
       id: 4,
       type: "article",
       title: "The Future of Web Development",
-      excerpt: "Exploring upcoming trends and technologies that will shape the future of web development.",
+      excerpt:
+        "Exploring upcoming trends and technologies that will shape the future of web development.",
       readTime: "5 min read",
       height: "auto",
     },
@@ -5624,16 +5758,10 @@ const CompleteExample = () => {
   return (
     <div className="p-8 bg-gray-50 min-h-screen">
       <h1 className="text-3xl font-bold mb-8">Masonry Gallery</h1>
-      
-      <Masonry 
-        cols={{ base: 1, sm: 2, md: 3, lg: 4 }} 
-        gap={{ base: 3, md: 4 }}
-      >
+
+      <Masonry cols={{ base: 1, sm: 2, md: 3, lg: 4 }} gap={{ base: 3, md: 4 }}>
         {items.map((item) => (
-          <div 
-            key={item.id} 
-            className="break-inside-avoid mb-4"
-          >
+          <div key={item.id} className="break-inside-avoid mb-4">
             {item.type === "image" && (
               <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                 <img
@@ -5661,7 +5789,9 @@ const CompleteExample = () => {
             )}
 
             {item.type === "quote" && (
-              <div className={`bg-gradient-to-br from-purple-500 to-pink-500 ${item.height} rounded-lg p-6 text-white flex flex-col justify-center shadow-md`}>
+              <div
+                className={`bg-gradient-to-br from-purple-500 to-pink-500 ${item.height} rounded-lg p-6 text-white flex flex-col justify-center shadow-md`}
+              >
                 <p className="text-xl italic mb-4">"{item.text}"</p>
                 <p className="text-sm opacity-90">— {item.author}</p>
               </div>
@@ -5699,23 +5829,23 @@ import { Slider } from "alope-ui";
 
 ### Props
 
-| Prop          | Type                                                    | Default     | Description                              |
-| ------------- | ------------------------------------------------------- | ----------- | ---------------------------------------- |
-| `label`       | `string`                                                | `undefined` | Label text for the slider                |
-| `value`       | `number`                                                | `required`  | Current slider value                     |
-| `onChange`    | `(e: ChangeEvent<HTMLInputElement>) => void`            | `required`  | Change handler function                  |
-| `min`         | `number`                                                | `0`         | Minimum value                            |
-| `max`         | `number`                                                | `100`       | Maximum value                            |
-| `step`        | `number`                                                | `1`         | Step increment                           |
-| `color`       | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Color theme |
-| `sliderSize`  | `'sm' \| 'md' \| 'lg' \| 'xl'`                          | `'md'`      | Size of the slider                       |
-| `showTooltip` | `boolean`                                               | `true`      | Show value tooltip on hover              |
-| `showMarks`   | `boolean`                                               | `true`      | Show step marks                          |
-| `prefixIcon`  | `React.ReactNode`                                       | `undefined` | Icon before slider                       |
-| `suffixIcon`  | `React.ReactNode`                                       | `undefined` | Icon after slider                        |
-| `disabled`    | `boolean`                                               | `false`     | Disable slider interaction               |
-| `id`          | `string`                                                | `undefined` | HTML id attribute                        |
-| `name`        | `string`                                                | `undefined` | HTML name attribute                      |
+| Prop          | Type                                                                      | Default     | Description                 |
+| ------------- | ------------------------------------------------------------------------- | ----------- | --------------------------- |
+| `label`       | `string`                                                                  | `undefined` | Label text for the slider   |
+| `value`       | `number`                                                                  | `required`  | Current slider value        |
+| `onChange`    | `(e: ChangeEvent<HTMLInputElement>) => void`                              | `required`  | Change handler function     |
+| `min`         | `number`                                                                  | `0`         | Minimum value               |
+| `max`         | `number`                                                                  | `100`       | Maximum value               |
+| `step`        | `number`                                                                  | `1`         | Step increment              |
+| `color`       | `'primary' \| 'error' \| 'warning' \| 'success' \| 'info' \| 'secondary'` | `'primary'` | Color theme                 |
+| `sliderSize`  | `'sm' \| 'md' \| 'lg' \| 'xl'`                                            | `'md'`      | Size of the slider          |
+| `showTooltip` | `boolean`                                                                 | `true`      | Show value tooltip on hover |
+| `showMarks`   | `boolean`                                                                 | `true`      | Show step marks             |
+| `prefixIcon`  | `React.ReactNode`                                                         | `undefined` | Icon before slider          |
+| `suffixIcon`  | `React.ReactNode`                                                         | `undefined` | Icon after slider           |
+| `disabled`    | `boolean`                                                                 | `false`     | Disable slider interaction  |
+| `id`          | `string`                                                                  | `undefined` | HTML id attribute           |
+| `name`        | `string`                                                                  | `undefined` | HTML name attribute         |
 
 ### Basic Slider
 
@@ -6026,12 +6156,7 @@ const TemperatureExample = () => {
 ```jsx
 import { useState } from "react";
 import { Slider } from "alope-ui";
-import { 
-  Volume2, 
-  Sun, 
-  Gauge, 
-  Settings 
-} from "lucide-react";
+import { Volume2, Sun, Gauge, Settings } from "lucide-react";
 
 const CompleteExample = () => {
   const [settings, setSettings] = useState({
@@ -6130,15 +6255,15 @@ import { DatePicker } from "alope-ui";
 
 ### Props
 
-| Prop             | Type                                                    | Default     | Description                              |
-| ---------------- | ------------------------------------------------------- | ----------- | ---------------------------------------- |
-| `selectedDate`   | `Date`                                                  | `undefined` | Currently selected date                  |
-| `onDateChange`   | `(date: Date) => void`                                  | `undefined` | Callback when date is selected           |
-| `label`          | `string`                                                | `undefined` | Label text for the input                 |
-| `color`          | `'success' \| 'info' \| 'error' \| 'warning' \| 'default'` | `'default'` | Color theme                       |
-| `labelClassName` | `string`                                                | `""`        | Label CSS class                          |
-| `id`             | `string`                                                | `undefined` | HTML id attribute                        |
-| `name`           | `string`                                                | `undefined` | HTML name attribute                      |
+| Prop             | Type                                                       | Default     | Description                    |
+| ---------------- | ---------------------------------------------------------- | ----------- | ------------------------------ |
+| `selectedDate`   | `Date`                                                     | `undefined` | Currently selected date        |
+| `onDateChange`   | `(date: Date) => void`                                     | `undefined` | Callback when date is selected |
+| `label`          | `string`                                                   | `undefined` | Label text for the input       |
+| `color`          | `'success' \| 'info' \| 'error' \| 'warning' \| 'default'` | `'default'` | Color theme                    |
+| `labelClassName` | `string`                                                   | `""`        | Label CSS class                |
+| `id`             | `string`                                                   | `undefined` | HTML id attribute              |
+| `name`           | `string`                                                   | `undefined` | HTML name attribute            |
 
 ### Basic DatePicker
 
@@ -6277,7 +6402,7 @@ const FormExample = () => {
         selectedDate={birthDate}
         onDateChange={setBirthDate}
       />
-      
+
       <Button type="submit" variant="solid" variantType="primary">
         Submit
       </Button>
@@ -6303,17 +6428,18 @@ const MultipleDatePickersExample = () => {
         selectedDate={startDate}
         onDateChange={setStartDate}
       />
-      
+
       <DatePicker
         label="End Date"
         selectedDate={endDate}
         onDateChange={setEndDate}
       />
-      
+
       {startDate && endDate && (
         <div className="p-4 bg-blue-50 rounded-lg">
           <p className="text-sm">
-            Duration: {Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24))} days
+            Duration: {Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24))}{" "}
+            days
           </p>
         </div>
       )}
@@ -6345,29 +6471,30 @@ const EventBookingExample = () => {
         <Calendar size={24} className="text-primary" />
         <h2 className="text-xl font-bold">Book an Event</h2>
       </div>
-      
+
       <DatePicker
         label="Event Date"
         selectedDate={eventDate}
         onDateChange={setEventDate}
       />
-      
+
       {eventDate && (
         <div className="mt-4 p-4 bg-green-50 rounded-lg">
           <div className="flex items-center gap-2 text-green-700">
             <Clock size={16} />
             <p className="text-sm font-medium">
-              Selected: {eventDate.toLocaleDateString('en-US', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+              Selected:{" "}
+              {eventDate.toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
               })}
             </p>
           </div>
         </div>
       )}
-      
+
       <Button
         variant="solid"
         variantType="primary"
@@ -6396,7 +6523,9 @@ const TravelBookingExample = () => {
 
   const calculateNights = () => {
     if (departureDate && returnDate) {
-      const nights = Math.ceil((returnDate - departureDate) / (1000 * 60 * 60 * 24));
+      const nights = Math.ceil(
+        (returnDate - departureDate) / (1000 * 60 * 60 * 24)
+      );
       return nights > 0 ? nights : 0;
     }
     return 0;
@@ -6408,21 +6537,21 @@ const TravelBookingExample = () => {
         <Plane size={32} className="text-indigo-600" />
         <h2 className="text-2xl font-bold text-gray-800">Flight Booking</h2>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <DatePicker
           label="Departure Date"
           selectedDate={departureDate}
           onDateChange={setDepartureDate}
         />
-        
+
         <DatePicker
           label="Return Date"
           selectedDate={returnDate}
           onDateChange={setReturnDate}
         />
       </div>
-      
+
       {departureDate && returnDate && calculateNights() > 0 && (
         <div className="mt-6 p-4 bg-white rounded-lg shadow-sm">
           <div className="flex items-center justify-between">
@@ -6431,12 +6560,12 @@ const TravelBookingExample = () => {
               <span className="font-semibold text-gray-700">Trip Duration</span>
             </div>
             <span className="text-2xl font-bold text-indigo-600">
-              {calculateNights()} {calculateNights() === 1 ? 'night' : 'nights'}
+              {calculateNights()} {calculateNights() === 1 ? "night" : "nights"}
             </span>
           </div>
         </div>
       )}
-      
+
       <Button
         variant="solid"
         variantType="primary"
@@ -6567,11 +6696,11 @@ const CompleteExample = () => {
                 Your appointment is scheduled for:
               </p>
               <p className="text-lg font-bold text-blue-700 mt-1">
-                {formData.appointmentDate.toLocaleDateString('en-US', {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
+                {formData.appointmentDate.toLocaleDateString("en-US", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </p>
             </div>
@@ -6606,17 +6735,17 @@ import { CodeInput } from "alope-ui";
 
 ### Props
 
-| Prop             | Type                           | Default     | Description                              |
-| ---------------- | ------------------------------ | ----------- | ---------------------------------------- |
-| `value`          | `string`                       | `required`  | Current code value                       |
-| `length`         | `number`                       | `required`  | Number of code digits/characters         |
-| `onCodeChange`   | `(code: string) => void`       | `required`  | Callback when code changes               |
-| `label`          | `string`                       | `undefined` | Label text for the input                 |
-| `inputSize`      | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`      | Size of input boxes                      |
-| `labelClassName` | `string`                       | `""`        | Label CSS class                          |
-| `disabled`       | `boolean`                      | `false`     | Disable all inputs                       |
-| `id`             | `string`                       | `undefined` | HTML id attribute                        |
-| `name`           | `string`                       | `undefined` | HTML name attribute                      |
+| Prop             | Type                           | Default     | Description                      |
+| ---------------- | ------------------------------ | ----------- | -------------------------------- |
+| `value`          | `string`                       | `required`  | Current code value               |
+| `length`         | `number`                       | `required`  | Number of code digits/characters |
+| `onCodeChange`   | `(code: string) => void`       | `required`  | Callback when code changes       |
+| `label`          | `string`                       | `undefined` | Label text for the input         |
+| `inputSize`      | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`      | Size of input boxes              |
+| `labelClassName` | `string`                       | `""`        | Label CSS class                  |
+| `disabled`       | `boolean`                      | `false`     | Disable all inputs               |
+| `id`             | `string`                       | `undefined` | HTML id attribute                |
+| `name`           | `string`                       | `undefined` | HTML name attribute              |
 
 ### Basic CodeInput
 
@@ -6951,7 +7080,7 @@ const CompleteExample = () => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
@@ -6962,7 +7091,7 @@ const CompleteExample = () => {
   const handleVerify = () => {
     setIsLoading(true);
     setError("");
-    
+
     // Simulate verification
     setTimeout(() => {
       setIsLoading(false);
@@ -7032,9 +7161,7 @@ const CompleteExample = () => {
               <Mail size={32} className="text-blue-600" />
               <div>
                 <h2 className="text-2xl font-bold">Enter Code</h2>
-                <p className="text-gray-600 text-sm">
-                  Sent to {email}
-                </p>
+                <p className="text-gray-600 text-sm">Sent to {email}</p>
               </div>
             </div>
 
@@ -7048,7 +7175,10 @@ const CompleteExample = () => {
 
             {error && (
               <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
-                <AlertCircle size={20} className="text-red-600 flex-shrink-0 mt-0.5" />
+                <AlertCircle
+                  size={20}
+                  className="text-red-600 flex-shrink-0 mt-0.5"
+                />
                 <p className="text-sm text-red-600">{error}</p>
               </div>
             )}
