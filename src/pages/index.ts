@@ -22,7 +22,6 @@ export { default as AvatarPage } from "./AvatarPage";
 export { default as FileUploadPage } from "./FileUploadPage";
 export { default as TabsPage } from "./TabsPage";
 export { default as Navbar } from "../components/Layout/Navbar.tsx";
-
 export { default as CollectionPage } from "./CollectionPage";
 export { default as FABPage } from "./FABPage";
 export { default as BottomNavbarPage } from "./BottomNavbarPage";

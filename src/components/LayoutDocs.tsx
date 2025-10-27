@@ -6,7 +6,8 @@ import { useMemo, useState } from "react";
 import { useLayoutEffect } from "react";
 import Navbar from "../components/Layout/Navbar";
 import { generateNavSections } from "../data/navSections";
-import { Spinner } from "alope-ui";
+import { Spinner } from "./Spinner/Spinner";
+// import { Spinner } from "alope-ui";
 
 export default function LayoutDocs() {
   const location = useLocation();

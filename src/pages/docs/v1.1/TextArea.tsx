@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Textarea } from "alope-ui";
+// import { Textarea } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { Textarea } from "../../../components";
 
 export default function TextareaDocs() {
   const { theme } = useTheme();
@@ -35,43 +36,69 @@ import type { TextareaType } from "alope-ui";`}
         {/* Props Table */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Props</h3>
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg">
-            <table className="w-full text-sm text-left">
-              <thead
-                className={`${
-                  theme === "dark" ? "bg-gray-800 text-gray-200" : "bg-gray-100 text-gray-700"
-                }`}
-              >
-                <tr>
-                  <th className="px-4 py-2 font-semibold">Prop</th>
-                  <th className="px-4 py-2 font-semibold">Type</th>
-                  <th className="px-4 py-2 font-semibold">Default</th>
-                  <th className="px-4 py-2 font-semibold">Description</th>
+          <table className="w-full text-sm text-left">
+            <thead
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
+              <tr>
+                <th className="px-4 py-2 font-semibold">Prop</th>
+                <th className="px-4 py-2 font-semibold">Type</th>
+                <th className="px-4 py-2 font-semibold">Default</th>
+                <th className="px-4 py-2 font-semibold">Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                [
+                  "label",
+                  "string",
+                  "undefined",
+                  "Label text displayed above textarea",
+                ],
+                [
+                  "error",
+                  "string",
+                  "undefined",
+                  "Error message displayed below textarea",
+                ],
+                [
+                  "autoResize",
+                  "boolean",
+                  "false",
+                  "Enable auto-resize based on content",
+                ],
+                [
+                  "customClassName",
+                  "string",
+                  '""',
+                  "Custom CSS class for textarea element",
+                ],
+                [
+                  "...props",
+                  "InputHTMLAttributes<HTMLTextAreaElement>",
+                  "-",
+                  "All standard HTML textarea attributes",
+                ],
+              ].map(([prop, type, def, desc]) => (
+                <tr
+                  key={prop}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
+                >
+                  <td className="px-4 py-2 font-medium">{prop}</td>
+                  <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
+                  <td className="px-4 py-2 text-gray-500">{def}</td>
+                  <td className="px-4 py-2">{desc}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["label", "string", "undefined", "Label text displayed above textarea"],
-                  ["error", "string", "undefined", "Error message displayed below textarea"],
-                  ["autoResize", "boolean", "false", "Enable auto-resize based on content"],
-                  ["customClassName", "string", '""', "Custom CSS class for textarea element"],
-                  ["...props", "InputHTMLAttributes<HTMLTextAreaElement>", "-", "All standard HTML textarea attributes"],
-                ].map(([prop, type, def, desc]) => (
-                  <tr
-                    key={prop}
-                    className={`border-t ${
-                      theme === "dark" ? "border-gray-800" : "border-gray-200"
-                    }`}
-                  >
-                    <td className="px-4 py-2 font-medium">{prop}</td>
-                    <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
-                    <td className="px-4 py-2 text-gray-500">{def}</td>
-                    <td className="px-4 py-2">{desc}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* Basic Textarea */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Textarea</h3>
@@ -88,7 +115,7 @@ const BasicExample = () => {
   return (
     <Textarea
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e: any) => setValue(e.target.value)}
       placeholder="Enter your text here..."
     />
   );
@@ -105,13 +132,15 @@ const BasicExample = () => {
   label="Description"
   name="description"
   value={value}
-  onChange={(e) => setValue(e.target.value)}
+  onChange={(e: any) => setValue(e.target.value)}
   placeholder="Enter description..."
 />`}
         />
 
         {/* With Error */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">With Error Message</h3>
+        <h3 className="text-2xl font-semibold mt-10 mb-3">
+          With Error Message
+        </h3>
         <ExampleBlock theme={theme}>
           <ErrorExample />
         </ExampleBlock>
@@ -138,7 +167,9 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         />
 
         {/* Auto Resize */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Auto-Resize Textarea</h3>
+        <h3 className="text-2xl font-semibold mt-10 mb-3">
+          Auto-Resize Textarea
+        </h3>
         <ExampleBlock theme={theme}>
           <AutoResizeExample />
         </ExampleBlock>
@@ -147,7 +178,7 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
   label="Auto-resizing textarea"
   autoResize
   value={value}
-  onChange={(e) => setValue(e.target.value)}
+  onChange={(e: any) => setValue(e.target.value)}
   placeholder="This textarea grows as you type..."
 />`}
         />
@@ -155,7 +186,11 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         {/* Disabled */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Disabled State</h3>
         <ExampleBlock theme={theme}>
-          <Textarea label="Disabled textarea" value="This textarea is disabled" disabled />
+          <Textarea
+            label="Disabled textarea"
+            value="This textarea is disabled"
+            disabled
+          />
         </ExampleBlock>
         <CodeBlock
           code={`<Textarea
@@ -174,7 +209,7 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
           code={`<Textarea
   label="Custom styled textarea"
   value={value}
-  onChange={(e) => setValue(e.target.value)}
+  onChange={(e: any) => setValue(e.target.value)}
   customClassName="border-2 border-blue-500 focus:ring-blue-600 rounded-lg"
   placeholder="Custom styled..."
 />;`}
@@ -190,7 +225,7 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
   label="Fixed height textarea"
   rows={8}
   value={value}
-  onChange={(e) => setValue(e.target.value)}
+  onChange={(e: any) => setValue(e.target.value)}
   placeholder="8 rows high..."
 />;`}
         />
@@ -201,7 +236,7 @@ const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
           <CompleteExample />
         </ExampleBlock>
         <CodeBlock
-            code={`import { useState } from "react";
+          code={`import { useState } from "react";
 import { Textarea } from "alope-ui";
 
 const CompleteExample = () => {
@@ -259,12 +294,14 @@ const CompleteExample = () => {
         />
 
         {/* Form Example */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Form Integration Example</h3>
+        <h3 className="text-2xl font-semibold mt-10 mb-3">
+          Form Integration Example
+        </h3>
         <ExampleBlock theme={theme}>
           <FormExample />
         </ExampleBlock>
         <CodeBlock
-            code={`import { useState } from "react";
+          code={`import { useState } from "react";
 import { Textarea } from "alope-ui";
 
 const FormExample = () => {
@@ -307,13 +344,17 @@ const FormExample = () => {
         />
       </div>
     </div>
-
-
   );
 }
 
 /* === Helper Wrapper for Consistent Theme Box === */
-function ExampleBlock({ theme, children }: { theme: string; children: React.ReactNode }) {
+function ExampleBlock({
+  theme,
+  children,
+}: {
+  theme: string;
+  children: React.ReactNode;
+}) {
   return (
     <div
       className={`border rounded-lg p-4 mb-6 transition-colors ${
@@ -333,7 +374,7 @@ function BasicExample() {
   return (
     <Textarea
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e: any) => setValue(e.target.value)}
       placeholder="Enter your text here..."
     />
   );
@@ -346,7 +387,7 @@ function LabelExample() {
       label="Description"
       name="description"
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e: any) => setValue(e.target.value)}
       placeholder="Enter description..."
     />
   );
@@ -383,7 +424,7 @@ function AutoResizeExample() {
       label="Auto-resizing textarea"
       autoResize
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e: any) => setValue(e.target.value)}
       placeholder="This textarea grows as you type..."
     />
   );
@@ -395,7 +436,7 @@ function CustomStyledExample() {
     <Textarea
       label="Custom styled textarea"
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e: any) => setValue(e.target.value)}
       customClassName="border-2 border-blue-500 focus:ring-blue-600 rounded-lg"
       placeholder="Custom styled..."
     />
@@ -409,7 +450,7 @@ function RowsExample() {
       label="Fixed height textarea"
       aria-rowspan={8}
       value={value}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e: any) => setValue(e.target.value)}
       placeholder="8 rows high..."
     />
   );
@@ -438,7 +479,7 @@ function CompleteExample() {
         label="Feedback"
         name="feedback"
         value={feedback}
-        onChange={(e) => setFeedback(e.target.value)}
+        onChange={(e: any) => setFeedback(e.target.value)}
         error={error}
         autoResize
         placeholder="Tell us what you think... (minimum 20 characters)"
@@ -454,8 +495,6 @@ function CompleteExample() {
         Submit Feedback
       </button>
     </form>
-
-    
   );
 }
 

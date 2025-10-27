@@ -1,8 +1,10 @@
 "use client";
 
-import { AvatarGroup, type AvatarProps } from "alope-ui";
+// import { AvatarGroup, type AvatarProps } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
 import CodeBlock from "../../../components/CodeBlock";
+import { AvatarGroup } from "../../../components";
+import type { AvatarProps } from "../../../components/Avatar/Avatar";
 
 export default function AvatarGroupDocs() {
   const { theme } = useTheme();
@@ -20,10 +22,11 @@ export default function AvatarGroupDocs() {
 
   return (
     <div
-      className={`transition-colors ${theme === "dark"
-        ? "prose prose-invert max-w-none"
-        : "prose prose-slate prose-headings:text-gray-900 max-w-none"
-        }`}
+      className={`transition-colors ${
+        theme === "dark"
+          ? "prose prose-invert max-w-none"
+          : "prose prose-slate prose-headings:text-gray-900 max-w-none"
+      }`}
     >
       <div className="container mx-auto px-4">
         {/* Title */}
@@ -45,10 +48,11 @@ import type { AvatarGroupProps } from "alope-ui";`}
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
           <table className="w-full text-sm text-left">
             <thead
-              className={`${theme === "dark"
-                ? "bg-gray-800 text-gray-200"
-                : "bg-gray-100 text-gray-700"
-                }`}
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
             >
               <tr>
                 <th className="px-4 py-2 font-semibold">Prop</th>
@@ -87,8 +91,9 @@ import type { AvatarGroupProps } from "alope-ui";`}
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={`border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"
-                    }`}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
                   <td className="px-4 py-2 font-medium">{prop}</td>
                   <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
@@ -103,10 +108,11 @@ import type { AvatarGroupProps } from "alope-ui";`}
         {/* Basic AvatarGroup */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Basic AvatarGroup</h3>
         <div
-          className={`border rounded-lg p-4 mb-6 flex justify-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-4 mb-6 flex justify-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <AvatarGroup avatars={sampleAvatars.slice(0, 3)} />
         </div>
@@ -129,10 +135,11 @@ const BasicGroupExample = () => {
           With Max Visible Limit
         </h3>
         <div
-          className={`border rounded-lg p-4 mb-6 flex justify-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-4 mb-6 flex justify-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <AvatarGroup avatars={sampleAvatars} maxVisible={3} />
         </div>
@@ -152,10 +159,11 @@ const BasicGroupExample = () => {
         {/* Different Sizes */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Different Sizes</h3>
         <div
-          className={`border rounded-lg p-4 mb-6 flex flex-col gap-4 items-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-4 mb-6 flex flex-col gap-4 items-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <AvatarGroup avatars={sampleAvatars} size="sm" />
           <AvatarGroup avatars={sampleAvatars} size="md" />
@@ -181,10 +189,11 @@ const BasicGroupExample = () => {
         {/* Custom Overlap */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Overlap</h3>
         <div
-          className={`border rounded-lg p-4 mb-6 flex flex-col gap-4 items-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-4 mb-6 flex flex-col gap-4 items-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <AvatarGroup avatars={sampleAvatars} overlap="-ml-4" />
           <AvatarGroup avatars={sampleAvatars} overlap="-ml-2" />
@@ -206,10 +215,11 @@ const BasicGroupExample = () => {
           Complete AvatarGroup Example
         </h3>
         <div
-          className={`border rounded-lg p-4 mb-6 flex justify-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-4 mb-6 flex justify-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <CompleteGroupExample />
         </div>

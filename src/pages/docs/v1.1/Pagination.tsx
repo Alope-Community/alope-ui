@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Pagination } from "alope-ui";
+// import { Pagination } from "alope-ui";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
+import { Pagination } from "../../../components";
 
 export default function PaginationDocs() {
   const { theme } = useTheme();

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Toggle } from "alope-ui";
+// import { Toggle } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { Toggle } from "../../../components";
 
 export default function ToggleDocs() {
   const { theme } = useTheme();
@@ -11,10 +12,11 @@ export default function ToggleDocs() {
 
   return (
     <div
-      className={`transition-colors ${theme === "dark"
-        ? "prose prose-invert max-w-none"
-        : "prose prose-slate prose-headings:text-gray-900 max-w-none"
-        }`}
+      className={`transition-colors ${
+        theme === "dark"
+          ? "prose prose-invert max-w-none"
+          : "prose prose-slate prose-headings:text-gray-900 max-w-none"
+      }`}
     >
       <div className="container mx-auto px-4 overflow-x-hidden">
         {/* Title */}
@@ -34,10 +36,11 @@ export default function ToggleDocs() {
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
           <table className="w-full text-sm text-left">
             <thead
-              className={`${theme === "dark"
-                ? "bg-gray-800 text-gray-200"
-                : "bg-gray-100 text-gray-700"
-                }`}
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
             >
               <tr>
                 <th className="px-4 py-2 font-semibold">Prop</th>
@@ -88,8 +91,9 @@ export default function ToggleDocs() {
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={`border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"
-                    }`}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
                   <td className="px-4 py-2 font-medium">{prop}</td>
                   <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
@@ -123,8 +127,7 @@ export default function ToggleDocs() {
                   onChange={(e) => setIsChecked(e.target.checked)}
                 />
               );
-            };`
-          }
+            };`}
         />
       </div>
     </div>
@@ -141,10 +144,11 @@ function ExampleBox({
 }) {
   return (
     <div
-      className={`border rounded-lg p-4 mb-6 transition-colors ${theme === "dark"
-        ? "bg-gray-800 border-gray-700"
-        : "bg-white border-gray-200"
-        }`}
+      className={`border rounded-lg p-4 mb-6 transition-colors ${
+        theme === "dark"
+          ? "bg-gray-800 border-gray-700"
+          : "bg-white border-gray-200"
+      }`}
     >
       {children}
     </div>

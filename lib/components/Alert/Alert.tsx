@@ -2,26 +2,26 @@ import { cn } from "clsx-for-tailwind"
 import { useState } from "react"
 
 const AlertVariants = {
-    outline: 'outline-2',
+    outline: 'outline-1',
     solid: ''
 }
 
 const IconColors = {
-    success: 'fill-success-700',
-    info: 'fill-info-700',
-    error: 'fill-error-700',
-    warning: 'fill-warning-700',
-    primary: 'fill-primary-700',
-    default: '',
+    success: 'fill-success-700 dark:fill-success',
+    info: 'fill-info-700 dark:fill-info',
+    error: 'fill-error-700 dark:fill-error',
+    warning: 'fill-warning-700 dark:fill-warning',
+    primary: 'fill-primary-700 dark:fill-primary',
+    secondary: 'dark:fill-secondary',
 }
 
 const AlertType = {
-    success: 'bg-success/30 outline-success-700 text-green-700',
-    info: 'bg-info/30 outline-info-700 text-info-700',
-    warning: 'bg-warning/30 outline-warning-700 text-warning-700',
-    error: 'bg-error/30 outline-error-700 text-error-700',
-    primary: 'bg-primary/30 outline-primary-700 text-primary-700',
-    default: 'bg-secondary/30 outline-secondary-700',
+    success: 'bg-success-30/50 outline-success-700 text-success-700 dark:bg-success-dark-30/20 dark:text-success',
+    info: 'bg-info-30/50 outline-info-700 text-info-700 dark:bg-info-dark-30/20 dark:text-info',
+    warning: 'bg-warning-30/50 outline-warning-700 text-warning-700 dark:bg-warning-dark-30/20 dark:text-warning',
+    error: 'bg-error-30/50 outline-error-700 text-error-700 dark:bg-error-dark-30/20 dark:text-error',
+    primary: 'bg-primary-30/50 outline-primary-700 text-primary-700 dark:bg-primary-dark-30/20 dark:text-primary',
+    secondary: 'bg-secondary-30/50 outline-secondary-700 dark:bg-secondary-dark-30/20 dark:text-secondary',
 }
 
 export type AlertProps = {
@@ -45,8 +45,8 @@ export const Alert: React.FC<AlertProps> = ({
     descriptionClassName,
     action,
     withClose = false,
-    iconColor = 'default',
-    type = 'default',
+    iconColor = 'secondary',
+    type = 'secondary',
     variant = 'outline'
 }) => {
 
@@ -55,7 +55,7 @@ export const Alert: React.FC<AlertProps> = ({
     if (!visible) return null;
 
     return (
-        <div id="alopeAlert" className={cn("flex gap-2 p-3 rounded-md w-full", AlertType[type], AlertVariants[variant])}>
+        <div id="alopeAlert" className={cn("flex gap-2 p-4 rounded-md w-full", AlertType[type], AlertVariants[variant])}>
             {
                 icon ??
                 <svg viewBox="0 0 24 24" className={cn("w-6 h-6", IconColors[iconColor])}>
@@ -66,28 +66,36 @@ export const Alert: React.FC<AlertProps> = ({
             }
 
             {/* Content + Action */}
-            <div className="flex justify-between items-center w-full">
+            <div className="flex md:flex-row flex-col justify-between md:items-center w-full">
                 <div className="flex flex-col gap-2">
                     <p className={cn("font-medium", titleClassName)}>{title}</p>
                     {description && <p className={cn("text-sm", descriptionClassName)}>{description}</p>}
                     {withClose && (typeof action === 'function' ?
-                        <div className="mt-2 mb-1">
+                        <div className="mt-2">
                             {action()}
                         </div>
                         :
-                        <div className="mt-2 mb-1">
+                        <div className="mt-2">
                             {action}
                         </div>
                     )}
                 </div>
                 <div>
-                    {!withClose && (typeof action === 'function' ? action() : action)}
+                    {!withClose && (typeof action === 'function' ?
+                        <div className="mt-2">
+                            {action()}
+                        </div>
+                        :
+                        <div className="mt-2">
+                            {action}
+                        </div>
+                    )}
                 </div>
             </div>
 
             {
                 withClose &&
-                <svg onClick={() => setVisible(false)} viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-7 h-7">
+                <svg onClick={() => setVisible(false)} viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-7 h-7 hover:cursor-pointer">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             }

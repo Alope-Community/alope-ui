@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button, FileUpload } from '../components';
-import Container from './Container';
+import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+import { FileUpload } from "../components";
+import Container from "./Container";
 
 function FileUploadPage() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [files, setFiles] = useState<File[]>([]);
 
   const handleFilesChange = (newFiles: File[]) => {
@@ -12,17 +12,28 @@ function FileUploadPage() {
   };
 
   return (
-    <Container title='File Upload Component' description='Allow users to upload files.'>
-
+    <Container
+      title="File Upload Component"
+      description="Allow users to upload files."
+    >
       {/* Dropzone Mode */}
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">Dropzone Mode</h2>
-        <FileUpload onFilesChange={handleFilesChange} acceptedFiles='.pdf' maxKiloByte={6500} helperText='test'/>
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">
+          Dropzone Mode
+        </h2>
+        <FileUpload
+          onFilesChange={handleFilesChange}
+          acceptedFiles=".pdf"
+          maxKiloByte={6500}
+          helperText="test"
+        />
       </section>
 
       {/* TextInput Mode */}
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">TextInput Mode</h2>
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">
+          TextInput Mode
+        </h2>
         <FileUpload
           onFilesChange={handleFilesChange}
           mode="textinput"
@@ -32,30 +43,33 @@ function FileUploadPage() {
 
       {/* Media Capture - Use Camera */}
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">Capture from Camera</h2>
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">
+          Capture from Camera
+        </h2>
         <FileUpload
-          inputLabel='Open Camera'
+          inputLabel="Open Camera"
           onFilesChange={handleFilesChange}
           mediaCapture="environment"
           acceptedFiles="image/*"
           maxFiles={1}
           mode="textinput"
-          helperText='This will open your camera app (on supported devices).'
+          helperText="This will open your camera app (on supported devices)."
         />
       </section>
 
       {/* Dropzone with maxFiles = 3 */}
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">Dropzone Mode (Max 3 files)</h2>
-        <FileUpload
-          onFilesChange={handleFilesChange}
-          maxFiles={3}
-        />
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">
+          Dropzone Mode (Max 3 files)
+        </h2>
+        <FileUpload onFilesChange={handleFilesChange} maxFiles={3} />
       </section>
 
       {/* Display uploaded files */}
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">Uploaded Files</h2>
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">
+          Uploaded Files
+        </h2>
         {files.length > 0 ? (
           <ul className="space-y-1 list-disc list-inside text-sm text-gray-700">
             {files.map((file, index) => (
@@ -68,7 +82,9 @@ function FileUploadPage() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">File Upload with Helper Text</h2>
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">
+          File Upload with Helper Text
+        </h2>
         <FileUpload
           onFilesChange={handleFilesChange}
           mode="textinput"
@@ -78,7 +94,6 @@ function FileUploadPage() {
           helperText="You can upload up to 2 image files. Only .jpg, .png, etc. are allowed."
         />
       </section>
-
     </Container>
   );
 }

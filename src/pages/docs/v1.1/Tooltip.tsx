@@ -2,19 +2,21 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Tooltip } from "alope-ui";
+// import { Tooltip } from "alope-ui";
 import { Info, HelpCircle } from "lucide-react";
 import { useTheme } from "../../../context/ThemeContext";
+import { Tooltip } from "../../../components";
 
 export default function TooltipDocs() {
   const { theme } = useTheme();
 
   return (
     <div
-      className={`transition-colors ${theme === "dark"
-        ? "prose prose-invert max-w-none"
-        : "prose prose-slate prose-headings:text-gray-900 max-w-none"
-        }`}
+      className={`transition-colors ${
+        theme === "dark"
+          ? "prose prose-invert max-w-none"
+          : "prose prose-slate prose-headings:text-gray-900 max-w-none"
+      }`}
     >
       <div className="container mx-auto px-4">
         {/* Title */}
@@ -34,10 +36,11 @@ export default function TooltipDocs() {
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
           <table className="w-full text-sm text-left">
             <thead
-              className={`${theme === "dark"
-                ? "bg-gray-800 text-gray-200"
-                : "bg-gray-100 text-gray-700"
-                }`}
+              className={`${
+                theme === "dark"
+                  ? "bg-gray-800 text-gray-200"
+                  : "bg-gray-100 text-gray-700"
+              }`}
             >
               <tr>
                 <th className="px-4 py-2 font-semibold">Prop</th>
@@ -112,8 +115,9 @@ export default function TooltipDocs() {
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={`border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"
-                    }`}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
                   <td className="px-4 py-2 font-medium">{prop}</td>
                   <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
@@ -128,10 +132,11 @@ export default function TooltipDocs() {
         {/* Basic Tooltip */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Tooltip</h3>
         <div
-          className={`border rounded-lg p-6 mb-6 flex justify-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 mb-6 flex justify-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <Tooltip text="This is a helpful tooltip">
             <button className="px-4 py-2 bg-blue-500 text-white rounded">
@@ -156,10 +161,11 @@ const BasicExample = () => {
         {/* Placement */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Placement</h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           {/* Top Placement */}
           <Tooltip text="Tooltip on top" placement="top">
@@ -214,10 +220,11 @@ const BasicExample = () => {
         {/* Without Arrow */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Without Arrow</h3>
         <div
-          className={`border rounded-lg p-6 flex justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <Tooltip text="Tooltip without arrow" showArrow={false}>
             <button>No Arrow</button>
@@ -232,10 +239,11 @@ const BasicExample = () => {
         {/* Custom Offset */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Offset</h3>
         <div
-          className={`border rounded-lg p-6 flex justify-center gap-6 mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex justify-center gap-6 mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           {/* Small offset */}
           <Tooltip text="Close to element" offset={4}>
@@ -268,10 +276,11 @@ const BasicExample = () => {
           Custom Background Color
         </h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <Tooltip text="Blue tooltip" bgColor="bg-blue-600">
             <button>Blue Tooltip</button>
@@ -302,10 +311,11 @@ const BasicExample = () => {
           Controlled Tooltip
         </h3>
         <div
-          className={`border rounded-lg p-6 mb-6 flex justify-center transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 mb-6 flex justify-center transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <ControlledTooltipExample />
         </div>
@@ -332,10 +342,11 @@ const ControlledExample = () => {
         {/* Custom Animation */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Animation</h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           {/* Fast animation */}
           <Tooltip text="Fast animation" animationDuration={150}>
@@ -365,10 +376,11 @@ const ControlledExample = () => {
         {/* Custom Delay */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Delay</h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           {/* No delay */}
           <Tooltip text="Instant tooltip" delay={0}>
@@ -398,10 +410,11 @@ const ControlledExample = () => {
         {/* Disabled Tooltip */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Disabled Tooltip</h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <Tooltip text="This won't show" disabled>
             <button>Disabled Tooltip</button>
@@ -416,10 +429,11 @@ const ControlledExample = () => {
         {/* With Icons */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">With Icons</h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <Tooltip text="Additional information about this feature">
             <Info className="w-4 h-4 text-gray-500 cursor-help" />
@@ -444,10 +458,11 @@ const ControlledExample = () => {
         {/* Complete Example */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Complete Example</h3>
         <div
-          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${theme === "dark"
-            ? "bg-gray-800 border-gray-700"
-            : "bg-white border-gray-200"
-            }`}
+          className={`border rounded-lg p-6 flex flex-wrap gap-6 justify-center mb-6 transition-colors ${
+            theme === "dark"
+              ? "bg-gray-800 border-gray-700"
+              : "bg-white border-gray-200"
+          }`}
         >
           <CompleteExample />
         </div>

@@ -1,72 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+SC:wght@100..900&display=swap");
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-    --color-success: #50C878;
-    --color-info: #0096FF;
-    --color-warning: #FFAC1C;
-    --color-error: #F87171;
-    --color-primary: #6366F1;
-    --color-secondary: #D1D5DB;
+  --color-primary: #6366f1;
+  --color-primary-dark: #4338ca;
 
-    --color-primary-700: #4338CA;
-    --color-success-700: #3C9C5A;
-    --color-info-700: #0070C0;
-    --color-warning-700: #CC8700;
-    --color-error-700: #DC2626;
-    --color-secondary-700: #9CA3AF;
+  --color-secondary-foreground: #6c757d;
+  --color-secondary-foreground-dark: #adb5bd;
 
-    --color-success-30: #C2E6D3;
-    --color-info-30: #B8DFFF;
-    --color-warning-30: #FFE2B2;
-    --color-error-30: #FECACA;
-    --color-primary-30: #A6B8FF;
-    --color-secondary-30: #E4E7EC;
+  --color-success: #50c878;
+  --color-success-dark: #3c9c5a;
+
+  --color-info: #0096ff;
+  --color-info-dark: #0070c0;
+
+  --color-warning: #ffac1c;
+  --color-warning-dark: #cc8700;
+
+  --color-error: #f87171;
+  --color-error-dark: #dc2626;
+
+  --color-secondary: #d1d5db;
+  --color-secondary-dark: #9ca3af;
+
+  --color-primary-700: #4338ca;
+  --color-success-700: #3c9c5a;
+  --color-info-700: #0070c0;
+  --color-warning-700: #cc8700;
+  --color-error-700: #dc2626;
+  --color-secondary-700: #9ca3af;
+
+  --color-primary-dark-700: #2b2a85;
+  --color-success-dark-700: #2f7a49;
+  --color-info-dark-700: #005a9c;
+  --color-warning-dark-700: #996f00;
+  --color-error-dark-700: #9f2424;
+  --color-secondary-dark-700: #6e7281;
+
+  /* Light 30% variants */
+  --color-primary-30: #a6b8ff;
+  --color-success-30: #c2e6d3;
+  --color-info-30: #b8dfff;
+  --color-warning-30: #ffe2b2;
+  --color-error-30: #fecaca;
+  --color-secondary-30: #e4e7ec;
+
+  /* Dark 30% variants */
+  --color-primary-dark-30: #9b94f6;
+  --color-success-dark-30: #97d5a6;
+  --color-info-dark-30: #74b9eb;
+  --color-warning-dark-30: #f0cf6b;
+  --color-error-dark-30: #f28a8a;
+  --color-secondary-dark-30: #d1d5dd;
+
+  --color-primary-30-50: #b3bcff;
+  --color-primary-dark-30-50: #a6a4fd;
+  --color-primary-dark-30-20: #2d2e48;
+
+  --color-success-30-50: #ceebdc;
+  --color-success-dark-30-50: #a3daaf;
+  --color-success-dark-30-20: #2c3e40;
+
+  --color-info-30-50: #c4e7ff;
+  --color-info-dark-30-50: #7cc3f4;
+  --color-info-dark-30-20: #2a3f5d;
+
+  --color-warning-30-50: #ffedcc;
+  --color-warning-dark-30-50: #f6d88a;
+  --color-warning-dark-30-20: #544a27;
+
+  --color-error-30-50: #febebd;
+  --color-error-dark-30-50: #f89b9b;
+  --color-error-dark-30-20: #5e2c2c;
+
+  --color-secondary-30-50: #ebeff5;
+  --color-secondary-dark-30-50: #d7dbe2;
+  --color-secondary-dark-30-20: #2c313e;
+
+  --color-flash-light-0: hsla(201, 20%, 70%, 0.6);
+  --color-flash-light-100: hsla(200, 20%, 85%, 0.6);
+
+  --background-shimmer-light: linear-gradient(
+    90deg,
+    hsla(200, 20%, 75%, 0.7) 25%,
+    hsla(200, 20%, 92%, 0.9) 50%,
+    hsla(200, 20%, 75%, 0.7) 75%
+  );
+
+  --color-flash-dark-0: hsla(220, 10%, 30%, 0.6);
+  --color-flash-dark-100: hsla(220, 10%, 45%, 0.6);
+
+  --background-shimmer-dark: linear-gradient(
+    90deg,
+    hsla(220, 10%, 35%, 0.7) 25%,
+    hsla(220, 10%, 50%, 0.9) 50%,
+    hsla(220, 10%, 35%, 0.7) 75%
+  );
 }
 
 @layer components {
-    @keyframes flash-anim {
-        0% {
-            background-color: hsla(201, 20%, 70%, 0.6);
-        }
-
-        100% {
-            background-color: hsla(200, 20%, 85%, 0.6);
-        }
+  @keyframes flash-anim {
+    0% {
+      background-color: var(--flash-anim-start);
     }
 
-    .flash {
-        animation: flash-anim 800ms linear infinite alternate;
+    100% {
+      background-color: var(--flash-anim-end);
+    }
+  }
+
+  .flash {
+    animation: flash-anim 800ms linear infinite alternate;
+    --flash-anim-start: var(--color-flash-light-0);
+    --flash-anim-end: var(--color-flash-light-100);
+  }
+
+  .dark .flash {
+    --flash-anim-start: var(--color-flash-dark-0);
+    --flash-anim-end: var(--color-flash-dark-100);
+  }
+
+  @keyframes shimmer-anim {
+    0% {
+      background-position: -200% 0;
     }
 
-    @keyframes shimmer-anim {
-        0% {
-            background-position: -200% 0;
-        }
+    100% {
+      background-position: 200% 0;
+    }
+  }
 
-        100% {
-            background-position: 200% 0;
-        }
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+    background: var(--background-shimmer-light);
+    background-size: 200% 100%;
+    animation: shimmer-anim 2.5s infinite linear;
+  }
+
+  .dark .shimmer {
+    position: relative;
+    overflow: hidden;
+    background: var(--background-shimmer-dark);
+    background-size: 200% 100%;
+    animation: shimmer-anim 2.5s infinite linear;
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(0);
+      opacity: 0;
     }
 
-    .shimmer {
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(90deg,
-                hsla(200, 20%, 75%, 0.7) 25%,
-                hsla(200, 20%, 92%, 0.9) 50%,
-                hsla(200, 20%, 75%, 0.7) 75%);
-        background-size: 200% 100%;
-        animation: shimmer-anim 2.5s infinite linear;
+    100% {
+      transform: scale(1);
+      opacity: 1;
     }
+  }
+
+  @keyframes pop-out {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+
+  .animate-pop {
+    animation: pop 0.3s ease forwards;
+  }
+
+  .animate-pop-out {
+    animation: pop-out 0.1s ease forwards;
+  }
 }
 
 * {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
-@source "../dist";

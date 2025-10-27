@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Spinner } from "alope-ui";
+// import { Spinner } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { Spinner } from "../../../components";
 
 export default function SpinnerDocs() {
   const { theme } = useTheme();

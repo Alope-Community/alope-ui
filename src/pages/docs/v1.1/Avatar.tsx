@@ -1,18 +1,20 @@
 "use client";
 
-import { Avatar } from "alope-ui";
+// import { Avatar } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
 import CodeBlock from "../../../components/CodeBlock";
+import { Avatar } from "../../../components";
 
 export default function AvatarDocs() {
   const { theme } = useTheme();
 
   return (
     <div
-      className={`transition-colors ${theme === "dark"
+      className={`transition-colors ${
+        theme === "dark"
           ? "prose prose-invert max-w-none"
           : "prose prose-slate prose-headings:text-gray-900 max-w-none"
-        }`}
+      }`}
     >
       <div className="container mx-auto px-4">
         {/* Title */}
@@ -31,10 +33,11 @@ export default function AvatarDocs() {
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
           <table className="w-full text-sm text-left">
             <thead
-              className={`${theme === "dark"
+              className={`${
+                theme === "dark"
                   ? "bg-gray-800 text-gray-200"
                   : "bg-gray-100 text-gray-700"
-                }`}
+              }`}
             >
               <tr>
                 <th className="px-4 py-2 font-semibold">Prop</th>
@@ -94,8 +97,9 @@ export default function AvatarDocs() {
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={`border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"
-                    }`}
+                  className={`border-t ${
+                    theme === "dark" ? "border-gray-800" : "border-gray-200"
+                  }`}
                 >
                   <td className="px-4 py-2 font-medium">{prop}</td>
                   <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
@@ -110,10 +114,11 @@ export default function AvatarDocs() {
         {/* Basic Avatar */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Avatar</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 transition-colors mb-6 ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 transition-colors mb-6 ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           <Avatar
             imageSrc="https://i.pravatar.cc/150?img=1"
@@ -135,10 +140,11 @@ const BasicExample = () => {
           Fallback with Initials
         </h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 flex-wrap mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 flex-wrap mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Avatar with fallback name */}
           <Avatar fallbackName="John Doe" />
@@ -161,10 +167,11 @@ const BasicExample = () => {
         {/* Sizes */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Sizes</h3>
         <div
-          className={`border rounded-lg p-4 flex items-center gap-4 mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex items-center gap-4 mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Small */}
           <Avatar imageSrc="https://i.pravatar.cc/150?img=1" size="sm" />
@@ -195,10 +202,11 @@ const BasicExample = () => {
         {/* Shapes */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Shapes</h3>
         <div
-          className={`border rounded-lg p-4 flex items-center gap-4 mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex items-center gap-4 mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Sharp corners */}
           <Avatar imageSrc="https://i.pravatar.cc/150?img=1" shape="sharp" />
@@ -229,10 +237,11 @@ const BasicExample = () => {
         {/* Variants */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Variants</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Solid variant */}
           <Avatar fallbackName="John Doe" variant="solid" />
@@ -255,10 +264,11 @@ const BasicExample = () => {
         {/* Fallback Colors */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Fallback Colors</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 flex-wrap mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 flex-wrap mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Primary color */}
           <Avatar fallbackName="John Doe" fallbackColor="primary" />
@@ -308,10 +318,11 @@ const BasicExample = () => {
         {/* With Ring */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">With Ring</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Default ring */}
           <Avatar imageSrc="https://i.pravatar.cc/150?img=1" ring />
@@ -342,10 +353,11 @@ const BasicExample = () => {
         {/* Status Indicator */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Status Indicator</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           {/* Online status */}
           <Avatar imageSrc="https://i.pravatar.cc/150?img=1" status="online" />
@@ -368,10 +380,11 @@ const BasicExample = () => {
         {/* Complete Example */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Complete Example</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-4 flex-wrap items-center mb-6 transition-colors ${theme === "dark"
+          className={`border rounded-lg p-4 flex gap-4 flex-wrap items-center mb-6 transition-colors ${
+            theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-            }`}
+          }`}
         >
           <Avatar
             imageSrc="https://i.pravatar.cc/150?img=1"

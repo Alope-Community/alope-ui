@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { FileUpload } from "alope-ui";
+// import { FileUpload } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { FileUpload } from "../../../components";
 
 export default function FileUploadDocs() {
   const { theme } = useTheme();
@@ -254,13 +255,13 @@ const BasicExample = () => {
         >
           {/* 5MB limit */}
           <FileUpload
-            maxByte={5120}
+            // maxByte={5120}
             onFilesChange={setFiles}
             helperText="Maximum file size: 5MB"
           />
           ;{/* 500KB limit */}
           <FileUpload
-            maxByte={512}
+            // maxByte={512}
             onFilesChange={setFiles}
             helperText="Maximum file size: 500KB"
           />
@@ -472,7 +473,7 @@ function DropzoneExample({ theme }: { theme: string }) {
         mode="dropzone"
         acceptedFiles="image/png, image/jpeg, image/jpg"
         maxFiles={3}
-        maxByte={5120}
+        // maxByte={5120}
         onFilesChange={handleFilesChange}
         helperText="Upload up to 3 images. Max 5MB per file."
       />
@@ -506,7 +507,7 @@ function TextInputExample({ theme }: { theme: string }) {
         mode="textinput"
         acceptedFiles=".pdf, .doc, .docx"
         maxFiles={5}
-        maxByte={10240}
+        // maxByte={10240}
         inputLabel="Choose Documents"
         onFilesChange={setDocuments}
         helperText="Accepted: PDF, DOC, DOCX. Max 10MB per file."

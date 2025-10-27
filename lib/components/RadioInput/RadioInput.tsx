@@ -26,22 +26,22 @@ const RadioSizes = {
 
 const RadioVariants = {
     solid: {
-        label: 'border-transparent bg-primary/90 text-white hover:bg-primary-700',
-        checked: 'bg-primary-700 hover:bg-primary-700',
+        label: 'border-transparent bg-primary dark:bg-primary-dark text-white dark:hover:bg-primary-dark-700 hover:bg-primary-700',
+        checked: 'bg-primary-700 dark:bg-primary-dark-700',
         radio: '',
-        checkedRadio: 'border-primary bg-primary-700',
+        checkedRadio: 'border-white bg-primary dark:bg-primary',
     },
     subtle: {
-        label: 'border-slate-200 bg-secondary/30 hover:bg-secondary',
-        checked: 'bg-primary/30 text-primary-700 border-primary/30 hover:bg-primary-700/15',
-        radio: '',
-        checkedRadio: 'border-primary-700 bg-primary-700',
+        label: 'border-none bg-secondary/30 dark:text-white hover:text-primary-700 hover:dark:text-primary-30 dark:text-white dark:bg-primary-dark/50 hover:bg-primary/30',
+        checked: 'bg-primary/30 text-primary-700 dark:bg-primary/30 dark:text-white hover:dark:text-white',
+        radio: 'dark:bg-primary',
+        checkedRadio: 'bg-primary dark:bg-primary-500 border-none',
     },
     outline: {
-        label: 'border-secondary-700 bg-transparent hover:bg-secondary',
-        checked: 'border-primary bg-primary/30 text-primary-700',
-        radio: '',
-        checkedRadio: 'border-primary bg-primary-700',
+        label: 'border-secondary-700 hover:bg-primary/30 hover:text-primary-700 hover:border-primary-700 dark:hover:bg-primary/20 bg-transparent dark:text-white dark:border-secondary-dark dark:hover:bg-primary-dark/20',
+        checked: 'border-primary bg-primary/30 text-primary-700 dark:border-primary-700 dark:bg-primary-dark/20',
+        radio: ' dark:border-secondary-dark hover:border-primary',
+        checkedRadio: 'bg-primary-700 dark:border-primary-700 dark:border-primary dark:bg-primary',
     },
 }
 
@@ -116,7 +116,7 @@ export const RadioInput: React.FC<RadioInputProps> = ({
                             {isChecked && (
                                 <span
                                     className={cn(
-                                        'w-1/2 h-1/2 rounded-full bg-white transition-transform duration-200 transform scale-100'
+                                        'w-1/2 h-1/2 rounded-full bg-white dark:bg-primary-dark transition-transform duration-200 transform scale-100'
                                     )}
                                 />
                             )}

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Tabs } from "alope-ui";
+// import { Tabs } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { Tabs } from "../../../components";
 
 export default function TabsDocs() {
   const { theme } = useTheme();

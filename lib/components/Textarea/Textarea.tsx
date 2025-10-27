@@ -36,7 +36,7 @@ export const Textarea: React.FC<TextareaType> = ({
             {label && (
                 <label
                     htmlFor={id || name}
-                    className="inline-block text-sm font-medium mb-1"
+                    className="inline-block text-sm font-medium mb-1 dark:text-white"
                 >
                     {label}
                 </label>
@@ -50,8 +50,9 @@ export const Textarea: React.FC<TextareaType> = ({
                 onInput={handleResize}
                 className={cn(
                     `overflow-hidden bg-gray-50 w-full block px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm border-secondary min-h-[58px] max-h-[10rem]`,
+                    'dark:bg-gray-800 dark:border-secondary-dark dark:text-white dark:placeholder:text-gray-400',
                     autoResize ? 'resize-none' : 'resize',
-                    error && 'border-error',
+                    error && 'border-error dark:border-error-dark',
                     props.disabled && 'bg-secondary/40 cursor-not-allowed',
                     customClassName
                 )}
@@ -59,7 +60,7 @@ export const Textarea: React.FC<TextareaType> = ({
             ></textarea>
 
             {error && (
-                <p className="mt-1 text-sm text-red-600">{error}</p>
+                <p className="mt-1 text-sm text-red-600 dark:text-red-500">{error}</p>
             )}
         </div>
     )

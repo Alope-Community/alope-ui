@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Table } from "alope-ui";
-import type { Column } from "alope-ui";
+// import { Table } from "alope-ui";
+// import type { Column } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { Table, type Column } from "../../../components/Table/Table";
 
 export default function TableDocs() {
   const { theme } = useTheme();
@@ -524,7 +525,7 @@ function CustomRenderExample() {
     {
       header: "Role",
       accessor: "role",
-      render: (value) => (
+      render: (value: any) => (
         <span
           className={
             value === "Admin"
@@ -587,7 +588,7 @@ function ProductTable() {
     {
       header: "Price",
       accessor: "price",
-      render: (value) =>
+      render: (value: any) =>
         typeof value === "number"
           ? `$${value.toFixed(2)}`
           : `$${Number(value).toFixed(2)}`,
@@ -596,7 +597,7 @@ function ProductTable() {
     {
       header: "Status",
       accessor: "status",
-      render: (value) => (
+      render: (value: any) => (
         <span
           className={
             value === "Available"

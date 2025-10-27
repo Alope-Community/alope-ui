@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import CodeBlock from "../../../components/CodeBlock";
-import { Skeleton } from "alope-ui";
+// import { Skeleton } from "alope-ui";
 import { useTheme } from "../../../context/ThemeContext";
+import { Skeleton } from "../../../components";
 
 export default function SkeletonDocs() {
   const { theme } = useTheme();
