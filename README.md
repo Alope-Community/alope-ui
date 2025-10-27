@@ -99,8 +99,6 @@ export default App;
 - [📄 Pagination](#pagination) - Page navigation controls  
 - [📱 Bottom Navbar](#bottom-navbar) - Mobile bottom navigation bar  
 
----
-
 ### Feedback Components
 - [⚠️ Alert](#alert) - Status messages and notifications  
 - [🍞 Toast](#toast) - Temporary notification messages  
@@ -108,8 +106,6 @@ export default App;
 - [⏳ Spinner](#spinner) - Loading indicators  
 - [💀 Skeleton](#skeleton) - Content loading placeholders  
 - [📅 Date Picker](#datepicker) - Date selection calendar  
-
----
 
 ### Data Display
 - [🏷️ Badge](#badge) - Status indicators and labels  
@@ -120,8 +116,6 @@ export default App;
 - [🧩 Masonry](#masonry) - Pinterest-style staggered grid layout  
 - [🕒 Timeline](#timeline) - Chronological event display  
 - [📚 Collection](#collection) - Grouped content or list display  
-
----
 
 ### Form Controls
 - [☑️ Checkbox Input](#checkbox-input) - Multiple choice selections  
@@ -134,13 +128,24 @@ export default App;
 - [🔢 Code Input](#codeinput) - Multi-field input for codes or OTPs  
 - [🎚️ Slider](#slider) - Range or value selector  
 
----
-
 ### Interactive Elements
 - [🔘 Button](#button) - Clickable actions  
 - [🪟 Modal](#modal) - Dialog boxes and overlays  
 - [📱 Offcanvas](#offcanvas) - Side panels and drawers  
 - [➕ FAB (Floating Action Button)](#fab-floating-action-button) - Prominent floating action button
+
+---
+
+## 🎨 Customization
+
+### Theming
+- [⚙️ Setup](#setup) - Wrap your app with ThemeProvider
+- [🎯 Usage](#usage) - Access theme with useTheme hook
+- [🔌 Theme Hook API](#theme-hook-api) - Available properties and methods
+- [🎨 Styling Components](#styling-components) - Theme-aware styling with Tailwind
+- [💾 Persistence](#persistence) - Automatic localStorage integration
+- [📝 Example Implementation](#example-implementation) - Complete theming example
+- [✨ Best Practices](#best-practices) - Guidelines for optimal theming
 
 ---
 
@@ -7105,6 +7110,120 @@ const CompleteExample = () => {
   );
 };
 ```
+
+--- 
+
+## Theming
+
+ALOPE UI provides built-in theming support with light and dark mode capabilities. The theming system is implemented using React Context, making it easy to toggle themes across your entire application.
+
+### Setup
+
+To enable theming in your application, wrap your app with the `ThemeProvider`:
+```tsx
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { ThemeProvider } from './context/ThemeContext'
+import App from './App'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </StrictMode>,
+)
+```
+
+### Usage
+
+Once your app is wrapped with `ThemeProvider`, you can access the current theme and toggle function using the `useTheme` hook:
+```tsx
+import { useTheme } from './context/ThemeContext'
+import { Button } from './components'
+
+function App() {
+  const { theme, toggleTheme } = useTheme()
+
+  return (
+    <div>
+      <Button onClick={toggleTheme}>
+        Toggle {theme.charAt(0).toUpperCase() + theme.slice(1)} Mode
+      </Button>
+      
+      <p>Current theme: {theme}</p>
+    </div>
+  )
+}
+```
+
+### Theme Hook API
+
+The `useTheme` hook returns an object with the following properties:
+
+- **`theme`**: `'light' | 'dark'` - The current active theme
+- **`toggleTheme`**: `() => void` - Function to toggle between light and dark modes
+
+### Styling Components
+
+ALOPE UI components automatically respond to theme changes through Tailwind's `dark:` modifier. The theme is applied via a `dark` class on the root element.
+
+Example of theme-aware styling:
+```tsx
+<div className="bg-white dark:bg-gray-800">
+  <h1 className="text-gray-800 dark:text-white">
+    Hello World
+  </h1>
+  <p className="text-gray-600 dark:text-gray-300">
+    This text adapts to the current theme
+  </p>
+</div>
+```
+
+### Persistence
+
+The theme preference is automatically saved to `localStorage` and persists across browser sessions.
+
+### Example Implementation
+
+Here's a complete example showing theme integration:
+```tsx
+import { Button, Card } from './components'
+import { useTheme } from './context/ThemeContext'
+
+function App() {
+  const { theme, toggleTheme } = useTheme()
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-primary/25 to-blue-100 dark:from-gray-900 dark:to-gray-700">
+      <div className="max-w-6xl mx-auto p-10">
+        <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
+          ALOPE UI Library
+        </h1>
+        
+        <Button onClick={toggleTheme} className="mt-4">
+          Toggle {theme.charAt(0).toUpperCase() + theme.slice(1)} Mode
+        </Button>
+
+        <Card
+          title="Theme-Aware Card"
+          description="This card automatically adapts to your theme preference"
+          titleClassName="dark:text-white"
+          descriptionClassName="dark:text-gray-300"
+          containerClassName="dark:bg-gray-800 dark:border-gray-700"
+        />
+      </div>
+    </div>
+  )
+}
+```
+
+### Best Practices
+
+1. **Wrap at the root level**: Place `ThemeProvider` at the top level of your application, typically in `main.tsx`
+2. **Use dark: modifiers**: Leverage Tailwind's `dark:` prefix for all theme-dependent styles
+3. **Consistent colors**: Use semantic color classes that work well in both themes
+4. **Test both modes**: Always test your components in both light and dark modes
 
 ---
 
