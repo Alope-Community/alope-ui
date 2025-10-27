@@ -98,6 +98,7 @@ export default App;
 ### Feedback Components
 - [⚠️ Alert](#alert) - Status messages and notifications
 - [🍞 Toast](#toast) - Temporary notification messages
+- [🗨️ Popover](#popover) - Contextual interactive content
 
 ### Data Display
 - [🏷️ Badge](#badge) - Status indicators and labels
@@ -1151,6 +1152,146 @@ const BasicExample = () => {
 })}>
   Bottom Right Toast
 </Button>
+```
+
+---
+## Popover
+The Popover component displays contextual content or interactive elements over a trigger element. It’s useful for showing details, quick actions, or supplementary information without navigating away from the page.
+
+### Import
+
+```jsx
+import { Popover } from "alope-ui";
+```
+
+### Props
+
+| Prop          | Type                                     | Default   | Description                       |
+| ------------- | ---------------------------------------- | --------- | --------------------------------- |
+| `title`       | `string`                                 | `""`      | Popover header title              |
+| `content`     | `string`                                 | `""`      | Main Popover content              |
+| `placement`   | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'`   | Position relative to trigger      |
+| `trigger`     | `'click' \| 'hover'`                     | `'click'` | How Popover appears               |
+| `dismissible` | `boolean`                                | `false`   | Close by clicking outside         |
+| `disabled`    | `boolean`                                | `false`   | Disable Popover                   |
+| `offset`      | `string`                                 | `'8'`     | Distance from trigger (px)        |
+| `arrow`       | `'arrow' \| 'no-arrow'`                  | `'arrow'` | Show arrow pointing to trigger    |
+| `className`   | `string`                                 | `""`      | Additional CSS classes            |
+| `children`    | `React.ReactNode`                        | required  | Element that triggers the Popover |
+
+### Basic Popover
+
+```jsx
+<Popover
+  title="Default Popover"
+  content="This is the default popover, suitable for displaying brief information."
+>
+  <Button variant="solid">Default Popover</Button>
+</Popover>
+```
+
+### Placement
+
+```jsx
+<Popover placement="top" title="Top Popover" content="Appears above the button">
+  <Button>Top</Button>
+</Popover>
+
+<Popover placement="right" title="Right Popover" content="Appears to the right">
+  <Button>Right</Button>
+</Popover>
+
+<Popover placement="bottom" title="Bottom Popover" content="Appears below">
+  <Button>Bottom</Button>
+</Popover>
+
+<Popover placement="left" title="Left Popover" content="Appears to the left">
+  <Button>Left</Button>
+</Popover>
+```
+
+### Trigger
+
+```jsx
+<Popover trigger="click" title="Click Popover" content="Triggered by click">
+  <Button>Click me</Button>
+</Popover>
+
+<Popover trigger="hover" title="Hover Popover" content="Triggered on hover">
+  <Button>Hover me</Button>
+</Popover>
+```
+
+### Arrow
+
+```jsx
+<Popover arrow="arrow" title="Arrow Popover" content="Popover with arrow">
+  <Button>With arrow</Button>
+</Popover>
+
+<Popover arrow="no-arrow" title="No Arrow" content="Popover without arrow">
+  <Button>No arrow</Button>
+</Popover>
+```
+
+### Offset
+
+```jsx
+<Popover title="Default Offset" content="Default 8px offset">
+  <Button>Default offset</Button>
+</Popover>
+
+<Popover offset="16" title="Custom Offset" content="Custom 16px offset">
+  <Button>Custom offset</Button>
+</Popover>
+```
+
+### Custom Popover
+
+```jsx
+<Popover
+  content={
+    <div className="flex flex-col gap-3 w-64 max-w-full p-4 bg-white dark:bg-gray-900">
+      <div className="flex items-center gap-3">
+        <Avatar fallbackName="John Doe" />
+        <div className="flex flex-col">
+          <span className="font-semibold">Jane Doe</span>
+          <span className="text-sm text-gray-500">@janedoe</span>
+        </div>
+      </div>
+      <p className="text-sm text-gray-600">
+        Frontend developer passionate about React and UI design.
+      </p>
+      <Button variant="solid" variantType="info">Follow</Button>
+    </div>
+  }
+>
+  <Button>Custom Popover</Button>
+</Popover>
+```
+
+### Dismissible Popover
+
+```jsx
+<Popover
+  title="Dismissible Popover"
+  content="Click outside to close this popover."
+  dismissible
+>
+  <Button variant="solid" variantType="error">
+    Dismissible Popover
+  </Button>
+</Popover>
+```
+
+### Disabled Popover
+
+```jsx
+<Popover title="Disabled Popover" content="This popover is disabled." disabled>
+  <Button variant="solid" disabled>
+    Disabled
+  </Button>
+</Popover>
 ```
 
 ---
