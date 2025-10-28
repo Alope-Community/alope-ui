@@ -31,3 +31,5 @@ export { default as TimelinePage } from "./TimelinePage";
 export { default as SliderPage } from "./SliderPage";
 export { default as CodeInputPage } from "./CodeInputPage";
 export { default as DatePickerPage } from "./DatePickerPage";
+
+export { default as PopoverPage } from "./PopoverPage";

@@ -180,21 +180,6 @@ function App() {
   //     to: "/timeline",
   //     description: "Displays a list of events in chronological order.",
   //   },
-  //   {
-  //     label: "Slider",
-  //     to: "/slider",
-  //     description: "Allow users to make selections from a range of values.",
-  //   },
-  //   {
-  //     label: "Code Input",
-  //     to: "/code-input",
-  //     description: "Used to input the code verification.",
-  //   },
-  //   {
-  //     label: "Date Picker",
-  //     to: "/date-picker",
-  //     description: "Used to pick a date input value.",
-  //   },
   // ];
 
   return (

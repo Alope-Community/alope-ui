@@ -33,3 +33,5 @@ export { Timeline } from "./Timeline/Timeline";
 export { Slider } from "./Slider/Slider";
 export { CodeInput } from "./CodeInput/CodeInput";
 export { DatePicker } from "./DatePicker/DatePicker";
+
+export { Popover } from "./Popover/Popover";
