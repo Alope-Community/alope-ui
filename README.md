@@ -1084,7 +1084,6 @@ Then, wrap your main application component with the provider (e.g. in App.tsx or
 ```jsx
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
 import { ToastProvider } from 'alope-ui';
 
 createRoot(document.getElementById('root')!).render(
@@ -7123,7 +7122,7 @@ To enable theming in your application, wrap your app with the `ThemeProvider`:
 ```tsx
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ThemeProvider } from './context/ThemeContext'
+import { ThemeProvider } from 'alope-ui'
 import App from './App'
 
 createRoot(document.getElementById('root')!).render(
@@ -7139,8 +7138,7 @@ createRoot(document.getElementById('root')!).render(
 
 Once your app is wrapped with `ThemeProvider`, you can access the current theme and toggle function using the `useTheme` hook:
 ```tsx
-import { useTheme } from './context/ThemeContext'
-import { Button } from './components'
+import { useTheme, Button } from 'alope-ui'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
@@ -7188,8 +7186,7 @@ The theme preference is automatically saved to `localStorage` and persists acros
 
 Here's a complete example showing theme integration:
 ```tsx
-import { Button, Card } from './components'
-import { useTheme } from './context/ThemeContext'
+import { Button, Card, useTheme } from 'alope-ui'
 
 function App() {
   const { theme, toggleTheme } = useTheme()
