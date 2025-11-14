@@ -2,47 +2,82 @@
 
 export interface NavItem {
   name: string;
-  path: string; // hanya bagian subpath, bukan full path
+  path: string;
+}
+
+export interface NavCategory {
+  title: string;
+  items: NavItem[];
 }
 
 export interface NavSection {
   title: string;
-  items: NavItem[];
+  categories: NavCategory[];
 }
 
 // Struktur dasar (tanpa versi di path)
 export const baseNavSections: NavSection[] = [
   {
     title: "Getting Started",
-    items: [{ name: "Installation", path: "installation" }],
+    categories: [
+      {
+        title: "Introduction",
+        items: [{ name: "Installation", path: "installation" }],
+      },
+    ],
   },
   {
     title: "Components",
-    items: [
-      { name: "Accordion", path: "accordion" },
-      { name: "Alert", path: "alert" },
-      { name: "Avatar", path: "avatar" },
-      { name: "Avatar Group", path: "avatarGroup" },
-      { name: "Badge", path: "badge" },
-      { name: "Breadcrumb", path: "breadcrumb" },
-      { name: "Button", path: "button" },
-      { name: "Card", path: "card" },
-      { name: "Checkbox", path: "checkbox" },
-      { name: "File Upload", path: "fileUpload" },
-      { name: "Modal", path: "modal" },
-      { name: "Offcanvas", path: "offcanvas" },
-      { name: "Pagination", path: "pagination" },
-      { name: "Radio", path: "radio" },
-      { name: "Select", path: "select" },
-      { name: "Skeleton", path: "skeleton" },
-      { name: "Spinner", path: "spinner" },
-      { name: "Table", path: "tableDocs" },
-      { name: "Tabs", path: "tabsDocs" },
-      { name: "Textarea", path: "textArea" },
-      { name: "Text Input", path: "textinput" },
-      { name: "Toast", path: "toast" },
-      { name: "Toggle", path: "toggle" },
-      { name: "Tooltip", path: "tooltip" },
+    categories: [
+      {
+        title: "Navigation",
+        items: [
+          { name: "Accordion", path: "accordion" },
+          { name: "Breadcrumb", path: "breadcrumb" },
+          { name: "Tabs", path: "tabsDocs" },
+          { name: "Pagination", path: "pagination" },
+        ],
+      },
+      {
+        title: "Feedback",
+        items: [
+          { name: "Alert", path: "alert" },
+          { name: "Toast", path: "toast" },
+          { name: "Tooltip", path: "tooltip" },
+          { name: "Spinner", path: "spinner" },
+          { name: "Skeleton", path: "skeleton" },
+        ],
+      },
+      {
+        title: "Data Display",
+        items: [
+          { name: "Badge", path: "badge" },
+          { name: "Card", path: "card" },
+          { name: "Table", path: "tableDocs" },
+          { name: "Avatar", path: "avatar" },
+          { name: "Avatar Group", path: "avatarGroup" },
+        ],
+      },
+      {
+        title: "Form Controls",
+        items: [
+          { name: "Checkbox", path: "checkbox" },
+          { name: "Radio", path: "radio" },
+          { name: "Select", path: "select" },
+          { name: "Text Input", path: "textinput" },
+          { name: "Textarea", path: "textArea" },
+          { name: "Toggle", path: "toggle" },
+          { name: "File Upload", path: "fileUpload" },
+        ],
+      },
+      {
+        title: "Interactive Elements",
+        items: [
+          { name: "Button", path: "button" },
+          { name: "Modal", path: "modal" },
+          { name: "Offcanvas", path: "offcanvas" },
+        ],
+      },
     ],
   },
 ];
@@ -57,24 +92,34 @@ export function generateNavSections(version: string): NavSection[] {
     return [
       {
         title: "Getting Started",
-        items: [
-          { name: "Installation", path: `/docs/${version}/installation` },
+        categories: [
+          {
+            title: "Introduction",
+            items: [
+              { name: "Installation", path: `/docs/${version}/installation` },
+            ],
+          },
         ],
       },
       {
         title: "Components",
-        items: [
-          { name: "Avatar", path: `/docs/${version}/avatar` },
-          { name: "Avatar Group", path: `/docs/${version}/avatarGroup` },
-          { name: "File Upload", path: `/docs/${version}/fileUpload` },
-          { name: "Pagination", path: `/docs/${version}/pagination` },
-          { name: "Skeleton", path: `/docs/${version}/skeleton` },
-          { name: "Spinner", path: `/docs/${version}/spinner` },
-          { name: "Table", path: `/docs/${version}/tableDocs` },
-          { name: "Tabs", path: `/docs/${version}/tabsDocs` },
-          { name: "Textarea", path: `/docs/${version}/textArea` },
-          { name: "Toggle", path: `/docs/${version}/toggle` },
-          { name: "Tooltip", path: `/docs/${version}/tooltip` },
+        categories: [
+          {
+            title: "Essentials",
+            items: [
+              { name: "Avatar", path: `/docs/${version}/avatar` },
+              { name: "Avatar Group", path: `/docs/${version}/avatarGroup` },
+              { name: "File Upload", path: `/docs/${version}/fileUpload` },
+              { name: "Pagination", path: `/docs/${version}/pagination` },
+              { name: "Skeleton", path: `/docs/${version}/skeleton` },
+              { name: "Spinner", path: `/docs/${version}/spinner` },
+              { name: "Table", path: `/docs/${version}/tableDocs` },
+              { name: "Tabs", path: `/docs/${version}/tabsDocs` },
+              { name: "Textarea", path: `/docs/${version}/textArea` },
+              { name: "Toggle", path: `/docs/${version}/toggle` },
+              { name: "Tooltip", path: `/docs/${version}/tooltip` },
+            ],
+          },
         ],
       },
     ];
@@ -83,9 +128,12 @@ export function generateNavSections(version: string): NavSection[] {
   // Default: gunakan struktur dasar
   return baseNavSections.map((section) => ({
     ...section,
-    items: section.items.map((item) => ({
-      ...item,
-      path: `/docs/${version}/${item.path}`,
+    categories: section.categories.map((category) => ({
+      ...category,
+      items: category.items.map((item) => ({
+        ...item,
+        path: `/docs/${version}/${item.path}`,
+      })),
     })),
   }));
 }
