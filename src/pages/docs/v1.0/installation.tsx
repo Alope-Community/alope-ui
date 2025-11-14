@@ -17,8 +17,31 @@ export default function Installation() {
       >
         <h2 className="text-4xl font-bold mb-6">Quick Start</h2>
 
+        {/* Note */}
+        <p className="text-base">
+          You need{" "}
+          <a
+            href="https://nodejs.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold hover:underline"
+          >
+            Node.js
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://tailwindcss.com/docs/installation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold hover:underline"
+          >
+            Tailwind CSS
+          </a>{" "}
+          installed.
+        </p>
+
         {/* Installation */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">Installation</h3>
+        <h3 className="text-2xl font-semibold mt-6 mb-3">Installation</h3>
         <p>Using npm:</p>
         <CodeBlock code="npm install alope-ui" lang="bash" label="npm" />
 
@@ -27,7 +50,9 @@ export default function Installation() {
         <p>
           Add <code>@import</code> directive(s) in your main CSS file:
         </p>
-        <CodeBlock lang="css" label="css"
+        <CodeBlock
+          lang="css"
+          label="css"
           code={`/* index.css */
 
 /* Make sure to import TailwindCSS first */
