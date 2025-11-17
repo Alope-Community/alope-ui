@@ -12,7 +12,7 @@ export interface ToastProps {
 }
 
 export const ToastVariants = {
-  outline: 'border border-current',
+  outline: 'outline outline-current',
   solid: ''
 }
 
@@ -24,10 +24,10 @@ export const ToastPositions = {
 }
 
 export const ToastTypes = {
-  success: 'bg-success-30-50 outline-success-700 text-success-700 dark:bg-success-dark-30-20 dark:text-success',
-  info: 'bg-info-30-50 outline-info-700 text-info-700 dark:bg-info-dark-30-20 dark:text-info',
-  warning: 'bg-warning-30-50 outline-warning-700 text-warning-700 dark:bg-warning-dark-30-20 dark:text-warning',
-  error: 'bg-error-30-50 outline-error-700 text-error-700 dark:bg-error-dark-30-20 dark:text-error',
+  success: 'bg-success-100 outline-success-700 text-success-700 dark:bg-success-900-dark dark:text-success-100-dark dark:outline-success-500-dark',
+  info: 'bg-info-100 outline-info-700 text-info-700 dark:bg-info-900-dark dark:text-info-100-dark dark:outline-info-500-dark',
+  warning: 'bg-warning-100 outline-warning-700 text-warning-700 dark:bg-warning-900-dark dark:text-warning-100-dark dark:outline-warning-500-dark',
+  error: 'bg-error-100 outline-error-700 text-error-700 dark:bg-error-900-dark dark:text-error-100-dark dark:outline-error-500-dark',
 }
 
 const enterAnimationByPosition: Record<keyof typeof ToastPositions, string> = {
@@ -121,7 +121,7 @@ const Toast: React.FC<ToastProps> = ({
 
       <button
         onClick={handleClose}
-        className="ml-2 text-lg leading-none hover:text-red-500 focus:outline-none cursor-pointer"
+        className="ml-2 text-lg leading-none hover:text-error-500 focus:outline-none cursor-pointer"
         aria-label="Close"
       >
         &times;

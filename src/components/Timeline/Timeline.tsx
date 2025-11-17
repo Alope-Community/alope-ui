@@ -2,21 +2,21 @@ import { cn } from "clsx-for-tailwind";
 import React, { Children, cloneElement, isValidElement, type ReactNode } from "react";
 
 const DotColors = {
-    success: 'bg-success dark:bg-success-dark',
-    info: 'bg-info dark:bg-info-dark',
-    error: 'bg-error dark:bg-error-dark',
-    warning: 'bg-warning dark:bg-warning-dark',
-    primary: 'bg-primary dark:bg-primary-dark',
-    default: 'bg-secondary-700 dark:bg-secondary-dark',
+    success: 'bg-success-500 dark:bg-success-900-dark outline-success-100 dark:outline-success-500-dark',
+    info: 'bg-info-500 dark:bg-info-900-dark outline-info-100 dark:outline-info-500-dark',
+    error: 'bg-error-500 dark:bg-error-900-dark outline-error-100 dark:outline-error-500-dark',
+    warning: 'bg-warning-500 dark:bg-warning-900-dark outline-warning-100 dark:outline-warning-500-dark',
+    primary: 'bg-primary-500 dark:bg-primary-900-dark outline-primary-100 dark:outline-primary-500-dark',
+    default: 'bg-secondary-500 dark:bg-secondary-300-dark outline-white dark:outline-secondary-600-dark',
 }
 
 const LineColors = {
-    success: 'border-success dark:border-success-dark md:before:border-success md:before:dark:border-success-dark',
-    info: 'border-info dark:border-info-dark md:before:border-info md:before:dark:border-info-dark',
-    error: 'border-error dark:border-error-dark md:before:border-error md:before:dark:border-error-dark',
-    warning: 'border-warning dark:border-warning-dark md:before:border-warning md:before:dark:border-warning-dark',
-    primary: 'border-primary dark:border-primary-dark md:before:border-primary md:before:dark:border-primary-dark',
-    default: 'border-secondary-700 dark:border-secondary-dark md:before:border-secondary md:before:dark:border-secondary-dark',
+    success: 'border-success-500 dark:border-success-900-dark md:before:border-success-500 md:before:dark:border-success-900-dark',
+    info: 'border-info-500 dark:border-info-900-dark md:before:border-info-500 md:before:dark:border-info-900-dark',
+    error: 'border-error-500 dark:border-error-900-dark md:before:border-error-500 md:before:dark:border-error-900-dark',
+    warning: 'border-warning-500 dark:border-warning-900-dark md:before:border-warning-500 md:before:dark:border-warning-900-dark',
+    primary: 'border-primary-500 dark:border-primary-900-dark md:before:border-primary-500 md:before:dark:border-primary-900-dark',
+    default: 'border-secondary-300 dark:border-secondary-600-dark md:before:border-secondary-300 md:before:dark:border-secondary-600-dark',
 }
 
 export type TimelineProps = {
@@ -51,7 +51,7 @@ const TimelineItem: React.FC<TimelineItemProps & { position?: 'split' | 'right' 
         })}>
             {
                 icon
-                    ? <div className={cn("flex items-center justify-center absolute w-10 h-10 rounded-full mt-1.5 outline outline-white dark:outline-secondary",
+                    ? <div className={cn("flex items-center justify-center absolute w-10 h-10 rounded-full mt-1.5 outline ",
                         dotColorClassName,
                         {
                             "-start-[20px]": position === 'left' || (position === 'split' && "md:hidden"),
@@ -61,7 +61,7 @@ const TimelineItem: React.FC<TimelineItemProps & { position?: 'split' | 'right' 
                     )}>
                         {icon}
                     </div>
-                    : <div className={cn("absolute w-3 h-3 rounded-full mt-1.5 outline outline-white dark:outline-secondary",
+                    : <div className={cn("absolute w-3 h-3 rounded-full mt-1.5 outline outline-white dark:outline-secondary-300-dark",
                         dotColorClassName,
                         {
                             "-start-[7px]": position === 'left' || (position === 'split' && "md:hidden"),
@@ -69,13 +69,13 @@ const TimelineItem: React.FC<TimelineItemProps & { position?: 'split' | 'right' 
                             "-start-[7.1px] md:start-1/2 md:-ms-[4.7px]": position === 'split'
                         })}></div>
             }
-            <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-secondary-dark">
+            <time className="mb-1 text-sm font-normal leading-none text-secondary-400 dark:text-secondary-400-dark">
                 {time}
             </time>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold dark:text-white">
                 {title}
             </h3>
-            <p className="mb-4 text-base font-normal text-secondary-foreground dark:text-secondary-foreground-dark">
+            <p className="mb-4 text-base font-normal text-secondary-500 dark:text-secondary-500-dark">
                 {children}
             </p>
         </li>

@@ -2,12 +2,12 @@ import { cn } from "clsx-for-tailwind";
 import type { InputHTMLAttributes } from "react";
 
 const ToggleVariant = {
-  primary: 'peer-checked:bg-primary dark:peer-checked:bg-primary-dark',
-  error: 'peer-checked:bg-error dark:peer-checked:bg-error-dark',
-  warning: 'peer-checked:bg-warning dark:peer-checked:bg-warning-dark',
-  success: 'peer-checked:bg-success dark:peer-checked:bg-success-dark',
-  info: 'peer-checked:bg-info dark:peer-checked:bg-info-dark',
-  secondary: 'peer-checked:bg-secondary dark:peer-checked:bg-secondary-dark'
+  primary: 'peer-checked:bg-primary-500 dark:peer-checked:bg-primary-900-dark',
+  error: 'peer-checked:bg-error-500 dark:peer-checked:bg-error-900-dark',
+  warning: 'peer-checked:bg-warning-500 dark:peer-checked:bg-warning-900-dark',
+  success: 'peer-checked:bg-success-500 dark:peer-checked:bg-success-900-dark',
+  info: 'peer-checked:bg-info-500 dark:peer-checked:bg-info-900-dark',
+  secondary: 'peer-checked:bg-secondary-500 dark:peer-checked:bg-secondary-900-dark'
 };
 
 const ToggleThumbShape = {
@@ -41,7 +41,7 @@ export const Toggle: React.FC<ToggleProps> = ({
 }) => {
   const divClasses = [
     'relative',
-    'bg-secondary-700 dark:bg-secondary-dark-700',
+    'bg-secondary-500 dark:bg-secondary-dark-900-dark',
     'peer-checked:after:translate-x-full',
     'rtl:peer-checked:after:-translate-x-full',
     'peer-checked:after:border-white',

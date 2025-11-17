@@ -52,23 +52,23 @@ export const Modal: React.FC<ModalProps> = ({
 
             <div
                 className={cn(
-                    'relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-h-[90vh] overflow-y-auto transition-all',
+                    'relative z-10 bg-white dark:bg-secondary-800-dark rounded-lg shadow-xl w-full max-h-[90vh] overflow-y-auto transition-all',
                     sizeClasses[size],
                     className
                 )}
                 onClick={(e) => e.stopPropagation()}
             >
                 {(title || showCloseButton) && (
-                    <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center justify-between p-4 border-b border-secondary-300 dark:border-secondary-700-dark">
                         {title && (
-                            <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+                            <h2 className="text-lg font-semibold text-secondary-800 dark:text-white">
                                 {title}
                             </h2>
                         )}
                         {showCloseButton && (
                             <button
                                 onClick={onClose}
-                                className="text-gray-500 hover:text-gray-800 transition dark:text-gray-400 dark:hover:text-white hover:cursor-pointer"
+                                className="text-secondary-500 hover:text-secondary-800 transition dark:text-secondary-400-dark dark:hover:text-white hover:cursor-pointer"
                                 aria-label="Close modal"
                             >
                                 ✕

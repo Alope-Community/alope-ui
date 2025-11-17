@@ -1,7 +1,7 @@
 import { Badge, Card } from '../components';
 import Container from './Container';
 
-const variants = ['default', 'secondary', 'success', 'info', 'warning', 'error'] as const;
+const variants = ['primary', 'default', 'secondary', 'success', 'info', 'warning', 'error'] as const;
 const positions = ['top-right', 'top-left', 'bottom-right', 'bottom-left'] as const;
 
 function BadgePage() {

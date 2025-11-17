@@ -49,18 +49,18 @@ export const Textarea: React.FC<TextareaType> = ({
                 ref={textareaRef}
                 onInput={handleResize}
                 className={cn(
-                    `overflow-hidden bg-gray-50 w-full block px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm border-secondary min-h-[58px] max-h-[10rem]`,
-                    'dark:bg-gray-800 dark:border-secondary-dark dark:text-white dark:placeholder:text-gray-400',
+                    `overflow-hidden w-full block px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-secondary-500 min-h-[58px] max-h-[10rem]`,
+                    'dark:border-secondary-500-dark dark:text-white placeholder:text-secondary-400 dark:placeholder:text-secondary-600-dark',
                     autoResize ? 'resize-none' : 'resize',
-                    error && 'border-error dark:border-error-dark',
-                    props.disabled && 'bg-secondary/40 cursor-not-allowed',
+                    error && 'border-error-500 dark:border-error-500-dark',
+                    props.disabled && 'cursor-not-allowed',
                     customClassName
                 )}
                 {...props}
             ></textarea>
 
             {error && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-500">{error}</p>
+                <p className="mt-1 text-sm text-error-500 dark:text-error-500-dark">{error}</p>
             )}
         </div>
     )

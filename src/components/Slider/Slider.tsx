@@ -3,42 +3,31 @@ import { useState, type InputHTMLAttributes } from "react";
 import { Tooltip } from "../Tooltip/Tooltip";
 import { TextInput } from "../TextInput/TextInput";
 
-const SliderColor = {
+const SliderVariants = {
+
     primary:
-        'bg-primary-30 dark:bg-primary-dark-30 hover:[&::-webkit-slider-thumb]:transition-all hover:[&::-webkit-slider-thumb]:duration-300 ' +
-        '[&::-webkit-slider-thumb]:outline-5 hover:[&::-webkit-slider-thumb]:outline-10 [&::-webkit-slider-thumb]:outline-primary-30 ' +
-        '[&::-webkit-slider-thumb]:bg-primary dark:[&::-webkit-slider-thumb]:bg-primary-dark ' +
-        '[&::-webkit-slider-thumb]:outline-primary-30 dark:[&::-webkit-slider-thumb]:outline-primary-dark-30',
+        'bg-primary-300 text-primary-500 dark:bg-primary-600-dark dark:text-primary-500-dark ' +
+        '[&::-webkit-slider-thumb]:bg-primary-500 dark:[&::-webkit-slider-thumb]:bg-primary-300-dark ',
 
     error:
-        'bg-error-30 dark:bg-error-dark-30 ' +
-        '[&::-webkit-slider-thumb]:outline-5 [&::-webkit-slider-thumb]:outline-error-30 ' +
-        '[&::-webkit-slider-thumb]:bg-error dark:[&::-webkit-slider-thumb]:bg-error-dark ' +
-        'dark:[&::-webkit-slider-thumb]:outline-5 dark:[&::-webkit-slider-thumb]:outline-error-dark-30',
+        'bg-error-300 text-error-500 dark:bg-error-600-dark dark:text-error-500-dark ' +
+        '[&::-webkit-slider-thumb]:bg-error-500 dark:[&::-webkit-slider-thumb]:bg-error-300-dark ',
 
     warning:
-        'bg-warning-30 dark:bg-warning-dark-30 ' +
-        '[&::-webkit-slider-thumb]:outline-5 [&::-webkit-slider-thumb]:outline-warning-30 ' +
-        '[&::-webkit-slider-thumb]:bg-warning dark:[&::-webkit-slider-thumb]:bg-warning-dark ' +
-        'dark:[&::-webkit-slider-thumb]:outline-5 dark:[&::-webkit-slider-thumb]:outline-warning-dark-30',
+        'bg-warning-300 text-warning-500 dark:bg-warning-600-dark dark:text-warning-500-dark ' +
+        '[&::-webkit-slider-thumb]:bg-warning-500 dark:[&::-webkit-slider-thumb]:bg-warning-300-dark ',
 
     success:
-        'bg-success-30 dark:bg-success-dark-30 ' +
-        '[&::-webkit-slider-thumb]:outline-5 [&::-webkit-slider-thumb]:outline-success-30 ' +
-        '[&::-webkit-slider-thumb]:bg-success dark:[&::-webkit-slider-thumb]:bg-success-dark ' +
-        'dark:[&::-webkit-slider-thumb]:outline-5 dark:[&::-webkit-slider-thumb]:outline-success-dark-30',
+        'bg-success-300 text-success-500 dark:bg-success-600-dark dark:text-success-500-dark ' +
+        '[&::-webkit-slider-thumb]:bg-success-500 dark:[&::-webkit-slider-thumb]:bg-success-300-dark ',
 
     info:
-        'bg-info-30 dark:bg-info-dark-30 ' +
-        '[&::-webkit-slider-thumb]:outline-5 [&::-webkit-slider-thumb]:outline-info-30 ' +
-        '[&::-webkit-slider-thumb]:bg-info dark:[&::-webkit-slider-thumb]:bg-info-dark ' +
-        'dark:[&::-webkit-slider-thumb]:outline-5 dark:[&::-webkit-slider-thumb]:outline-info-dark-30',
+        'bg-info-300 text-info-500 dark:bg-info-600-dark dark:text-info-500-dark ' +
+        '[&::-webkit-slider-thumb]:bg-info-500 dark:[&::-webkit-slider-thumb]:bg-info-300-dark ',
 
-    secondary:
-        'bg-secondary dark:bg-secondary-dark ' +
-        '[&::-webkit-slider-thumb]:outline-5 [&::-webkit-slider-thumb]:outline-secondary ' +
-        '[&::-webkit-slider-thumb]:bg-secondary-700 dark:[&::-webkit-slider-thumb]:bg-secondary-dark-700 ' +
-        'dark:[&::-webkit-slider-thumb]:outline-5 dark:[&::-webkit-slider-thumb]:outline-secondary-dark',
+    default:
+        'bg-secondary-300 text-secondary-500 dark:bg-secondary-600-dark dark:text-secondary-500-dark ' +
+        '[&::-webkit-slider-thumb]:bg-secondary-500 dark:[&::-webkit-slider-thumb]:bg-secondary-300-dark '
 }
 
 const SliderSize = {
@@ -52,7 +41,7 @@ export type SliderProps = {
     label?: string;
     prefixIcon?: React.ReactNode;
     suffixIcon?: React.ReactNode;
-    color?: keyof typeof SliderColor;
+    variant?: keyof typeof SliderVariants;
     sliderSize?: keyof typeof SliderSize;
     showTooltip?: boolean;
     showMarks?: boolean;
@@ -70,7 +59,7 @@ export const Slider: React.FC<SliderProps> = ({
     showTooltip = true,
     showMarks = true,
     onChange,
-    color = "primary",
+    variant = "default",
     prefixIcon,
     suffixIcon,
     sliderSize = "md",
@@ -78,7 +67,7 @@ export const Slider: React.FC<SliderProps> = ({
 
     const [isInteracting, setIsInteracting] = useState(false);
 
-    const sliderColorClassName = SliderColor[color];
+    const sliderVariantClassName = SliderVariants[variant];
     const sliderSizeClassName = SliderSize[sliderSize];
 
     const webkitClassName =
@@ -113,7 +102,7 @@ export const Slider: React.FC<SliderProps> = ({
                     key={i}
                     className={cn(
                         "absolute top-1/2 -translate-y-1/2 w-[2px] h-2 rounded-full",
-                        sliderColorClassName
+                        sliderVariantClassName
                     )}
                     style={{ left: `${left}%` }}
                 />
@@ -160,15 +149,15 @@ export const Slider: React.FC<SliderProps> = ({
                         onChange={onChange}
                         onMouseDown={() => setIsInteracting(true)}
                         className={cn(
-                            "w-full rounded-full appearance-none cursor-pointer dark:bg-gray-700",
+                            "w-full rounded-full appearance-none cursor-pointer",
                             "transition-all duration-300 ease-in-out",
                             sliderSizeClassName,
                             webkitClassName,
                             mozClassName,
-                            sliderColorClassName,
+                            sliderVariantClassName,
                             {
-                                [SliderColor['secondary']]: disabled,
-                                'bg-secondary opacity-50': disabled
+                                [SliderVariants['default']]: disabled,
+                                'opacity-50': disabled
                             }
                         )}
                     />

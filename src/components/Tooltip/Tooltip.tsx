@@ -22,7 +22,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
     showArrow = true,
     placement = 'top',
     offset = 8,
-    bgColor = 'bg-gray-800 dark:bg-gray-600',
+    bgColor = 'bg-secondary-800 dark:bg-secondary-600',
     isOpen: controlledIsOpen,
     onOpenChange,
     disabled = false,

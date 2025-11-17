@@ -17,15 +17,22 @@ function FileUploadPage() {
       {/* Dropzone Mode */}
       <section>
         <h2 className="text-2xl font-semibold dark:text-white mb-4">Dropzone Mode</h2>
-        <FileUpload onFilesChange={handleFilesChange} acceptedFiles='.pdf' maxKiloByte={6500} helperText='test'/>
+        <FileUpload 
+        placeholder={(isActive) => isActive ? 'Drop like is hot' : 'Drag n\' drop files here, or click to select files'} 
+        onFilesChange={handleFilesChange} 
+        acceptedFiles='.pdf' 
+        maxKiloByte={6500} 
+        helperText='test'
+        placeholderClassName={(isActive) => isActive && 'text-error-500'}
+        />
       </section>
 
-      {/* TextInput Mode */}
+      {/* Simple Mode */}
       <section>
-        <h2 className="text-2xl font-semibold dark:text-white mb-4">TextInput Mode</h2>
+        <h2 className="text-2xl font-semibold dark:text-white mb-4">Simple Mode</h2>
         <FileUpload
           onFilesChange={handleFilesChange}
-          mode="textinput"
+          mode="simple"
           maxFiles={3}
         />
       </section>
@@ -39,7 +46,7 @@ function FileUploadPage() {
           mediaCapture="environment"
           acceptedFiles="image/*"
           maxFiles={1}
-          mode="textinput"
+          mode="simple"
           helperText='This will open your camera app (on supported devices).'
         />
       </section>
@@ -71,7 +78,7 @@ function FileUploadPage() {
         <h2 className="text-2xl font-semibold dark:text-white mb-4">File Upload with Helper Text</h2>
         <FileUpload
           onFilesChange={handleFilesChange}
-          mode="textinput"
+          mode="simple"
           maxFiles={2}
           acceptedFiles="image/*"
           inputLabel="Upload image(s)"

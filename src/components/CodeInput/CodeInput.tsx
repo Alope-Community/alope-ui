@@ -94,7 +94,7 @@ export const CodeInput: React.FC<CodeInputProps> = ({
                         onKeyDown={e => handleKeyDown(e, index)}
                         onFocus={() => handleFocus(index)}
                         className={cn(
-                            'text-center border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary border-secondary dark:text-white dark:placeholder:text-white',
+                            'text-center border rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-500-dark dark:focus:border-primary-500-dark border-secondary-500 dark:border-secondary-500-dark dark:text-white dark:placeholder:text-white',
                             inputSizeClasses,
                             {
                                 'bg-secondary/40 cursor-not-allowed ': disabled

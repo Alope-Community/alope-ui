@@ -8,12 +8,12 @@ const SpinnerSize = {
 }
 
 const SpinnerColor = {
-    primary: 'border-primary dark:border-primary-dark',
-    error: 'border-error dark:border-error-dark',
-    warning: 'border-warning dark:border-warning-dark',
-    success: 'border-success dark:border-success-dark',
-    info: 'border-info dark:border-info-dark',
-    secondary: 'border-secondary dark:border-secondary-dark'
+    primary: 'border-primary-500 dark:border-primary-900-dark',
+    error: 'border-error-500 dark:border-error-900-dark',
+    warning: 'border-warning-500 dark:border-warning-900-dark',
+    success: 'border-success-500 dark:border-success-900-dark',
+    info: 'border-info-500 dark:border-info-900-dark',
+    secondary: 'border-secondary-500 dark:border-secondary-900-dark'
 }
 
 export type SpinnerProps = {

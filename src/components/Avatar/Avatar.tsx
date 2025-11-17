@@ -19,12 +19,12 @@ const AvatarShape = {
 }
 
 const AvatarFallbackColor = {
-  primary: 'bg-primary dark:bg-primary-dark text-white',
-  error: 'bg-error dark:bg-error-dark text-white',
-  warning: 'bg-warning dark:bg-warning-dark text-white',
-  success: 'bg-success dark:bg-success-dark text-white',
-  info: 'bg-info dark:bg-info-dark text-white',
-  secondary: 'bg-secondary dark:bg-secondary-dark text-white',
+  primary: 'bg-primary-500 dark:bg-primary-900-dark text-white',
+  error: 'bg-error-500 dark:bg-error-900-dark text-white',
+  warning: 'bg-warning-500 dark:bg-warning-900-dark text-white',
+  success: 'bg-success-500 dark:bg-success-900-dark text-white',
+  info: 'bg-info-500 dark:bg-info-900-dark text-white',
+  secondary: 'bg-secondary-500 dark:bg-secondary-900-dark text-white',
 }
 
 export type AvatarProps = {
@@ -60,7 +60,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   const AvatarVariantClass = AvatarVariant[variant]
   const AvatarShapeClass = AvatarShape[shape]
   const AvatarFallbackColorClass = AvatarFallbackColor[fallbackColor]
-  const RingClass = ring ? cn('ring-2 ring-offset-2', ringClassName || 'ring-primary dark:ring-primary-dark') : ''
+  const RingClass = ring ? cn('ring-2 ring-offset-2', ringClassName || 'ring-primary-500 dark:ring-primary-500-dark') : ''
 
   const initials = fallbackName
     ? fallbackName
@@ -108,7 +108,7 @@ export const Avatar: React.FC<AvatarProps> = ({
         <span
           className={cn(
             'absolute bottom-0 right-0 w-3 h-3 rounded-full border-2',
-            status === 'online' ? 'bg-success' : 'bg-secondary-700 dark:bg-secondary-dark-700',
+            status === 'online' ? 'bg-success-500 dark:bg-success-500-dark' : 'bg-secondary-500 dark:bg-secondary-500-dark',
             'border-white'
           )}
         />

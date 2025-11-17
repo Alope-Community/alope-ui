@@ -114,7 +114,7 @@ export const Pagination: React.FC<PaginationProps>  = ({
 
     const PrevButton = asLink ? (
         <a
-            className={cn("px-3 py-1 rounded-lg border dark:border-gray-600 dark:text-white dark:hover:bg-gray-700", sizeClass, currentPage === 1 ? disabledClass : 'hover:cursor-pointer')}
+            className={cn("px-3 py-1 rounded-lg border border-secondary-500 dark:border-secondary-500-dark dark:text-white dark:hover:bg-secondary-700-dark", sizeClass, currentPage === 1 ? disabledClass : 'hover:cursor-pointer')}
             href={currentPage > 1 ? getHref(currentPage - 1) : undefined}
             onClick={(e) => {
                 if (currentPage === 1) {
@@ -130,7 +130,7 @@ export const Pagination: React.FC<PaginationProps>  = ({
         </a>
     ) : (
         <button
-            className={cn("px-3 py-1 rounded-lg border dark:border-gray-600 dark:text-white dark:hover:bg-gray-700", sizeClass, currentPage === 1 ? disabledClass : 'hover:cursor-pointer')}
+            className={cn("px-3 py-1 rounded-lg border border-secondary-500 dark:border-secondary-500-dark dark:text-white dark:hover:bg-secondary-700-dark", sizeClass, currentPage === 1 ? disabledClass : 'hover:cursor-pointer')}
             onClick={() => goToPage(currentPage - 1)}
             disabled={currentPage === 1}
         >
@@ -140,7 +140,7 @@ export const Pagination: React.FC<PaginationProps>  = ({
 
     const NextButton = asLink ? (
         <a
-            className={cn("px-3 py-1 rounded-lg border dark:border-gray-600 dark:text-white dark:hover:bg-gray-700", sizeClass, currentPage === totalPages ? disabledClass : 'hover:cursor-pointer')}
+            className={cn("px-3 py-1 rounded-lg border border-secondary-500 dark:border-secondary-500-dark dark:text-white dark:hover:bg-secondary-700-dark", sizeClass, currentPage === totalPages ? disabledClass : 'hover:cursor-pointer')}
             href={currentPage < totalPages ? getHref(currentPage + 1) : undefined}
             onClick={(e) => {
                 if (currentPage === totalPages) {
@@ -156,7 +156,7 @@ export const Pagination: React.FC<PaginationProps>  = ({
         </a>
     ) : (
         <button
-            className={cn("px-3 py-1 rounded-lg border dark:border-gray-600 dark:text-white dark:hover:bg-gray-700", sizeClass, currentPage === totalPages ? disabledClass : 'hover:cursor-pointer')}
+            className={cn("px-3 py-1 rounded-lg border border-secondary-500 dark:border-secondary-500-dark dark:text-white dark:hover:bg-secondary-700-dark", sizeClass, currentPage === totalPages ? disabledClass : 'hover:cursor-pointer')}
             onClick={() => goToPage(currentPage + 1)}
             disabled={currentPage === totalPages}
         >
@@ -186,7 +186,7 @@ export const Pagination: React.FC<PaginationProps>  = ({
                 {paginationRange.map((page, idx) => {
                     if (page === "...") {
                         return (
-                            <span key={idx} className={cn("px-3 py-1 text-gray-500 dark:text-gray-400", sizeClass)}>
+                            <span key={idx} className={cn("px-3 py-1 text-secondary-500 dark:text-secondary-400-dark", sizeClass)}>
                                 ...
                             </span>
                         );
@@ -195,7 +195,7 @@ export const Pagination: React.FC<PaginationProps>  = ({
                     const isActive = page === currentPage;
                     const baseClasses = cn(
                         "px-3 py-1 rounded-lg border",
-                        isActive ? "bg-primary text-white dark:bg-primary-dark dark:border-primary-dark" : "hover:bg-secondary hover:cursor-pointer dark:border-gray-600 dark:text-white dark:hover:bg-gray-700",
+                        isActive ? "bg-primary-500 text-white dark:bg-primary-900-dark border-primary-500" : "hover:bg-secondary hover:cursor-pointer border-secondary-500 dark:border-secondary-500-dark dark:text-white dark:hover:bg-secondary-700-dark",
                         sizeClass,
                         isActive && "pointer-events-none"
                     );

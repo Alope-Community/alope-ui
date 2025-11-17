@@ -45,12 +45,12 @@ const SliderPage = () => {
                     Colors
                 </h2>
                 <div className="flex flex-col gap-4">
-                    <Slider color="primary" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
-                    <Slider color="secondary" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
-                    <Slider color="info" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
-                    <Slider color="success" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
-                    <Slider color="warning" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
-                    <Slider color="error" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
+                    <Slider variant="primary" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
+                    <Slider variant="secondary" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
+                    <Slider variant="info" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
+                    <Slider variant="success" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
+                    <Slider variant="warning" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
+                    <Slider variant="error" value={sliderValue} onChange={(e) => setSliderValue(Number(e.target.value))} />
                 </div>
             </section>
 

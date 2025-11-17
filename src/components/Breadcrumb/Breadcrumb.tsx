@@ -27,13 +27,13 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }) => {
   return (
     <nav aria-label="breadcrumb">
-      <ol className="flex flex-wrap gap-2 text-gray-600">
+      <ol className="flex flex-wrap gap-2 text-secondary-500 dark:text-secondary-300-dark">
         {data.map((item, index) => {
           const isLast = item.path === null || index === data.length - 1;
           return (
             <li key={index} className="flex items-center">
               {!isLast && item.path ? (
-                <Link to={item.path} className={cn("hover:underline text-primary dark:text-primary-dark-30 flex items-center text-sm", labelClassName, linkClassName)}>
+                <Link to={item.path} className={cn("hover:underline text-primary-500 dark:text-primary-300-dark flex items-center text-sm", labelClassName, linkClassName)}>
                   {item.icon && <span className="mr-1">{item.icon}</span>}
                   {item.label}
                 </Link>

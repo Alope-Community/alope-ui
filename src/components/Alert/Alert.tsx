@@ -7,21 +7,21 @@ const AlertVariants = {
 }
 
 const IconColors = {
-    success: 'fill-success-700 dark:fill-success',
-    info: 'fill-info-700 dark:fill-info',
-    error: 'fill-error-700 dark:fill-error',
-    warning: 'fill-warning-700 dark:fill-warning',
-    primary: 'fill-primary-700 dark:fill-primary',
-    secondary: 'dark:fill-secondary',
+    success: 'fill-success-700 dark:fill-success-100-dark',
+    info: 'fill-info-700 dark:fill-info-100-dark',
+    error: 'fill-error-700 dark:fill-error-100-dark',
+    warning: 'fill-warning-700 dark:fill-warning-100-dark',
+    primary: 'fill-primary-700 dark:fill-primary-100-dark',
+    secondary: 'dark:fill-secondary-100-dark',
 }
 
 const AlertType = {
-    success: 'bg-success-30/50 outline-success-700 text-success-700 dark:bg-success-dark-30/20 dark:text-success',
-    info: 'bg-info-30/50 outline-info-700 text-info-700 dark:bg-info-dark-30/20 dark:text-info',
-    warning: 'bg-warning-30/50 outline-warning-700 text-warning-700 dark:bg-warning-dark-30/20 dark:text-warning',
-    error: 'bg-error-30/50 outline-error-700 text-error-700 dark:bg-error-dark-30/20 dark:text-error',
-    primary: 'bg-primary-30/50 outline-primary-700 text-primary-700 dark:bg-primary-dark-30/20 dark:text-primary',
-    secondary: 'bg-secondary-30/50 outline-secondary-700 dark:bg-secondary-dark-30/20 dark:text-secondary',
+    success: 'bg-success-100 outline-success-700 text-success-700 dark:bg-success-900-dark dark:text-success-100-dark dark:outline-success-500-dark',
+    info: 'bg-info-100 outline-info-700 text-info-700 dark:bg-info-900-dark dark:text-info-100-dark dark:outline-info-500-dark',
+    warning: 'bg-warning-100 outline-warning-700 text-warning-700 dark:bg-warning-900-dark dark:text-warning-100-dark dark:outline-warning-500-dark',
+    error: 'bg-error-100 outline-error-700 text-error-700 dark:bg-error-900-dark dark:text-error-100-dark dark:outline-error-500-dark',
+    primary: 'bg-primary-100 outline-primary-700 text-primary-700 dark:bg-primary-900-dark dark:text-primary-100-dark dark:outline-primary-500-dark',
+    secondary: 'bg-secondary-100 outline-secondary-700 text-secondary-700 dark:bg-secondary-900-dark dark:text-secondary-100-dark dark:outline-secondary-500-dark',
 }
 
 export type AlertProps = {

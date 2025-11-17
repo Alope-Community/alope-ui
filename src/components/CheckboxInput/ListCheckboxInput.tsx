@@ -25,24 +25,146 @@ const CheckboxSizes = {
 };
 
 const CheckboxVariants = {
-    solid: {
-        label: 'border-transparent bg-primary/90 text-white hover:bg-primary-700 dark:bg-primary-dark dark:hover:bg-primary-dark-700',
-        checked: 'bg-primary-700 hover:bg-primary-700 dark:bg-primary-dark-700',
-        checkbox: '',
-        checkedCheckbox: 'border-white bg-primary dark:bg-primary',
+    primary: {
+        solid: {
+            label: 'border-transparent bg-primary-500 text-white hover:bg-primary-600 dark:bg-primary-500-dark dark:hover:bg-primary-400-dark',
+            checked: 'bg-primary-700 dark:bg-primary-600-dark hover:bg-primary-700 dark:hover:bg-primary-600-dark',
+            checkbox: '',
+            checkedCheckbox: 'border-white bg-primary-700 dark:bg-primary-700-dark',
+        },
+        subtle: {
+            label: 'border-none bg-primary-50 hover:bg-primary-100 hover:text-primary-700 dark:bg-secondary-900-dark dark:hover:bg-secondary-800-dark dark:hover:text-primary-200-dark dark:text-primary-200-dark',
+            checked: 'bg-primary-200 hover:bg-primary-200 text-primary-700 dark:bg-primary-100-dark dark:text-primary-700-dark dark:hover:text-primary-700-dark dark:hover:bg-primary-100-dark',
+            checkbox: '',
+            checkedCheckbox: 'bg-primary-700 dark:bg-primary-500 border-none',
+        },
+        outline: {
+            label: `
+            border border-primary-500 text-primary-500 
+            hover:bg-primary-50 hover:border-primary-600 hover:text-primary-600
+            dark:border-primary-400-dark dark:text-primary-400-dark
+            dark:hover:bg-secondary-800-dark dark:hover:border-primary-300-dark dark:hover:text-primary-300-dark
+        `,
+            checked: 'border-primary-700 bg-primary-100 hover:bg-primary-100 text-primary-700 dark:border-primary-300 dark:bg-primary-900-dark dark:hover:bg-primary-900-dark dark:text-primary-100',
+            checkbox: 'border-primary-700 dark:border-primary-400',
+            checkedCheckbox: 'bg-primary-700 border-primary-700 dark:bg-primary-300 dark:border-primary-300',
+        },
     },
-    subtle: {
-        label: 'border-slate-200 border-none bg-secondary/30 hover:bg-primary/30 hover:text-primary-700 dark:text-white dark:bg-primary-dark/50 hover:dark:text-primary-30',
-        checked: 'bg-primary/30 text-primary-700 border-primary/30 dark:border-none hover:bg-primary-700/15 dark:bg-primary/30 dark:text-white hover:dark:text-white dark:hover:bg-primary-dark/50',
-        checkbox: 'dark:bg-primary dark:border-none',
-        checkedCheckbox: 'border-primary-700 bg-primary-700 dark:bg-primary',
+
+    error: {
+        solid: {
+            label: 'border-transparent bg-error-500 text-white hover:bg-error-600 dark:bg-error-500-dark dark:hover:bg-error-400-dark',
+            checked: 'bg-error-700 dark:bg-error-600-dark hover:bg-error-700 dark:hover:bg-error-600-dark',
+            checkbox: '',
+            checkedCheckbox: 'border-white bg-error-700 dark:bg-error-700-dark',
+        },
+        subtle: {
+            label: 'border-none bg-error-50 hover:bg-error-100 hover:text-error-700 dark:bg-secondary-900-dark dark:hover:bg-secondary-800-dark dark:hover:text-error-200-dark dark:text-error-200-dark',
+            checked: 'bg-error-200 hover:bg-error-200 text-error-700 dark:bg-error-100-dark dark:text-error-700-dark dark:hover:text-error-700-dark dark:hover:bg-error-100-dark',
+            checkbox: '',
+            checkedCheckbox: 'bg-error-700 dark:bg-error-500 border-none',
+        },
+        outline: {
+            label: `
+            border border-error-500 text-error-500 
+            hover:bg-error-50 hover:border-error-600 hover:text-error-600
+            dark:border-error-400-dark dark:text-error-400-dark
+            dark:hover:bg-secondary-800-dark dark:hover:border-error-300-dark dark:hover:text-error-300-dark
+        `,
+            checked: 'border-error-700 bg-error-100 hover:bg-error-100 text-error-700 dark:border-error-300 dark:bg-error-900-dark dark:hover:bg-error-900-dark dark:text-error-100',
+            checkbox: 'border-error-700 dark:border-error-400',
+            checkedCheckbox: 'bg-error-700 border-error-700 dark:bg-error-300 dark:border-error-300',
+        },
     },
-    outline: {
-        label: 'border-secondary-700 bg-transparent hover:bg-primary/30 hover:text-primary-700 dark:hover:text-white hover:border-primary-700 dark:text-white dark:border-secondary-dark dark:hover:bg-primary-dark/20',
-        checked: 'border-primary bg-primary/30 text-primary-700 dark:border-primary-700 dark:bg-primary-dark/20',
-        checkbox: 'dark:border-secondary-dark',
-        checkedCheckbox: 'border-primary bg-primary-700 dark:border-primary-700 dark:border-primary dark:bg-primary',
+
+    success: {
+        solid: {
+            label: 'border-transparent bg-success-500 text-white hover:bg-success-600 dark:bg-success-500-dark dark:hover:bg-success-400-dark',
+            checked: 'bg-success-700 dark:bg-success-600-dark hover:bg-success-700 dark:hover:bg-success-600-dark',
+            checkbox: '',
+            checkedCheckbox: 'border-white bg-success-700 dark:bg-success-700-dark',
+        },
+        subtle: {
+            label: 'border-none bg-success-50 hover:bg-success-100 hover:text-success-700 dark:bg-secondary-900-dark dark:hover:bg-secondary-800-dark dark:hover:text-success-200-dark dark:text-success-200-dark',
+            checked: 'bg-success-200 hover:bg-success-200 text-success-700 dark:bg-success-100-dark dark:text-success-700-dark dark:hover:text-success-700-dark dark:hover:bg-success-100-dark',
+            checkbox: '',
+            checkedCheckbox: 'bg-success-700 dark:bg-success-500 border-none',
+        },
+        outline: {
+            label: `
+            border border-success-500 text-success-500 
+            hover:bg-success-50 hover:border-success-600 hover:text-success-600
+            dark:border-success-400-dark dark:text-success-400-dark
+            dark:hover:bg-secondary-800-dark dark:hover:border-success-300-dark dark:hover:text-success-300-dark
+        `,
+            checked: 'border-success-700 bg-success-100 hover:bg-success-100 text-success-700 dark:border-success-300 dark:bg-success-900-dark dark:hover:bg-success-900-dark dark:text-success-100',
+            checkbox: 'border-success-700 dark:border-success-400',
+            checkedCheckbox: 'bg-success-700 border-success-700 dark:bg-success-300 dark:border-success-300',
+        },
     },
+
+    info: {
+        solid: {
+            label: 'border-transparent bg-info-500 text-white hover:bg-info-600 dark:bg-info-500-dark dark:hover:bg-info-400-dark',
+            checked: 'bg-info-700 dark:bg-info-600-dark hover:bg-info-700 dark:hover:bg-info-600-dark',
+            checkbox: '',
+            checkedCheckbox: 'border-white bg-info-700 dark:bg-info-700-dark',
+        },
+        subtle: {
+            label: 'border-none bg-info-50 hover:bg-info-100 hover:text-info-700 dark:bg-secondary-900-dark dark:hover:bg-secondary-800-dark dark:hover:text-info-200-dark dark:text-info-200-dark',
+            checked: 'bg-info-200 hover:bg-info-200 text-info-700 dark:bg-info-100-dark dark:text-info-700-dark dark:hover:text-info-700-dark dark:hover:bg-info-100-dark',
+            checkbox: '',
+            checkedCheckbox: 'bg-info-700 dark:bg-info-500 border-none',
+        },
+        outline: {
+            label: `
+            border border-info-500 text-info-500 
+            hover:bg-info-50 hover:border-info-600 hover:text-info-600
+            dark:border-info-400-dark dark:text-info-400-dark
+            dark:hover:bg-secondary-800-dark dark:hover:border-info-300-dark dark:hover:text-info-300-dark
+        `,
+            checked: 'border-info-700 bg-info-100 hover:bg-info-100 text-info-700 dark:border-info-300 dark:bg-info-900-dark dark:hover:bg-info-900-dark dark:text-info-100',
+            checkbox: 'border-info-700 dark:border-info-400',
+            checkedCheckbox: 'bg-info-700 border-info-700 dark:bg-info-300 dark:border-info-300',
+        },
+    },
+
+    warning: {
+        solid: {
+            label: 'border-transparent bg-warning-500 text-white hover:bg-warning-600 dark:bg-warning-500-dark dark:hover:bg-warning-400-dark',
+            checked: 'bg-warning-700 dark:bg-warning-600-dark hover:bg-warning-700 dark:hover:bg-warning-600-dark',
+            checkbox: '',
+            checkedCheckbox: 'border-white bg-warning-700 dark:bg-warning-700-dark',
+        },
+        subtle: {
+            label: 'border-none bg-warning-50 hover:bg-warning-100 hover:text-warning-700 dark:bg-secondary-900-dark dark:hover:bg-secondary-800-dark dark:hover:text-warning-200-dark dark:text-warning-200-dark',
+            checked: 'bg-warning-200 hover:bg-warning-200 text-warning-700 dark:bg-warning-100-dark dark:text-warning-700-dark dark:hover:text-warning-700-dark dark:hover:bg-warning-100-dark',
+            checkbox: '',
+            checkedCheckbox: 'bg-warning-700 dark:bg-warning-500 border-none',
+        },
+        outline: {
+            label: `
+            border border-warning-500 text-warning-500 
+            hover:bg-warning-50 hover:border-warning-600 hover:text-warning-600
+            dark:border-warning-400-dark dark:text-warning-400-dark
+            dark:hover:bg-secondary-800-dark dark:hover:border-warning-300-dark dark:hover:text-warning-300-dark
+        `,
+            checked: 'border-warning-700 bg-warning-100 hover:bg-warning-100 text-warning-700 dark:border-warning-300 dark:bg-warning-900-dark dark:hover:bg-warning-900-dark dark:text-warning-100',
+            checkbox: 'border-warning-700 dark:border-warning-400',
+            checkedCheckbox: 'bg-warning-700 border-warning-700 dark:bg-warning-300 dark:border-warning-300',
+        },
+    },
+
+}
+
+export type VariantType = keyof typeof CheckboxVariants
+export type Variant = keyof typeof CheckboxVariants[VariantType]
+
+export const getVariantClasses = (
+    variant: Variant,
+    variantType: VariantType
+) => {
+    return CheckboxVariants[variantType][variant] || ''
 }
 
 export type ListCheckBoxInputProps = {
@@ -53,7 +175,8 @@ export type ListCheckBoxInputProps = {
     inputLabelClassName?: (option: CheckboxOptionType, isChecked: boolean) => string;
     inputGroupClassName?: (option: CheckboxOptionType, isChecked: boolean) => string;
     inputCheckboxClassName?: (option: CheckboxOptionType, isChecked: boolean) => string;
-    variant?: keyof typeof CheckboxVariants;
+    variant?: Variant;
+    variantType?: VariantType;
     checkboxSize?: keyof typeof CheckboxSizes;
 } & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>;
 
@@ -66,13 +189,14 @@ export const ListCheckboxInput: React.FC<ListCheckBoxInputProps> = ({
     inputGroupClassName,
     inputLabelClassName,
     inputCheckboxClassName,
-    variant = 'subtle',
+    variant = 'solid',
+    variantType = 'primary',
     checkboxSize = 'md',
     disabled,
     ...props
 }) => {
     const sizeClasses = CheckboxSizes[checkboxSize];
-    const variantClasses = CheckboxVariants[variant];
+    const variantClasses = getVariantClasses(variant, variantType);
 
     return (
         <div className={cn('flex flex-wrap gap-3', containerClassName)}>

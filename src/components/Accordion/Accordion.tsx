@@ -61,7 +61,7 @@ export const Accordion: React.FC<AccordionProps> = ({
         return (
           <div
             key={i}
-            className={cn("border border-gray-300 dark:border-white/20 rounded-md overflow-hidden", labelContainerClassName)}
+            className={cn("border border-secondary-200 dark:border-secondary-600-dark rounded-md overflow-hidden", labelContainerClassName)}
           >
             <button
               onClick={() => toggle(i)}
@@ -88,7 +88,7 @@ export const Accordion: React.FC<AccordionProps> = ({
             </button>
             <div
               className={cn(
-                "overflow-hidden bg-gray-50 px-4 transition-all dark:bg-gray-700 dark:text-white",
+                "overflow-hidden bg-secondary-100 px-4 transition-all dark:bg-secondary-700-dark dark:text-white",
                 isOpen ? "max-h-40 py-4" : "max-h-0",
                 descriptionClassName
               )}

@@ -1,6 +1,14 @@
 import React from 'react';
 import { cn } from 'clsx-for-tailwind';
 
+const CheckboxColors = {
+  primary: 'bg-primary-500 border-primary-500 dark:bg-primary-500-dark dark:border-primary-500-dark',
+  error: 'bg-error-500 border-error-500 dark:bg-error-500-dark dark:border-error-500-dark',
+  success: 'bg-success-500 border-success-500 dark:bg-success-500-dark dark:border-success-500-dark',
+  warning: 'bg-warning-500 border-warning-500 dark:bg-warning-500-dark dark:border-warning-500-dark',
+  info: 'bg-info-500 border-info-500 dark:bg-info-500-dark dark:border-info-500-dark',
+};
+
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode;
   indeterminate?: boolean;
@@ -8,6 +16,7 @@ export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElemen
   labelClassName?: string;
   description?: string;
   descriptionClassName?: string;
+  variant?: keyof typeof CheckboxColors;
 }
 
 export const CheckboxInput = React.forwardRef<HTMLInputElement, CheckboxProps>(
@@ -26,6 +35,7 @@ export const CheckboxInput = React.forwardRef<HTMLInputElement, CheckboxProps>(
       checked,
       defaultChecked,
       onChange,
+      variant = 'primary',
       ...props
     },
     ref
@@ -74,9 +84,9 @@ export const CheckboxInput = React.forwardRef<HTMLInputElement, CheckboxProps>(
           />
           <span
             className={cn(
-              'w-5 h-5 rounded border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-colors duration-200',
+              'w-5 h-5 rounded border border-secondary-300 dark:border-secondary-600 flex items-center justify-center transition-colors duration-200',
               {
-                'bg-primary border-primary dark:bg-primary-dark dark:border-primary-dark': isChecked || indeterminate,
+                [CheckboxColors[variant]]: isChecked || indeterminate,
               },
               checkboxClassName
             )}
@@ -110,7 +120,7 @@ export const CheckboxInput = React.forwardRef<HTMLInputElement, CheckboxProps>(
           {children}
           {label && <span className={cn('font-medium text-sm dark:text-white', labelClassName)}>{label}</span>}
           {description && (
-            <span className={cn('text-secondary-700 text-sm dark:text-secondary-dark', descriptionClassName)}>{description}</span>
+            <span className={cn('text-secondary-700 text-sm dark:text-secondary-700-dark', descriptionClassName)}>{description}</span>
           )}
         </div>
       </label>

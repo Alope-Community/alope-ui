@@ -12,7 +12,7 @@ const TooltipPage = () => {
             <div className="space-y-2">
                 <h2 className="text-xl font-semibold dark:text-white">Placements</h2>
                 <div className="flex flex-wrap gap-4">
-                    <Tooltip text='Top placement' placement='top'><Button>To</Button></Tooltip>
+                    <Tooltip text='Top placement' placement='top'><Button>Top</Button></Tooltip>
                     <Tooltip text='Bottom placement' placement='bottom'><Button>Bottom</Button></Tooltip>
                     <Tooltip text='Left placement' placement='left'><Button>Left</Button></Tooltip>
                     <Tooltip text='Right placement' placement='right'><Button>Right</Button></Tooltip>

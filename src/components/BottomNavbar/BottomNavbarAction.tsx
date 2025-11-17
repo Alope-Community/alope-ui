@@ -1,5 +1,6 @@
 import { cn } from "clsx-for-tailwind"
 import React from "react"
+import { BottomNavbarVariants, type Variant } from "./variants"
 
 export interface BottomNavbarActionProps {
   label?: React.ReactNode
@@ -8,6 +9,7 @@ export interface BottomNavbarActionProps {
   selectedValue?: string
   onChangeValue?: (value: string) => void
   labelClassName?: string
+  variant?: Variant
   className?: string
 }
 
@@ -18,27 +20,41 @@ export const BottomNavbarAction: React.FC<BottomNavbarActionProps> = ({
   selectedValue,
   onChangeValue,
   labelClassName,
+  variant = 'primary',
   className
 }) => {
   const isActive = value === selectedValue;
+
+  const variantClasses = BottomNavbarVariants[variant ?? "primary"];
 
   return (
     <button
       onClick={() => onChangeValue?.(value)}
       className={cn(
-        `inline-flex flex-1 flex-col items-center justify-center p-5 group`,
-        isActive ? 'bg-secondary-30-50 dark:bg-secondary/10' : 'hover:bg-secondary-30 dark:hover:bg-secondary/30',
+        `inline-flex flex-1 flex-col items-center justify-center p-4 group transition-all`,
+        isActive ? variantClasses.checked : variantClasses.label,
         className
       )}
     >
-      {icon}
-      <span className={cn(
-        `text-sm`,
-        isActive ? 'text-primary' : 'text-secondary-dark-700 dark:text-secondary-dark group-hover:text-secondary-700 dark:group-hover:text-white',
-        labelClassName
-      )}>
+      {/* ICON */}
+      <span
+        className={cn(
+          `text-xl transition-all`,
+          isActive ? variantClasses.checkedIcon : variantClasses.icon
+        )}
+      >
+        {icon}
+      </span>
+
+      {/* LABEL */}
+      <span
+        className={cn(
+          `text-xs mt-1 transition-all`,
+          labelClassName
+        )}
+      >
         {label}
       </span>
-    </button >
+    </button>
   )
 }

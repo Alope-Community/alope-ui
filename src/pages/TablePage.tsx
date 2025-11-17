@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Table, Button } from '../components';
+import { Table } from '../components';
 import type { Column } from '../components/Table/Table';
 import Container from './Container';
 
 export default function TablePage() {
-    const navigate = useNavigate();
-
     type Person = {
         id: number;
         name: string;
@@ -45,6 +42,24 @@ export default function TablePage() {
     return (
         <Container title='Table Component' description='A flexible and reusable table component with support for selection, sticky headers, custom rendering, and more.'>
 
+            {/* Variants */}
+            <section>
+                <h2 className="text-2xl font-semibold dark:text-white mb-4">Variants</h2>
+                <div className="space-y-6">
+                    {(['outline', 'solid'] as const).map(variant => (
+                        <div key={variant}>
+                            <h3 className="text-lg font-semibold dark:text-white mb-2">Variant: {variant}</h3>
+                            <Table
+                                variant={variant}
+                                columns={columns}
+                                data={data}
+                                striped
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
             {/* Size */}
             <section>
                 <h2 className="text-2xl font-semibold dark:text-white mb-4">Size</h2>
@@ -66,22 +81,7 @@ export default function TablePage() {
             <section>
                 <h2 className="text-2xl font-semibold dark:text-white mb-4">Striped Rows</h2>
                 <Table
-                    size="sm"
                     striped
-                    columns={columns}
-                    data={data}
-                />
-            </section>
-
-            {/* Stripe Color */}
-            <section>
-                <h2 className="text-2xl font-semibold dark:text-white mb-4">Stripe Color</h2>
-                <Table
-                    size="sm"
-                    striped
-                    stripeColor="bg-blue-300 dark:bg-info-dark-700"
-                    dataRowClassName='hover:bg-blue-500 hover:text-white dark:hover:bg-info-dark'
-                    headerClassName='bg-blue-500 text-white dark:bg-info-dark-700'
                     columns={columns}
                     data={data}
                 />
@@ -91,10 +91,9 @@ export default function TablePage() {
             <section>
                 <h2 className="text-2xl font-semibold dark:text-white mb-4">Sticky Header</h2>
                 <Table
-                    size="sm"
                     stickyHeader
                     columns={columns}
-                    data={Array.from({ length: 3 }, () => data).flat()}
+                    data={Array.from({ length: 10 }, (_, i) => ({ ...data[i % 5], id: i }))}
                 />
             </section>
 
@@ -102,51 +101,29 @@ export default function TablePage() {
             <section>
                 <h2 className="text-2xl font-semibold dark:text-white mb-4">Selectable Rows</h2>
                 <Table
-                    size="sm"
                     striped
                     selectable
-                    stickyHeader
                     columns={columns}
                     data={data}
                     selectedRows={selectedPeople}
                     onSelectionChange={setSelectedPeople}
-                    headerClassName="bg-primary text-white dark:bg-primary-dark-700"
-                    dataRowClassName="hover:bg-primary-700 hover:text-white hover:dark:bg-primary-dark"
-                    stripeColor="bg-primary/75 text-white dark:bg-primary-dark-700"
                 />
                 <div className="mt-4">
                     <h3 className="text-lg font-bold dark:text-white">Selected Users</h3>
-                    <pre className="mt-1 p-3 bg-gray-100 dark:bg-secondary-dark-700 rounded text-sm text-gray-700 dark:text-white">
+                    <pre className="mt-1 p-3 bg-gray-100 dark:bg-secondary-800 rounded text-sm text-gray-700 dark:text-white">
                         {JSON.stringify(selectedPeople.map(p => p.name), null, 2)}
                     </pre>
                 </div>
-            </section>
-
-            {/* Bordered Example */}
-            <section>
-                <h2 className="text-2xl font-semibold dark:text-white mb-4">Bordered Table</h2>
-                <Table
-                    size="sm"
-                    striped
-                    stickyHeader
-                    stripeColor="bg-primary/75 text-white dark:bg-primary-dark-700"
-                    columns={columns}
-                    data={data}
-                    headerClassName="bg-primary text-white outline outline-white dark:bg-primary-700"
-                    dataRowClassName="hover:bg-primary-700 hover:text-white"
-                    dataColumnClassName="outline-primary outline"
-                />
             </section>
 
             {/* Custom Empty State */}
             <section>
                 <h2 className="text-2xl font-semibold dark:text-white mb-4">Empty Data</h2>
                 <Table
-                    size="sm"
                     columns={columns}
                     data={[]}
                     customEmptyData={
-                        <div className="text-center text-gray-500 py-6 dark:text-white">
+                        <div className="text-center text-secondary-500 py-6 dark:text-secondary-400">
                             Huft, No Data. 😓
                         </div>
                     }
@@ -157,12 +134,10 @@ export default function TablePage() {
             <section>
                 <h2 className="text-2xl font-semibold dark:text-white mb-4">Table Caption</h2>
                 <Table
-                    size="sm"
                     columns={columns}
                     data={data}
                     caption="Active Users"
                     captionPosition="top"
-                    captionClassName="text-primary"
                 />
             </section>
 

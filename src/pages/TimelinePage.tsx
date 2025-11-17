@@ -16,7 +16,7 @@ const TimelinePage = () => {
           <Timeline.Item
             title="User signs up"
             time="2023-01-15 10:00 AM"
-            dotColor="success"
+            dotColor="primary"
           >
             A new user account was created.
           </Timeline.Item>

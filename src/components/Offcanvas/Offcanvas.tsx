@@ -42,7 +42,7 @@ export const Offcanvas: React.FC<OffcanvasProps> = ({
       ? 'translate-x-full'
       : '-translate-x-full';
 
-  const baseClasses = 'fixed top-0 h-full bg-white dark:bg-gray-700 z-50 shadow-xl transform transition-transform duration-300 ease-in-out';
+  const baseClasses = 'fixed top-0 h-full bg-white dark:bg-secondary-800-dark z-50 shadow-xl transform transition-transform duration-300 ease-in-out';
 
   const offcanvasClassName = cn(
     baseClasses,
@@ -62,7 +62,7 @@ export const Offcanvas: React.FC<OffcanvasProps> = ({
       )}
 
       <div className={offcanvasClassName}>
-        <div className="flex justify-between items-center p-4 border-b border-secondary dark:border-secondary-dark">
+        <div className="flex justify-between items-center p-4 border-b border-secondary-300 dark:border-secondary-700-dark">
           <h5 className={cn("text-lg font-semibold dark:text-white", titleClassName)}>
             {title}
           </h5>

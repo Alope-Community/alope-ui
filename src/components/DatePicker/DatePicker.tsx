@@ -4,39 +4,49 @@ import { cn } from 'clsx-for-tailwind';
 
 const DatePickerColors = {
     success: {
-        input: 'focus:ring-success focus:border-success',
-        outline: 'outline-success dark:outline-success-dark',
-        header: 'bg-success dark:bg-success-dark',
-        icon: 'hover:bg-success-700 dark:hover:bg-success-dark-700',
-        day: 'bg-success dark:bg-success-dark',
+        input: 'focus:ring-success-500 focus:border-success-500',
+        outline: 'outline-success-500 dark:outline-success-900-dark',
+        header: 'bg-success-500 dark:bg-success-900-dark',
+        icon: 'hover:bg-success-600 dark:hover:bg-success-700-dark',
+        day: 'hover:bg-success-100 dark:hover:bg-success-300-dark',
+        selectedDay: 'bg-success-500 dark:bg-success-900-dark hover:bg-success-500 dark:hover:bg-success-900-dark',
+        yearInput: 'focus:border-success-900 dark:focus:border-success-500-dark'
     },
     info: {
-        input: 'focus:ring-info focus:border-info',
-        outline: 'outline-info dark:outline-info-dark',
-        header: 'bg-info dark:bg-info-dark',
-        icon: 'hover:bg-info-700 dark:hover:bg-info-dark-700',
-        day: 'bg-info dark:bg-info-dark',
+        input: 'focus:ring-info-500 focus:border-info-500',
+        outline: 'outline-info-500 dark:outline-info-900-dark',
+        header: 'bg-info-500 dark:bg-info-900-dark',
+        icon: 'hover:bg-info-600 dark:hover:bg-info-700-dark',
+        day: 'hover:bg-info-100 dark:hover:bg-info-300-dark',
+        selectedDay: 'bg-info-500 dark:bg-info-900-dark hover:bg-info-500 dark:hover:bg-info-900-dark',
+        yearInput: 'focus:border-info-900 dark:focus:border-info-500-dark'
     },
     error: {
-        input: 'focus:ring-error focus:border-error',
-        outline: 'outline-error dark:outline-error-dark',
-        header: 'bg-error dark:bg-error-dark',
-        icon: 'hover:bg-error-700 dark:hover:bg-error-dark-700',
-        day: 'bg-error dark:bg-error-dark',
+        input: 'focus:ring-error-500 focus:border-error-500',
+        outline: 'outline-error-500 dark:outline-error-900-dark',
+        header: 'bg-error-500 dark:bg-error-900-dark',
+        icon: 'hover:bg-error-600 dark:hover:bg-error-700-dark',
+        day: 'hover:bg-error-100 dark:hover:bg-error-300-dark',
+        selectedDay: 'bg-error-500 dark:bg-error-900-dark hover:bg-error-500 dark:hover:bg-error-900-dark',
+        yearInput: 'focus:border-error-900 dark:focus:border-error-500-dark'
     },
     warning: {
-        input: 'focus:ring-warning focus:border-warning',
-        outline: 'outline-warning dark:outline-warning-dark',
-        header: 'bg-warning dark:bg-warning-dark',
-        icon: 'hover:bg-warning-700 dark:hover:bg-warning-dark-700',
-        day: 'bg-warning dark:bg-warning-dark',
+        input: 'focus:ring-warning-500 focus:border-warning-500',
+        outline: 'outline-warning-500 dark:outline-warning-900-dark',
+        header: 'bg-warning-500 dark:bg-warning-900-dark',
+        icon: 'hover:bg-warning-600 dark:hover:bg-warning-700-dark',
+        day: 'hover:bg-warning-100 dark:hover:bg-warning-300-dark',
+        selectedDay: 'bg-warning-500 dark:bg-warning-900-dark hover:bg-warning-500 dark:hover:bg-warning-900-dark',
+        yearInput: 'focus:border-warning-900 dark:focus:border-warning-500-dark'
     },
-    default: {
-        input: '',
-        outline: '',
-        header: '',
-        icon: '',
-        day: '',
+    primary: {
+        input: 'focus:ring-primary-500 focus:border-primary-500',
+        outline: 'outline-primary-500 dark:outline-primary-900-dark',
+        header: 'bg-primary-500 dark:bg-primary-900-dark',
+        icon: 'hover:bg-primary-600 dark:hover:bg-primary-700-dark',
+        day: 'hover:bg-primary-100 dark:hover:bg-primary-300-dark',
+        selectedDay: 'bg-primary-500 dark:bg-primary-900-dark hover:bg-primary-500 dark:hover:bg-primary-900-dark',
+        yearInput: 'focus:border-primary-900 dark:focus:border-primary-500-dark'
     },
 }
 
@@ -52,7 +62,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     label,
     id,
     name,
-    color = 'default',
+    color = 'primary',
     labelClassName,
     selectedDate: initialSelectedDate,
     onDateChange,
@@ -73,6 +83,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
 
     const inputClasess = DatePickerColors[color].input
     const dayClasess = DatePickerColors[color].day
+    const selectedDayClasess = DatePickerColors[color].selectedDay
+    const yearInputClasess = DatePickerColors[color].yearInput
     const headerClasess = DatePickerColors[color].header
     const iconClasess = DatePickerColors[color].icon
     const outlineClasess = DatePickerColors[color].outline
@@ -151,10 +163,11 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 <div
                     key={i}
                     className={cn(
-                        `px-4 py-2 flex items-center justify-center cursor-pointer rounded-md text-sm font-medium hover:bg-secondary dark:hover:bg-secondary-dark`,
+                        `px-4 py-2 flex items-center justify-center cursor-pointer rounded-md text-sm font-medium hover:bg-secondary-300 dark:hover:bg-secondary-500-dark`,
+                        dayClasess,
                         {
-                            'bg-primary dark:bg-primary-dark text-white': isSelected,
-                            [dayClasess]: isSelected,
+                            'text-white': isSelected,
+                            [selectedDayClasess]: isSelected,
                         },
                     )}
                     onClick={() => handleDateChange(date)}
@@ -187,7 +200,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 onClick={() => setIsOpen(!isOpen)}
                 placeholder="Select a date"
                 className={cn(
-                    "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:placeholder:text-white dark:text-white",
+                    "w-full px-3 py-2 border border-secondary-500 rounded-md shadow-sm focus:outline-none sm:text-sm dark:placeholder:text-white dark:text-white",
                     inputClasess,
                 )}
             />
@@ -227,6 +240,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                             <div className="w-20">
                                 <TextInput
                                     type='number'
+                                    inputClassName={cn('border-white dark:border-white', yearInputClasess)}
                                     value={currentYear}
                                     onChange={e => setCurrentYear(Number(e.target.value))}
                                 />

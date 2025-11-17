@@ -6,6 +6,7 @@ export type TextInputProps = {
     error?: string;
     labelClassName?: string;
     errorClassName?: string;
+    inputClassName?: string;
 } & InputHTMLAttributes<HTMLInputElement>
 
 export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
@@ -15,6 +16,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         name,
         error,
         labelClassName,
+        inputClassName,
         errorClassName,
         ...props
     }, ref) => {
@@ -25,11 +27,12 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
                     ref={ref}
                     id={id || name}
                     name={name}
-                    className={`block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm dark:text-white dark:placeholder:text-white ${error ? 'border-error dark:border-error-dark' : 'border-secondary dark:border-secondary-dark'
-                        } ${props.disabled ? 'bg-secondary/30 cursor-not-allowed' : ''}`}
+                    className={cn(`block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm placeholder:text-secondary-400 dark:text-white dark:placeholder:text-secondary-300-dark`,
+                        error ? 'border-error-500 dark:border-error-500-dark' : 'border-secondary-500 dark:border-secondary-500-dark',
+                        props.disabled ? 'bg-secondary-200 dark:bg-secondary-700-dark cursor-not-allowed' : '', inputClassName)}
                     {...props}
                 />
-                {error && <p className={cn("mt-1 text-sm text-error", errorClassName)}>{error}</p>}
+                {error && <p className={cn("mt-1 text-sm text-error-500 dark:text-error-500-dark", errorClassName)}>{error}</p>}
             </div>
         )
     })

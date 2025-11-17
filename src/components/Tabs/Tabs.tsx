@@ -3,49 +3,49 @@ import { useEffect, useRef, useState } from 'react';
 
 const TabsVariants = {
   line: {
-    wrapper: 'border-b border-secondary dark:border-secondary-dark',
+    wrapper: 'border-b border-secondary-500 dark:border-secondary-500-dark',
     button: 'whitespace-nowrap py-4 px-1 font-medium text-sm',
-    active: 'border-primary text-primary dark:text-primary-30 transition-all duration-300 ease-in-out',
-    inactive: 'border-transparent text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark-700',
+    active: 'border-primary text-primary-500 dark:text-primary-300-dark transition-all duration-300 ease-in-out',
+    inactive: 'border-transparent hover:text-primary-500 dark:text-white dark:hover:text-primary-300-dark',
   },
   solid: {
-    wrapper: 'rounded-md p-1',
-    button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-md',
-    active: 'bg-indigo-100 dark:bg-indigo-200 text-primary dark:text-primary-dark transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark-700',
+    wrapper: 'border-b border-secondary-500 dark:border-secondary-500-dark',
+    button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-t-md',
+    active: 'bg-primary-500 dark:bg-primary-500-dark text-white transition-all duration-300 ease-in-out z-10',
+    inactive: 'hover:text-primary-500 dark:text-white dark:hover:text-primary-300-dark',
   },
   subtle: {
-    wrapper: 'rounded-md bg-transparent p-1',
-    button: 'whitespace-nowrap py-2 px-4 font-medium text-sm',
-    active: 'text-white transition-all duration-300 ease-in-out z-10',
-    inactive: 'bg-transparent text-primary dark:text-primary-30 hover:text-primary-700',
+    wrapper: 'border-b border-secondary-500 dark:border-secondary-500-dark',
+    button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-t-md',
+    active: 'bg-primary-200 hover:bg-primary-200 text-primary-700 dark:bg-primary-100-dark dark:text-primary-700-dark dark:hover:text-primary-700-dark dark:hover:bg-primary-100-dark transition-all duration-300 ease-in-out z-10',
+    inactive: 'bg-transparent text-primary-500 dark:text-primary-50-dark hover:text-primary-500 dark:hover:text-primary-300-dark',
   },
   inline: {
-    wrapper: 'border border-primary rounded-t-md border-b dark:border-primary-dark-30',
+    wrapper: 'border border-primary-500 rounded-t-md border-b dark:border-primary-500-dark',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm z-10',
     active: 'text-white transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark',
+    inactive: 'text-secondary-500 hover:text-primary-500 dark:text-white dark:hover:text-primary-300-dark',
   },
   outline: {
-    wrapper: 'border border-primary dark:border-primary-dark-30 rounded-md p-1',
-    button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-md',
-    active: 'bg-indigo-100 dark:bg-indigo-200 text-primary dark:text-primary-dark transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary-dark',
+    wrapper: 'border border-primary-500 dark:border-primary-500-dark rounded-md p-1',
+    button: 'whitespace-nowrap py-2 px-4 font-medium text-sm rounded-t-md',
+    active: 'bg-primary-500 dark:bg-primary-500-dark text-white transition-all duration-300 ease-in-out',
+    inactive: 'text-secondary-500 hover:text-primary-500 dark:text-white dark:hover:text-primary-300-dark',
   },
   plain: {
     wrapper: '',
     button: 'whitespace-nowrap py-2 px-4 font-medium text-sm',
-    active: 'text-primary dark:text-primary-30 transition-all duration-300 ease-in-out',
-    inactive: 'text-gray-500 hover:text-secondary-700 dark:text-white dark:hover:text-secondary',
+    active: 'text-primary-500 dark:text-primary-500-dark transition-all duration-300 ease-in-out',
+    inactive: 'text-secondary-500 hover:text-primary-500 dark:text-white dark:hover:text-primary-300-dark',
   },
 }
 
 const IndicatorVariants = {
-  line: 'absolute bottom-0 h-1 bg-primary dark:bg-primary-30 transition-all duration-300 ease-in-out',
-  solid: 'absolute bottom-0 h-1 bg-primary transition-all duration-300 ease-in-out',
-  subtle: 'absolute bottom-0 h-full bg-primary rounded-md transition-all duration-300 ease-in-out',
-  inline: 'absolute bottom-0 h-full bg-primary border-t border-r border-l border-primary-700 rounded-tl-md rounded-tr-md transition-all duration-300 ease-in-out',
-  outline: 'absolute bottom-0 h-1 bg-primary transition-all duration-300 ease-in-out',
+  line: 'absolute bottom-0 h-1 bg-primary-500 dark:bg-primary-500-dark transition-all duration-300 ease-in-out',
+  solid: 'absolute bottom-0 h-full bg-primary-500 dark:bg-primary-500-dark text-white rounded-t-md transition-all duration-300 ease-in-out',
+  subtle: 'absolute bottom-0 h-full bg-primary-200 hover:bg-primary-200 text-primary-700 dark:bg-primary-100-dark dark:text-primary-700-dark dark:hover:text-primary-700-dark dark:hover:bg-primary-100-dark rounded-t-md transition-all duration-300 ease-in-out',
+  inline: 'absolute bottom-0 h-full bg-primary-500 dark:bg-primary-500-dark border-t border-r border-l border-primary-500 dark:border-primary-500-dark rounded-t-sm transition-all duration-300 ease-in-out',
+  outline: 'absolute bottom-0 h-1 bg-primary-500 transition-all duration-300 ease-in-out',
   plain: '',
 }
 
@@ -131,7 +131,7 @@ export const Tabs: React.FC<TabsProps> = ({
               activeTab === index
                 ? cn(variantClasses.active, activeClassName)
                 : cn(variantClasses.inactive, inactiveClassName),
-              tab.disabled && 'hover:cursor-not-allowed cursor-not-allowed opacity-50'
+              tab.disabled && 'hover:cursor-not-allowed cursor-not-allowed opacity-50 dark:hover:text-secondary-50-dark'
             );
 
             if (tab.link) {
