@@ -18,6 +18,7 @@ export type TableType<T> = {
     data: T[]
     striped?: boolean
     stripeColor?: string
+    hoverable?: boolean
     headerClassName?: string
     dataColumnClassName?: string
     dataRowClassName?: string
@@ -39,6 +40,7 @@ export function Table<T extends { id: any }>({
     data,
     striped = false,
     stripeColor,
+    hoverable = true,
     headerClassName,
     dataColumnClassName,
     dataRowClassName,
@@ -120,8 +122,13 @@ export function Table<T extends { id: any }>({
                     {data.length > 0 ? (
                         data.map((row, rIdx) => (
                             <tr
-                                key={rIdx}
-                                className={cn("hover:bg-gray-700 hover:text-white dark:hover:bg-gray-600 transition-colors", striped && rIdx % 2 !== 0 && (stripeColor ?? 'bg-gray-300 dark:bg-gray-700'), dataRowClassName)}
+                                key={row.id ?? rIdx}
+                                className={cn(
+                                    "transition-colors",
+                                    striped && rIdx % 2 !== 0 && (stripeColor ?? 'bg-gray-300 dark:bg-gray-700'),
+                                    hoverable && "hover:bg-gray-200 dark:hover:bg-gray-200",
+                                    dataRowClassName
+                                )}
                             >
                                 {selectable && (
                                     <td className={cn("px-4 py-2 border-b border-secondary-700 dark:border-secondary-dark-700", (striped || stripeColor) && 'border-none', dataColumnClassName, tableSizeClass)}>

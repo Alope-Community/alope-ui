@@ -37,14 +37,31 @@ export default defineConfig({
       },
     },
     lib: {
-      entry: [
-        resolve(__dirname, "lib/main.ts"),
-        resolve(__dirname, "lib/index.css"),
-      ],
-      formats: ["cjs"],
+      entry: {
+        main: resolve(__dirname, "lib/main.ts"),
+        style: resolve(__dirname, "lib/index.css"),
+      },
+      formats: ["es", "cjs"],
+      fileName: (format, entryName) => {
+        if (entryName === "style") return "index.css";
+        return format === "es" ? "main.js" : "main.cjs";
+      },
     },
     rollupOptions: {
-      external: ["react", "react-dom", "react-router-dom", "react/jsx-runtime"],
+      external: [
+        "react",
+        "react-dom",
+        "react-router-dom",
+        "react/jsx-runtime",
+        "clsx-for-tailwind",
+        "lucide-react",
+        "next-themes",
+        "prism-react-renderer",
+        "react-collapse",
+        "react-icons",
+        "react-select",
+        "react-syntax-highlighter",
+      ],
       output: {
         globals: {
           react: "React",

@@ -5,17 +5,28 @@
     "type": "git",
     "url": "git+https://github.com/Alope-Community/alope-ui.git"
   },
-  "version": "1.2.6",
+  "version": "1.2.14",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "dist/main.cjs",
-  "types": "dist/main.d.ts",
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js",
+      "require": "./dist/main.cjs"
+    },
+    "./index.css": "./dist/index.css",
+    "./style.css": "./dist/index.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:package": "tsc -b ./tsconfig.lib.json && vite build",
+    "prepublishOnly": "npm run build:package",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -28,20 +39,19 @@
     "react-select": "^5.10.1"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.1.11",
-    "alope-ui": "^1.1.5",
+    "alope-ui": "^1.2.9",
     "lucide-react": "^0.542.0",
     "next-themes": "^0.4.6",
     "prism-react-renderer": "^2.4.1",
     "react-collapse": "^5.1.1",
     "react-icons": "^5.5.0",
-    "react-syntax-highlighter": "^15.6.6",
-    "tailwindcss": "^4.1.11"
+    "react-syntax-highlighter": "^15.6.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
     "@tailwindcss/postcss": "^4.1.13",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^24.2.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
