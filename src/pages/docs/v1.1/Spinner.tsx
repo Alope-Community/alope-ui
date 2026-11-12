@@ -11,11 +11,10 @@ export default function SpinnerDocs() {
 
   return (
     <div
-      className={`transition-colors ${
-        theme === "dark"
+      className={`transition-colors ${theme === "dark"
           ? "prose prose-invert max-w-none"
           : "prose prose-slate prose-headings:text-gray-900 max-w-none"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4">
         {/* Title */}
@@ -34,11 +33,10 @@ export default function SpinnerDocs() {
         <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg mb-10">
           <table className="w-full text-sm text-left">
             <thead
-              className={`${
-                theme === "dark"
+              className={`${theme === "dark"
                   ? "bg-gray-800 text-gray-200"
                   : "bg-gray-100 text-gray-700"
-              }`}
+                }`}
             >
               <tr>
                 <th className="px-4 py-2 font-semibold">Prop</th>
@@ -72,9 +70,8 @@ export default function SpinnerDocs() {
               ].map(([prop, type, def, desc]) => (
                 <tr
                   key={prop}
-                  className={`border-t ${
-                    theme === "dark" ? "border-gray-800" : "border-gray-200"
-                  }`}
+                  className={`border-t ${theme === "dark" ? "border-gray-800" : "border-gray-200"
+                    }`}
                 >
                   <td className="px-4 py-2 font-medium">{prop}</td>
                   <td className="px-4 py-2 font-mono text-blue-500">{type}</td>
@@ -89,11 +86,10 @@ export default function SpinnerDocs() {
         {/* Basic Spinner */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Basic Spinner</h3>
         <div
-          className={`border rounded-lg p-4 flex justify-center mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex justify-center mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner />
         </div>
@@ -108,11 +104,10 @@ const BasicExample = () => {
         {/* Sizes */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Sizes</h3>
         <div
-          className={`border rounded-lg p-4 flex items-center gap-6 mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex items-center gap-6 mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           {/* Small Size */}
           <Spinner size="sm" />
@@ -141,11 +136,10 @@ const BasicExample = () => {
         {/* Colors */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Colors</h3>
         <div
-          className={`border rounded-lg p-4 flex flex-wrap gap-4 items-center justify-center mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex flex-wrap gap-4 items-center justify-center mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           {["primary", "error", "warning", "success", "info", "secondary"].map(
             (color) => (
@@ -191,11 +185,10 @@ const BasicExample = () => {
         {/* Custom Duration */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Duration</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-6 justify-center mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex gap-6 justify-center mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner duration={500} />
           <Spinner duration={2000} />
@@ -215,11 +208,10 @@ const BasicExample = () => {
         {/* Custom Thickness */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Custom Thickness</h3>
         <div
-          className={`border rounded-lg p-4 flex gap-6 justify-center mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex gap-6 justify-center mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner thickness={1} />
           <Spinner thickness={6} />
@@ -241,11 +233,10 @@ const BasicExample = () => {
           Combined Customization
         </h3>
         <div
-          className={`border rounded-lg p-4 flex justify-center mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex justify-center mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner size="lg" color="success" duration={1500} thickness={5} />
         </div>
@@ -258,11 +249,10 @@ const BasicExample = () => {
           With Custom Styling
         </h3>
         <div
-          className={`border rounded-lg p-4 flex flex-col items-center gap-6 mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex flex-col items-center gap-6 mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner className="mx-auto my-4" />
           <div className="relative w-full h-32 border border-dashed rounded">
@@ -278,11 +268,10 @@ const BasicExample = () => {
         {/* Loading States */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Loading States</h3>
         <div
-          className={`border rounded-lg p-4 flex justify-center mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex justify-center mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <LoadingButton />
         </div>
@@ -315,11 +304,10 @@ const LoadingButton = () => {
         {/* Centered Loading */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Centered Loading</h3>
         <div
-          className={`border rounded-lg p-4 flex justify-center items-center h-64 mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex justify-center items-center h-64 mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner size="lg" color="primary" />
         </div>
@@ -336,11 +324,10 @@ const LoadingButton = () => {
         {/* With Text */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">With Text</h3>
         <div
-          className={`border rounded-lg p-4 flex flex-col items-center gap-3 mb-6 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 flex flex-col items-center gap-3 mb-6 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <Spinner size="lg" color="info" />
           <p className="text-gray-600 dark:text-gray-400">Loading data...</p>
@@ -359,11 +346,10 @@ const LoadingButton = () => {
         {/* Complete Example */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">Complete Example</h3>
         <div
-          className={`border rounded-lg p-4 mb-10 transition-colors ${
-            theme === "dark"
+          className={`border rounded-lg p-4 mb-10 transition-colors ${theme === "dark"
               ? "bg-gray-800 border-gray-700"
               : "bg-white border-gray-200"
-          }`}
+            }`}
         >
           <DataFetcher />
         </div>
