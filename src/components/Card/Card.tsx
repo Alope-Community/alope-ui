@@ -115,7 +115,7 @@ export const Card: React.FC<CardProps> = ({
               {description && (
                 <p
                   className={cn(
-                    'mt-2 text-secondary-700 font-medium text-sm mb-2 line-clamp-3 dark:text-secondary-dark',
+                    'mt-2 text-secondary-700 text-sm mb-2 line-clamp-3 dark:text-secondary-dark',
                     descriptionClassName
                   )}
                 >
