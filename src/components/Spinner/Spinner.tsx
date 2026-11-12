@@ -16,36 +16,83 @@ const SpinnerColor = {
   secondary: "border-secondary dark:border-secondary-dark",
 };
 
+const SpinnerTextSize = {
+  sm: "text-xs",
+  md: "text-sm",
+  lg: "text-base",
+};
+
+const LabelPosition = {
+  right: "flex-row",
+  left: "flex-row-reverse",
+  bottom: "flex-col",
+  top: "flex-col-reverse",
+};
+
 export type SpinnerProps = {
   size?: keyof typeof SpinnerSize;
   color?: keyof typeof SpinnerColor;
   className?: string;
+  labelClassName?: string;
   duration?: number;
   thickness?: number | undefined;
+  label?: React.ReactNode;
+  labelPosition?: keyof typeof LabelPosition;
 };
 
 export const Spinner: React.FC<SpinnerProps> = ({
   color = "primary",
   size = "md",
   className: customClassName,
+  labelClassName,
   duration = 1000,
   thickness,
+  label,
+  labelPosition = "right",
 }) => {
   const spinnerColor = SpinnerColor[color];
   const spinnerSize = SpinnerSize[size];
+  const spinnerTextSize = SpinnerTextSize[size];
+  const positionClass = LabelPosition[labelPosition];
   const animationDuration = `${duration}ms`;
-  const borderWidth = thickness && `${thickness}px`;
+  const borderWidth = thickness ? `${thickness}px` : undefined;
 
-  return (
+  const spinnerElement = (
     <span
+      role="status"
+      aria-label={typeof label === "string" ? label : "Loading"}
       className={cn(
         spinnerSize,
         spinnerColor,
-        `flex rounded-full animate-spin`,
+        "inline-block shrink-0 rounded-full animate-spin",
         customClassName,
         "border-t-transparent dark:border-t-transparent"
       )}
       style={{ animationDuration, borderWidth }}
-    ></span>
+    />
+  );
+
+  if (!label) {
+    return spinnerElement;
+  }
+
+  return (
+    <div
+      className={cn(
+        "inline-flex items-center justify-center gap-2",
+        positionClass
+      )}
+    >
+      {spinnerElement}
+      <span
+        className={cn(
+          spinnerTextSize,
+          "text-gray-700 dark:text-gray-200 font-medium",
+          labelClassName
+        )}
+      >
+        {label}
+      </span>
+    </div>
   );
 };
