@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/Alope-Community/alope-ui.git"
   },
-  "version": "1.2.28",
+  "version": "1.2.31",
   "type": "module",
   "files": [
     "dist"

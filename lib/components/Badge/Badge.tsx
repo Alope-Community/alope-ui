@@ -1,9 +1,9 @@
 import React from 'react';
 import { cn } from 'clsx-for-tailwind';
 
-const BadgeVariants = {
-    default: 'bg-primary-30 text-primary-700 dark:bg-primary-dark-30',
-    secondary: 'bg-secondary-30 text-black dark:bg-secondary-dark-30',
+const BadgeColors = {
+    // default: 'bg-primary-30 text-primary-700 dark:bg-primary-dark-30',
+    default: 'bg-secondary-30 text-black dark:bg-secondary-dark-30',
     success: 'bg-success-30 text-green-700 dark:bg-success-dark-30',
     error: 'bg-error-30 text-red-700 dark:bg-error-dark-30',
     info: 'bg-info-30 text-blue-700 dark:bg-info-dark-30',
@@ -19,35 +19,35 @@ const BadgePositions = {
 
 export type BadgeProps = {
     children?: React.ReactNode | string;
-    variant?: keyof typeof BadgeVariants;
+    color?: keyof typeof BadgeColors;
     position?: keyof typeof BadgePositions;
-    isAbsolute?: boolean;
-    className?: string;
-    icon?: React.ReactNode;
-} & React.ButtonHTMLAttributes<HTMLSpanElement>;
+    prefixIcon?: React.ReactNode;
+    suffixIcon?: React.ReactNode;
+} & Omit<React.HTMLAttributes<HTMLSpanElement>, 'className' | 'color'>;
 
 export const Badge: React.FC<BadgeProps> = ({
     children,
-    variant = 'default',
-    position = 'top-right',
-    isAbsolute = false,
-    className,
-    icon,
+    color = 'default',
+    position,
+    prefixIcon,
+    suffixIcon,
+    ...props
 }) => {
-    const variantClass = BadgeVariants[variant];
-    const positionClass = isAbsolute ? BadgePositions[position] : '';
+    const colorClass = BadgeColors[color];
+    const positionClass = position ? BadgePositions[position] : '';
 
     return (
         <span
+            {...props}
             className={cn(
-                `inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold`,
-                variantClass,
-                positionClass,
-                className
+                'inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold',
+                colorClass,
+                positionClass
             )}
         >
-            {icon && <span className="mr-1">{icon}</span>}
+            {prefixIcon && <span className="inline-flex shrink-0">{prefixIcon}</span>}
             {children}
+            {suffixIcon && <span className="inline-flex shrink-0">{suffixIcon}</span>}
         </span>
     );
 };
