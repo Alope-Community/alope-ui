@@ -1,6 +1,6 @@
 import { cn } from 'clsx-for-tailwind'
 import { Children, isValidElement, useEffect, useState } from 'react'
-import { getVariantClasses, type Variant, type VariantType } from '../Button/Button'
+import { getVariantClasses, type ButtonVariant, type ButtonColor } from '../Button/Button'
 
 const FABSizes = {
   sm: 'w-11 h-11 font-medium rounded-sm rounded rounded-full',
@@ -12,8 +12,8 @@ type FABProps = {
   children: React.ReactNode
   direction?: 'horizontal' | 'vertical'
   size?: keyof typeof FABSizes
-  variant?: Variant
-  variantType?: VariantType
+  variant?: ButtonVariant
+  variantType?: ButtonColor
   isOpen: boolean
   onOpen: () => void
   icon?: React.ReactNode

@@ -8,7 +8,7 @@ type BreadcrumbItem = {
   icon?: React.ReactNode;
 };
 
-type BreadcrumbVariant =
+type BreadcrumbColor =
   | 'primary'
   | 'secondary'
   | 'success'
@@ -18,11 +18,11 @@ type BreadcrumbVariant =
 
 type BreadcrumbProps = {
   data: BreadcrumbItem[];
-  variant?: BreadcrumbVariant;
+  color?: BreadcrumbColor;
   separator?: React.ReactNode;
 };
 
-const variantStyles: Record<BreadcrumbVariant, string> = {
+const colorStyles: Record<BreadcrumbColor, string> = {
   primary: 'text-primary dark:text-primary-dark-30',
   secondary: 'text-secondary-foreground dark:text-secondary-foreground-dark',
   success: 'text-success-dark dark:text-success-dark-30',
@@ -33,7 +33,7 @@ const variantStyles: Record<BreadcrumbVariant, string> = {
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   data,
-  variant = 'primary',
+  color = 'primary',
   separator = '/',
 }) => {
   return (
@@ -49,7 +49,7 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
                   aria-current="page"
                   className={cn(
                     'flex items-center font-medium',
-                    variantStyles[variant]
+                    colorStyles[color]
                   )}
                 >
                   {item.icon && <span className="mr-1.5">{item.icon}</span>}
