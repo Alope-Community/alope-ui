@@ -8,6 +8,8 @@ export interface ToastProps {
   position?: keyof typeof ToastPositions;
   variant?: keyof typeof ToastVariants;
   icon?: React.ReactNode;
+  withClose?: boolean;
+  withLoading?: boolean;
   onClose?: () => void;
 }
 
@@ -17,10 +19,10 @@ export const ToastVariants = {
 };
 
 export const ToastPositions = {
-  topLeft: "top-5 left-5",
-  bottomLeft: "bottom-5 left-5",
-  topRight: "top-5 right-5",
-  bottomRight: "bottom-5 right-5",
+  "top-left": "top-5 left-5",
+  "bottom-left": "bottom-5 left-5",
+  "top-right": "top-5 right-5",
+  "bottom-right": "bottom-5 right-5",
 };
 
 export const ToastTypes = {
@@ -31,49 +33,53 @@ export const ToastTypes = {
 };
 
 const enterAnimationByPosition: Record<keyof typeof ToastPositions, string> = {
-  topRight: "translate-x-0",
-  bottomRight: "translate-x-0",
-  topLeft: "-translate-x-0",
-  bottomLeft: "-translate-x-0",
+  "top-right": "translate-x-0",
+  "bottom-right": "translate-x-0",
+  "top-left": "-translate-x-0",
+  "bottom-left": "-translate-x-0",
 };
 
 const exitAnimationByPosition: Record<keyof typeof ToastPositions, string> = {
-  topRight: "translate-x-40",
-  bottomRight: "translate-x-40",
-  topLeft: "-translate-x-40",
-  bottomLeft: "-translate-x-40",
+  "top-right": "translate-x-40",
+  "bottom-right": "translate-x-40",
+  "top-left": "-translate-x-40",
+  "bottom-left": "-translate-x-40",
 };
 
 const initialAnimationByPosition: Record<keyof typeof ToastPositions, string> =
-  {
-    topRight: "translate-x-10",
-    bottomRight: "translate-x-10",
-    topLeft: "-translate-x-10",
-    bottomLeft: "-translate-x-10",
-  };
+{
+  "top-right": "translate-x-10",
+  "bottom-right": "translate-x-10",
+  "top-left": "-translate-x-10",
+  "bottom-left": "-translate-x-10",
+};
 
 const Toast: React.FC<ToastProps> = ({
   title,
   message,
   type,
   icon,
-  position = "bottomRight",
+  position = "bottom-right",
   variant = "solid",
+  withClose = true,
+  withLoading = false,
   onClose,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isFadingOut, setIsFadingOut] = useState(false);
-  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const timeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    setTimeout(() => setIsVisible(true), 50);
+    const enterTimer = setTimeout(() => setIsVisible(true), 50);
 
     timeoutRef.current = setTimeout(() => {
       handleClose();
     }, 3500);
 
     return () => {
-      timeoutRef.current && clearTimeout(timeoutRef.current);
+      clearTimeout(enterTimer);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
 
@@ -85,6 +91,7 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   const handleOnMouseEnter = () => {
+    setIsPaused(true);
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
@@ -92,6 +99,7 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   const handleOnMouseLeave = () => {
+    setIsPaused(false);
     timeoutRef.current = setTimeout(() => {
       handleClose();
     }, 3500);
@@ -102,14 +110,14 @@ const Toast: React.FC<ToastProps> = ({
       onMouseEnter={handleOnMouseEnter}
       onMouseLeave={handleOnMouseLeave}
       className={cn(
-        `flex max-w-sm items-start gap-3 p-4 mb-3 rounded-lg shadow-lg transition-all duration-500 transform`,
+        "relative overflow-hidden flex max-w-sm items-start gap-3 p-4 mb-3 rounded-lg shadow-lg transition-all duration-500 transform",
         ToastTypes[type],
         ToastVariants[variant],
         isFadingOut
           ? `opacity-0 ${exitAnimationByPosition[position]}`
           : isVisible
-          ? `opacity-100 ${enterAnimationByPosition[position]}`
-          : `opacity-0 ${initialAnimationByPosition[position]}`
+            ? `opacity-100 ${enterAnimationByPosition[position]}`
+            : `opacity-0 ${initialAnimationByPosition[position]}`
       )}
     >
       {icon && <div className="text-2xl mt-1">{icon}</div>}
@@ -119,13 +127,27 @@ const Toast: React.FC<ToastProps> = ({
         <p className="text-sm leading-snug">{message}</p>
       </div>
 
-      <button
-        onClick={handleClose}
-        className="ml-2 text-lg leading-none hover:text-red-500 focus:outline-none cursor-pointer"
-        aria-label="Close"
-      >
-        &times;
-      </button>
+      {withClose && (
+        <button
+          onClick={handleClose}
+          className="ml-2 text-lg leading-none hover:text-red-500 focus:outline-none cursor-pointer"
+          aria-label="Close"
+        >
+          ×
+        </button>
+      )}
+
+      {withLoading && (
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-current/20">
+          <div
+            style={{
+              width: isVisible && !isPaused ? "0%" : "100%",
+              transition: isPaused ? "none" : "width 3500ms linear",
+            }}
+            className="h-full bg-current"
+          />
+        </div>
+      )}
     </div>
   );
 };

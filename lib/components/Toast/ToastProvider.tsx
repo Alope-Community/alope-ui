@@ -12,6 +12,9 @@ interface ToastContextType {
     type,
     variant,
     icon,
+    withClose,
+    withLoading,
+    position,
     onClose,
   }: ToastProps) => void;
 }
@@ -39,13 +42,26 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
     type,
     variant,
     icon,
+    withClose = true,
+    withLoading = false,
     onClose,
-    position = "bottomRight",
+    position = "bottom-right",
   }: ToastProps) => {
-    const id = Date.now();
+    const id = Date.now() + Math.random();
     setToasts((prevToasts) => [
       ...prevToasts,
-      { title, id, message, type, variant, icon, onClose, position },
+      {
+        title,
+        id,
+        message,
+        type,
+        variant,
+        icon,
+        withClose,
+        withLoading,
+        onClose,
+        position,
+      },
     ]);
   };
 
@@ -72,8 +88,13 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
                 type={toast.type}
                 variant={toast.variant}
                 icon={toast.icon}
+                withClose={toast.withClose}
+                withLoading={toast.withLoading}
                 position={toast.position}
-                onClose={() => removeToast(toast.id)}
+                onClose={() => {
+                  toast.onClose?.();
+                  removeToast(toast.id);
+                }}
               />
             ))}
         </div>
