@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git+https://github.com/Alope-Community/alope-ui.git"
   },
-  "version": "1.2.38",
+  "version": "1.2.4",
   "type": "module",
   "files": [
     "dist"
@@ -20,9 +20,8 @@
       "import": "./dist/main.js",
       "require": "./dist/main.cjs"
     },
-    "./style.css": "./dist/style.css",
-    "./styles.css": "./dist/style.css",
-    "./index.css": "./dist/style.css"
+    "./index.css": "./dist/style.css",
+    "./theme.css": "./dist/theme.css"
   },
   "scripts": {
     "dev": "vite",

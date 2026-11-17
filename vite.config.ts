@@ -1,3 +1,4 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import tailwindcss from "@tailwindcss/vite";
@@ -7,7 +8,6 @@ import { libInjectCss } from "vite-plugin-lib-inject-css";
 
 const dev = process.env.NODE_ENV !== "production";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -36,14 +36,18 @@ export default defineConfig({
         semicolons: false,
       },
     },
+
     lib: {
       entry: {
         main: resolve(__dirname, "lib/main.ts"),
         style: resolve(__dirname, "lib/index.css"),
+        theme: resolve(__dirname, "lib/theme.css"),
       },
       formats: ["es", "cjs"],
       fileName: (format, entryName) => {
-        if (entryName === "style") return "index.css";
+        if (entryName === "style") return "style.js";
+        if (entryName === "theme") return "theme.js";
+
         return format === "es" ? "main.js" : "main.cjs";
       },
     },
@@ -69,50 +73,18 @@ export default defineConfig({
           "react-router-dom": "ReactRouterDOM",
           "react/jsx-runtime": "react/jsx-runtime",
         },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.includes("theme")) {
+            return "theme.css";
+          }
+
+          if (assetInfo.name?.includes("style")) {
+            return "style.css";
+          }
+
+          return "assets/[name][extname]";
+        },
       },
     },
-    copyPublicDir: false,
   },
 });
-
-// import { defineConfig } from "vite";
-// import react from "@vitejs/plugin-react-swc";
-// import tailwindcss from "@tailwindcss/vite";
-// import { resolve } from "path";
-
-// const dev = process.env.NODE_ENV !== "production";
-
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react(), tailwindcss()],
-//   resolve: {
-//     alias: {
-//       "@": resolve(__dirname, "./src"),
-//     },
-//   },
-//   build: {
-//     minify: "terser",
-//     terserOptions: {
-//       ecma: 2015,
-//       compress: {
-//         toplevel: true,
-//         passes: 2,
-//         drop_console: !dev,
-//         drop_debugger: !dev,
-//       },
-//       mangle: { toplevel: true },
-//       format: {
-//         beautify: false,
-//         comments: false,
-//       },
-//     },
-//     outDir: "dist",
-//     assetsDir: "assets",
-//     sourcemap: dev,
-//     copyPublicDir: true,
-//   },
-//   server: {
-//     port: 5173,
-//     open: true,
-//   },
-// });
