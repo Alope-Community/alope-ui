@@ -18,7 +18,7 @@ export const ButtonVariantsMap = {
     solid:
       'bg-primary text-white hover:bg-primary-dark dark:bg-primary-dark dark:hover:bg-primary-dark/70',
     outline:
-      'border border-primary text-primary hover:bg-primary-30 dark:bg-primary-dark/30 dark:border-primary-dark dark:text-white dark:hover:bg-primary-dark/70',
+      'border border-primary text-primary hover:bg-primary-30 dark:bg-primary-dark/30 dark:border-primary-dark dark:hover:bg-primary-dark/70',
     ghost:
       'text-primary hover:bg-primary-30 dark:text-primary-dark dark:hover:bg-primary-dark/70 dark:hover:text-white',
     plain: 'text-primary dark:text-primary-dark',
